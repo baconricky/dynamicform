@@ -613,48 +613,72 @@ DynamicForm.InitOptions = function(opts) {
         DynamicForm.options.config = "/forms/scripts/jquery.gatedform.settings."+config_name.toLowerCase()+".js";
 
         $.getScript(DynamicForm.options.config, function(a,b,c) {
-            DynamicForm.info("[DynamicForm.InitOptions] getScript: ", DynamicForm.options.config);
+            var loadDevOptsDef = new $.Deferred();
+            if (config_name === 'local') {
+                var localSettings = DynamicForm.ExtSettings;
+                DynamicForm.info("DynamicForm.InitOptions local settings", localSettings);
 
-            DynamicForm.info("[DynamicForm.InitOptions] DynamicForm.ExtSettings", DynamicForm.ExtSettings);
-            DynamicForm.info("[DynamicForm.InitOptions] opts", opts);
-            DynamicForm.info("[DynamicForm.InitOptions] DynamicForm.options", DynamicForm.options);
+                $.getScript("/forms/scripts/jquery.gatedform.settings.dev.js", function() {
+                    $.extend(DynamicForm.ExtSettings, localSettings, opts);
+                    DynamicForm.info("DynamicForm.InitOptions local ExtSettings", DynamicForm.ExtSettings);
+                 });
+            } else if (config_name === 'stage') {
+                var stageSettings = DynamicForm.ExtSettings;
+                DynamicForm.info("DynamicForm.InitOptions stage settings", stageSettings);
 
-            DynamicForm.options = $.extend({}, DynamicForm.options, DynamicForm.ExtSettings, opts);
-            DynamicForm.info("[DynamicForm.InitOptions] merged DynamicForm.options", DynamicForm.options);
+                $.getScript("/forms/scripts/jquery.gatedform.settings.prod.js", function() {
+                    $.extend(DynamicForm.ExtSettings, stageSettings, opts);
+                    DynamicForm.info("DynamicForm.InitOptions stage ExtSettings", DynamicForm.ExtSettings);
+                 });
+            } else {
+                DynamicForm.info("DynamicForm.InitOptions local or stage settings not needed.");
+                loadDevOptsDef.resolve();
+            }
 
-            //update configure options with query string parameters
-            var config_options = ['v', 'language', 'country', 'sc_cid', 'intcmp', 'pid', 'offer_id', 'GoogleAnalyticsID', 'no_css'];
-            for (var opt in config_options) {
-                if (DynamicForm.CheckValue($.url(document.URL).param(opt))) {
-                    DynamicForm.info("Loaded "+ opt +" from query string");
-                    DynamicForm.options[opt] = $.url(document.URL).param(opt);
-                } else {
-                    DynamicForm.info("Did not load "+ opt +" from query string");
+            $.when(loadDevOptsDef).then(function() {
+                DynamicForm.info("[DynamicForm.InitOptions getScript: ", DynamicForm.options.config);
+
+                DynamicForm.info("DynamicForm.InitOptions ExtSettings", DynamicForm.ExtSettings);
+                DynamicForm.info("DynamicForm.InitOptions opts", opts);
+                DynamicForm.info("DynamicForm.InitOptions options", DynamicForm.options);
+
+                DynamicForm.options = $.extend({}, DynamicForm.options, DynamicForm.ExtSettings, opts);
+                DynamicForm.info("DynamicForm.InitOptions merged DynamicForm.options", DynamicForm.options);
+
+                //update configure options with query string parameters
+                var config_options = ['v', 'language', 'country', 'sc_cid', 'intcmp', 'pid', 'offer_id', 'GoogleAnalyticsID', 'no_css'];
+                for (var opt in config_options) {
+                    if (DynamicForm.CheckValue($.url(document.URL).param(opt))) {
+                        DynamicForm.info("Loaded "+ opt +" from query string");
+                        DynamicForm.options[opt] = $.url(document.URL).param(opt);
+                    } else {
+                        DynamicForm.info("Did not load "+ opt +" from query string");
+                    }
                 }
-            }
 
-            if (DynamicForm.CheckValue(DynamicForm.options.udf) && DynamicForm.ValueIsEmpty(DynamicForm.options.CustomQuestions)) {
-                DynamicForm.options.CustomQuestions = DynamicForm.options.udf;
-            }
+                if (DynamicForm.CheckValue(DynamicForm.options.udf) && DynamicForm.ValueIsEmpty(DynamicForm.options.CustomQuestions)) {
+                    DynamicForm.options.CustomQuestions = DynamicForm.options.udf;
+                }
 
-            if (DynamicForm.CheckValue(DynamicForm.options.rh_omni_itc) && DynamicForm.ValueIsEmpty(DynamicForm.options.intcmp)) {
-                DynamicForm.options.intcmp = DynamicForm.options.rh_omni_itc;
-            }
+                if (DynamicForm.CheckValue(DynamicForm.options.rh_omni_itc) && DynamicForm.ValueIsEmpty(DynamicForm.options.intcmp)) {
+                    DynamicForm.options.intcmp = DynamicForm.options.rh_omni_itc;
+                }
 
-            if (DynamicForm.CheckValue(DynamicForm.options.rh_omni_tc) && DynamicForm.ValueIsEmpty(DynamicForm.options.sc_cid)) {
-                DynamicForm.options.sc_cid = DynamicForm.options.rh_omni_tc;
-            }
+                if (DynamicForm.CheckValue(DynamicForm.options.rh_omni_tc) && DynamicForm.ValueIsEmpty(DynamicForm.options.sc_cid)) {
+                    DynamicForm.options.sc_cid = DynamicForm.options.rh_omni_tc;
+                }
 
-            var params = $.url(document.URL).param();
-            DynamicForm.info("Found these other params: ", params);
-            $.extend(DynamicForm.options, opts, params);
+                var params = $.url(document.URL).param();
+                DynamicForm.info("Found these other params: ", params);
+                $.extend(DynamicForm.options, opts, params);
 
-            DynamicForm.options._ms = new Date().getMilliseconds();
-            DynamicForm.options.FormURL = document.URL;
+                DynamicForm.options._ms = new Date().getMilliseconds();
+                DynamicForm.options.FormURL = document.URL;
 
-            DynamicForm.info("Loaded "+ config_name +" config file!");
+                DynamicForm.info("Loaded "+ config_name +" config file!");
 
-            initOptsDef.resolve();
+                initOptsDef.resolve();
+            });
         });
     } catch (e) {
         DynamicForm.error("DynamicForm.InitOptions", e);
