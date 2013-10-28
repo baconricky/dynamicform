@@ -1,3 +1,5 @@
+var DynamicForm = window.DynamicForm = window.DynamicForm || {};
+
 DynamicForm.ExtSettings = {
     no_css: false,
     debug: false,

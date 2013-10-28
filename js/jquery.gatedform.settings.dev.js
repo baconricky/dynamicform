@@ -1,3 +1,5 @@
+var DynamicForm = window.DynamicForm = window.DynamicForm || {};
+
 DynamicForm.ExtSettings = {
     debug: true,
     URL_PREFIX: (document.location.protocol === 'https:' ? 'https://' : 'http://') + 'cms-300.usersys.redhat.com',

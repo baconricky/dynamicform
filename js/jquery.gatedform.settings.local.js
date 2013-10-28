@@ -26,6 +26,9 @@ Data Lookup Key: b68eb5c2-6b22-40b6-bdb6-cba3f848b1c4
 Data Lookup Name: GOTEpM - Get Tactic Details
 Data Lookup Key: 6964661e-603a-4f93-8e13-07467544315b
 */
+
+var DynamicForm = window.DynamicForm = window.DynamicForm || {};
+
 DynamicForm.ExtSettings = {
     cookie_domain: '.redhat.local',
     URL_PREFIX: (document.location.protocol === 'https:' ? 'https://' : 'http://') + 'redhat.local',
