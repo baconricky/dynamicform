@@ -1,3 +1,4 @@
+/*! gatedform-PROD v.22-10-2013 */
 $.validator.setDefaults({
     ignore: []
     // any other default options and/or rules
@@ -17,7 +18,7 @@ $.fn.serializeObject = function() {
         }
     });
 
-    console.info("serializeObject: ", o);
+    console.info("(21) serializeObject: ", o);
     return o;
 };
 
@@ -30,7 +31,7 @@ DynamicForm.LookupData = {};
 DynamicForm.Cookies = {
     list: ["rh_omni_tc", "rh_omni_itc", "rh_pid", "rh_offer_id"],
     Process: function(name) {
-        if (DynamicForm.CheckValue(name)) {
+        if (DynamicForm.HasValue(name)) {
             DynamicForm.Cookies.ProcessByName(name);
         } else {
             for (i in DynamicForm.Cookies.list) {
@@ -49,7 +50,7 @@ DynamicForm.Cookies = {
                 /* Falls Trough */
             case 'sc_cid':
                 var value = DynamicForm.GetTacticID('ext');
-                if (DynamicForm.CheckValue(value)) {
+                if (DynamicForm.HasValue(value)) {
                     DynamicForm.Cookies.Write(name, value);
                 }
                 break;
@@ -58,7 +59,7 @@ DynamicForm.Cookies = {
             case 'intcmp':
                 var value = DynamicForm.GetTacticID('int');
 
-                if (DynamicForm.CheckValue(value)) {
+                if (DynamicForm.HasValue(value)) {
                     try {
                         if (!s.c_r('rh_omni_tc') && !value) {
                             var chk_ref = document.referrer;
@@ -91,11 +92,11 @@ DynamicForm.Cookies = {
                 /* Falls Trough */
             case 'pid':
                 var value = DynamicForm.Cookies.Read(name);
-                if (DynamicForm.CheckValue(value)) {
+                if (DynamicForm.HasValue(value)) {
                     break;
                 } else {
                     value = DynamicForm.GetPartnerID();
-                    if (DynamicForm.CheckValue(value)) {
+                    if (DynamicForm.HasValue(value)) {
                         DynamicForm.Cookies.Delete(name);
                         DynamicForm.Cookies.Write(name, value, 1);
                     }
@@ -106,7 +107,7 @@ DynamicForm.Cookies = {
             case 'offer_id':
                 var value = DynamicForm.GetOfferID();
 
-                if (DynamicForm.CheckValue(value)) {
+                if (DynamicForm.HasValue(value)) {
                     //if (typeof value !== 'string') {
                     //}
 
@@ -122,7 +123,7 @@ DynamicForm.Cookies = {
             expires = e,
             path = p || "/";
 
-        if (DynamicForm.CheckValue(name) || DynamicForm.CheckValue(value)) {
+        if (DynamicForm.HasValue(name) || DynamicForm.HasValue(value)) {
             $.cookie(name, value, {
                 expires: expires,
                 path: path,
@@ -152,22 +153,31 @@ DynamicForm.constants = {
         ELQ_LOOKUP: (document.location.protocol === 'https:' ? 'https://secure' : 'http://now') + '.eloqua.com/visitor/v200/svrGP.aspx',
         ELQ_LOOKUP_PROXY: "//elqproxy-theharris.rhcloud.com/elqLookup.php"
     },
+    UNDEFINED: 'undefined',
     UNAVAILABLE: 'UNAVAILABLE',
     CONTAINER: '#GatedFormContainer',
     ELQ_FORM_NAME: 'RespondedToCampaign',
     MAX_RETRIES: 5,
     RETRY_WAIT: 1,
-    STATUS_OK: '0',
-    STATUS_WORKING: '1',
-    T_FULL: '0',
-    T_EMBEDDED: '1',
-    //views
-    V_FORM: 'Form',
-    V_AUTO: 'Autosubmit',
-    V_THANKS: 'Download',
-    V_MULTIPLE: 'Multiple',
-    V_BAD_OFFER: 'BadOffer',
-    V_SEND_MSG: 'SendMsg',
+    //possible form types
+    STATUS: {
+        OK: '0',
+        WORKING: '1'
+    },
+    //possible form types
+    TYPE: {
+        FULL: 0,
+        EMBEDDED: 1
+    },
+    //possible form actions
+    ACTION: {
+        FORM : "Form",
+        AUTO : "Autosubmit",
+        DL : "Download",
+        MULTI : "Multiple",
+        ERR : "Error",
+        MSG : "SendMsg"
+    },
     OMNITURE: {
         DIVIDER: ' | ',
         CHANNEL: {
@@ -202,10 +212,11 @@ DynamicForm.Prepop = {
     offer: {}
 };
 DynamicForm.options = {
+    action: DynamicForm.constants.ACTION.FORM,
+    environment: "prod",
+    app_version: "1.8.7",
     updated_offer_id: '',
     offer_id: '1',
-    cookie_domain: '.redhat.com',
-    URL_PREFIX: (document.location.protocol === 'https:' ? 'https://' : 'http://') + 'www.redhat.com',
     debug: true,
     GoogleAnalyticsID: DynamicForm.constants.UNAVAILABLE,
     GoogleRemarketing: {
@@ -244,7 +255,7 @@ DynamicForm.options = {
     },
     language: '',
     queryString: [],
-    view: '0',
+    view: 'Form',
     type: '0',
     VisitorLookupRetryCount: 0,
     ContactLookupRetryCount: 0,
@@ -406,8 +417,8 @@ DynamicForm.views = {
             'value': window.navigator.userAgent
         }, {
             'type': 'hidden',
-            'id': 'QA_Version',
-            'name': 'QA_Version'
+            'id': 'app_version',
+            'name': 'app_version'
         }, {
             'type': 'hidden',
             'value': '',
@@ -560,148 +571,432 @@ DynamicForm.views = {
         }]
     }
 };
+/* Eloqua Lookup Keys
 
-DynamicForm.log = function() {
-    if (!DynamicForm.options.debug) {
-        return;
+Sandbox:
+Data Lookup Name: GOTEpM - Get Visitor Profile
+Data Lookup Key: 0374d03e-b989-40a0-a61c-0aa0e69c73ff
+
+Data Lookup Name: GOTEpM - Get Contact Profile
+Data Lookup Key: 5ca52786-22d8-4b0a-b169-c4811e7a421e
+
+Data Lookup Name: GOTEpM - Get Offer Details
+Data Lookup Key: f82ba5ae-2d05-4444-ad38-fbf7736752ec
+
+Data Lookup Name: GOTEpM - Get Tactic Details
+Data Lookup Key: 101a71d4-968d-4f35-9120-26cb438f73bd
+
+Production:
+Data Lookup Name: GOTEpM - Get Visitor Profile
+Data Lookup Key: 14c651bb-beae-4f74-a382-d1adede85da0
+
+Data Lookup Name: GOTEpM - Get Contact Profile
+Data Lookup Key: af62a316-6489-4a86-b35e-0b5956fcb3a4
+
+Data Lookup Name: GOTEpM - Get Offer Details
+Data Lookup Key: b68eb5c2-6b22-40b6-bdb6-cba3f848b1c4
+
+Data Lookup Name: GOTEpM - Get Tactic Details
+Data Lookup Key: 6964661e-603a-4f93-8e13-07467544315b
+*/
+DynamicForm._LocalSettings = {
+    cookie_domain: '.redhat.local',
+    URL_PREFIX: (document.location.protocol === 'https:' ? 'https://' : 'http://') + 'redhat.local'
+};
+DynamicForm._DevSettings = {
+    debug: true,
+    URL_PREFIX: (document.location.protocol === 'https:' ? 'https://' : 'http://') + 'cms-300.usersys.redhat.com',
+    elqSiteId: '1798',
+    fields: {
+        visitor: ['V_Browser_Type', 'V_CityFromIP', 'V_CountryFromIP', 'V_ProvinceFromIP', 'V_ZipCodeFromIP', 'V_MostRecentReferrer', 'V_MostRecentSearchEngine', 'V_MostRecentSearchQuery'],
+        contact: ['C_FirstName', 'C_LastName', 'C_EmailAddress', 'C_BusPhone', 'C_Company', 'C_Department1', 'C_Job_Role11'
+            /*,
+            'C_Addition_Information1'*/
+        ],
+        tactic: ['Apps_Tactics_T_Type1', 'Apps_Tactics_T_Campaign_ID_181', 'Apps_Tactics_T_Record_Type1', 'Apps_Tactics_T_Campaign_Name1'],
+        offer: ['Apps_Offers_O_Access_Rule1', 'Apps_Offers_O_Campaign_ID_181', 'Apps_Offers_O_Campaign_Name1', 'Apps_Offers_O_Target_Persona1', 'Apps_Offers_O_Buying_Stage1', 'Apps_Offers_O_Solution_Code1', 'Apps_Offers_O_Type1', 'Apps_Offers_O_Asset_URL1', 'Apps_Offers_O_Language1', 'Apps_Offers_O_Record_Type1', 'isOnWaitingList']
+    },
+    lookup: {
+        guid: {
+            locked: false
+        },
+        visitor: {
+            locked: false,
+            key: '0374d03eb98940a0a61c0aa0e69c73ff',
+            lookupFunc: 'visitor',
+            fields: {
+                countryFromIp: 'V_CountryFromIP',
+                stateFromIp: 'V_ProvinceFromIP',
+                zipFromIp: 'V_ZipCodeFromIP',
+                elqEmail: 'V_ElqEmailAddress',
+                email: 'V_Email_Address',
+                mostRecentReferrer: 'V_MostRecentReferrer',
+                mostRecentSearchEngine: 'V_MostRecentSearchEngine',
+                mostRecentSearchQuery: 'V_MostRecentSearchQuery'
+            }
+        },
+        contact: {
+            locked: false,
+            key: '5ca5278622d84b0ab169c4811e7a421e',
+            query: 'C_EmailAddress',
+            lookupFunc: 'contact',
+            fields: {
+                email: 'C_EmailAddress',
+                salutation: 'C_Salutation',
+                firstName: 'C_FirstName',
+                lastName: 'C_LastName',
+                hasRegistered: 'C_Has_Submitted_Long_Form21',
+                registeredDate: 'C_GS___Gated_Form___Register_Date1',
+                company: 'C_Company',
+                role: 'C_Job_Role11',
+                department: 'C_Department1',
+                country: 'C_Country',
+                state: 'C_State_Prov',
+                zip: 'C_Zip_Postal',
+                language: 'C_Language_Preference1',
+                verificationid: 'C_Verification_ID___Most_Recent1'
+            }
+        },
+        tactic: {
+            locked: false,
+            key: '101a71d4968d4f35912026cb438f73bd',
+            query: 'Apps_Tactics_T_Campaign_ID_181',
+            lookupFunc: 'tactic',
+            fields: {
+                campaignId15: 'Apps_Tactics_T_Campaign_ID_151',
+                campaignId18: 'Apps_Tactics_T_Campaign_ID_181',
+                campaignName: 'Apps_Tactics_T_Campaign_Name1',
+                type: 'Apps_Tactics_T_Type1',
+                recordType: 'Apps_Tactics_T_Record_Type1',
+                isOnWaitingList: 'isOnWaitingList'
+            }
+        },
+        offer: {
+            locked: false,
+            key: 'f82ba5ae2d054444ad38fbf7736752ec',
+            query: 'Apps_Offers_O_Campaign_ID_181',
+            lookupFunc: 'offer',
+            fields: {
+                offerId15: 'Apps_Offers_O_Campaign_ID_151',
+                offerId18: 'Apps_Offers_O_Campaign_ID_181',
+                campaignName: 'Apps_Offers_O_Campaign_Name1',
+                targetAudience: 'Apps_Offers_O_Target_Persona1',
+                buyerStage: 'Apps_Offers_O_Buying_Stage1',
+                solutionCode: 'Apps_Offers_O_Solution_Code1',
+                type: 'Apps_Offers_O_Type1',
+                assetUrl: 'Apps_Offers_O_Asset_URL1',
+                language: 'Apps_Offers_O_Language1',
+                recordType: 'Apps_Offers_O_Record_Type1',
+                isOnWaitingList: 'isOnWaitingList',
+                accessrule: 'Apps_Offers_O_Access_Rule1'
+            }
+        }
     }
-    var msg = '[DynamicForm.log] ' + Array.prototype.join.call(arguments, '');
-    if (window.console && window.console.log) {
-        window.console.log(msg);
-    } else if (window.opera && window.opera.postError) {
-        window.opera.postError(msg);
+};
+DynamicForm._StageSettings = {
+    debug: false,
+    URL_PREFIX: (document.location.protocol === 'https:' ? 'https://' : 'http://') + 'stage.redhat.com',
+};
+DynamicForm._ProdSettings = {
+    no_css: false,
+    debug: false,
+    URL_PREFIX: (document.location.protocol === 'https:' ? 'https://' : 'http://') + 'redhat.com',
+    elqSiteId: '1795',
+    fields: {
+        visitor: ['V_Browser_Type', 'V_CityFromIP', 'V_CountryFromIP', 'V_ProvinceFromIP', 'V_ZipCodeFromIP', 'V_MostRecentReferrer', 'V_MostRecentSearchEngine', 'V_MostRecentSearchQuery'],
+        contact: ['C_FirstName', 'C_LastName', 'C_EmailAddress', 'C_BusPhone', 'C_Company', 'C_Department1', 'C_Job_Role11'
+            /*,
+            'C_Addition_Information1'*/
+        ],
+        tactic: ['Apps_Tactics_T_Type1', 'Apps_Tactics_T_Campaign_ID_181', 'Apps_Tactics_T_Record_Type1', 'Apps_Tactics_T_Campaign_Name1'],
+        offer: ['Apps_Offers_O_Access_Rule1', 'Apps_Offers_O_Campaign_ID_181', 'Apps_Offers_O_Campaign_Name1', 'Apps_Offers_O_Target_Persona1', 'Apps_Offers_O_Buying_Stage1', 'Apps_Offers_O_Solution_Code1', 'Apps_Offers_O_Type1', 'Apps_Offers_O_Asset_URL1', 'Apps_Offers_O_Language1', 'Apps_Offers_O_Record_Type1', 'isOnWaitingList']
+    },
+    lookup: {
+        guid: {
+            locked: false
+        },
+        visitor: {
+            locked: false,
+            key: '14c651bb-beae-4f74-a382-d1adede85da0',
+            fields: {
+                countryFromIp: 'V_CountryFromIP',
+                stateFromIp: 'V_ProvinceFromIP',
+                zipFromIp: 'V_ZipCodeFromIP',
+                email: 'V_Email_Address',
+                mostRecentReferrer: 'V_MostRecentReferrer',
+                mostRecentSearchEngine: 'V_MostRecentSearchEngine',
+                mostRecentSearchQuery: 'V_MostRecentSearchQuery'
+            }
+        },
+        contact: {
+            locked: false,
+            key: 'af62a316-6489-4a86-b35e-0b5956fcb3a4',
+            query: 'C_EmailAddress',
+            fields: {
+                email: 'C_EmailAddress',
+                salutation: 'C_Salutation',
+                firstName: 'C_FirstName',
+                lastName: 'C_LastName',
+                hasRegistered: 'C_Has_Submitted_Long_Form1',
+                registeredDate: 'C_Last_Submitted_Long_Form_Date1',
+                company: 'C_Company',
+                role: 'C_Job_Role11',
+                department: 'C_Department1',
+                country: 'C_Country',
+                state: 'C_State_Prov',
+                zip: 'C_Zip_Postal',
+                language: 'C_Language_Preference1',
+                verificationid: 'C_Verification_ID___Most_Recent1'
+            }
+        },
+        tactic: {
+            locked: false,
+            key: '6964661e-603a-4f93-8e13-07467544315b',
+            query: 'Apps_Tactics_T_Campaign_ID_181',
+            fields: {
+                campaignId15: 'Apps_Tactics_T_Campaign_ID_151',
+                campaignId18: 'Apps_Tactics_T_Campaign_ID_181',
+                campaignName: 'Apps_Tactics_T_Campaign_Name1',
+                type: 'Apps_Tactics_T_Type1',
+                recordType: 'Apps_Tactics_T_Record_Type1',
+                isOnWaitingList: 'isOnWaitingList'
+            }
+        },
+        offer: {
+            locked: false,
+            key: 'b68eb5c2-6b22-40b6-bdb6-cba3f848b1c4',
+            query: 'Apps_Offers_O_Campaign_ID_181',
+            fields: {
+                offerId15: 'Apps_Offers_O_Campaign_ID_151',
+                offerId18: 'Apps_Offers_O_Campaign_ID_181',
+                campaignName: 'Apps_Offers_O_Campaign_Name1',
+                targetAudience: 'Apps_Offers_O_Target_Persona1',
+                buyerStage: 'Apps_Offers_O_Buying_Stage1',
+                solutionCode: 'Apps_Offers_O_Solution_Code1',
+                type: 'Apps_Offers_O_Type1',
+                assetUrl: 'Apps_Offers_O_Asset_URL1',
+                language: 'Apps_Offers_O_Language1',
+                recordType: 'Apps_Offers_O_Record_Type1',
+                isOnWaitingList: 'isOnWaitingList',
+                accessrule: 'Apps_Offers_O_Access_Rule1'
+            }
+        }
     }
 };
 
-DynamicForm.info = function(src, obj) {
-    if (!DynamicForm.options.debug) {
-        return;
-    }
-    if (window.console && window.console.log) {
-        window.console.info("[DynamicForm info] ", src, ": ", obj);
-    } else if (window.opera && window.opera.postError) {
-        window.opera.postError("[DynamicForm info] ", src, ": ", obj);
+DynamicForm.console = {
+    log : function() {
+        if (DynamicForm.options.debug) {
+            var msg = ''.concat('[LOG] ', Array.prototype.join.call(arguments, ''));
+            if (window.console && window.console.log) {
+                window.console.log(msg);
+            } else if (window.opera && window.opera.postError) {
+                window.opera.postError(msg);
+            }
+        }
+    },
+    info : function(src, obj) {
+        var msg;
+        if (DynamicForm.options.debug) {
+            if (DynamicForm.IsEmpty(obj)) {
+                msg = ''.concat("[INFO] ", src);
+            } else {
+                msg = ''.concat("[INFO] ", src, " : ", obj);
+            }
+            if (window.console && window.console.log) {
+                window.console.info(msg);
+            } else if (window.opera && window.opera.postError) {
+                window.opera.postError(msg);
+            }
+        }
+    },
+    error : function(src, obj) {
+        if (DynamicForm.options.debug) {
+            if (DynamicForm.IsEmpty(obj)) {
+                msg = ''.concat("[ERROR] ", src);
+            } else {
+                msg = ''.concat("[ERROR] ", src, " : ", obj);
+            }
+            if (window.console && window.console.log) {
+                window.console.error(msg);
+            } else if (window.opera && window.opera.postError) {
+                window.opera.postError(msg);
+            }
+        }
     }
 };
-
-DynamicForm.error = function(src, e) {
-    if (!DynamicForm.options.debug) {
-        return;
-    }
-    if (window.console && window.console.log) {
-        window.console.error("[DynamicForm ERROR] ", src, " e: ", e);
-    } else if (window.opera && window.opera.postError) {
-        window.opera.postError("[DynamicForm ERROR] ", src, " e: ", e);
-    }
-};
-
 
 DynamicForm.InitOptions = function(opts) {
-    DynamicForm.info("Starting DynamicForm.InitOptions: ", opts);
-
-    var initOptsDef = new $.Deferred(),
-        config_name = 'prod';
-
-    try {
-
-        if (DynamicForm.CheckValue($.url(document.URL).param('config'))) {
-            config_name = $.url(document.URL).param('config');
+    if (DynamicForm.options.debug) {
+        if (DynamicForm.HasValue(DynamicForm.options.env)) {
+            console.log("(810) DynamicForm.options.env: ", DynamicForm.options.env);
+            DynamicForm.options.environment = DynamicForm.options.env.toLowerCase();
         }
-
-        //Set up environment
-        DynamicForm.info("Loading "+ config_name +" config file...");
-        DynamicForm.options.config = "/forms/scripts/jquery.gatedform.settings."+config_name.toLowerCase()+".js";
-
-        $.getScript(DynamicForm.options.config, function(a,b,c) {
-            var loadDevOptsDef = new $.Deferred();
-            if (config_name === 'local') {
-                var localSettings = DynamicForm.ExtSettings;
-                DynamicForm.info("DynamicForm.InitOptions local settings", localSettings);
-
-                $.getScript("/forms/scripts/jquery.gatedform.settings.dev.js", function() {
-                    $.extend(DynamicForm.ExtSettings, localSettings, opts);
-                    DynamicForm.info("DynamicForm.InitOptions local ExtSettings", DynamicForm.ExtSettings);
-                 });
-            } else if (config_name === 'stage') {
-                var stageSettings = DynamicForm.ExtSettings;
-                DynamicForm.info("DynamicForm.InitOptions stage settings", stageSettings);
-
-                $.getScript("/forms/scripts/jquery.gatedform.settings.prod.js", function() {
-                    $.extend(DynamicForm.ExtSettings, stageSettings, opts);
-                    DynamicForm.info("DynamicForm.InitOptions stage ExtSettings", DynamicForm.ExtSettings);
-                 });
-            } else {
-                DynamicForm.info("DynamicForm.InitOptions local or stage settings not needed.");
-                loadDevOptsDef.resolve();
-            }
-
-            $.when(loadDevOptsDef).then(function() {
-                DynamicForm.info("[DynamicForm.InitOptions getScript: ", DynamicForm.options.config);
-
-                DynamicForm.info("DynamicForm.InitOptions ExtSettings", DynamicForm.ExtSettings);
-                DynamicForm.info("DynamicForm.InitOptions opts", opts);
-                DynamicForm.info("DynamicForm.InitOptions options", DynamicForm.options);
-
-                DynamicForm.options = $.extend({}, DynamicForm.options, DynamicForm.ExtSettings, opts);
-                DynamicForm.info("DynamicForm.InitOptions merged DynamicForm.options", DynamicForm.options);
-
-                //update configure options with query string parameters
-                var config_options = ['v', 'language', 'country', 'sc_cid', 'intcmp', 'pid', 'offer_id', 'GoogleAnalyticsID', 'no_css'];
-                for (var opt in config_options) {
-                    if (DynamicForm.CheckValue($.url(document.URL).param(opt))) {
-                        DynamicForm.info("Loaded "+ opt +" from query string");
-                        DynamicForm.options[opt] = $.url(document.URL).param(opt);
-                    } else {
-                        DynamicForm.info("Did not load "+ opt +" from query string");
-                    }
-                }
-
-                if (DynamicForm.CheckValue(DynamicForm.options.udf) && DynamicForm.ValueIsEmpty(DynamicForm.options.CustomQuestions)) {
-                    DynamicForm.options.CustomQuestions = DynamicForm.options.udf;
-                }
-
-                if (DynamicForm.CheckValue(DynamicForm.options.rh_omni_itc) && DynamicForm.ValueIsEmpty(DynamicForm.options.intcmp)) {
-                    DynamicForm.options.intcmp = DynamicForm.options.rh_omni_itc;
-                }
-
-                if (DynamicForm.CheckValue(DynamicForm.options.rh_omni_tc) && DynamicForm.ValueIsEmpty(DynamicForm.options.sc_cid)) {
-                    DynamicForm.options.sc_cid = DynamicForm.options.rh_omni_tc;
-                }
-
-                var params = $.url(document.URL).param();
-                DynamicForm.info("Found these other params: ", params);
-                $.extend(DynamicForm.options, opts, params);
-
-                DynamicForm.options._ms = new Date().getMilliseconds();
-                DynamicForm.options.FormURL = document.URL;
-
-                DynamicForm.info("Loaded "+ config_name +" config file!");
-
-                initOptsDef.resolve();
-            });
-        });
-    } catch (e) {
-        DynamicForm.error("DynamicForm.InitOptions", e);
-        initOptsDef.resolve();
     }
 
-    return initOptsDef.promise();
+    var deferred = new $.Deferred(),
+        params = $.url(document.URL).param(),
+        environment = DynamicForm.options.environment || location.hostname;
+
+    environment = 'prod';
+
+    //Set up environment
+    switch (environment) {
+        //LOCAL DEVELOPMENT
+        case 'local':
+        case 'localhost':
+            /* falls through */
+        case '127.0.0.1':
+            /* falls through */
+        case 'redhat.local':
+            try {
+                DynamicForm.options = $.extend({}, DynamicForm._LocalSettings, DynamicForm._DevSettings, DynamicForm.options, opts, params);
+                DynamicForm.options.app_version += "_LOCAL";
+                deferred.resolve();
+            } catch (e) {
+                console.error("(836) ERROR:", e);
+                deferred.resolve();
+            }
+            break;
+            //QA/TESTING
+        case 'dev':
+        case 'qa.engage.redhat.com':
+        case 'cms-300.usersys.redhat.com':
+        case 'www.int.openshift.com':
+        //case 'dev.rhcloud.com':
+        //case 'compute-1.amazonaws.com':
+            try {
+                DynamicForm.options = $.extend({}, DynamicForm._DevSettings, DynamicForm.options, opts, params);
+                DynamicForm.options.app_version += "_DEV";
+                deferred.resolve();
+            } catch (e) {
+                console.error("(853) ERROR:", e);
+                deferred.resolve();
+            }
+            break;
+            //STAGING
+        case 'stage':
+        case 'stage.rhel.ctpboston.com':
+        case 'www.stg.openshift.com':
+        case 'stage.redhat.com':
+            /* falls through */
+        case 'redhat.stage':
+            try {
+                DynamicForm.options = $.extend({}, DynamicForm._StageSettings, DynamicForm._ProdSettings, DynamicForm.options, opts, params);
+                DynamicForm.options.app_version += "_STAGE";
+                deferred.resolve();
+            } catch (e) {
+                console.error("(870) ERROR:", e);
+                deferred.resolve();
+            }
+            break;
+            //PRODUCTION
+        case 'prod':
+        case 'redhat.prod':
+            /* falls through */
+        default:
+            try {
+                DynamicForm.options = $.extend({}, DynamicForm._ProdSettings, DynamicForm.options, opts, params);
+                DynamicForm.options.app_version += "_PROD";
+                deferred.resolve();
+            } catch (e) {
+                console.error("(885) ERROR:", e);
+                deferred.resolve();
+            }
+            break;
+    }
+    
+    /**
+     * ----------------------------------
+     * options that need to be translated
+     * ----------------------------------
+     * act = action
+     * l = language
+     * c = country
+     * cmp = sc_cid
+     * rh_omni_tc = sc_cid
+     * icmp = intcmp
+     * rh_omni_itc = intcmp
+     * o = offer_id
+     * orig = parent_url
+     * udf = CustomQuestions
+     * env = environment (local, dev, stage, prod);
+     */
+
+    
+
+    if (DynamicForm.HasValue(DynamicForm.options.act)) {
+        console.log("(912) ?act="+DynamicForm.options.act);
+        DynamicForm.options.action = DynamicForm.options.act;
+        console.log("(914) DynamicForm.options.action from act", DynamicForm.options.action);
+    }
+
+    if (DynamicForm.HasValue(DynamicForm.options.l)) {
+        DynamicForm.options.language = DynamicForm.options.l;
+    }
+
+    if (DynamicForm.HasValue(DynamicForm.options.c)) {
+        DynamicForm.options.country = DynamicForm.options.c;
+    }
+
+    if (DynamicForm.HasValue(DynamicForm.options.o)) {
+        DynamicForm.options.offer_id = DynamicForm.options.o;
+    }
+
+    if (DynamicForm.HasValue(DynamicForm.options.p)) {
+        DynamicForm.options.parent_url = DynamicForm.options.p;
+    }
+
+    if (DynamicForm.HasValue(DynamicForm.options.vid)) {
+        DynamicForm.options.verificationid = DynamicForm.options.vid;
+    }
+
+    if (DynamicForm.HasValue(DynamicForm.options.udf) && DynamicForm.IsEmpty(DynamicForm.options.CustomQuestions)) {
+        DynamicForm.options.CustomQuestions = DynamicForm.options.udf;
+    }
+
+    if (DynamicForm.HasValue(DynamicForm.options.icmp) || DynamicForm.HasValue(DynamicForm.options.rh_omni_itc) && DynamicForm.IsEmpty(DynamicForm.options.intcmp)) {
+        DynamicForm.options.intcmp = DynamicForm.options.rh_omni_itc;
+    }
+
+    if (DynamicForm.HasValue(DynamicForm.options.cmp) || DynamicForm.HasValue(DynamicForm.options.rh_omni_tc) && DynamicForm.IsEmpty(DynamicForm.options.sc_cid)) {
+        DynamicForm.options.sc_cid = DynamicForm.options.rh_omni_tc;
+    }
+
+    DynamicForm.console.info("(947) Completed InitOptions for " + DynamicForm.options.app_version + " in " + DynamicForm.options.environment);
+
+    return deferred.promise();
+
 };
 
 DynamicForm.start = function(opts) {
+    DynamicForm.console.info("(954) === DynamicForm url: " + document.URL + " ===");
+    DynamicForm.console.info("(955) === Starting DynamicForm v " + DynamicForm.options.app_version + " ===");
+
+    if (typeof DynamicForm.options.URL_PREFIX === 'undefined') {
+        try {
+            if (document.location.hostname === 'redhat.local') {
+                DynamicForm.options.URL_PREFIX = (document.location.protocol === 'https:' ? 'https://' : 'http://') + 'redhat.local';
+            } else {
+                DynamicForm.options.URL_PREFIX = (document.location.protocol === 'https:' ? 'https://' : 'http://') + 'redhat.com';
+            }
+        } catch(e) {
+            DynamicForm.console.error("(965) DynamicForm.start", e);
+            DynamicForm.options.URL_PREFIX = (document.location.protocol === 'https:' ? 'https://' : 'http://') + 'redhat.com';
+        }
+    }
+    
     DynamicForm.ShowLoadingMsg("Please wait...");
-    DynamicForm.info("Starting DynamicForm.start: ", opts);
-    DynamicForm.info("[DynamicForm.start] url", document.URL);
 
     DynamicForm.Tracking.DemandBaseRemarketing.Trigger();
     DynamicForm.Tracking.GoogleRemarketing.Trigger();
 
     var DynamicFormLookupInit = new $.Deferred();
 
-    $.when( DynamicForm.InitOptions(opts) ).then( function() {
-        DynamicForm.Cookies.Process();
+    $.when( DynamicForm.InitOptions(opts) ).then(function() {
 
-        var view = DynamicForm.options.v || DynamicForm.constants.V_FORM;
+        DynamicForm.console.info("(979) DynamicForm.start options: ", DynamicForm.options);
+        DynamicForm.Cookies.Process();
 
         DynamicForm.elqTracker = new $.elq(DynamicForm.options.elqSiteId);
         $.fn.elqTrack(DynamicForm.options.elqSiteId);
@@ -710,9 +1005,10 @@ DynamicForm.start = function(opts) {
             $('head link[href*="gatedform"]').detach();
         }
 
-        if (view === DynamicForm.constants.V_SEND_MSG) {
-            return DynamicForm.Thanks.message(DynamicForm.options);
-            DynamicFormLookupInit = null;
+        if (DynamicForm.options.action === DynamicForm.constants.ACTION.MSG) {
+            console.log("DynamicForm.start SendMessage action message");
+            DynamicFormLookupInit = DynamicForm.Thanks.SendMessage();
+            //DynamicFormLookupInit = null;
         } else {
             DynamicFormLookupInit = DynamicForm.Lookup.All();
         }
@@ -721,7 +1017,12 @@ DynamicForm.start = function(opts) {
     var DynamicFormInitDef = new $.Deferred();
 
     $.when(DynamicFormLookupInit).then(function() {
+        DynamicForm.console.info("(1000) DynamicFormLookupInit done");
         var container = $(DynamicForm.constants.CONTAINER);
+
+        if (DynamicForm.HasValue(DynamicForm.options.action)) {
+            DynamicForm.console.info("(1004) Form using action", DynamicForm.options.action);
+        }
 
         //stuff we can tell from here:
         // 0. Default to Form view
@@ -729,51 +1030,65 @@ DynamicForm.start = function(opts) {
         //      This decides if it's an in-line form or a multiple offer/CMS page
         // 2. Look for Query String Parameters
         //      Specified view destination can be sent along
-        if (container.length < 1 && view !== DynamicForm.constants.V_SEND_MSG) {
-            view = DynamicForm.constants.V_MULTIPLE;
+        DynamicForm.console.info("(1015) options action", DynamicForm.options.action);
+        DynamicForm.console.info("(1016) container length", container.length);
+        DynamicForm.console.info("(1017) for url", document.URL);
+        
+        if (container.length < 1 && DynamicForm.options.action !== DynamicForm.constants.ACTION.MSG && DynamicForm.options.action !== DynamicForm.constants.ACTION.DL) {
+            DynamicForm.options.action = DynamicForm.constants.ACTION.MULTI;
         }
 
-        DynamicForm.options.type = DynamicForm.constants.T_FULL;
-        if (DynamicForm.options.view !== DynamicForm.constants.V_SEND_MSG && DynamicForm.options.view !== DynamicForm.constants.V_THANKS) {
+        DynamicForm.options.type = DynamicForm.constants.TYPE.FULL;
+        if (DynamicForm.options.action !== DynamicForm.constants.ACTION.MSG && DynamicForm.options.action !== DynamicForm.constants.ACTION.DL) {
             DynamicForm.ShowLoadingMsg();
             try {
                 if (top === self) {
-                    DynamicForm.options.type = DynamicForm.constants.T_EMBEDDED;
+                    DynamicForm.options.type = DynamicForm.constants.TYPE.EMBEDDED;
                 } else {
-                    DynamicForm.options.type = DynamicForm.constants.T_FULL;
+                    DynamicForm.options.type = DynamicForm.constants.TYPE.FULL;
                 }
             } catch (e) {
-                DynamicForm.options.type = DynamicForm.constants.T_FULL;
+                DynamicForm.options.type = DynamicForm.constants.TYPE.FULL;
             }
         }
 
-        switch (view) {
-            case DynamicForm.constants.V_SEND_MSG:
-                //send to auto submit
+        DynamicForm.console.info("(1031) view", DynamicForm.options.action);
 
-                break;
-            case DynamicForm.constants.V_THANKS:
+        switch (DynamicForm.options.action) {
+            case DynamicForm.constants.ACTION.MSG:
                 //send to auto submit
-                if (DynamicForm.options.view !== DynamicForm.constants.V_MULTIPLE) {
+                console.log("DynamicForm.start action switch");
+                DynamicFormInitDef = DynamicForm.Thanks.SendMessage();
+                break;
+            case DynamicForm.constants.ACTION.DL:
+                //send to auto submit
+                if (DynamicForm.options.action !== DynamicForm.constants.ACTION.MULTI) {
                     if (typeof DynamicForm.options.CustomQuestions !== 'undefined' && DynamicForm.options.CustomQuestions.length > 0) {
-                        view = DynamicForm.constants.V_FORM;
+                        DynamicForm.options.action = DynamicForm.constants.ACTION.FORM;
                         DynamicForm.options.form_type = 'form';
                         DynamicFormInitDef = DynamicForm.Thanks.start(DynamicForm.options);
                     } else {
-                        view = DynamicForm.constants.V_FORM;
+                        DynamicForm.options.action = DynamicForm.constants.ACTION.DL;
                         DynamicForm.options.form_type = 'form';
                         DynamicFormInitDef = DynamicForm.Form.start(DynamicForm.options);
                     }
                 }
                 break;
-            case DynamicForm.constants.V_FORM:
+            case DynamicForm.constants.ACTION.FORM:
                 DynamicFormInitDef = DynamicForm.Form.start(DynamicForm.options);
                 break;
-            case DynamicForm.constants.V_MULTIPLE:
-                DynamicFormInitDef = DynamicForm.MultipleOffers.start(DynamicForm.options);
+            case DynamicForm.constants.ACTION.MULTI:
+                if (typeof DynamicForm.options.CustomQuestions !== 'undefined' && DynamicForm.options.CustomQuestions.length > 0) {
+                    DynamicForm.options.action = DynamicForm.constants.ACTION.FORM;
+                    DynamicForm.options.form_type = 'form';
+                    DynamicFormInitDef = DynamicForm.Thanks.start(DynamicForm.options);
+                } else {
+                    DynamicFormInitDef = DynamicForm.MultipleOffers.start(DynamicForm.options);
+                }
+
                 break;
-            case DynamicForm.constants.V_BAD_OFFER:
-                DynamicFormInitDef = DynamicForm.BadOffer.start(DynamicForm.options);
+            case DynamicForm.constants.ACTION.ERR:
+                DynamicFormInitDef = DynamicForm.Error.start(DynamicForm.options);
                 break;
         }
 
@@ -781,10 +1096,6 @@ DynamicForm.start = function(opts) {
     });
 
     return DynamicFormInitDef;
-};
-
-DynamicForm.GetFormURL = function() {
-    return DynamicForm.options.FormURL;
 };
 
 DynamicForm.ShowLoadingMsg = function(msg) {
@@ -797,7 +1108,6 @@ DynamicForm.ShowLoadingMsg = function(msg) {
     $('html, body').stop().animate({
         scrollTop: topOffset
     }, 'slow');
-
 
     DynamicForm.HideLoadingMsg();
 
@@ -829,16 +1139,35 @@ DynamicForm.HideLoadingMsg = function(newContent) {
     $("#" + newContent).removeClass('hidden').slideDown();
     $('form:not(.filter) :input:visible:first').focus()
 };
-DynamicForm.CheckValue = function(value) {
-    return !DynamicForm.ValueIsEmpty(value);
+
+DynamicForm.HasValue = function(value) {
+    var valid = false;
+    if (typeof value !== 'undefined') {
+        valid = true;
+    }
+    if (valid && value !== DynamicForm.constants.UNAVAILABLE) {
+        valid = true;
+    }
+    if (valid && value !== DynamicForm.constants.UNDEFINED) {
+        valid = true;
+    }
+    if (valid && value !== '') {
+        valid = true;
+    }
+    return valid;
 };
-DynamicForm.ValueIsEmpty = function(value) {
+DynamicForm.IsEmpty = function(value) {
     var valid = false;
     if (typeof value === 'undefined') {
         valid = true;
-    } else if (value === DynamicForm.constants.UNAVAILABLE) {
+    }
+    if (valid && value === DynamicForm.constants.UNAVAILABLE) {
         valid = true;
-    } else if (value === '') {
+    }
+    if (valid && value === DynamicForm.constants.UNDEFINED) {
+        valid = true;
+    }
+    if (valid && value === '') {
         valid = true;
     }
     return valid;
@@ -853,9 +1182,9 @@ DynamicForm.LoadScript = function(url, callback) {
 DynamicForm.GetPartnerID = function() {
     var PartnerID = '';
     // 1. config
-    if (DynamicForm.CheckValue(DynamicForm.options.pid)) {
+    if (DynamicForm.HasValue(DynamicForm.options.pid)) {
         PartnerID = DynamicForm.options.pid;
-    } else if (DynamicForm.CheckValue(DynamicForm.Cookies.Read('rh_pid'))) {
+    } else if (DynamicForm.HasValue(DynamicForm.Cookies.Read('rh_pid'))) {
         // 2. No query string, since it would already be in the cookie
         // 3. cookie
         PartnerID = DynamicForm.Cookies.Read('rh_pid');
@@ -890,7 +1219,7 @@ DynamicForm.GetLanguageCode = function(type) {
         .param('Language')) {
         language = $.url(document.URL)
             .param('Language');
-    } else if (DynamicForm.CheckValue(DynamicForm.options.language)) {
+    } else if (DynamicForm.HasValue(DynamicForm.options.language)) {
         language = DynamicForm.options.language;
     } else if (typeof cookieLanguage !== 'undefined' && cookieLanguage !== DynamicForm.constants.UNAVAILABLE) {
         language = cookieLanguage.substr(0, 2);
@@ -914,7 +1243,7 @@ DynamicForm.GetCountryCode = function(languageCode) {
         .param('Country')) {
         country = $.url(document.URL)
             .param('Country');
-    } else if (DynamicForm.CheckValue(DynamicForm.options.country)) {
+    } else if (DynamicForm.HasValue(DynamicForm.options.country)) {
         country = DynamicForm.options.country;
     } else if (typeof cookieLanguage !== 'undefined' && cookieLanguage !== DynamicForm.constants.UNAVAILABLE) {
         country = cookieLanguage.substr(3, 5);
@@ -937,7 +1266,7 @@ DynamicForm.Template = {
     },
     */
     RenderField: function(fieldObj) {
-        if (DynamicForm.ValueIsEmpty(fieldObj.value)) {
+        if (DynamicForm.IsEmpty(fieldObj.value)) {
             fieldObj.value = '';
         }
 
@@ -998,7 +1327,7 @@ DynamicForm.Template = {
     render: function(formObj) {
         var retHtml, question;
         formObj.cls = formObj.cls || '';
-        if (DynamicForm.options.type === DynamicForm.constants.T_FULL) {
+        if (DynamicForm.options.type === DynamicForm.constants.TYPE.FULL) {
             formObj.cls += ' form-horizontal';
         } else {
             formObj.cls += ' scrolly-taller';
@@ -1007,7 +1336,7 @@ DynamicForm.Template = {
         DynamicForm.Template.formHtml = '';
         DynamicForm.Template.formHtml = DynamicForm.Template.formHtml.concat('<iframe id="elqFormSubmitFrame" class="hidden" name="elqFormSubmitFrame" height="10" width="10"></iframe><form target="elqFormSubmitFrame" action="', formObj.action, '" method="', formObj.method, '" class="', formObj.cls, '" id="', formObj.id, '" name=', formObj.name, '"><fieldset>');
 
-        if (DynamicForm.options.type === DynamicForm.constants.T_FULL) {
+        if (DynamicForm.options.type === DynamicForm.constants.TYPE.FULL) {
             DynamicForm.Template.formHtml = DynamicForm.Template.formHtml.concat('<header><img alt="Red Hat Logo" title="Red Hat Logo" src="' + DynamicForm.options.URL_PREFIX + '/forms/img/rh-logo103x36.png" height="36" width="103" class="rh-logo"><h4>', DynamicForm.options.FormTitle, '</h4></header>');
         } else if (DynamicForm.options.FormTitle !== "") {
             DynamicForm.Template.formHtml = DynamicForm.Template.formHtml.concat('<header><h4>', DynamicForm.options.FormTitle, '</h4></header>');
@@ -1017,7 +1346,7 @@ DynamicForm.Template = {
             DynamicForm.Template.formHtml = DynamicForm.Template.formHtml.concat('<div class="fluid-row form-message muted">' + DynamicForm.options.FormIntro + '</div>');
         }
 
-        if (DynamicForm.CheckValue(formObj.action)) {
+        if (DynamicForm.HasValue(formObj.action)) {
             formObj.action = DynamicForm.constants.URL.FORM_SUBMIT;
         }
         DynamicForm.Template.formHtml = DynamicForm.Template.formHtml.concat('<div id="messages" class="fluid-row control-group"><div class="controls"><div id="validationMessages"></div></div></div><div class="scrolly">');
@@ -1127,9 +1456,10 @@ DynamicForm.Template = {
         render: function(type) {
             //reset formHTML, just in case...
             var tmpHtml = '<div id="DynamicFormThankYou">';
+            
 
             if (DynamicForm.options.ThanksTitle !== '' && typeof DynamicForm.options.ThanksTitle !== 'undefined') {
-                if (DynamicForm.options.type === DynamicForm.constants.T_FULL) {
+                if (DynamicForm.options.type === DynamicForm.constants.TYPE.FULL) {
                     tmpHtml = tmpHtml.concat('<header><img alt="Red Hat Logo" title="Red Hat Logo" src="', DynamicForm.options.URL_PREFIX, '/forms/img/rh-logo103x36.png" height="36" width="103" class="rh-logo"><h4 class="thankyou">', DynamicForm.options.ThanksTitle, '</h4></header>');
                 } else {
                     tmpHtml = tmpHtml.concat('<h4 class="thankyou">', DynamicForm.options.ThanksTitle, '</h4>');
@@ -1148,7 +1478,7 @@ DynamicForm.Template = {
 
             tmpHtml = tmpHtml.concat('<small class="muted" id="VerificationID">Verification ID: ', DynamicForm.GetVerificationID(), '</small>');
 
-            if (DynamicForm.options.type === DynamicForm.constants.T_FULL) {
+            if (DynamicForm.options.type === DynamicForm.constants.TYPE.FULL) {
                 tmpHtml = tmpHtml.concat('<div class="social-links"><ul>', '<li><a href="', DynamicForm.options.social.google.url, '">', DynamicForm.options.social.google.label, ' <img src="' + DynamicForm.options.URL_PREFIX + '/forms/img/googleplus-icon.png"></a></li>', '<li><a href="', DynamicForm.options.social.twitter.url, '">', DynamicForm.options.social.twitter.label, ' <img src="' + DynamicForm.options.URL_PREFIX + '/forms/img/twitter-icon.png"></a></li>', '<li><a href="', DynamicForm.options.social.linkedin.url, '">', DynamicForm.options.social.linkedin.label, ' <img src="' + DynamicForm.options.URL_PREFIX + '/forms/img/linkedin-icon.png"></a></li>', '<li><a href="', DynamicForm.options.social.facebook.url, '">', DynamicForm.options.social.facebook.label, ' <img src="' + DynamicForm.options.URL_PREFIX + '/forms/img/facebook-icon.png"></a></li>', '</ul></div>');
                 //check this
             }
@@ -1173,7 +1503,7 @@ DynamicForm.Template = {
             //reset formHTML, just in case...
             DynamicForm.Template.Error.formHtml = '';
             var tmpHtml = ''.concat('<div id="Error" class="hero-unit error">');
-            if (DynamicForm.options.type === DynamicForm.constants.T_FULL) {
+            if (DynamicForm.options.type === DynamicForm.constants.TYPE.FULL) {
                 tmpHtml = tmpHtml.concat('<h1>', DynamicForm.views.error.title, '</h1>');
             } else {
                 tmpHtml = tmpHtml.concat('<h2>', DynamicForm.views.error.title, '</h2>');
@@ -1207,25 +1537,29 @@ DynamicForm.BuildOption = function(val, label) {
 
 DynamicForm.Lookup = {
     All: function() {
-        DynamicForm.info("Starting DynamicForm.Lookup.All...");
-        var options = DynamicForm.options,
-            LookupDef = new $.Deferred();
-        //contact dependant on visitor (email)
-        var LookupVisitorDef = DynamicForm.Lookup.Visitor();
-        var LookupContactDef = new $.Deferred();
-        var LookupTacticDef = DynamicForm.Lookup.Tactic();
-        var LookupOfferDef = DynamicForm.Lookup.Offer();
-        var LookupElqGuidDef = DynamicForm.Lookup.ElqGuid();
+        var LookupAllDef = new $.Deferred(),
+            LookupVisitorDef = DynamicForm.Lookup.Visitor(),
+            LookupContactDef = new $.Deferred(),
+            LookupTacticDef = DynamicForm.Lookup.Tactic(),
+            LookupOfferDef = DynamicForm.Lookup.Offer(),
+            LookupElqGuidDef = DynamicForm.Lookup.ElqGuid();
+            
         $.when(LookupVisitorDef).then(function() {
             LookupContactDef = DynamicForm.Lookup.Contact();
             $.when(LookupContactDef, LookupTacticDef, LookupOfferDef, LookupElqGuidDef).then(function() {
-                LookupDef.resolve();
+                LookupAllDef.resolve();
             });
         });
-        return LookupDef;
+        return LookupAllDef;
     },
     ElqGuid: function(callback) {
-        DynamicForm.info("Starting DynamicForm.Lookup.ElqGuid...");
+        if (DynamicForm.options.lookup.guid.locked) {
+            return;
+        } else {
+            DynamicForm.options.lookup.guid.locked = true;
+        }
+
+        DynamicForm.console.info("(1527) Starting Lookup.ElqGuid...");
         var LookupElqGuidDef = new $.Deferred();
         if (typeof DynamicForm.LookupData.elqGUID !== 'undefined') {
             LookupElqGuidDef.resolve();
@@ -1233,138 +1567,160 @@ DynamicForm.Lookup = {
             LookupElqGuidDef = DynamicForm.elqTracker.getGUID();
         }
         $.when(LookupElqGuidDef).then(function() {
-            DynamicForm.log("DynamicForm.LookupData.elqGUID: ", DynamicForm.LookupData.elqGUID());
+            DynamicForm.console.log("(1535) LookupData.elqGUID", DynamicForm.LookupData.elqGUID());
+            DynamicForm.options.lookup.guid.locked = false;
         });
         return LookupElqGuidDef;
     },
     Visitor: function() {
-        DynamicForm.info("Starting DynamicForm.Lookup.Visitor");
-        var VisitorDef = new $.Deferred(),
-            LookupDef = new $.Deferred(),
-            fields = DynamicForm.options.fields.visitor,
-            LookupVisitorDef = DynamicForm.elqTracker.getData({
+        if (DynamicForm.options.lookup.visitor.locked) {
+            return;
+        } else {
+            DynamicForm.options.lookup.visitor.locked = true;
+        }
+
+        DynamicForm.console.info("(1540) Starting Lookup.Visitor");
+        var LookupDataDef = DynamicForm.elqTracker.getData({
                 lookup: DynamicForm.options.lookup.visitor.key,
                 lookupFunc: 'Visitor',
                 retry: DynamicForm.options.VisitorLookupRetryCount
-            });
-
-        $.when(LookupVisitorDef)
-            .then(function() {
+            }),
+            LookupDef = $.when(LookupDataDef).then(function() {
                 if (typeof DynamicForm.LookupData.Visitor === 'function') {
-                    var fieldval = '';
-
-                    var i = 0;
+                    var fields = DynamicForm.options.fields.visitor, fieldval, i;
                     for (i = 0; i < fields.length; i++) {
                         if (DynamicForm.LookupData.Visitor(fields[i]) !== '' && DynamicForm.LookupData.Visitor(fields[i]) !== DynamicForm.constants.UNAVAILABLE) {
                             DynamicForm.Prepop.visitor[fields[i]] = DynamicForm.LookupData.Visitor(fields[i]);
                         }
                     }
                 }
-                VisitorDef.resolve();
             });
 
-        return VisitorDef;
+        $.when(LookupDef).then(function() {
+            DynamicForm.options.lookup.visitor.locked = false;
+        });
+
+        return LookupDef;
     },
     Contact: function() {
-        var ContactDef = new $.Deferred(),
+        if (DynamicForm.options.lookup.contact.locked) {
+            return;
+        } else {
+            DynamicForm.options.lookup.contact.locked = true;
+        }
+
+        var LookupDef = new $.Deferred(),
             email = encodeURIComponent(DynamicForm.GetEmailAddress());
 
-        DynamicForm.info("Starting DynamicForm.Lookup.Contact: ", email);
+        DynamicForm.console.info("(1571) Starting Lookup.Contact", email);
 
-        if (DynamicForm.ValueIsEmpty(email) || (typeof DynamicForm.LookupData.Visitor === 'undefined' && typeof DynamicForm.LookupData.Contact === 'function')) {
-            ContactDef.resolve();
+        if (DynamicForm.IsEmpty(email) || (typeof DynamicForm.LookupData.Visitor === 'undefined' && typeof DynamicForm.LookupData.Contact === 'function')) {
+            LookupDef.resolve();
         } else {
-            var ContactLookupParam = ''.concat('<', DynamicForm.options.lookup.contact.query, '>', email, '</', DynamicForm.options.lookup.contact.query, '>'),
-                LookupContactDef = DynamicForm.elqTracker.getData({
+            var LookupParam = ''.concat('<', DynamicForm.options.lookup.contact.query, '>', email, '</', DynamicForm.options.lookup.contact.query, '>'),
+                LookupDataDef = DynamicForm.elqTracker.getData({
                     lookup: DynamicForm.options.lookup.contact.key,
-                    lookupParam: ContactLookupParam,
+                    lookupParam: LookupParam,
                     lookupFunc: 'Contact'
                 });
 
-            $.when(LookupContactDef)
-                .then(function() {
-                    if (typeof DynamicForm.LookupData.Contact === 'function') {
-                        var fields = DynamicForm.options.fields.contact;
-                        var fieldval = '';
-
-                        var i = 0;
-                        for (i = 0; i < fields.length; i++) {
-                            DynamicForm.Prepop.contact[fields[i]] = DynamicForm.LookupData.Contact(fields[i]) || DynamicForm.constants.UNAVAILABLE;
-                        }
+            LookupDef = $.when(LookupDataDef).then(function() {
+                if (typeof DynamicForm.LookupData.Contact === 'function') {
+                    var fields = DynamicForm.options.fields.contact, fieldval, i;
+                    for (i = 0; i < fields.length; i++) {
+                        DynamicForm.Prepop.contact[fields[i]] = DynamicForm.LookupData.Contact(fields[i]) || DynamicForm.constants.UNAVAILABLE;
                     }
-                    ContactDef.resolve();
-                });
+                }
+            });
         }
-        return ContactDef;
+        
+        $.when(LookupDef).then(function() {
+            DynamicForm.options.lookup.contact.locked = false;
+        });
+
+        return LookupDef;
     },
     Tactic: function() {
-        var TacticDef = $.Deferred(),
+        if (DynamicForm.options.lookup.tactic.locked) {
+            return;
+        } else {
+            DynamicForm.options.lookup.tactic.locked = true;
+        }
+
+        var LookupDef = $.Deferred(),
             TacticID = DynamicForm.GetTacticID('ext');
 
-        DynamicForm.info("Starting DynamicForm.Lookup.Tactic: ", TacticID);
+        DynamicForm.console.info("(1603) Starting Lookup.Tactic", TacticID);
 
-        if (DynamicForm.ValueIsEmpty(TacticID) || typeof DynamicForm.LookupData.Tactic === 'function') {
-            TacticDef.resolve();
+        if (DynamicForm.IsEmpty(TacticID) || typeof DynamicForm.LookupData.Tactic === 'function') {
+            LookupDef.resolve();
         } else {
-            var fields = DynamicForm.options.fields.tactic,
-                TacticLookupParam = ''.concat('<', DynamicForm.options.lookup.tactic.query, '>', TacticID, '</', DynamicForm.options.lookup.tactic.query, '>'),
-                LookupTacticDef = DynamicForm.elqTracker.getProxyData({
+            var LookupParam = ''.concat('<', DynamicForm.options.lookup.tactic.query, '>', TacticID, '</', DynamicForm.options.lookup.tactic.query, '>'),
+                LookupDataDef = DynamicForm.elqTracker.getProxyData({
                     lookup: DynamicForm.options.lookup.tactic.key,
-                    lookupParam: TacticLookupParam,
+                    lookupParam: LookupParam,
                     lookupFunc: 'Tactic'
                 });
 
-            $.when(LookupTacticDef).then(function() {
+            LookupDef = $.when(LookupDataDef).then(function() {
                 if (typeof DynamicForm.LookupData.Tactic === 'function') {
-                    var fieldval = '';
-                    //once the script is loaded, populate the fields accordingly
-                    var i = 0;
+                    var fields = DynamicForm.options.fields.tactic, fieldval, i;
                     for (i = 0; i < fields.length; i++) {
                         DynamicForm.Prepop.tactic[fields[i]] = DynamicForm.LookupData.Tactic(fields[i]) || DynamicForm.constants.UNAVAILABLE;
                     }
                 }
-                TacticDef.resolve();
             });
         }
-        return TacticDef;
+        
+        $.when(LookupDef).then(function() {
+            DynamicForm.options.lookup.tactic.locked = false;
+        });
+
+        return LookupDef;
     },
     Offer: function(opts) {
+        if (DynamicForm.options.lookup.offer.locked) {
+            return;
+        } else {
+            DynamicForm.options.lookup.offer.locked = true;
+        }
+        
         var OfferDef = new $.Deferred(),
             ms = new Date().getMilliseconds(),
             offer_id = DynamicForm.options.updated_offer_id || DynamicForm.GetOfferID();
 
-        DynamicForm.info("Starting DynamicForm.Lookup.Offer: ", offer_id);
+        DynamicForm.console.info("(1635) Starting Lookup.Offer", offer_id);
 
-        if (DynamicForm.ValueIsEmpty(offer_id) || (typeof DynamicForm.Cache.LookupData.Offer !== 'undefined' && typeof DynamicForm.Cache.LookupData.Offer[offer_id] === 'function')) {
+        if (DynamicForm.IsEmpty(offer_id) || (typeof DynamicForm.Cache.LookupData.Offer !== 'undefined' && typeof DynamicForm.Cache.LookupData.Offer[offer_id] === 'function')) {
             DynamicForm.LookupData.Offer = DynamicForm.Cache.LookupData.Offer[offer_id];
             OfferDef.resolve();
         } else {
-            var fields = DynamicForm.options.fields.offer;
-            var OfferLookupParam = ''.concat('<', DynamicForm.options.lookup.offer.query, '>', offer_id, '</', DynamicForm.options.lookup.offer.query, '>');
-            var LookupOfferDef = new DynamicForm.elqTracker.getProxyData({
+            var LookupParam = ''.concat('<', DynamicForm.options.lookup.offer.query, '>', offer_id, '</', DynamicForm.options.lookup.offer.query, '>');
+            var LookupDataDef = new DynamicForm.elqTracker.getProxyData({
                 lookup: DynamicForm.options.lookup.offer.key,
-                lookupParam: OfferLookupParam,
+                lookupParam: LookupParam,
                 lookupFunc: 'Offer'
             });
-            $.when(LookupOfferDef).then(function() {
+            LookupDef = $.when(LookupDataDef).then(function() {
                 if (typeof DynamicForm.Cache.LookupData.Offer === 'undefined') {
                     DynamicForm.Cache.LookupData.Offer = [];
                 }
 
                 if (typeof DynamicForm.LookupData.Offer === 'function') {
                     DynamicForm.Cache.LookupData.Offer[offer_id] = DynamicForm.LookupData.Offer;
-                    var fieldval = '';
-                    //once the script is loaded, populate the fields accordingly
-                    var i = 0;
+                    var ields = DynamicForm.options.fields.offer, fieldval, i;
                     for (i = 0; i < fields.length; i++) {
                         DynamicForm.Prepop.offer[fields[i]] = DynamicForm.Cache.LookupData.Offer[offer_id](fields[i]) || DynamicForm.constants.UNAVAILABLE;
                     }
                 }
-                OfferDef.resolve();
             });
         }
+        
+        $.when(LookupDef).then(function() {
+            DynamicForm.options.lookup.offer.locked = false;
+        });
 
-        return OfferDef;
+        return LookupDef;
     }
 };
 DynamicForm.FindElement = function(arr, propName, propValue) {
@@ -1416,13 +1772,13 @@ DynamicForm.UpdateFromElqLookup = function(options) {
             //update form definition
             field.value = lookupValue;
         } catch (e) {
-            DynamicForm.error('DynamicForm.UpdateFromElqLookup', e);
+            DynamicForm.console.error('UpdateFromElqLookup', e);
         }
     }
 };
 DynamicForm.MultipleOffers = {
     start: function(opts) {
-        DynamicForm.info("Starting DynamicForm.MultipleOffers.start: ", opts);
+        DynamicForm.console.info("(1724) Starting MultipleOffers.start: ", opts);
         var options = $.extend({}, opts, DynamicForm.options);
         var MultipleOffersInit = new $.Deferred();
         DynamicForm.options.uxType = 'Multiple Offers';
@@ -1438,7 +1794,7 @@ DynamicForm.MultipleOffers = {
                     width: '640px',
                     height: '560px',
                     href: function() {
-                        var qs = "&v=" + DynamicForm.constants.V_FORM;
+                        var qs = "&act=" + DynamicForm.constants.ACTION.FORM;
 
                         if (typeof s.prop14 !== 'undefined') {
                             qs += "&prop14=" + s.prop14;
@@ -1464,7 +1820,7 @@ DynamicForm.MultipleOffers = {
                     scrolling: false,
                     fixed: false,
                     onOpen: function() {
-                        DynamicForm.options.type = DynamicForm.constants.T_FULL;
+                        DynamicForm.options.type = DynamicForm.constants.TYPE.FULL;
                         $("#wrapper")
                             .css("background", "transparent")
                             .css("max-width", "100%");
@@ -1493,18 +1849,22 @@ DynamicForm.Form = {
         }
     },
     start: function(opts) {
-        DynamicForm.info("Starting DynamicForm.Form.start: ", opts);
+        DynamicForm.console.info("(1795) Starting Form.start: ", opts);
         DynamicForm.ShowLoadingMsg("Please wait...");
 
         //choose form or auto submit here
         var options = $.extend({}, opts, DynamicForm.options),
             FormInit = new $.Deferred(),
             PopulateFieldDef = null,
-            LookupDef = DynamicForm.Lookup.All(),
-            view = DynamicForm.constants.V_FORM;
+            LookupDef = DynamicForm.Lookup.All();
+            
+        DynamicForm.options.action = DynamicForm.constants.ACTION.FORM;
         DynamicForm.options.form_type = 'form';
 
         $.when(LookupDef).then(function() {
+            console.info("DynamicForm.LookupData:", DynamicForm.LookupData);
+            
+            DynamicForm.console.info("(1808) Form lookup all done");
             var hasSubmittedLongForm = false,
                 registrationDate = '',
                 email = encodeURIComponent(DynamicForm.GetEmailAddress()),
@@ -1522,7 +1882,7 @@ DynamicForm.Form = {
             }
 
             if (offerAccessRule.toLowerCase() === 'tracked') {
-                view = DynamicForm.constants.V_AUTO;
+                DynamicForm.options.action = DynamicForm.constants.ACTION.AUTO;
                 DynamicForm.options.form_type = 'autosubmit';
             }
 
@@ -1530,25 +1890,25 @@ DynamicForm.Form = {
                 hasSubmittedLongForm = DynamicForm.LookupData.Contact(DynamicForm.options.lookup.contact.fields.hasRegistered);
                 registrationDate = DynamicForm.LookupData.Contact(DynamicForm.options.lookup.contact.fields.registeredDate);
                 if ((offerAccessRule.toLowerCase() === 'tracked') || (hasSubmittedLongForm && DynamicForm.isRegistrationCurrent(registrationDate))) {
-                    view = DynamicForm.constants.V_AUTO;
+                    DynamicForm.options.action = DynamicForm.constants.ACTION.AUTO;
                     DynamicForm.options.form_type = 'autosubmit';
                 } else {
-                    view = DynamicForm.constants.V_FORM;
+                    DynamicForm.options.action = DynamicForm.constants.ACTION.FORM;
                     DynamicForm.options.form_type = 'form';
                 }
             }
 
             if (typeof DynamicForm.options.CustomQuestions !== 'undefined') {
-                view = DynamicForm.constants.V_FORM;
+                DynamicForm.options.action = DynamicForm.constants.ACTION.FORM;
                 DynamicForm.options.form_type = 'form';
             }
 
             if ((DynamicForm.options.lookup.offer.fields.type.toLowerCase() === 'event') || (DynamicForm.options.lookup.offer.fields.type.toLowerCase() === 'tradeshow')) {
-                view = DynamicForm.constants.V_FORM;
+                DynamicForm.options.action = DynamicForm.constants.ACTION.FORM;
                 DynamicForm.options.form_type = 'form';
             }
 
-            if (view !== DynamicForm.constants.V_AUTO) {
+            if (DynamicForm.options.action !== DynamicForm.constants.ACTION.AUTO) {
                 FormInit = DynamicForm.Form.long();
             } else {
                 FormInit = DynamicForm.Form.auto();
@@ -1556,9 +1916,11 @@ DynamicForm.Form = {
         });
 
         $.when(FormInit).then(function() {
-            if (view === DynamicForm.constants.V_AUTO && DynamicForm.options.form_type === 'autosubmit') {
+            DynamicForm.console.info("(1860) Form init done");
+            if (DynamicForm.options.action === DynamicForm.constants.ACTION.AUTO && DynamicForm.options.form_type === 'autosubmit') {
                 var ShowFormInitTriggerOmnitureDef = new DynamicForm.Tracking.Omniture.Trigger();
                 $.when(ShowFormInitTriggerOmnitureDef).then(function() {
+                    DynamicForm.console.info("(1864) Form init omniture done");
                     DynamicForm.Form.SubmitDynamicForm();
                 });
             }
@@ -1567,14 +1929,13 @@ DynamicForm.Form = {
         return FormInit;
     },
     auto: function(opts) {
-        DynamicForm.info("Starting DynamicForm.Form.auto: ", opts);
+        DynamicForm.console.info("(1873) Starting Form.auto: ", opts);
         DynamicForm.ShowLoadingMsg("Please wait...");
 
         //choose form or auto submit here
         var options = $.extend({}, opts, DynamicForm.options),
             AutoFormInit = new $.Deferred(),
             PopulateFieldDef = null,
-            view = DynamicForm.constants.V_FORM,
             hasSubmittedLongForm = false,
             registrationDate = '',
             email = encodeURIComponent(DynamicForm.GetEmailAddress()),
@@ -1583,6 +1944,7 @@ DynamicForm.Form = {
             offerAccessRule = DynamicForm.LookupData.Offer(DynamicForm.options.lookup.offer.fields.accessrule) === 'Track' ? 'tracked' : 'gated',
             TriggerOmnitureDef = null;
 
+        DynamicForm.options.action = DynamicForm.constants.ACTION.FORM;
         DynamicForm.options.form_type = 'autosubmit';
 
         var parentFirstMinor = '';
@@ -1624,7 +1986,7 @@ DynamicForm.Form = {
         return AutoFormInit.promise;
     },
     long: function(opts) {
-        DynamicForm.info("Starting DynamicForm.Form.long: ", opts);
+        DynamicForm.console.info("(1930) Starting Form.long: ", opts);
         DynamicForm.ShowLoadingMsg("Please wait...");
         var options = $.extend({}, opts, DynamicForm.options),
             self = this,
@@ -1659,7 +2021,7 @@ DynamicForm.Form = {
         for (var i in LookupKeys) {
             if (LookupKeys.hasOwnProperty(i)) {
                 LookupKey = LookupKeys[i];
-                if (DynamicForm.CheckValue(LookupKey.key) && DynamicForm.CheckValue(DynamicForm.LookupData[LookupKey.name])) {
+                if (DynamicForm.HasValue(LookupKey.key) && DynamicForm.HasValue(DynamicForm.LookupData[LookupKey.name])) {
                     LookupFromKey = DynamicForm.LookupData[LookupKey.name][LookupKey.key];
                 } else {
                     LookupFromKey = DynamicForm.LookupData[LookupKey.name];
@@ -1729,7 +2091,7 @@ DynamicForm.Form = {
                 thisForm = $('#' + DynamicForm.constants.ELQ_FORM_NAME);
                 DynamicForm.LoadScript(DynamicForm.options.URL_PREFIX + '/forms/scripts/vendor/demandbaseForm.js', function() {
                     DemandbaseForm.formConnector.init();
-                    if (DynamicForm.options.type !== DynamicForm.constants.T_EMBEDDED) {
+                    if (DynamicForm.options.type !== DynamicForm.constants.TYPE.EMBEDDED) {
                         thisForm.addClass("form-horizontal");
                     } else {
                         thisForm.addClass("scrolly-taller");
@@ -1931,7 +2293,7 @@ DynamicForm.Form = {
         DynamicForm.Prepop.contact.A_SubmissionID = DynamicForm.GetSubmissionId();
         DynamicForm.Prepop.contact.A_VerificationID = vID;
 
-        DynamicForm.Prepop.tactic.A_TacticID_Internal = DynamicForm.CheckValue(DynamicForm.GetTacticID('int')) ? DynamicForm.GetTacticID('int') : DynamicForm.GetTacticIDFromCookie('int');
+        DynamicForm.Prepop.tactic.A_TacticID_Internal = DynamicForm.HasValue(DynamicForm.GetTacticID('int')) ? DynamicForm.GetTacticID('int') : DynamicForm.GetTacticIDFromCookie('int');
         DynamicForm.Prepop.tactic.A_TacticID_External = DynamicForm.GetTacticID('ext');
         DynamicForm.Prepop.tactic.Apps_Tactics_T_Campaign_ID_181 = DynamicForm.GetTacticID('ext');
 
@@ -1955,11 +2317,11 @@ DynamicForm.Form = {
                             FieldValue = DynamicForm.constants.UNAVAILABLE;
                         }
                         try {
-                            if (DynamicForm.ValueIsEmpty($field.val())) {
+                            if (DynamicForm.IsEmpty($field.val())) {
                                 $field.val(FieldValue);
                             }
                         } catch (e) {
-                            DynamicForm.error('DynamicForm.Form.PopulateFields', e);
+                            DynamicForm.console.error('DynamicForm.Form.PopulateFields', e);
                         }
                     }
                 }
@@ -2002,7 +2364,7 @@ DynamicForm.Form = {
         $('#A_VerificationID')
             .val(vID);
         $('#A_TacticID_Internal')
-            .val(DynamicForm.CheckValue(DynamicForm.GetTacticID('int')) ? DynamicForm.GetTacticID('int') : DynamicForm.GetTacticIDFromCookie('int'));
+            .val(DynamicForm.HasValue(DynamicForm.GetTacticID('int')) ? DynamicForm.GetTacticID('int') : DynamicForm.GetTacticIDFromCookie('int'));
         $('#A_TacticID_External')
             .val(DynamicForm.GetTacticID('ext'));
         $('#A_RedirectURL').val(DynamicForm.GetRedirectURL({
@@ -2011,8 +2373,8 @@ DynamicForm.Form = {
             sc_cid: DynamicForm.GetTacticID('ext'),
             verificationid: vID
         }));
-        $('#QA_Version')
-            .val(DynamicForm.options.QA_Version);
+        $('#app_version')
+            .val(DynamicForm.options.app_version);
         //Update other fields
         PopulateFieldsDef.resolve();
         //});
@@ -2037,35 +2399,9 @@ DynamicForm.Form = {
 
         $('#' + DynamicForm.constants.ELQ_FORM_NAME).submit();
 
-        DynamicForm.log("DynamicForm.options.URL_PREFIX: ", DynamicForm.options.URL_PREFIX);
+        DynamicForm.console.log("(2343) URL_PREFIX: ", DynamicForm.options.URL_PREFIX);
 
-        $.receiveMessage(function(e) {
-            // Get the height from the passed data.';
-            DynamicForm.log("[SubmitDynamicForm] query string: ?" + e.data);
-
-            var params = $.url("file.html?" + e.data).param();
-
-            var status = $.url("file.html?" + e.data).param('status');
-            DynamicForm.log("[SubmitDynamicForm] status:", status);
-
-            var offer_id = $.url("file.html?" + e.data).param('offer_id');
-            DynamicForm.log("[SubmitDynamicForm] offer_id:", offer_id);
-
-            if (status === DynamicForm.constants.STATUS_OK) {
-                if (offer_id !== '') {
-                    DynamicForm.options.offer_id = offer_id;
-                }
-                DynamicForm.Tracking.GoogleRemarketing.Trigger();
-                DynamicForm.Tracking.GoogleAdWordsConversion.Trigger();
-                DynamicForm.Tracking.Omniture.ResetEvents();
-                DynamicForm.Thanks.start();
-                DynamicForm.log("[SubmitDynamicForm] form submitted and Thanks page started...");
-            } else {
-                DynamicForm.error('DynamicForm.Form.SubmitDynamicForm receiveMessage', "status = " + status);
-                DynamicForm.error('DynamicForm.Form.SubmitDynamicForm receiveMessage', e);
-            }
-            // An optional origin URL (Ignored where window.postMessage is unsupported).
-        }, DynamicForm.options.URL_PREFIX);
+        DynamicForm.Message.Receive();
     },
     prepareSelectsForEloqua: function(elqForm) {
         var selects = $('select', elqForm);
@@ -2283,7 +2619,7 @@ DynamicForm.GetOfferID = function(update) {
         }
     }
 
-    if (DynamicForm.CheckValue(updatedOffer) && updatedOffer !== offer_id) {
+    if (DynamicForm.HasValue(updatedOffer) && updatedOffer !== offer_id) {
         offer_id = updatedOffer;
     }
 
@@ -2297,6 +2633,59 @@ DynamicForm.GetInterface = function() {
         s_interface = ''.concat(contact_type, ' | ', offer_type, ' | ', form_type, ' | ', udf_count);
     return s_interface;
 };
+
+DynamicForm.Message = {
+    Receive: function() {
+        DynamicForm.console.info("(2580) Message.Receive started...");
+        $.receiveMessage(function(e) {
+            DynamicForm.console.info("(2582) Message incoming...", e);
+            // Get the height from the passed data.';
+            DynamicForm.console.log("(2584) Message.Receive query string" + e.data);
+
+            var params = $.url("file.html?" + e.data).param();
+
+            var status = $.url("file.html?" + e.data).param('status');
+            DynamicForm.console.log("(2589) Message.Receive status:", status);
+
+            var offer_id = $.url("file.html?" + e.data).param('offer_id');
+            DynamicForm.console.log("(2592) Message.Receive offer_id:", offer_id);
+
+            if (status === DynamicForm.constants.STATUS.OK) {
+                if (offer_id !== '') {
+                    DynamicForm.options.offer_id = offer_id;
+                }
+                DynamicForm.Tracking.GoogleRemarketing.Trigger();
+                DynamicForm.Tracking.GoogleAdWordsConversion.Trigger();
+                DynamicForm.Tracking.Omniture.ResetEvents();
+                DynamicForm.Thanks.start();
+                DynamicForm.console.log("(2602) Message received and Thanks page started...");
+            }
+            // An optional origin URL (Ignored where window.postMessage is unsupported).
+        }, DynamicForm.options.URL_PREFIX);
+    },
+    SetupPostFrame: function(opts) {
+        if (typeof opts !== 'undefined' || DynamicForm.HasValue(opts.src)) {
+            DynamicForm.console.info("(2610) SetupPostFrame from", document.URL);
+            DynamicForm.console.info("(2611) SetupPostFrame options", opts);
+            $('<iframe src="' + opts.src + '" width="0" height="0" scrolling="no" frameborder="0"><\/iframe>').appendTo('body');
+        } else {
+            DynamicForm.console.error("(2614) SetupPostFrame from", document.URL);
+            DynamicForm.console.error("(2615) SetupPostFrame options", opts);
+        }
+    },
+    Post: function(opts) {
+        DynamicForm.Message.SetupPostFrame(opts);
+        if (typeof opts !== 'undefined' || DynamicForm.HasValue(opts.src) || DynamicForm.HasValue(opts.parent)) {
+            opts.offer_id = DynamicForm.GetOfferID();
+            DynamicForm.console.info("(2622) Outgoing Message from", document.URL);
+            DynamicForm.console.info("(2623) Outgoing Message options", opts);
+            $.postMessage(opts, opts.src, opts.parent);
+        } else {
+           DynamicForm.console.error("(2626) Outgoing Message from", document.URL);
+           DynamicForm.console.error("(2627) Outgoing Message options", opts);
+        }
+    }
+}
 DynamicForm.Tracking = {
     DemandBaseRemarketing: {
         Trigger: function() {
@@ -2380,11 +2769,11 @@ DynamicForm.Tracking = {
 
                 s.channel = $.url(document.URL).param('channel') || 'landing page';
 
-                if (DynamicForm.CheckValue(o.eVar1)) {
+                if (DynamicForm.HasValue(o.eVar1)) {
                     s.eVar1 = o.eVar1;
                 }
 
-                if (DynamicForm.CheckValue(o.eVar48)) {
+                if (DynamicForm.HasValue(o.eVar48)) {
                     s.eVar48 = o.eVar48;
                 }
 
@@ -2396,30 +2785,30 @@ DynamicForm.Tracking = {
                 }
 
                 var lc = DynamicForm.GetLanguageCode();
-                if (DynamicForm.CheckValue(lc)) {
+                if (DynamicForm.HasValue(lc)) {
                     s.prop2 = s.eVar22 = lc.toLowerCase();
                 }
 
                 var cc = DynamicForm.GetCountryCode();
-                if (DynamicForm.CheckValue(cc)) {
+                if (DynamicForm.HasValue(cc)) {
                     s.prop3 = s.eVar19 = cc.toLowerCase();
                 }
 
                 s.prop4 = s.eVar23 = encodeURI(document.URL);
                 s.prop21 = s.eVar18 = encodeURI(document.location.href.split("?")[0]);
                 s.prop14 = s.eVar27 = DynamicForm.constants.OMNITURE.FIRST_MINOR_SECTION;
-                s.prop15 = s.eVar28 = DynamicForm.options.type === DynamicForm.constants.T_EMBEDDED ? 'embedded' : 'lightbox';
+                s.prop15 = s.eVar28 = DynamicForm.options.type === DynamicForm.constants.TYPE.EMBEDDED ? 'embedded' : 'lightbox';
 
                 s.events = $.distinct(DynamicForm.Tracking.Omniture.events).join(', ');
 
                 OmnitureTrackingDef = $.getScript(DynamicForm.options.URL_PREFIX + '/j/rh_omni_footer.js');
             } catch (e) {
                 OmnitureTrackingDef.resolve();
-                DynamicForm.error("DynamicForm.Tracking.Omniture.Trigger", e);
+                DynamicForm.console.info("(2749) Tracking.Omniture.Trigger", e);
             }
 
             $.when(OmnitureTrackingDef).then(function() {
-                DynamicForm.info("DynamicForm.Tracking.Omniture.Trigger complete");
+                DynamicForm.console.info("(2753) Tracking.Omniture.Trigger complete");
                 DynamicForm.Tracking.Omniture.ResetEvents();
             });
 
@@ -2512,27 +2901,37 @@ DynamicForm.GetTacticIDFromCookie = function(type) {
 };
 
 DynamicForm.GetRedirectURL = function(options) {
-    var url = ''.concat(DynamicForm.options.URL_PREFIX, '/forms/thanks.html?v=', DynamicForm.constants.V_SEND_MSG);
-    if (typeof options.offer_id !== "undefined" && options.offer_id !== DynamicForm.constants.UNAVAILABLE) {
-        url = url.concat('&offer_id=', options.offer_id);
+    var url = ''.concat(DynamicForm.options.URL_PREFIX, '/forms/thanks.html?act=', DynamicForm.constants.ACTION.MSG);
+    if (DynamicForm.HasValue(options.offer_id)){
+        url = url.concat('&o=', encodeURIComponent(options.offer_id));
     }
-    if (typeof options.sc_cid !== "undefined" && options.sc_cid !== DynamicForm.constants.UNAVAILABLE) {
-        url = url.concat('&sc_cid=', options.sc_cid);
+    if (DynamicForm.HasValue(options.sc_cid)){
+        url = url.concat('&cmp=', encodeURIComponent(options.sc_cid));
     }
-    if (typeof options.language !== "undefined" && options.language !== DynamicForm.constants.UNAVAILABLE) {
-        url = url.concat('&language=', options.language);
+    if (DynamicForm.HasValue(options.language)){
+        url = url.concat('&l=', encodeURIComponent(options.language));
     }
-    if (typeof options.country !== "undefined" && options.country !== DynamicForm.constants.UNAVAILABLE) {
-        url = url.concat('&country=', options.country);
+    if (DynamicForm.HasValue(options.country)){
+        url = url.concat('&c=', encodeURIComponent(options.country));
     }
-    if (typeof options.pid !== "undefined" && options.pid !== DynamicForm.constants.UNAVAILABLE) {
-        url = url.concat('&pid=', options.pid);
+    if (DynamicForm.HasValue(options.pid)){
+        url = url.concat('&pid=', encodeURIComponent(options.pid));
     }
-    if (typeof options.verificationid !== "undefined" && options.verificationid !== DynamicForm.constants.UNAVAILABLE) {
-        url = url.concat('&verificationid=', options.verificationid);
+    if (DynamicForm.HasValue(options.verificationid)) {
+        url = url.concat('&vid=', encodeURIComponent(options.verificationid));
     }
-    url = url.concat('&p=', encodeURIComponent(document.location.href.split("?")[0]));
-    url = url.concat('&ver=', encodeURIComponent(DynamicForm.options.QA_Version));
+
+    if (DynamicForm.options.debug) {
+        if (DynamicForm.HasValue(options.environment)) {
+            url = url.concat('&env=', encodeURIComponent(options.environment));
+        }
+        if (DynamicForm.HasValue(options.app_version)){
+            url = url.concat('&ver=', encodeURIComponent(options.app_version));
+        }
+    }
+
+    url = url.concat('&orig=', encodeURIComponent(document.location.href.split("?")[0]));
+
     return url;
 };
 DynamicForm.GetReferringPageURL = function() {
@@ -2655,51 +3054,50 @@ DynamicForm.Translate = function(language, callback) {
 };
 
 DynamicForm.Thanks = {
-    message: function() {
-        DynamicForm.info("Starting DynamicForm.Thanks.message");
+    SendMessage: function() {
+        DynamicForm.console.info("(3000) Starting Thanks.SendMessage from ", document.URL);
         DynamicForm.Tracking.GoogleRemarketing.Trigger();
         // Append the Iframe into the DOM.
-        var url = '',
-            src = '',
-            openInNewWindow = false;
-
-        if (typeof url === 'undefined' || url === 'undefined') {
-            DynamicForm.error("DynamicForm.Thanks.message", {
-                url: document.URL,
-                params: $.url(document.URL).param()
-            });
-
-            openInNewWindow = true;
-
-            url = DynamicForm.options.URL_PREFIX + "/forms/thanks.html";
-            src = src.concat(url, divider, "v=", DynamicForm.constants.V_THANKS);
-        } else {
-            url = decodeURIComponent($.url(document.URL).param('p'));
-            src = src.concat(url, divider, "v=", DynamicForm.constants.V_SEND_MSG);
-        }
+        var parent_url = decodeURIComponent($.url(document.URL).param('orig'));
 
         var divider = "?";
-        if (url.indexOf('?') >= 0) {
+        if (parent_url.indexOf('?') >= 0) {
             divider = "&";
         }
 
+        var src = ''.concat(parent_url, divider, "act=", DynamicForm.constants.ACTION.MSG),
+            openInNewWindow = false;
+
+        if (typeof url === 'undefined' || url === 'undefined') {
+            DynamicForm.console.info("(3013) Thanks.SendMessage no parent URL passed in...", document.URL);
+
+            //openInNewWindow = true;
+
+            console.log("(3017) DynamicForm.options.URL_PREFIX: ", DynamicForm.options.URL_PREFIX);
+            url = DynamicForm.options.URL_PREFIX + "/forms/thanks.html";
+            src = ''.concat(parent_url, divider, "act=", DynamicForm.constants.ACTION.DL);
+        } else {
+            DynamicForm.console.info("(3033) Thanks.SendMessage parent_url", parent_url);
+            DynamicForm.console.info("(3034) Thanks.SendMessage from URL", document.URL);
+        }
+
         if (typeof DynamicForm.options.offer_id !== "undefined" && DynamicForm.options.offer_id !== DynamicForm.constants.UNAVAILABLE) {
-            src = src.concat('&offer_id=', DynamicForm.options.offer_id);
+            src = src.concat('&o=', DynamicForm.options.offer_id);
         }
         if (typeof DynamicForm.options.sc_cid !== "undefined" && DynamicForm.options.sc_cid !== DynamicForm.constants.UNAVAILABLE) {
-            src = src.concat('&sc_cid=', DynamicForm.options.sc_cid);
+            src = src.concat('&cmp=', DynamicForm.options.sc_cid);
         }
         if (typeof DynamicForm.options.language !== "undefined" && DynamicForm.options.language !== DynamicForm.constants.UNAVAILABLE) {
-            src = src.concat('&language=', DynamicForm.options.language);
+            src = src.concat('&l=', DynamicForm.options.language);
         }
         if (typeof DynamicForm.options.country !== "undefined" && DynamicForm.options.country !== DynamicForm.constants.UNAVAILABLE) {
-            src = src.concat('&country=', DynamicForm.options.country);
+            src = src.concat('&c=', DynamicForm.options.country);
         }
         if (typeof DynamicForm.options.pid !== "undefined" && DynamicForm.options.pid !== DynamicForm.constants.UNAVAILABLE) {
-            src = src.concat('&pid=', DynamicForm.options.pid);
+            src = src.concat('&p=', DynamicForm.options.pid);
         }
         if (typeof DynamicForm.options.verificationid !== "undefined" && DynamicForm.options.verificationid !== DynamicForm.constants.UNAVAILABLE) {
-            src = src.concat('&verificationid=', DynamicForm.options.verificationid);
+            src = src.concat('&vid=', DynamicForm.options.verificationid);
         }
 
         if (openInNewWindow) {
@@ -2710,28 +3108,27 @@ DynamicForm.Thanks = {
                 verificationid: DynamicForm.options.verificationid
             });
 
-            window.open(newUrl, "_blank");
+            document.location = newUrl;
         } else {
             var iframe = $('<iframe src="' + src + '" width="0" height="0" scrolling="no" frameborder="0"><\/iframe>').appendTo('body');
-
-            $.postMessage({
-                status: DynamicForm.constants.STATUS_OK,
-                offer_id: DynamicForm.options.offer_id
-            }, src, parent);
+            DynamicForm.Message.Post({
+                src: src,
+                parent: parent
+            });
         }
     },
     display: function() {
-        DynamicForm.info("Starting DynamicForm.Thanks.display");
-        return DynamicForm.Template.ThankYou.html(DynamicForm.options.view);
+        DynamicForm.console.info("(3059) Starting Thanks.display");
+        return DynamicForm.Template.ThankYou.html(DynamicForm.options.action);
     },
     start: function() {
-        DynamicForm.info("Starting DynamicForm.Thanks.start");
+        DynamicForm.console.info("(3063) Starting Thanks.start");
         DynamicForm.ShowLoadingMsg("Please wait...");
 
         DynamicForm.Cookies.Process();
 
         DynamicForm.Tracking.GoogleRemarketing.Trigger();
-        var content = DynamicForm.Template.ThankYou.html(DynamicForm.options.view),
+        var content = DynamicForm.Template.ThankYou.html(DynamicForm.options.action),
             //win = window.open('about:blank', null, "height=10,width=10,status=yes,toolbar=no,scrollbars=yes,menubar=no,location=no,alwaysLowered=yes"),
             InitDef = new $.Deferred(),
             LookupDef = DynamicForm.Lookup.All(),
@@ -2758,9 +3155,9 @@ DynamicForm.Thanks = {
 
             $('#FormSubmitBtn').off('click');
 
-            if (DynamicForm.options.view !== DynamicForm.constants.V_MULTIPLE) {
+            if (DynamicForm.options.action !== DynamicForm.constants.ACTION.MULTI) {
                 if (typeof url === 'undefined' || url === '') {
-                    DynamicForm.BadOffer.start();
+                    DynamicForm.Error.start();
                 } else {
                     $('#FormSubmitBtn').attr('href', url).removeClass("disabled");
                 }
@@ -2794,7 +3191,7 @@ DynamicForm.Thanks = {
         return InitDef;
     }
 };
-DynamicForm.BadOffer = {
+DynamicForm.Error = {
     start: function(opts) {
         DynamicForm.ShowLoadingMsg("Please wait...");
 
@@ -3063,22 +3460,26 @@ $.elq = function(id) {
 
             return $.getScript(dlookup, function() {
                 var elqTracker = $.elq(DynamicForm.options.elqSiteId);
+                
+                //settings.lookupObj[settings.lookupFunc] = '';
+                
                 if (typeof GetElqContentPersonalizationValue !== 'undefined') {
                     elqTracker.processData(settings, GetElqContentPersonalizationValue);
                 } else {
                     if (options.retry < DynamicForm.constants.MAX_RETRIES) {
-                        DynamicForm.log("$.elq.getData " + options.retry);
+                        DynamicForm.console.log("(3408) $.elq.getData "+settings.lookupFunc+" try #" + options.retry);
                         setTimeout(function() {
                             var elqTracker = $.elq(DynamicForm.options.elqSiteId);
                             options.retry++;
                             elqTracker.getData(options);
                         }, 500 * (options.retry));
                     } else {
-                        DynamicForm.log("$.elq.getData " + settings.lookupFunc + " gave up...");
+                        DynamicForm.console.log("(3415) $.elq.getData " + settings.lookupFunc + " gave up...");
+                        DynamicForm.console.log("(3416) $.elq.getData dlookup ", dlookup);
                     }
                 }
             }).fail(function(xhr, error) {
-                DynamicForm.error("$.elq.getData", error);
+                DynamicForm.console.error("(3420) $.elq.getData " + settings.lookupFunc, error);
             });
         },
         getProxyData: function(options) {
@@ -3099,22 +3500,26 @@ $.elq = function(id) {
                 dlookup = proxy + '?pps=50&siteid=' + siteid + '&DLKey=' + settings.lookup + '&DLLookup=' + decodeURI(settings.lookupParam) + '&ms=' + ms;
             return $.getScript(dlookup, function() {
                 var elqTracker = $.elq(DynamicForm.options.elqSiteId);
+                
+                //settings.lookupObj[settings.lookupFunc] = '';
+                
                 if (typeof GetElqContentPersonalizationValue !== 'undefined') {
                     return elqTracker.processData(settings, GetElqContentPersonalizationValue);
                 } else {
                     if (options.retry < DynamicForm.constants.MAX_RETRIES) {
-                        DynamicForm.log("$.elq.getProxyData retry " + options.retry);
+                        DynamicForm.console.log("(3448) $.elq.getProxyData "+settings.lookupFunc+" try # " + options.retry);
                         setTimeout(function() {
                             var elqTracker = $.elq(DynamicForm.options.elqSiteId);
                             options.retry++;
                             elqTracker.getProxyData(options);
                         }, 500 * (options.retry));
                     } else {
-                        DynamicForm.log("$.elq.getProxyData " + settings.lookupFunc + " gave up...");
+                        DynamicForm.console.log("(3455) $.elq.getProxyData " + settings.lookupFunc + " gave up...");
+                        DynamicForm.console.log("(3456) $.elq.getProxyData dlookup ", dlookup);
                     }
                 }
             }).fail(function(xhr, error) {
-                DynamicForm.error("$.elq.getProxyData", error);
+                DynamicForm.console.error("(3460) $.elq.getProxyData " + settings.lookupFunc, error);
             });
         },
         redirect: function(options) {
@@ -3135,7 +3540,7 @@ $.elq = function(id) {
                 async: false,
                 dataType: 'script',
                 success: function() {
-                    DynamicForm.log("redirect works");
+                    DynamicForm.console.log("(3481) redirect works");
                 }
             });
         }
@@ -3155,13 +3560,10 @@ $(document).ready(function() {
 
     var url = document.URL;
     if (url.indexOf('forms/eventTool.html') > -1) {
-        DynamicForm.info("$(document).ready", "starting DynamicForm.Event.Tool");
         DynamicForm.Event.Tool(config);
     } else if (url.indexOf('forms/event.html') > -1) {
-        DynamicForm.info("$(document).ready", "starting DynamicForm.Event.GenerateICS");
         DynamicForm.Event.GenerateICS(config);
     } else {
-        DynamicForm.info("$(document).ready", "starting DynamicForm");
         DynamicForm.start(config);
     }
 });
