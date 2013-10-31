@@ -788,39 +788,40 @@ DynamicForm.console = {
     log : function() {
         if (DynamicForm.options.debug) {
             var msg = ''.concat('[LOG] ', Array.prototype.join.call(arguments, ''));
-            if (window.console && window.console.log) {
-                window.console.log(msg);
+            if (console && console.log) {
+                console.log(msg);
             } else if (window.opera && window.opera.postError) {
                 window.opera.postError(msg);
             }
         }
     },
-    info : function(src, obj) {
-        var msg;
-        if (DynamicForm.options.debug) {
-            if (DynamicForm.IsEmpty(obj)) {
-                msg = ''.concat("[INFO] ", src);
-            } else {
-                msg = ''.concat("[INFO] ", src, " : ", obj);
-            }
-            if (window.console && window.console.log) {
-                window.console.info(msg);
+    info : function(msg, obj) {
+        if (DynamicForm.options.debug && DynamicForm.HasValue(msg)) {
+            if (console && console.info) {
+                console.info("[INFO]", msg);
+                if (typeof obj === 'object') {
+                    console.info("[INFO] obj: ", obj);
+                }
             } else if (window.opera && window.opera.postError) {
-                window.opera.postError(msg);
+                window.opera.postError("[INFO]", msg);
+                if (typeof obj === 'object') {
+                    window.opera.postError("[INFO] obj: ", obj);
+                }
             }
         }
     },
-    error : function(src, obj) {
-        if (DynamicForm.options.debug) {
-            if (DynamicForm.IsEmpty(obj)) {
-                msg = ''.concat("[ERROR] ", src);
-            } else {
-                msg = ''.concat("[ERROR] ", src, " : ", obj);
-            }
-            if (window.console && window.console.log) {
-                window.console.error(msg);
+    error : function(msg, obj) {
+        if (DynamicForm.options.debug && DynamicForm.HasValue(msg)) {
+            if (console && console.error) {
+                console.error("[ERROR]", msg);
+                if (typeof obj === 'object') {
+                    console.error("[ERROR] obj: ", obj);
+                }
             } else if (window.opera && window.opera.postError) {
-                window.opera.postError(msg);
+                window.opera.postError("[ERROR]", msg);
+                if (typeof obj === 'object') {
+                    window.opera.postError("[ERROR] obj: ", obj);
+                }
             }
         }
     }
@@ -838,7 +839,7 @@ DynamicForm.InitOptions = function(opts) {
         params = $.url(document.URL).param(),
         environment = DynamicForm.options.environment || location.hostname;
 
-    environment = 'prod';
+    //environment = 'prod';
 
     //Set up environment
     switch (environment) {
@@ -905,7 +906,7 @@ DynamicForm.InitOptions = function(opts) {
             }
             break;
     }
-    
+
     /**
      * ----------------------------------
      * options that need to be translated
@@ -922,8 +923,6 @@ DynamicForm.InitOptions = function(opts) {
      * udf = CustomQuestions
      * env = environment (local, dev, stage, prod);
      */
-
-    
 
     if (DynamicForm.HasValue(DynamicForm.options.act)) {
         console.log("(912) ?act="+DynamicForm.options.act);
@@ -985,7 +984,7 @@ DynamicForm.start = function(opts) {
             DynamicForm.options.URL_PREFIX = (document.location.protocol === 'https:' ? 'https://' : 'http://') + 'redhat.com';
         }
     }
-    
+
     DynamicForm.ShowLoadingMsg("Please wait...");
 
     DynamicForm.Tracking.DemandBaseRemarketing.Trigger();
@@ -1033,7 +1032,7 @@ DynamicForm.start = function(opts) {
         DynamicForm.console.info("(1015) options action", DynamicForm.options.action);
         DynamicForm.console.info("(1016) container length", container.length);
         DynamicForm.console.info("(1017) for url", document.URL);
-        
+
         if (container.length < 1 && DynamicForm.options.action !== DynamicForm.constants.ACTION.MSG && DynamicForm.options.action !== DynamicForm.constants.ACTION.DL) {
             DynamicForm.options.action = DynamicForm.constants.ACTION.MULTI;
         }
@@ -1456,7 +1455,7 @@ DynamicForm.Template = {
         render: function(type) {
             //reset formHTML, just in case...
             var tmpHtml = '<div id="DynamicFormThankYou">';
-            
+
 
             if (DynamicForm.options.ThanksTitle !== '' && typeof DynamicForm.options.ThanksTitle !== 'undefined') {
                 if (DynamicForm.options.type === DynamicForm.constants.TYPE.FULL) {
@@ -1537,13 +1536,34 @@ DynamicForm.BuildOption = function(val, label) {
 
 DynamicForm.Lookup = {
     All: function() {
+        DynamicForm.console.info("Lookup for All Started...");
         var LookupAllDef = new $.Deferred(),
             LookupVisitorDef = DynamicForm.Lookup.Visitor(),
             LookupContactDef = new $.Deferred(),
             LookupTacticDef = DynamicForm.Lookup.Tactic(),
             LookupOfferDef = DynamicForm.Lookup.Offer(),
             LookupElqGuidDef = DynamicForm.Lookup.ElqGuid();
-            
+
+        $.when(LookupVisitorDef).then(function() {
+            DynamicForm.console.info("Visitor Lookup Done");
+        });
+
+        $.when(LookupContactDef).then(function() {
+            DynamicForm.console.info("Contact Lookup Done");
+        });
+
+        $.when(LookupTacticDef).then(function() {
+            DynamicForm.console.info("Tactic Lookup Done");
+        });
+
+        $.when(LookupOfferDef).then(function() {
+            DynamicForm.console.info("Offer Lookup Done");
+        });
+
+        $.when(LookupElqGuidDef).then(function() {
+            DynamicForm.console.info("Eloqua GUID Lookup Done");
+        });
+
         $.when(LookupVisitorDef).then(function() {
             LookupContactDef = DynamicForm.Lookup.Contact();
             $.when(LookupContactDef, LookupTacticDef, LookupOfferDef, LookupElqGuidDef).then(function() {
@@ -1554,6 +1574,7 @@ DynamicForm.Lookup = {
     },
     ElqGuid: function(callback) {
         if (DynamicForm.options.lookup.guid.locked) {
+            DynamicForm.console.info("ElqGUID lookup already running, bailing out.");
             return;
         } else {
             DynamicForm.options.lookup.guid.locked = true;
@@ -1574,27 +1595,32 @@ DynamicForm.Lookup = {
     },
     Visitor: function() {
         if (DynamicForm.options.lookup.visitor.locked) {
+            DynamicForm.console.info("Visitor lookup already running, bailing out.");
             return;
         } else {
             DynamicForm.options.lookup.visitor.locked = true;
         }
 
         DynamicForm.console.info("(1540) Starting Lookup.Visitor");
-        var LookupDataDef = DynamicForm.elqTracker.getData({
-                lookup: DynamicForm.options.lookup.visitor.key,
-                lookupFunc: 'Visitor',
-                retry: DynamicForm.options.VisitorLookupRetryCount
-            }),
-            LookupDef = $.when(LookupDataDef).then(function() {
-                if (typeof DynamicForm.LookupData.Visitor === 'function') {
-                    var fields = DynamicForm.options.fields.visitor, fieldval, i;
-                    for (i = 0; i < fields.length; i++) {
-                        if (DynamicForm.LookupData.Visitor(fields[i]) !== '' && DynamicForm.LookupData.Visitor(fields[i]) !== DynamicForm.constants.UNAVAILABLE) {
-                            DynamicForm.Prepop.visitor[fields[i]] = DynamicForm.LookupData.Visitor(fields[i]);
-                        }
+
+        var lookup_opts = {
+            lookup: DynamicForm.options.lookup.visitor.key,
+            lookupFunc: 'Visitor',
+            retry: DynamicForm.options.VisitorLookupRetryCount
+        }
+
+        LookupDataDef = DynamicForm.elqTracker.getData(lookup_opts);
+
+        LookupDef = $.when(LookupDataDef).then(function() {
+            if (typeof DynamicForm.LookupData.Visitor === 'function') {
+                var fields = DynamicForm.options.fields.visitor, fieldval, i;
+                for (i = 0; i < fields.length; i++) {
+                    if (DynamicForm.LookupData.Visitor(fields[i]) !== '' && DynamicForm.LookupData.Visitor(fields[i]) !== DynamicForm.constants.UNAVAILABLE) {
+                        DynamicForm.Prepop.visitor[fields[i]] = DynamicForm.LookupData.Visitor(fields[i]);
                     }
                 }
-            });
+            }
+        });
 
         $.when(LookupDef).then(function() {
             DynamicForm.options.lookup.visitor.locked = false;
@@ -1602,8 +1628,15 @@ DynamicForm.Lookup = {
 
         return LookupDef;
     },
+    LookupWithQuery: function(opts) {
+        var opts = opts || {};
+        opts.lookupParam = ''.concat('&lt;', opts.query_label, '&gt;', opts.query_val, '&lt;/', opts.query_label, '&gt;');
+
+        return DynamicForm.elqTracker.getProxyData(opts);
+    },
     Contact: function() {
         if (DynamicForm.options.lookup.contact.locked) {
+            DynamicForm.console.info("Contact lookup already running, bailing out.");
             return;
         } else {
             DynamicForm.options.lookup.contact.locked = true;
@@ -1617,12 +1650,15 @@ DynamicForm.Lookup = {
         if (DynamicForm.IsEmpty(email) || (typeof DynamicForm.LookupData.Visitor === 'undefined' && typeof DynamicForm.LookupData.Contact === 'function')) {
             LookupDef.resolve();
         } else {
-            var LookupParam = ''.concat('<', DynamicForm.options.lookup.contact.query, '>', email, '</', DynamicForm.options.lookup.contact.query, '>'),
-                LookupDataDef = DynamicForm.elqTracker.getData({
-                    lookup: DynamicForm.options.lookup.contact.key,
-                    lookupParam: LookupParam,
-                    lookupFunc: 'Contact'
-                });
+            var lookup_opts = {
+                query_label: DynamicForm.options.lookup.contact.query,
+                query_val : email,
+                lookup: DynamicForm.options.lookup.contact.key,
+                lookupFunc: 'Contact',
+                retry: DynamicForm.options.ContactLookupRetryCount
+            }
+
+            LookupDataDef = DynamicForm.elqTracker.getData(lookup_opts);
 
             LookupDef = $.when(LookupDataDef).then(function() {
                 if (typeof DynamicForm.LookupData.Contact === 'function') {
@@ -1633,7 +1669,7 @@ DynamicForm.Lookup = {
                 }
             });
         }
-        
+
         $.when(LookupDef).then(function() {
             DynamicForm.options.lookup.contact.locked = false;
         });
@@ -1642,25 +1678,29 @@ DynamicForm.Lookup = {
     },
     Tactic: function() {
         if (DynamicForm.options.lookup.tactic.locked) {
+            DynamicForm.console.info("Tactic lookup already running, bailing out.");
             return;
         } else {
             DynamicForm.options.lookup.tactic.locked = true;
         }
 
         var LookupDef = $.Deferred(),
-            TacticID = DynamicForm.GetTacticID('ext');
+            tactic_id = DynamicForm.GetTacticID('ext');
 
-        DynamicForm.console.info("(1603) Starting Lookup.Tactic", TacticID);
+        DynamicForm.console.info("(1603) Starting Lookup.Tactic", tactic_id);
 
-        if (DynamicForm.IsEmpty(TacticID) || typeof DynamicForm.LookupData.Tactic === 'function') {
+        if (DynamicForm.IsEmpty(tactic_id) || typeof DynamicForm.LookupData.Tactic === 'function') {
             LookupDef.resolve();
         } else {
-            var LookupParam = ''.concat('<', DynamicForm.options.lookup.tactic.query, '>', TacticID, '</', DynamicForm.options.lookup.tactic.query, '>'),
-                LookupDataDef = DynamicForm.elqTracker.getProxyData({
-                    lookup: DynamicForm.options.lookup.tactic.key,
-                    lookupParam: LookupParam,
-                    lookupFunc: 'Tactic'
-                });
+            var lookup_opts = {
+                query_label: DynamicForm.options.lookup.tactic.query,
+                query_val : tactic_id,
+                lookup: DynamicForm.options.lookup.tactic.key,
+                lookupFunc: 'Tactic',
+                retry: DynamicForm.options.TacticLookupRetryCount
+
+            },
+            LookupDataDef = DynamicForm.Lookup.LookupWithQuery(lookup_opts);
 
             LookupDef = $.when(LookupDataDef).then(function() {
                 if (typeof DynamicForm.LookupData.Tactic === 'function') {
@@ -1671,7 +1711,7 @@ DynamicForm.Lookup = {
                 }
             });
         }
-        
+
         $.when(LookupDef).then(function() {
             DynamicForm.options.lookup.tactic.locked = false;
         });
@@ -1680,11 +1720,12 @@ DynamicForm.Lookup = {
     },
     Offer: function(opts) {
         if (DynamicForm.options.lookup.offer.locked) {
+            DynamicForm.console.info("Offer lookup already running, bailing out.");
             return;
         } else {
             DynamicForm.options.lookup.offer.locked = true;
         }
-        
+
         var OfferDef = new $.Deferred(),
             ms = new Date().getMilliseconds(),
             offer_id = DynamicForm.options.updated_offer_id || DynamicForm.GetOfferID();
@@ -1695,12 +1736,16 @@ DynamicForm.Lookup = {
             DynamicForm.LookupData.Offer = DynamicForm.Cache.LookupData.Offer[offer_id];
             OfferDef.resolve();
         } else {
-            var LookupParam = ''.concat('<', DynamicForm.options.lookup.offer.query, '>', offer_id, '</', DynamicForm.options.lookup.offer.query, '>');
-            var LookupDataDef = new DynamicForm.elqTracker.getProxyData({
+
+            var lookup_opts = {
+                query_label: DynamicForm.options.lookup.offer.query,
+                query_val : offer_id,
                 lookup: DynamicForm.options.lookup.offer.key,
-                lookupParam: LookupParam,
-                lookupFunc: 'Offer'
-            });
+                lookupFunc: 'Offer',
+                retry: DynamicForm.options.OfferLookupRetryCount
+            },
+            LookupDataDef = DynamicForm.Lookup.LookupWithQuery(lookup_opts);
+
             LookupDef = $.when(LookupDataDef).then(function() {
                 if (typeof DynamicForm.Cache.LookupData.Offer === 'undefined') {
                     DynamicForm.Cache.LookupData.Offer = [];
@@ -1715,7 +1760,7 @@ DynamicForm.Lookup = {
                 }
             });
         }
-        
+
         $.when(LookupDef).then(function() {
             DynamicForm.options.lookup.offer.locked = false;
         });
@@ -1857,13 +1902,13 @@ DynamicForm.Form = {
             FormInit = new $.Deferred(),
             PopulateFieldDef = null,
             LookupDef = DynamicForm.Lookup.All();
-            
+
         DynamicForm.options.action = DynamicForm.constants.ACTION.FORM;
         DynamicForm.options.form_type = 'form';
 
         $.when(LookupDef).then(function() {
             console.info("DynamicForm.LookupData:", DynamicForm.LookupData);
-            
+
             DynamicForm.console.info("(1808) Form lookup all done");
             var hasSubmittedLongForm = false,
                 registrationDate = '',
@@ -3427,6 +3472,7 @@ $.elq = function(id) {
             if (typeof GetElqContentPersonalizationValue !== 'undefined') {
                 if (typeof GetElqContentPersonalizationValue === 'function') {
                     if (settings.lookupObj && settings.lookupFunc) {
+                        console.log("GetElqContentPersonalizationValue: ", GetElqContentPersonalizationValue);
                         settings.lookupObj[settings.lookupFunc] = (function() {
                             return GetElqContentPersonalizationValue;
                         })();
@@ -3442,6 +3488,7 @@ $.elq = function(id) {
             settings.lookupObj[settings.lookupFunc];
         },
         getData: function(options) {
+            console.log("options: ", options);
             var self = this,
                 settings = $.extend({
                     objType: '',
@@ -3455,14 +3502,29 @@ $.elq = function(id) {
                 }, options),
                 ms = new Date()
                     .getMilliseconds(),
-                jsonpCallback = settings.lookupFunc,
-                dlookup = url + '?pps=50&siteid=' + siteid + '&DLKey=' + settings.lookup + '&DLLookup=' + decodeURI(settings.lookupParam) + '&ms=' + ms;
+                jsonpCallback = "Get" + settings.lookupFunc + "Data",
+                dlookup = url + '?pps=50&siteid=' + siteid + '&DLKey=' + settings.lookup + '&DLLookup=' + escape(settings.lookupParam) + '&ms=' + ms + "&callback=" + jsonpCallback;
 
-            return $.getScript(dlookup, function() {
+            var getDataDef = new $.Deferred();
+            var getDataLookup = $.getScript(dlookup, function() {
                 var elqTracker = $.elq(DynamicForm.options.elqSiteId);
-                
+
                 //settings.lookupObj[settings.lookupFunc] = '';
-                
+
+                try {
+                    console.log("getData got back "+jsonpCallback+": ", jsonpCallback() );
+                } catch(e) {
+                    console.log("getData error: ", e);
+                }
+
+                var GetElqContentPersonalizationValue = function() {
+                    return jsonpCallback();
+                };
+
+                console.log("jsonpCallback: ", jsonpCallback);
+                console.log("jsonpCallback(): ", jsonpCallback());
+                console.log("GetElqContentPersonalizationValue: ", GetElqContentPersonalizationValue());
+
                 if (typeof GetElqContentPersonalizationValue !== 'undefined') {
                     elqTracker.processData(settings, GetElqContentPersonalizationValue);
                 } else {
@@ -3480,7 +3542,11 @@ $.elq = function(id) {
                 }
             }).fail(function(xhr, error) {
                 DynamicForm.console.error("(3420) $.elq.getData " + settings.lookupFunc, error);
+            }).always(function() {
+                getDataDef.resolve();
             });
+
+            return getDataDef;
         },
         getProxyData: function(options) {
             var self = this,
@@ -3496,13 +3562,21 @@ $.elq = function(id) {
                 }, options),
                 ms = new Date()
                     .getMilliseconds(),
-                jsonpCallback = settings.lookupFunc,
-                dlookup = proxy + '?pps=50&siteid=' + siteid + '&DLKey=' + settings.lookup + '&DLLookup=' + decodeURI(settings.lookupParam) + '&ms=' + ms;
-            return $.getScript(dlookup, function() {
+                jsonpCallback = "Get" + settings.lookupFunc + "Data",
+                dlookup = proxy + '?pps=50&siteid=' + siteid + '&DLKey=' + settings.lookup + '&DLLookup=' + escape(settings.lookupParam) + '&ms=' + ms + '&callback=' + jsonpCallback;
+
+            var getDataDef = new $.Deferred();
+            var getProxyDataLookup = $.getScript(dlookup, function() {
                 var elqTracker = $.elq(DynamicForm.options.elqSiteId);
-                
+
                 //settings.lookupObj[settings.lookupFunc] = '';
-                
+                try {
+                    console.log("getProxyData got back "+settings.jsonpCallback+": ", settings.jsonpCallback() );
+                } catch(e) {
+                    console.log("getProxyData error: ", e);
+                }
+
+
                 if (typeof GetElqContentPersonalizationValue !== 'undefined') {
                     return elqTracker.processData(settings, GetElqContentPersonalizationValue);
                 } else {
@@ -3520,7 +3594,11 @@ $.elq = function(id) {
                 }
             }).fail(function(xhr, error) {
                 DynamicForm.console.error("(3460) $.elq.getProxyData " + settings.lookupFunc, error);
+            }).always(function() {
+                getDataDef.resolve();
             });
+
+            return getDataDef;
         },
         redirect: function(options) {
             settings = $.extend({
