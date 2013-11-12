@@ -2,6 +2,7 @@ $.validator.setDefaults({
     ignore: []
     // any other default options and/or rules
 });
+
 $.fn.serializeObject = function() {
     var o = {};
     var a = this.serializeArray();
@@ -17,10 +18,13 @@ $.fn.serializeObject = function() {
     });
     return o;
 };
+
 var DynamicForm = window.DynamicForm = window.DynamicForm || {};
+
 DynamicForm.Cache = {};
 DynamicForm.Cache.LookupData = {};
 DynamicForm.LookupData = {};
+
 DynamicForm.Cookies = {
     list: ["rh_omni_tc", "rh_omni_itc", "rh_pid", "rh_offer_id"],
     Process: function(name) {
@@ -136,6 +140,7 @@ DynamicForm.Cookies = {
         }
     }
 };
+
 DynamicForm.constants = {
     URL: {
         FORM_SUBMIT: (document.location.protocol === 'https:' ? 'https://secure' : 'http://now') + '.eloqua.com/e/f2.aspx',
@@ -194,8 +199,6 @@ DynamicForm.Prepop = {
 DynamicForm.options = {
     upd_oid: '',
     offer_id: '1',
-    cookie_domain: '.redhat.com',
-    URL_PREFIX: (document.location.protocol === 'https:' ? 'https://' : 'http://') + 'www.redhat.com',
     debug: true,
     GoogleAnalyticsID: DynamicForm.constants.UNAVAILABLE,
     GoogleRemarketing: {
@@ -247,7 +250,87 @@ DynamicForm.options = {
     ThanksTitle: 'Your content is ready!',
     ThanksCallToAction: 'Get It Now',
     ThanksText: 'Thank you for your interest in Red Hat. Your information has been submitted successfully!',
-    ThanksButton: true
+    ThanksButton: true,
+    debug: true,
+    cookie_domain: '.redhat.local',
+    URL_PREFIX: 'http://redhat.local',
+    elqSiteId: '1798',
+    QA_Version: "1.8.8.3 LOCAL",
+    fields: {
+        visitor: ['V_Browser_Type', 'V_CityFromIP', 'V_CountryFromIP', 'V_ProvinceFromIP', 'V_ZipCodeFromIP', 'V_MostRecentReferrer', 'V_MostRecentSearchEngine', 'V_MostRecentSearchQuery'],
+        contact: ['C_FirstName', 'C_LastName', 'C_EmailAddress', 'C_BusPhone', 'C_Company', 'C_Department1', 'C_Job_Role11'],
+        tactic: ['Apps_Tactics_T_Type1', 'Apps_Tactics_T_Campaign_ID_181', 'Apps_Tactics_T_Record_Type1', 'Apps_Tactics_T_Campaign_Name1'],
+        offer: ['Apps_Offers_O_Access_Rule1', 'Apps_Offers_O_Campaign_ID_181', 'Apps_Offers_O_Campaign_Name1', 'Apps_Offers_O_Target_Persona1', 'Apps_Offers_O_Buying_Stage1', 'Apps_Offers_O_Solution_Code1', 'Apps_Offers_O_Type1', 'Apps_Offers_O_Asset_URL1', 'Apps_Offers_O_Language1', 'Apps_Offers_O_Record_Type1', 'isOnWaitingList']
+    },
+    lookup: {
+        visitor: {
+            key: '0374d03e-b989-40a0-a61c-0aa0e69c73ff',
+            lookupFunc: 'visitor',
+            fields: {
+                countryFromIp: 'V_CountryFromIP',
+                stateFromIp: 'V_ProvinceFromIP',
+                zipFromIp: 'V_ZipCodeFromIP',
+                elqEmail: 'V_ElqEmailAddress',
+                email: 'V_Email_Address',
+                mostRecentReferrer: 'V_MostRecentReferrer',
+                mostRecentSearchEngine: 'V_MostRecentSearchEngine',
+                mostRecentSearchQuery: 'V_MostRecentSearchQuery'
+            }
+        },
+        contact: {
+            key: '5ca52786-22d8-4b0a-b169-c4811e7a421e',
+            query: 'C_EmailAddress',
+            lookupFunc: 'contact',
+            fields: {
+                email: 'C_EmailAddress',
+                salutation: 'C_Salutation',
+                firstName: 'C_FirstName',
+                lastName: 'C_LastName',
+                hasRegistered: 'C_Has_Submitted_Long_Form21',
+                registeredDate: 'C_GS___Gated_Form___Register_Date1',
+                company: 'C_Company',
+                role: 'C_Job_Role11',
+                department: 'C_Department1',
+                country: 'C_Country',
+                state: 'C_State_Prov',
+                zip: 'C_Zip_Postal',
+                language: 'C_Language_Preference1',
+                verificationid: 'C_Verification_ID___Most_Recent1'
+            }
+        },
+        tactic: {
+            key: '101a71d4-968d-4f35-9120-26cb438f73bd',
+            query: 'Apps_Tactics_T_Campaign_ID_181',
+            lookupFunc: 'tactic',
+            fields: {
+                campaignId15: 'Apps_Tactics_T_Campaign_ID_151',
+                campaignId18: 'Apps_Tactics_T_Campaign_ID_181',
+                campaignName: 'Apps_Tactics_T_Campaign_Name1',
+                type: 'Apps_Tactics_T_Type1',
+                recordType: 'Apps_Tactics_T_Record_Type1',
+                isOnWaitingList: 'isOnWaitingList'
+            }
+        },
+        offer: {
+            key: 'f82ba5ae-2d05-4444-ad38-fbf7736752ec',
+            query: 'Apps_Offers_O_Campaign_ID_181',
+            lookupFunc: 'offer',
+            fields: {
+                offerId15: 'Apps_Offers_O_Campaign_ID_151',
+                offerId18: 'Apps_Offers_O_Campaign_ID_181',
+                campaignName: 'Apps_Offers_O_Campaign_Name1',
+                targetAudience: 'Apps_Offers_O_Target_Persona1',
+                buyerStage: 'Apps_Offers_O_Buying_Stage1',
+                solutionCode: 'Apps_Offers_O_Solution_Code1',
+                type: 'Apps_Offers_O_Type1',
+                assetUrl: 'Apps_Offers_O_Asset_URL1',
+                language: 'Apps_Offers_O_Language1',
+                recordType: 'Apps_Offers_O_Record_Type1',
+                isOnWaitingList: 'isOnWaitingList',
+                accessrule: 'Apps_Offers_O_Access_Rule1'
+            }
+        }
+    }
 };
 DynamicForm.views = {
     error: {
@@ -578,255 +661,344 @@ Data Lookup Key: b68eb5c2-6b22-40b6-bdb6-cba3f848b1c4
 Data Lookup Name: GOTEpM - Get Tactic Details
 Data Lookup Key: 6964661e-603a-4f93-8e13-07467544315b
 */
-DynamicForm._LocalSettings = {
-    debug: true,
-    cookie_domain: '.redhat.local',
-    URL_PREFIX: (document.location.protocol === 'https:' ? 'https://' : 'http://') + 'redhat.local',
-    elqSiteId: '1798',
-    QA_Version: "1.8.8.3 LOCAL",
-    fields: {
-        visitor: ['V_Browser_Type', 'V_CityFromIP', 'V_CountryFromIP', 'V_ProvinceFromIP', 'V_ZipCodeFromIP', 'V_MostRecentReferrer', 'V_MostRecentSearchEngine', 'V_MostRecentSearchQuery'],
-        contact: ['C_FirstName', 'C_LastName', 'C_EmailAddress', 'C_BusPhone', 'C_Company', 'C_Department1', 'C_Job_Role11'],
-        tactic: ['Apps_Tactics_T_Type1', 'Apps_Tactics_T_Campaign_ID_181', 'Apps_Tactics_T_Record_Type1', 'Apps_Tactics_T_Campaign_Name1'],
-        offer: ['Apps_Offers_O_Access_Rule1', 'Apps_Offers_O_Campaign_ID_181', 'Apps_Offers_O_Campaign_Name1', 'Apps_Offers_O_Target_Persona1', 'Apps_Offers_O_Buying_Stage1', 'Apps_Offers_O_Solution_Code1', 'Apps_Offers_O_Type1', 'Apps_Offers_O_Asset_URL1', 'Apps_Offers_O_Language1', 'Apps_Offers_O_Record_Type1', 'isOnWaitingList']
+DynamicForm.views = {
+    error: {
+        title: "Oops!",
+        text: "<p>We can't find the page you requested.</p><p>We recently redesigned our website to make it easier for you to find what you need. Obviously we still have some work to do.</p><p>Want to help us improve our website?</p><p>We've automatically logged this error and sent it to our web team. But we'd also appreciate a message from you telling us about your experience in your own words. Your contribution and <a href='/contact/web-feedback.html'>feedback</a> are important to us. Thanks for helping make our site better—both for you and the rest of the Red Hat community. That's the open source way!"
     },
-    lookup: {
-        visitor: {
-            key: '0374d03e-b989-40a0-a61c-0aa0e69c73ff',
-            lookupFunc: 'visitor',
-            fields: {
-                countryFromIp: 'V_CountryFromIP',
-                stateFromIp: 'V_ProvinceFromIP',
-                zipFromIp: 'V_ZipCodeFromIP',
-                elqEmail: 'V_ElqEmailAddress',
-                email: 'V_Email_Address',
-                mostRecentReferrer: 'V_MostRecentReferrer',
-                mostRecentSearchEngine: 'V_MostRecentSearchEngine',
-                mostRecentSearchQuery: 'V_MostRecentSearchQuery'
+    form: {
+        'method': 'post',
+        'cls': 'hidden',
+        'id': 'RespondedToCampaign',
+        'name': 'RespondedToCampaign',
+        'fieldset': [{
+            'type': 'hidden',
+            'id': 'elqFormName',
+            'name': 'elqFormName',
+            'value': 'RespondedToCampaign'
+        }, {
+            'type': 'hidden',
+            'id': 'elqSiteID',
+            'name': 'elqSiteID'
+        }, {
+            'type': 'hidden',
+            'id': 'A_ElqVisitorGuid',
+            'name': 'A_ElqVisitorGuid'
+        }, {
+            'type': 'hidden',
+            'id': 'elqCustomerGUID',
+            'name': 'elqCustomerGUID'
+        }, {
+            'type': 'hidden',
+            'id': 'C_Addition_Information1',
+            'name': 'C_Addition_Information1'
+        }, {
+            'type': 'hidden',
+            'id': 'A_Timestamp',
+            'name': 'A_Timestamp'
+        }, {
+            'type': 'hidden',
+            'id': 'A_SubmissionID',
+            'name': 'A_SubmissionID'
+        }, {
+            'type': 'hidden',
+            'id': 'A_LandingPageURL',
+            'name': 'A_LandingPageURL'
+        }, {
+            'type': 'hidden',
+            'id': 'V_MostRecentReferrer',
+            'name': 'A_ReferringPageURL'
+        }, {
+            'type': 'hidden',
+            'id': 'V_MostRecentSearchEngine',
+            'name': 'A_MostRecentSearchEngine'
+        }, {
+            'type': 'hidden',
+            'id': 'V_MostRecentSearchQuery',
+            'name': 'A_MostRecentSearchQuery'
+        }, {
+            'type': 'hidden',
+            'id': 'A_RedirectURL',
+            'name': 'A_RedirectURL'
+        }, {
+            'type': 'hidden',
+            'id': 'Apps_Offers_O_Campaign_ID_181',
+            'name': 'A_OfferID'
+        }, {
+            'type': 'hidden',
+            'id': 'A_PartnerID',
+            'name': 'A_PartnerID'
+        }, {
+            'type': 'hidden',
+            'id': 'A_VerificationID',
+            'name': 'A_VerificationID'
+        }, {
+            'type': 'hidden',
+            'id': 'Apps_Offers_O_Campaign_Name1',
+            'name': 'A_OfferDetails_CampaignName'
+        }, {
+            'type': 'hidden',
+            'id': 'Apps_Offers_O_Type1',
+            'name': 'A_OfferDetails_Type'
+        }, {
+            'type': 'hidden',
+            'id': 'Apps_Offers_O_Solution_Code1',
+            'name': 'A_OfferDetails_SolutionCode'
+        }, {
+            'type': 'hidden',
+            'id': 'Apps_Offers_O_Buying_Stage1',
+            'name': 'A_OfferDetails_BuyingStage'
+        }, {
+            'type': 'hidden',
+            'id': 'Apps_Offers_O_Target_Persona1',
+            'name': 'A_OfferDetails_TargetPersona'
+        }, {
+            'type': 'hidden',
+            'id': 'Apps_Offers_O_Asset_URL1',
+            'name': 'A_OfferDetails_AssetURL'
+        }, {
+            'type': 'hidden',
+            'id': 'A_TacticID_Internal',
+            'name': 'A_TacticID_Internal'
+        }, {
+            'type': 'hidden',
+            'id': 'Apps_Tactics_T_Campaign_ID_181',
+            'name': 'A_TacticID_External'
+        }, {
+            'type': 'hidden',
+            'id': 'Apps_Tactics_T_Campaign_Name1',
+            'name': 'A_TacticDetails_CampaignName'
+        }, {
+            'type': 'hidden',
+            'id': 'Apps_Tactics_T_Type1',
+            'name': 'A_TacticDetails_Type'
+        }, {
+            'type': 'hidden',
+            'id': 'V_CityFromIP',
+            'name': 'V_CityFromIP'
+        }, {
+            'type': 'hidden',
+            'id': 'V_CountryFromIP',
+            'name': 'V_CountryFromIP'
+        }, {
+            'type': 'hidden',
+            'id': 'V_ProvinceFromIP',
+            'name': 'V_ProvinceFromIP'
+        }, {
+            'type': 'hidden',
+            'id': 'V_ZipCodeFromIP',
+            'name': 'V_ZipCodeFromIP'
+        }, {
+            'type': 'hidden',
+            'id': 'V_Browser_Type',
+            'name': 'V_Browser_Type'
+        }, {
+            'type': 'hidden',
+            'id': 'A_UX_Type',
+            'name': 'A_UX_Type',
+            'value': 'Long Form'
+        }, {
+            'type': 'hidden',
+            'id': 'A_UX_Language',
+            'name': 'A_UX_Language'
+        }, {
+            'type': 'hidden',
+            'id': 'A_UX_Browser',
+            'name': 'A_UX_Browser',
+            'value': window.navigator.userAgent
+        }, {
+            'type': 'hidden',
+            'id': 'QA_Version',
+            'name': 'QA_Version'
+        }, {
+            'type': 'hidden',
+            'value': '',
+            'id': 'QA_Ruaspambot',
+            'name': 'QA_Ruaspambot'
+        }, {
+            'type': 'hidden',
+            'value': '',
+            'id': 'QA_Imatestrecord',
+            'name': 'QA_Imatestrecord'
+        }, {
+            'type': 'hidden',
+            'id': 'DB_DUNS_Number',
+            'name': 'DB_DUNS_Number'
+        }, {
+            'type': 'hidden',
+            'id': 'DB_Annual_Revenue',
+            'name': 'DB_Annual_Revenue'
+        }, {
+            'type': 'hidden',
+            'id': 'DB_State_Prov',
+            'name': 'DB_State_Prov'
+        }, {
+            'type': 'hidden',
+            'id': 'DB_Zip_Postal',
+            'name': 'DB_Zip_Postal'
+        }, {
+            'type': 'hidden',
+            'id': 'DB_Country',
+            'name': 'DB_Country'
+        }, {
+            'type': 'hidden',
+            'id': 'DB_Audience',
+            'name': 'DB_Audience'
+        }, {
+            'type': 'hidden',
+            'id': 'DB_Audience_Segment',
+            'name': 'DB_Audience_Segment'
+        }, {
+            'type': 'hidden',
+            'id': 'DB_Industry',
+            'name': 'DB_Industry'
+        }, {
+            'type': 'hidden',
+            'id': 'DB_Employee_Band',
+            'name': 'DB_Employee_Band'
+        }, {
+            'type': 'hidden',
+            'id': 'DB_DemandBaseID',
+            'name': 'DB_DemandBaseID'
+        }, {
+            'type': 'hidden',
+            'id': 'DB_Fortune1000',
+            'name': 'DB_Fortune1000'
+        }, {
+            'type': 'hidden',
+            'id': 'DB_Marketing_Alias',
+            'name': 'DB_Marketing_Alias'
+        }, {
+            'type': 'hidden',
+            'id': 'DB_Employee_Count',
+            'name': 'DB_Employee_Count'
+        }, {
+            'type': 'hidden',
+            'id': 'DB_Annual_Sales',
+            'name': 'DB_Annual_Sales'
+        }, {
+            'type': 'hidden',
+            'id': 'DB_Website',
+            'name': 'DB_Website'
+        }, {
+            'type': 'hidden',
+            'id': 'DB_Primary_SIC',
+            'name': 'DB_Primary_SIC'
+        }, {
+            'type': 'hidden',
+            'id': 'DB_IP',
+            'name': 'DB_IP'
+        }, {
+            'cls': 'input-block-level required',
+            'id': 'C_FirstName',
+            'value': '',
+            'name': 'C_FirstName',
+            'type': 'text',
+            'label': {
+                'input_target': 'C_FirstName',
+                'text': 'First Name'
             }
-        },
-        contact: {
-            key: '5ca52786-22d8-4b0a-b169-c4811e7a421e',
-            query: 'C_EmailAddress',
-            lookupFunc: 'contact',
-            fields: {
-                email: 'C_EmailAddress',
-                salutation: 'C_Salutation',
-                firstName: 'C_FirstName',
-                lastName: 'C_LastName',
-                hasRegistered: 'C_Has_Submitted_Long_Form21',
-                registeredDate: 'C_GS___Gated_Form___Register_Date1',
-                company: 'C_Company',
-                role: 'C_Job_Role11',
-                department: 'C_Department1',
-                country: 'C_Country',
-                state: 'C_State_Prov',
-                zip: 'C_Zip_Postal',
-                language: 'C_Language_Preference1',
-                verificationid: 'C_Verification_ID___Most_Recent1'
-            }
-        },
-        tactic: {
-            key: '101a71d4-968d-4f35-9120-26cb438f73bd',
-            query: 'Apps_Tactics_T_Campaign_ID_181',
-            lookupFunc: 'tactic',
-            fields: {
-                campaignId15: 'Apps_Tactics_T_Campaign_ID_151',
-                campaignId18: 'Apps_Tactics_T_Campaign_ID_181',
-                campaignName: 'Apps_Tactics_T_Campaign_Name1',
-                type: 'Apps_Tactics_T_Type1',
-                recordType: 'Apps_Tactics_T_Record_Type1',
-                isOnWaitingList: 'isOnWaitingList'
-            }
-        },
-        offer: {
-            key: 'f82ba5ae-2d05-4444-ad38-fbf7736752ec',
-            query: 'Apps_Offers_O_Campaign_ID_181',
-            lookupFunc: 'offer',
-            fields: {
-                offerId15: 'Apps_Offers_O_Campaign_ID_151',
-                offerId18: 'Apps_Offers_O_Campaign_ID_181',
-                campaignName: 'Apps_Offers_O_Campaign_Name1',
-                targetAudience: 'Apps_Offers_O_Target_Persona1',
-                buyerStage: 'Apps_Offers_O_Buying_Stage1',
-                solutionCode: 'Apps_Offers_O_Solution_Code1',
-                type: 'Apps_Offers_O_Type1',
-                assetUrl: 'Apps_Offers_O_Asset_URL1',
-                language: 'Apps_Offers_O_Language1',
-                recordType: 'Apps_Offers_O_Record_Type1',
-                isOnWaitingList: 'isOnWaitingList',
-                accessrule: 'Apps_Offers_O_Access_Rule1'
-            }
-        }
+        }, {
+            'label': {
+                'input_target': 'C_LastName',
+                'text': 'Last Name'
+            },
+            'name': 'C_LastName',
+            'id': 'C_LastName',
+            'value': '',
+            'cls': 'input-block-level required',
+            'type': 'text'
+        }, {
+            'label': {
+                'input_target': 'C_EmailAddress',
+                'text': 'Email'
+            },
+            'name': 'C_EmailAddress',
+            'id': 'C_EmailAddress',
+            'value': '',
+            'cls': 'input-block-level required',
+            'type': 'email'
+        }, {
+            'label': {
+                'input_target': 'C_BusPhone',
+                'text': 'Phone'
+            },
+            'name': 'C_BusPhone',
+            'id': 'C_BusPhone',
+            'value': ' ',
+            'cls': 'input-block-level required',
+            'type': 'text'
+        }, {
+            'label': {
+                'input_target': 'C_Company',
+                'text': 'Company'
+            },
+            'name': 'C_Company',
+            'id': 'C_Company',
+            'cls': 'input-block-level required',
+            'type': 'text'
+        }, {
+            'label': {
+                'input_target': 'C_Department1',
+                'text': 'Department'
+            },
+            'type': 'select',
+            'value': '',
+            'name': 'C_Department1',
+            'id': 'C_Department1',
+            'cls': 'input-block-level required',
+            'options': ['-- Please Select --', 'IT - Applications / Development', 'IT - Business Intelligence', 'IT - Database', 'IT - Desktop / Help Desk', 'IT - Network', 'IT - Operations', 'IT - Project Management', 'IT - Quality / Testing', 'IT - Risk / Compliance / Security', 'IT - Server / Storage', 'IT - Telecom', 'IT - Web', 'IT - All', 'Customer Service / Call Center', 'Executive Office', 'Finance', 'Human Resources', 'Legal', 'Marketing Communications', 'Research &amp; Development', 'Sales', 'Technical Support', 'Other']
+        }, {
+            'label': {
+                'input_target': 'C_Job_Role11',
+                'text': 'Job Title'
+            },
+            'type': 'select',
+            'name': 'C_Job_Role11',
+            'id': 'C_Job_Role11',
+            'cls': 'input-block-level required',
+            'value': '',
+            'options': ['-- Please Select --']
+        }]
     }
 };
-DynamicForm._DevSettings = {
-    debug: true,
-    URL_PREFIX: (document.location.protocol === 'https:' ? 'https://' : 'http://') + 'cms-300.usersys.redhat.com',
-    elqSiteId: '1798',
-    QA_Version: "1.8.8.3 SANDBOX",
-    fields: {
-        visitor: ['V_Browser_Type', 'V_CityFromIP', 'V_CountryFromIP', 'V_ProvinceFromIP', 'V_ZipCodeFromIP', 'V_MostRecentReferrer', 'V_MostRecentSearchEngine', 'V_MostRecentSearchQuery'],
-        contact: ['C_FirstName', 'C_LastName', 'C_EmailAddress', 'C_BusPhone', 'C_Company', 'C_Department1', 'C_Job_Role11'
-            /*,
-            'C_Addition_Information1'*/
-        ],
-        tactic: ['Apps_Tactics_T_Type1', 'Apps_Tactics_T_Campaign_ID_181', 'Apps_Tactics_T_Record_Type1', 'Apps_Tactics_T_Campaign_Name1'],
-        offer: ['Apps_Offers_O_Access_Rule1', 'Apps_Offers_O_Campaign_ID_181', 'Apps_Offers_O_Campaign_Name1', 'Apps_Offers_O_Target_Persona1', 'Apps_Offers_O_Buying_Stage1', 'Apps_Offers_O_Solution_Code1', 'Apps_Offers_O_Type1', 'Apps_Offers_O_Asset_URL1', 'Apps_Offers_O_Language1', 'Apps_Offers_O_Record_Type1', 'isOnWaitingList']
-    },
-    lookup: {
-        visitor: {
-            key: '0374d03eb98940a0a61c0aa0e69c73ff',
-            lookupFunc: 'visitor',
-            fields: {
-                countryFromIp: 'V_CountryFromIP',
-                stateFromIp: 'V_ProvinceFromIP',
-                zipFromIp: 'V_ZipCodeFromIP',
-                elqEmail: 'V_ElqEmailAddress',
-                email: 'V_Email_Address',
-                mostRecentReferrer: 'V_MostRecentReferrer',
-                mostRecentSearchEngine: 'V_MostRecentSearchEngine',
-                mostRecentSearchQuery: 'V_MostRecentSearchQuery'
-            }
-        },
-        contact: {
-            key: '5ca5278622d84b0ab169c4811e7a421e',
-            query: 'C_EmailAddress',
-            lookupFunc: 'contact',
-            fields: {
-                email: 'C_EmailAddress',
-                salutation: 'C_Salutation',
-                firstName: 'C_FirstName',
-                lastName: 'C_LastName',
-                hasRegistered: 'C_Has_Submitted_Long_Form21',
-                registeredDate: 'C_GS___Gated_Form___Register_Date1',
-                company: 'C_Company',
-                role: 'C_Job_Role11',
-                department: 'C_Department1',
-                country: 'C_Country',
-                state: 'C_State_Prov',
-                zip: 'C_Zip_Postal',
-                language: 'C_Language_Preference1',
-                verificationid: 'C_Verification_ID___Most_Recent1'
-            }
-        },
-        tactic: {
-            key: '101a71d4968d4f35912026cb438f73bd',
-            query: 'Apps_Tactics_T_Campaign_ID_181',
-            lookupFunc: 'tactic',
-            fields: {
-                campaignId15: 'Apps_Tactics_T_Campaign_ID_151',
-                campaignId18: 'Apps_Tactics_T_Campaign_ID_181',
-                campaignName: 'Apps_Tactics_T_Campaign_Name1',
-                type: 'Apps_Tactics_T_Type1',
-                recordType: 'Apps_Tactics_T_Record_Type1',
-                isOnWaitingList: 'isOnWaitingList'
-            }
-        },
-        offer: {
-            key: 'f82ba5ae2d054444ad38fbf7736752ec',
-            query: 'Apps_Offers_O_Campaign_ID_181',
-            lookupFunc: 'offer',
-            fields: {
-                offerId15: 'Apps_Offers_O_Campaign_ID_151',
-                offerId18: 'Apps_Offers_O_Campaign_ID_181',
-                campaignName: 'Apps_Offers_O_Campaign_Name1',
-                targetAudience: 'Apps_Offers_O_Target_Persona1',
-                buyerStage: 'Apps_Offers_O_Buying_Stage1',
-                solutionCode: 'Apps_Offers_O_Solution_Code1',
-                type: 'Apps_Offers_O_Type1',
-                assetUrl: 'Apps_Offers_O_Asset_URL1',
-                language: 'Apps_Offers_O_Language1',
-                recordType: 'Apps_Offers_O_Record_Type1',
-                isOnWaitingList: 'isOnWaitingList',
-                accessrule: 'Apps_Offers_O_Access_Rule1'
-            }
-        }
+/* Eloqua Lookup Keys
+
+Sandbox:
+Data Lookup Name: GOTEpM - Get Visitor Profile
+Data Lookup Key: 0374d03e-b989-40a0-a61c-0aa0e69c73ff
+
+Data Lookup Name: GOTEpM - Get Contact Profile
+Data Lookup Key: 5ca52786-22d8-4b0a-b169-c4811e7a421e
+
+Data Lookup Name: GOTEpM - Get Offer Details
+Data Lookup Key: f82ba5ae-2d05-4444-ad38-fbf7736752ec
+
+Data Lookup Name: GOTEpM - Get Tactic Details
+Data Lookup Key: 101a71d4-968d-4f35-9120-26cb438f73bd
+
+Production:
+Data Lookup Name: GOTEpM - Get Visitor Profile
+Data Lookup Key: 14c651bb-beae-4f74-a382-d1adede85da0
+
+Data Lookup Name: GOTEpM - Get Contact Profile
+Data Lookup Key: af62a316-6489-4a86-b35e-0b5956fcb3a4
+
+Data Lookup Name: GOTEpM - Get Offer Details
+Data Lookup Key: b68eb5c2-6b22-40b6-bdb6-cba3f848b1c4
+
+Data Lookup Name: GOTEpM - Get Tactic Details
+Data Lookup Key: 6964661e-603a-4f93-8e13-07467544315b
+*/
+DynamicForm.log = function() {
+    if (!DynamicForm.options.debug) {
+        return;
     }
-};
-DynamicForm._StageSettings = {
-    debug: false,
-    URL_PREFIX: (document.location.protocol === 'https:' ? 'https://' : 'http://') + 'stage.redhat.com',
-    QA_Version: "1.8.8.3 STAGE",
-};
-DynamicForm._ProdSettings = {
-    no_css: false,
-    debug: false,
-    URL_PREFIX: (document.location.protocol === 'https:' ? 'https://' : 'http://') + 'www.redhat.com',
-    QA_Version: "1.8.8.3",
-    elqSiteId: '1795',
-    fields: {
-        visitor: ['V_Browser_Type', 'V_CityFromIP', 'V_CountryFromIP', 'V_ProvinceFromIP', 'V_ZipCodeFromIP', 'V_MostRecentReferrer', 'V_MostRecentSearchEngine', 'V_MostRecentSearchQuery'],
-        contact: ['C_FirstName', 'C_LastName', 'C_EmailAddress', 'C_BusPhone', 'C_Company', 'C_Department1', 'C_Job_Role11'
-            /*,
-            'C_Addition_Information1'*/
-        ],
-        tactic: ['Apps_Tactics_T_Type1', 'Apps_Tactics_T_Campaign_ID_181', 'Apps_Tactics_T_Record_Type1', 'Apps_Tactics_T_Campaign_Name1'],
-        offer: ['Apps_Offers_O_Access_Rule1', 'Apps_Offers_O_Campaign_ID_181', 'Apps_Offers_O_Campaign_Name1', 'Apps_Offers_O_Target_Persona1', 'Apps_Offers_O_Buying_Stage1', 'Apps_Offers_O_Solution_Code1', 'Apps_Offers_O_Type1', 'Apps_Offers_O_Asset_URL1', 'Apps_Offers_O_Language1', 'Apps_Offers_O_Record_Type1', 'isOnWaitingList']
-    },
-    lookup: {
-        visitor: {
-            key: '14c651bb-beae-4f74-a382-d1adede85da0',
-            fields: {
-                countryFromIp: 'V_CountryFromIP',
-                stateFromIp: 'V_ProvinceFromIP',
-                zipFromIp: 'V_ZipCodeFromIP',
-                email: 'V_Email_Address',
-                mostRecentReferrer: 'V_MostRecentReferrer',
-                mostRecentSearchEngine: 'V_MostRecentSearchEngine',
-                mostRecentSearchQuery: 'V_MostRecentSearchQuery'
-            }
-        },
-        contact: {
-            key: 'af62a316-6489-4a86-b35e-0b5956fcb3a4',
-            query: 'C_EmailAddress',
-            fields: {
-                email: 'C_EmailAddress',
-                salutation: 'C_Salutation',
-                firstName: 'C_FirstName',
-                lastName: 'C_LastName',
-                hasRegistered: 'C_Has_Submitted_Long_Form1',
-                registeredDate: 'C_Last_Submitted_Long_Form_Date1',
-                company: 'C_Company',
-                role: 'C_Job_Role11',
-                department: 'C_Department1',
-                country: 'C_Country',
-                state: 'C_State_Prov',
-                zip: 'C_Zip_Postal',
-                language: 'C_Language_Preference1',
-                verificationid: 'C_Verification_ID___Most_Recent1'
-            }
-        },
-        tactic: {
-            key: '6964661e-603a-4f93-8e13-07467544315b',
-            query: 'Apps_Tactics_T_Campaign_ID_181',
-            fields: {
-                campaignId15: 'Apps_Tactics_T_Campaign_ID_151',
-                campaignId18: 'Apps_Tactics_T_Campaign_ID_181',
-                campaignName: 'Apps_Tactics_T_Campaign_Name1',
-                type: 'Apps_Tactics_T_Type1',
-                recordType: 'Apps_Tactics_T_Record_Type1',
-                isOnWaitingList: 'isOnWaitingList'
-            }
-        },
-        offer: {
-            key: 'b68eb5c2-6b22-40b6-bdb6-cba3f848b1c4',
-            query: 'Apps_Offers_O_Campaign_ID_181',
-            fields: {
-                offerId15: 'Apps_Offers_O_Campaign_ID_151',
-                offerId18: 'Apps_Offers_O_Campaign_ID_181',
-                campaignName: 'Apps_Offers_O_Campaign_Name1',
-                targetAudience: 'Apps_Offers_O_Target_Persona1',
-                buyerStage: 'Apps_Offers_O_Buying_Stage1',
-                solutionCode: 'Apps_Offers_O_Solution_Code1',
-                type: 'Apps_Offers_O_Type1',
-                assetUrl: 'Apps_Offers_O_Asset_URL1',
-                language: 'Apps_Offers_O_Language1',
-                recordType: 'Apps_Offers_O_Record_Type1',
-                isOnWaitingList: 'isOnWaitingList',
-                accessrule: 'Apps_Offers_O_Access_Rule1'
-            }
-        }
+    var msg = '[DynamicForm.log] ' + Array.prototype.join.call(arguments, '');
+    if (window.console && window.console.log) {
+        window.console.log(msg);
+    } else if (window.opera && window.opera.postError) {
+        window.opera.postError(msg);
     }
 };
 DynamicForm.InitOptions = function(opts) {
@@ -837,43 +1009,7 @@ DynamicForm.InitOptions = function(opts) {
     DynamicForm.options.FormURL = document.URL;
 
     //Set up environment
-    switch (location.hostname) {
-        //LOCAL DEVELOPMENT
-        case 'localhost':
-            /* falls through */
-        case '127.0.0.1':
-            /* falls through */
-        case 'redhat.local':
-		    DynamicForm.log("DynamicForm Starting in LOCAL mode...");
-            //$.extend(DynamicForm.options, opts, DynamicForm._ProdSettings);
-            $.extend(DynamicForm.options, opts, DynamicForm._LocalSettings);
-            break;
-            //QA/TESTING
-        case 'qa.engage.redhat.com':
-        case 'cms-300.usersys.redhat.com':
-        case 'www.int.openshift.com':
-            //case 'dev.rhcloud.com':
-            //case 'compute-1.amazonaws.com':
-			    DynamicForm.log("DynamicForm Starting in SANDBOX mode...");
-            $.extend(DynamicForm.options, opts, DynamicForm._DevSettings);
-            break;
-            //STAGING
-        case 'stage.rhel.ctpboston.com':
-        case 'www.stg.openshift.com':
-        case 'stage.redhat.com':
-            /* falls through */
-        case 'redhat.stage':
-		    DynamicForm.log("DynamicForm Starting in STAGE mode...");
-            $.extend(DynamicForm.options, opts, DynamicForm._StageSettings, DynamicForm._ProdSettings);
-            break;
-            //PRODUCTION
-        case 'redhat.prod':
-            /* falls through */
-        default:
-		    DynamicForm.log("DynamicForm Starting in PROD mode...");
-            $.extend(DynamicForm.options, opts, DynamicForm._ProdSettings);
-            break;
-    }
+    DynamicForm.log("DynamicForm Starting in LOCAL mode...");
 
     //update configure options with query string parameters
     var config_options = ['v', 'language', 'country', 'sc_cid', 'intcmp', 'pid', 'offer_id', 'GoogleAnalyticsID', 'no_css'];
@@ -893,17 +1029,6 @@ DynamicForm.InitOptions = function(opts) {
 
     if (DynamicForm.CheckValue(DynamicForm.options.rh_omni_tc) && DynamicForm.ValueIsEmpty(DynamicForm.options.sc_cid)) {
         DynamicForm.options.sc_cid = DynamicForm.options.rh_omni_tc;
-    }
-};
-DynamicForm.log = function() {
-    if (!DynamicForm.options.debug) {
-        return;
-    }
-    var msg = '[DynamicForm.log] ' + Array.prototype.join.call(arguments, '');
-    if (window.console && window.console.log) {
-        window.console.log(msg);
-    } else if (window.opera && window.opera.postError) {
-        window.opera.postError(msg);
     }
 };
 DynamicForm.start = function(opts) {
@@ -1263,14 +1388,14 @@ DynamicForm.Template = {
 		} else if ($.url(document.URL).param('lb') === '1') {
 			DynamicForm.options.FormTitle = "";
 		}
-
+		
         if (DynamicForm.options.type === DynamicForm.constants.T_FULL && DynamicForm.options.lb !== '1') {
             DynamicForm.Template.formHtml = DynamicForm.Template.formHtml.concat('<header><img alt="Red Hat Logo" title="Red Hat Logo" src="' + DynamicForm.options.URL_PREFIX + '/forms/img/rh-logo103x36.png" height="36" width="103" class="rh-logo"><h4>', DynamicForm.options.FormTitle, '</h4></header>');
         } else {
 			if (DynamicForm.options.FormTitle !== "") {
 	            DynamicForm.Template.formHtml = DynamicForm.Template.formHtml.concat('<header><h4>', DynamicForm.options.FormTitle, '</h4></header>');
-	        }
-        }
+	        } 
+        } 
 
 		if ($.url(document.URL).param('lb') === '1' && DynamicForm.CheckValue($.url(document.URL).param('FormIntro'))) {
 			DynamicForm.options.FormIntro = $.url(document.URL).param('FormIntro');
@@ -2961,14 +3086,14 @@ DynamicForm.Thanks = {
         DynamicForm.ShowLoadingMsg("Please wait...");
         DynamicForm.Cookies.Process();
         DynamicForm.Tracking.GoogleRemarketing.Trigger();
-
+		
 		var OfferLookupInit = DynamicForm.Lookup.Offer(),
 		    InitDef = new $.Deferred(),
 			email = DynamicForm.GetEmailAddress(),
             TacticID = DynamicForm.GetTacticID('ext'),
             container = $(DynamicForm.constants.CONTAINER),
             channel = $.url(document.URL).param('channel') || 'landing page';
-
+		
 		$.when(OfferLookupInit).then(function() {
 	        DynamicForm.options.uxType = 'Download';
 
