@@ -1,0 +1,213 @@
+.contract_renew_label {
+   color: #0066CC;
+   cursor: pointer;
+   font-weight: bold;
+   margin-left: 1ex;
+}
+
+.contract_select_bar {
+   margin-left: 15px;
+}
+
+.contract_select_bar_static {
+   padding-top: 3px;
+}
+
+.filter_select_bar {
+   margin-bottom: 15px;
+}
+
+.filter_select_bar .filter_select_label, 
+.contract_select_bar .contract_select_label,
+.contract_select_bar .single_contract_label {
+    display: inline;
+    font-weight: bold;
+}
+
+.filter_select_bar .filter_select_box, 
+.contract_select_bar .contract_select_box {
+   margin-left: 1ex;
+   margin-right: 1ex;
+}
+
+.filter_expired_label {
+   display: inline;
+}
+
+.contract_select_bar .contract_number {
+    display: inline;
+}
+
+#subscriptionTable .deselectAllLink {
+    display: none;
+}
+
+.data_table .nav {
+    margin-top: 2ex;
+    float: right;
+    margin-right: 2ex;
+    vertical-align: center;
+}
+
+.data_table .nav div {
+    display: inline;
+    text-align: center;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.data_table .nav div.nav_status { 
+    margin-left:7px;
+}
+
+.data_table .nav div.nav_view_all {
+    cursor: pointer;
+    color: #0066CC;
+    margin-right:7px;
+}
+
+.data_table .nav .nav_button_enabled {
+    cursor: pointer;
+    padding: 0em 0.5em;
+}
+
+.data_table .nav .nav_button_disabled {
+    padding: 0em 0.5em;
+}
+
+.data_table .data_table_contents {
+    width: 690px;
+    margin: 1ex 0.5ex;
+    border-collapse: collapse;
+    clear: right !important /*Firefox*/;
+    clear: none;
+}
+
+.data_table .data_table_contents thead th {
+    background-color: #666;
+}
+
+.data_table .data_table_contents thead tr th {
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid lightgrey;
+}
+
+.data_table .data_table_contents thead th.sortable {
+    text-decoration: none;
+    color: #EEEEEE;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.data_table .data_table_contents thead th {
+   height: 30px;
+}
+
+.data_table .data_table_contents thead th span {
+   display: block;
+}
+
+.header_label { color: #eee; text-decoration:none; }
+
+.data_table .data_table_contents thead th span img {
+   vertical-align: middle;
+   margin-left: 3px;
+}
+
+.data_table .data_table_contents tfoot {
+   background-color: grey;
+}
+
+.data_table .data_table_contents tfoot td {
+   padding-left: 3em;
+   height: 30px;
+}
+
+.data_table .data_table_contents tfoot div {
+   float: left;
+}
+
+.data_table .data_table_contents tfoot div select {
+   margin-right: 1em;
+}
+
+.data_table .data_table_contents tr.row_odd {
+    background-color: #EEEEEE;
+}
+
+.data_table .data_table_contents tr.row_even {
+    background-color: white;
+}
+
+.data_table .data_table_contents td {
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid lightgrey;
+    padding: 0px 5px 0px 5px;
+    height:50px;
+}
+
+.data_table .data_table_contents td .action {
+    color: #0066CC;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.data_table .data_table_contents td.renew {
+    white-space: nowrap;
+}
+
+.draggable_row_panel table {
+    width: 700px;
+}
+
+.draggable_row_panel td {
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid grey;
+    padding: 0px 5px 0px 5px;
+}
+
+.row_copy {
+    background-color: #CCCCCC;
+    opacity: 0.4;
+}
+
+.data_table .data_table_contents td.row_original {
+    border: 2px solid black;
+}
+
+.data_table .data_table_contents .checkbox_column { 
+    width:1em;
+}
+
+.data_table .data_table_contents .subscription_column { 
+    width:15em;
+    text-align: left;
+}
+
+.data_table .data_table_contents .quantity_column { 
+    width:4em;
+}
+
+.data_table .data_table_contents .installation_number_column {
+    width:9em;
+}
+
+.data_table .data_table_contents .startdate_column { 
+    width:5.5em;
+}
+
+.data_table .data_table_contents .enddate_column { 
+    width:5.5em;
+}
+
+.data_table .data_table_contents .support_column { 
+    width:7em;
+}
+
+.data_table .data_table_contents .renew_column { 
+    width:7em;
+}
+

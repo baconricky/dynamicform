@@ -1,0 +1,190 @@
+/***********************
+
+redhat.com - RHEL4 APAC LAUNCH
+ 
+created: 02FEB05 by lisa
+
+modified last: 
+
+***********************/
+
+/****** Main Styles *****/
+
+body {
+	color: #666666;
+	}
+
+#Top {
+	background: url(/g/landing/rhel4_apac_top.png) no-repeat;
+	height: 28px;
+	width: 720px;
+	}
+
+#Bottom {
+	background: url(/g/landing/rhel4_apac_bottom.png) no-repeat;
+	height: 26px;
+	width: 720px;
+	}
+	
+#ap4Wrap {
+	background: #c2d6e5 url(/g/landing/rhel4_apac_background.png) repeat;
+	margin: 30px 0 0 0;
+	width: 720px;
+	height: auto;
+	text-align: center;
+	}
+	
+#ap4Wrap:after {
+    content: "."; 
+    display: block;
+    height: 1;			/* Mozilla background image bug Pt1 */
+    margin-top: -1px	/* Mozilla background image bug Pt2 */
+    overflow: hidden;
+    clear: both; 
+    visibility: hidden;
+    }
+
+    /* Holly Hack Targets IE Win only \*/
+    * html ap4#Wrap {height: 1%;}
+    /* End Holly Hack */
+	
+#ColLeft {
+	float: left;
+	width: 260px;
+	height: auto;
+	text-align: right;
+	}
+	
+	/* Holly Hack Targets IE Win only \*/
+    * html #ColLeft {position: static;}
+    /* End Holly Hack */
+	
+.ColRight {
+	float: right;
+	padding: 0 32px 0 15px;
+	width: 400px;
+	height: auto;
+	text-align: left;
+	}
+	
+	/* Holly Hack Targets IE Win only \*/
+    * html .ColRight {position: static;}
+    /* End Holly Hack */
+
+
+/******* HEADLINE AND TEXT STYLES *******/
+
+img.Main {
+	margin: 0 auto 30px auto;
+	}
+	
+h1.Head {
+	padding: 0;
+	margin: 0 0 15px 0;
+	text-align: right;
+	background: url(/g/landing/rhel4_apac_head2.gif) no-repeat;
+	height: 69px;
+	width: 385px;
+	}
+	
+h1.Head span {
+	display: none;
+	}
+	
+h2.Reg {
+	color: #cc312a;
+	font-size: 15pt;
+	font-weight: bold;
+	text-transform: uppercase;
+	}
+	
+h2.Agenda {
+	color: #cc312a;
+	font-size: 15pt;
+	font-weight: bold;
+	text-transform: uppercase;
+	}
+	
+h2.Bio {
+	color: #cc312a;
+	font-size: 13pt;
+	font-weight: bold;
+	text-transform: uppercase;
+	margin-top: 15px;
+	}	
+	
+h3.Left {
+	color: #4c8bae;
+	text-align: right;
+	font-weight: bold;
+	font-size: 11pt;
+	}
+	
+h3.Reg {
+	color: #cc312a;
+	font-size: 8pt;
+	font-weight: bold;
+	text-transform: lowercase;
+	}
+	
+	
+p.bodyText {
+	font-size: 15pt;
+	line-height: 1.25em;
+	margin-bottom: 15px;
+	}	
+	
+#ColLeft p.sponsFirst {
+	margin-top: 0;
+	padding-top: 0;
+	}
+	
+#ColLeft p.sponsLast {
+	margin-bottom: 30px;
+	}
+	
+ul.ap4menu {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	}
+	
+ul.ap4menu li {
+	font-size: 11pt;
+	font-weight: bold;
+	text-transform: uppercase;
+	}
+	
+ul.ap4menu li a {
+	color: #4c8bae;
+	font-size: 11pt;
+	font-weight: bold;
+	margin-bottom: 15px;
+	white-space: nowrap;
+	text-decoration: underline;
+	}
+	
+ul.starList {
+	list-style: none;
+	padding-left: 0;
+	margin-left: 0;
+	}
+	
+ul.starList li {
+	background-image: url(/g/landing/rhel4_apac_bullet_bluestar.gif);
+	background-repeat: no-repeat;
+	background-position: 0 1px;
+	padding: 1px 0 1px 25px;
+	font-size: 10pt;
+	font-weight: bold;
+	text-transform: uppercase;
+	}
+	
+ul.starList li a.byline {
+	color: #4c8bae;
+	font-size: 9pt;
+	font-weight: normal;
+	margin-bottom: 11px;
+	text-decoration: none;
+	text-transform: none;
+	}

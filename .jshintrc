@@ -1,0 +1,19 @@
+{
+  "asi" : true,
+  "boss" : true,
+  "browser" : true,
+  "camelcase" : false,
+  "debug" : true,
+  "devel" : false,
+  "eqeqeq" : false,
+  "eqnull" : true,
+  "expr" : true,
+  "jquery": true,
+  "laxbreak" : true,
+  "newcap" : false,
+  "sub" : true,
+  "undef" : true,
+  "unused" : false,
+  "validthis": true,
+  "predef": ["s", "dynamicForm"]
+}

@@ -1,0 +1,36 @@
+
+body {
+ background: #fff;
+ visibility: hidden;
+}
+
+#wrap {
+ width: 100%;
+}
+
+#mainNav {
+ display: none;
+}
+
+#headWrap {
+ display: none;
+}
+
+#contentWrap {
+ position: absolute
+ top: 10px;
+}
+
+#rhLogo {
+ visibility: visible;
+}
+
+#site_co_header {
+ visibility: visible;
+}
+
+#contentHalfColLeft {
+ padding-top: 20px;
+ padding-left: 20px;
+ visibility: visible;
+}

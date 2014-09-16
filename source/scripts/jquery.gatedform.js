@@ -546,13 +546,20 @@
             //dynamicForm.options.form.fields.elqSiteId.value = dynamicForm.options.elqSiteId;
             // TODO: update configure options with query string parameters
             // query string should be able to override the above settings
-            var config_opt,
-                pLen = params.length,
-                i;
-            for (i = 0; i > pLen; i++) {
-                config_opt = params[i];
-                dynamicForm.options[config_opt.toLowerCase()] = params.param(config_opt);
+            // var config_opt,
+            //     pLen = params.length,
+            //     i;
+            // for (i = 0; i > pLen; i++) {
+            //     config_opt = params[i];
+            //     dynamicForm.options[config_opt.toLowerCase()] = params.param(config_opt);
+            // }
+            //clone params object
+            for (var key in params) {
+                if (params.hasOwnProperty(key)) { //filter prototype
+                    dynamicForm.options[key.toLowerCase()] = params[key];
+                }
             }
+
             if (dynamicForm.Util.HasValue(dynamicForm.options.IMATESTRECORD) && !dynamicForm.Util.HasValue(dynamicForm.options.QA_Imatestrecord)) {
                 dynamicForm.options.QA_Imatestrecord = dynamicForm.options.IMATESTRECORD;
             }
@@ -3185,7 +3192,7 @@
                 channel = $.url(document.URL, false).param("channel") || "landing page";
             $.when(dynamicForm.Lookup.Offer(), dynamicForm.Util.CheckStylesheet()).then(function() {
                 var content = '',
-                    url = dynamicForm.options.assetUrl || '';
+                    url = '';
 
                 if (dynamicForm.options.no_offer) {
                     content = dynamicForm.UI.Template.Thanks.GetHTML();
@@ -3214,6 +3221,10 @@
                             }
                         }
                     }
+                }
+
+                if (typeof dynamicForm.options.asseturl !== 'undefined' && dynamicForm.Util.HasValue(dynamicForm.options.asseturl)) {
+                    url = dynamicForm.options.asseturl;
                 }
 
                 $("#" + dynamicForm.options.elqFormName).hide();

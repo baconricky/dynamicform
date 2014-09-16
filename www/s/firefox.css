@@ -1,0 +1,50 @@
+/***********************
+
+redhat.com - Firefox promo
+ 
+created: 09MAR05 by lisa
+
+modified last: 
+
+***********************/
+
+/****** Main Styles *****/
+
+#ffWrap {
+	width:520px;
+	}
+h1#ffHead {
+	padding:0;
+	margin:0;
+	background:url(/g/landing/firefox_rh_recommends.gif) no-repeat;
+	width:352px;
+	height:19px;
+	}
+h1#ffHead span {
+	display:none;
+	}
+#ffIntroWrap {
+	margin-top:30px;
+	}	
+#ffLogo {
+	float:right;
+	margin-left:15px;
+	margin-bottom:0;
+	}
+#ffDownload	{
+	float:right;
+	margin-left:15px;
+	}
+#ffSupport {
+	text-align:left;
+	}
+.ffIntroText	{
+	font-size:medium;
+	}	
+#ffBody {
+	margin-top:0;
+	margin-left:200px;
+	}
+#ffBody p {
+	font-size:small;
+	}

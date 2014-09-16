@@ -1,0 +1,64 @@
+/* jqModal base Styling courtesy of;
+  Brice Burgess <bhb@iceburg.net> */
+
+/* The Window's CSS z-index value is respected (takes priority). If none is supplied,
+  the Window's z-index value will be set to 3000 by default (in jqModal.js). You
+  can change this value by either;
+    a) supplying one via CSS
+    b) passing the "zIndex" parameter. E.g.  (window).jqm({zIndex: 500}); */
+  
+.jqmWindow {
+    display: none;
+    
+    position: absolute;
+    top: 17%;
+    left: 50%;
+    
+    margin-left: -300px;
+    width: 630px;
+    
+    background-color: #fff;
+    color: #333;
+    border: 1px solid black;
+    padding: 12px;
+
+    text-align: right;
+}
+.jqmWindow img {margin: 15px;}
+.jqmOverlay { background-color: #000; }
+
+.jqmClose {text-decoration: none;}
+
+.cloudOverview .floatBox {float: right; margin: 15px 0 15px 15px;}
+.cloudOverview .floatBox .note {text-align: center;}
+.cloudOverview .floatBox .jqModal img {width: 280px;}
+
+.cloudFoundations .imgFloat {width: 301px; float: right;}
+.cloudFoundations .imgFloat a {margin-left: 11px;}
+.cloudFoundations .imgFloat p.note {text-align: center;}
+.cloudFoundations .imgFloat a img {width: 280px;}
+
+.cloudFoundations .grayBox2 {margin-top: 30px;}
+.cloudFoundations .grayBox2 h2 {font-weight: normal; margin-bottom: 5px;}
+
+.cloudPartners .grayBox2 h2 {font-weight: normal; margin-bottom: 15px;}
+.cloudOverview .accessBox {border: 1px solid #999; padding: 15px; -moz-border-radius: 6px; -webkit-border-radius: 6px; border-radius: 6px; width: 279px; float:right; margin: 15px 0 15px 15px;}
+
+
+ul.providers {margin: 0; padding: 0; height: 180px;}
+ul.providers li {list-style-type: none; float: left; margin-right: 75px; height: 160px; width: 100px;}
+ul.providers li a {color: #333; height: 135px; width: 100px; display: block; text-decoration: none; font-weight: bold; text-align: center;}
+ul.providers li a:hover {color: #999;}
+ul.providers li a span.label {position: relative; top: 110px;}
+ul.providers li a span.note {font-weight: normal;}
+/*ul.providers li a span {height: 1px; width: 1px; position: absolute; overflow: hidden; top: -10px;}*/
+ul.providers li.amazon {background: url(/g/cloud_amazon.png) top left no-repeat;}
+ul.providers li.fujitsu {background: url(/g/cloud_fujitsu.png) top left no-repeat;}
+ul.providers li.harris {background: url(/g/cloud_harris.jpg) top left no-repeat;}
+ul.providers li.ibm {background: url(/g/cloud_ibm.png) top left no-repeat; margin-right: 0;}
+ul.providers li.ixonos {background: url(/g/cloud_ixonos.png) top left no-repeat;}
+ul.providers li.ntt {background: url(/g/cloud_ntt.png) top left no-repeat;}
+ul.providers li.savvis {background: url(/g/cloud_savvis.png) top left no-repeat;}
+ul.providers li.telstra {background: url(/g/cloud_telstra.png) top left no-repeat; margin-right: 0;}
+ul.providers li.virtustream {background: url(/g/cloud-virtustream.png) top left no-repeat;}
+

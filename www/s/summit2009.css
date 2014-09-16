@@ -1,0 +1,484 @@
+/* *****************************************************************************
+
+Red Hat Summit 2009 stylesheet
+created by wes based on summit2008.css
+created on Sept 9, 2008
+
+***************************************************************************** */
+
+body {}
+a {text-decoration: none;}
+.base {
+	position: relative;  /*so everything else can be absolute*/ 
+	min-height: 100px;
+/*	left: -9px;
+	margin-top: 15px;
+/*	height: 555px;
+	width: 739px;*/
+	}
+	
+.header {
+	position: relative;  /*so everything else can be absolute*/ 
+	background: url(/g/summit/2009/summit_website_header.png) left top no-repeat; 
+	width: 720px;
+}	
+
+.top_overview {
+	background: url(/g/summit/2009/summit_website_header.png) left top no-repeat;
+	margin-top: 0px;
+	width: 720px;
+	height: 205px;
+}
+
+.bottom {
+	background: url(/g/summit/2009/summit_website_footer_nologos.png) bottom left no-repeat;
+}
+
+#horizontalcssmenu ul li{
+	display: inline;
+	float: left;
+	color: white;
+	padding: 0px;
+	margin-right: 21px;
+	font: 12px Arial;
+	font-weight: bold;
+}
+
+#horizontalcssmenu ul a:link {
+	color: white;
+	}
+	
+#horizontalcssmenu ul a:visited {
+	color: white;
+	}	
+	
+#horizontalcssmenu ul a:hover {
+	color: #bfdce8;
+	}
+
+#colLeft {
+	float: left;
+	width: 400px;
+	margin-left: 5px;
+	margin-right: 15px;
+	margin-top: 0px;
+}
+
+#secondmenu ul li{
+	display: inline;
+	float: left;
+	color: #003d6e;
+	padding: 0px;
+	margin-right: 13px;
+	font: 10pt helvetica;
+	font-weight: bold;
+}
+
+#secondmenu ul a:link {
+	color: #003d6e;
+	}
+	
+#secondmenu ul a:visited {
+	color: #003d6e;
+	}	
+	
+#secondmenu ul a:hover {
+	color: #4298ba;
+	}
+
+
+#colRight {
+	float: left;
+	width: 300px;
+	margin-top: -60px;
+}
+
+.nav {
+	margin-left: 45px;
+	margin-top: 50px;
+}
+#summit_nav {
+/*	position: absolute;
+	top: .3em;
+	left: 51px;*/
+	float: right; 
+}
+
+
+#summit_nav ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	}
+#summit_nav li {
+	float: left;
+	margin: 0 13px;
+	}
+#summit_nav ul a {
+	padding: 0 3px 0 0;
+	display: block;
+	text-decoration: none;
+	color: #322C72;
+	font-weight: bold;
+	font-size: 11px;
+	}
+
+/* targets IE7 only */
+*:first-child+html #summit_nav ul a { font-size: 10px; }
+	
+	/* Holly Hack Targets IE Win only \*/
+    * html #summit_nav ul a {font-size: 75%;} /* only because we're using a diff font for IE */
+    /* End Holly Hack */
+	
+#summit_nav ul a:hover {
+	color: #322C72;
+	text-decoration: underline;
+	}
+
+#summit_title {
+/*	position: absolute;
+	top: 105px;
+	left: 25px; */
+	padding-top: 100px;
+	margin-left: 15px;
+}
+
+.summit_speakers {
+	clear: both;
+}
+
+.summit_speakers ul {
+	padding-left: 0;
+	list-style-type: none;
+}
+
+.summit_speakers li {
+	width: 300px;
+}
+
+.summit_speakers li img {
+	float: left;
+	padding-bottom: 10px;
+	padding-right: 5px;
+}
+
+#content_pad {padding-bottom: 0px;}
+#content_area {
+	margin-left: 35px;
+	margin-right: 10px;
+	color: #000;
+	position: relative;
+	top: 154px;
+	left: 9px; 
+	width: 657px;
+	padding: 140px 15px;
+	padding-top: 45px;
+	
+	}
+	
+/*#content_area p {
+	padding-top: 0;
+	margin-top: 0;
+}*/
+
+table {
+	font-size: 12px;
+}
+
+table.table6 tr th {
+	text-align: center;
+	background: #cccccc;
+	color: #000000;
+	font-weight: bold;
+}
+table.table6 tr td {
+	text-align: left;
+	border-bottom: 1px solid #000000;
+	color: #000000;
+	font-size: 12px;
+}
+table.table6 tr td.tableHeader {
+	text-align: left;
+	border-bottom: 1px solid #BB000D;
+	color: #BB000D;
+	font-weight: bold;
+	font-size: 12px;
+	padding-top: 15px;
+}
+table.summit_table2col {
+	width: 515px;
+	font-size: 12px;
+}
+
+table.expand th {
+	text-transform: uppercase;
+	border-bottom: 1px solid #F9D078;
+}
+
+table.expand	{
+	width: 100%;
+	rules: rows;
+	}
+
+.shadeddk {
+	background: #F9D078;
+	}
+	
+.shadedlt {
+	background: #FCEDB0;
+	}
+
+.shaded {
+	background: #F9D078;
+	}
+div.trackTables table.expand th {
+	text-transform: uppercase;
+	border-bottom: 1px solid #cccccc;
+}
+
+/******************************************************* Live from the Summit styles ***/
+
+.summit07_livebg {
+	background: url(/g/summit/2007/summit07_highlights_bg.png) left top no-repeat;
+}
+
+/******************************************************* Agenda Styles ***/
+
+div#abstractList {
+	clear:both;
+	margin:3em 0 0 5px;
+}
+
+div#abstractList h1 {
+	margin-bottom: 1.5em;
+}
+
+.scrollContainer h2 {
+	margin: 1em 2px .5em;
+	font-size: 1.4em;
+}
+
+#nyroModalContent p {
+	line-height: 1.5em;
+}
+
+#nyroModalContent h2 {
+	font-size: large;
+	margin-bottom: .75em;
+}
+
+h3.speaker {
+	padding-bottom: 1em;
+}
+
+h3.speaker span {
+	color: #aaa;
+}
+
+h3 + h3 {
+	margin-top: -.75em;
+}
+
+ul.navigation {
+	clear: both;
+	height:  1.9em;
+	padding: 0;
+	list-style-image: none;
+	list-style-type: none;
+	margin: 0 10px 0 15px;
+	position: relative;
+	text-align: center;
+}
+
+ul.navigation li {
+	float: left;
+	margin: 0;
+	margin-right: 2px;
+}
+
+ul.navigation li a {
+	display: block;
+	background: #005083 url("/g/codaSlider_th_bckgrnd.png") repeat-x scroll 0 0;
+	text-decoration: none;
+	padding: 5px 8px 8px;
+	color: #fff;
+	font-size: 80%;
+	-moz-border-radius-topleft: 6px; -moz-border-radius-topright: 6px; -webkit-border-top-left-radius: 6px; -webkit-border-top-right-radius: 6px;
+}
+
+ul.navigation li a.selected {
+	background: none;
+	background-color: #eee;
+	color: #005083;
+	/*font-weight: bold;*/
+	/*border-top: 1px solid #005083;
+	border-left: 1px solid #005083;
+	border-right: 1px solid #005083;*/
+}
+
+ul.navigation li a:focus {
+	outline: none;
+}
+
+table.summitAgenda2009 {
+	width: 100%;
+	border-style: none solid solid;
+	border-spacing: 0;
+	border-collapse: separate;
+	border-width: medium 1px 1px;
+	border-color: #005083;
+	background-color: #fff;
+	font-size: 85%;
+	line-height: 1.5em;
+}
+
+table.summitAgenda2009 th#col-1 { width: 70%; }
+table.summitAgenda2009 th#col-2 { width: 20%; }
+table.summitAgenda2009 th#col-3 { width: 5%; }
+table.summitAgenda2009 th#col-4 { width: 5%; }
+
+table.summitAgenda2009 a {
+	text-decoration: none;
+	color: #333;
+	font-weight: bold;
+}
+
+table.summitAgenda2009 a:hover {
+	color: #4298ba;
+}
+
+table.summitAgenda2009 td.day {
+	border-left-width: 1px;
+	border-left-style: solid;
+	border-left-color: #ccc;
+}
+
+table.summitAgenda2009 tr.wednesday td, table.summitAgenda2009 tr.thursday td, table.summitAgenda2009 tr.friday td {
+	border-color: #005083;
+	border-top-width: 2px;
+}
+
+table.summitAgenda2009 td, table.summitAgenda2009 th {
+	text-align: left;
+	padding: 5px 8px 4px;
+	vertical-align: middle;
+}
+
+table.summitAgenda2009 td {
+	border-top: 1px solid #eee;
+}
+
+table.summitAgenda2009 th {
+	background: #005083 url("/g/codaSlider_th_bckgrnd.png") repeat-x scroll 0 0;
+	color: #fff;
+}
+
+table.abstracts {
+	margin: 1.5em 0 6em 0;
+}
+
+table.abstracts td {
+	font-weight: bold;
+	border-top: none;
+}
+
+#nyroModalContent table.abstracts {
+	margin-bottom: 1em;
+}
+
+#slider {
+    width: 720px;
+    margin: 2em auto 0;
+    position: relative;
+}
+
+.scroll {
+    height: 660px;
+    width: 720px;
+    overflow: auto;
+    overflow-x: hidden;
+    position: relative;
+    clear: left;
+    background: #eee url(images/content_pane-gradient.gif) repeat-x scroll left bottom;
+    margin-bottom: 0;
+    -moz-border-radius-topleft: 6px; -moz-border-radius-topright: 6px; -webkit-border-top-left-radius: 6px; -webkit-border-top-right-radius: 6px; -moz-border-radius-bottomleft: 6px; -moz-border-radius-bottomright: 6px; -webkit-border-bottom-left-radius: 6px; -webkit-border-bottom-right-radius: 6px;
+    /*border: 1px solid red;*/
+}
+
+.scrollContainer div.panel {
+    padding: 5px 20px;
+    height: 440px;
+    width: 680px;
+}
+
+#pathList {
+	height: 6em;
+}
+
+#pathList p {
+	margin: 1em 0 1em 15px;
+	float: left;
+}
+
+#pathList ul {
+	margin: .5em;
+	padding: 0;
+	list-style: none;
+	float: left;
+}
+
+#pathList ul li {
+	margin: 0 2px;
+	float: left;
+	background-color: #eee;
+}
+
+#pathList ul li a {
+	display: block;
+	padding: .5em 1em;
+}
+
+#pathList ul li a:focus {
+	outline: none;
+}
+
+td.hilite, a.hilite {
+	color: #fff;
+}
+
+tr.deploy td.hilite, li.deploy a.hilite, table.abstracts td.deploy {
+	background-color: #0093d9;
+}
+
+tr.optimize td.hilite, li.optimize a.hilite, table.abstracts td.optimize {
+	background-color: #fe8d00;
+}
+
+tr.virt td.hilite, li.virt a.hilite, table.abstracts td.virt {
+	background-color: #abb401;
+}
+
+tr.manage td.hilite, li.manage a.hilite, table.abstracts td.manage {
+	background-color: #888c8f;
+}
+
+tr.strategize td.hilite, li.strategize a.hilite, table.abstracts td.strategize {
+	background-color: #c80001;
+}
+
+tr.catalyst td.hilite, li.catalyst a.hilite, table.abstracts td.catalyst {
+	background-color: #781F1C;
+}
+
+#highlightsmenu {
+	float: left;
+	color: #cc0000;
+	padding: 0px;
+	margin: 4px; 21px 0px 0px;
+	font: 12px Arial;
+	font-weight: bold;
+}
+
+#highlightsmenu a {
+	color: #cc0000;
+}

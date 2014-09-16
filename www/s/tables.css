@@ -1,0 +1,629 @@
+/************************************************************** TABLE STYLES */
+
+table caption {
+	font-size: 1.5em;
+	text-align: left;
+	font-weight: bold;
+	padding-bottom: .25em;
+	}
+
+table.creamHalf {
+	width: 279px;
+	background-color: #f7f2d0;
+	background-image: url(/g/chrome/corner_table_halfcream_top.png);
+	background-position: top left;
+	background-repeat: no-repeat;
+	}
+	
+table.creamHalf th,
+table.creamHalf td {
+	padding: 3px 8px;
+	border-bottom: 1px solid #fdfbf2;
+	font-weight: normal;
+	}
+	
+table.creamHalf td {
+	text-align: center;
+	}
+	
+table.creamHalf tr.first th {
+	text-align: center;
+	font-weight: bold;
+	padding-top: 12px;
+	}
+	
+table.creamHalf tr th.lastLeft, td.lastLeft {
+	background-image: url(/g/chrome/corner_table_halfcream_bottom.png);
+	background-position: bottom left;
+	background-repeat: no-repeat;
+	}
+	
+table.creamHalf tr th.lastRight, td.lastRight {
+	background-image: url(/g/chrome/corner_table_halfcream_bottom.png);
+	background-position: bottom right;
+	background-repeat: no-repeat;
+	}
+	
+table.creamHalf tr.last td {
+	padding-bottom: 12px;
+	}
+	
+/* BASIC TABLE 											*/
+/* cols  : class  : colstyles							*/
+/* ----    -----    ---------							*/
+/* 4-col : basic4 : 1-2-3-4								*/
+/* 5-col : basic5 : 1-2-3-4-5							*/
+/* 6-col : basic3 : 1-1-2-2-3-3							*/
+/* 7-col : basic4 : 1-2-2-3-3-4-4						*/
+/* 8-col : basic4 : 1-1-2-2-3-3-4-4						*/
+/* 9-col : basic5 : 1-2-2-3-3-4-4-5-5					*/
+
+div.tableBasic h2 {
+	margin: 25px 0 .5em 0;
+	}
+	
+div.tableBasic p.footnote {
+	margin-top: 0;
+	}
+	
+div.tableBasic table {
+	background: #f7f2d0 url(/g/chrome/corner_table_basic_tl.png) top left no-repeat;
+	margin-bottom: 15px;
+	}
+	
+    /* Holly Hack Targets IE Win only \*/
+    * html div.tableBasic table td, th {background: none;}
+    /* End Holly Hack */
+	
+div.tableBasic table th {
+	padding-top: 20px;
+	border-bottom: 2px solid #faf7e5;
+	vertical-align: bottom;
+	}
+	
+div.tableBasic table td {
+	border-bottom: 1px solid #faf7e5;
+	}
+	
+div.tableBasic table th,
+div.tableBasic table td {
+	padding: 8px 11px;
+	}
+	
+div.tableBasic table tr.lastrow td {
+	border-bottom: none;
+	padding-bottom: 20px;
+	}
+	
+div.tableBasic table tr.lastrow td.col1 {
+	background: url(/g/chrome/corner_table_basic_bl.png) bottom left no-repeat;
+	}
+	
+div.tableBasic table td div.yes {
+	background: url(/g/chrome/table_yesmark.png) 50% no-repeat;
+	height: 10px;
+	width: 100%;
+	}
+	
+div.tableBasic table td div.yes span {
+	display: none;
+	}
+	
+div.tableBasic table td div.no span {
+	display: none;
+	}
+	
+/* types of tables based on how many columns and cell alignment */
+
+div.tableBasic table.basic2 th.col2,
+div.tableBasic table.basic2 th.col2c,
+div.tableBasic table.basic2 th.col2r {
+	background: #ede8c8 url(/g/chrome/corner_table_basic2_tr.gif) top right no-repeat;
+	}
+	
+div.tableBasic table.basic2 tr.lastrow td.col2,
+div.tableBasic table.basic2 tr.lastrow td.col2c,
+div.tableBasic table.basic2 tr.lastrow td.col2r {
+	background: #ede8c8 url(/g/chrome/corner_table_basic2_br.gif) bottom right no-repeat;
+	}
+
+div.tableBasic table.basic3 th.col3,
+div.tableBasic table.basic3 th.col3c,
+div.tableBasic table.basic3 th.col3r {
+	background: #e2ddbd url(/g/chrome/corner_table_basic3_tr.gif) top right no-repeat;
+	}
+	
+div.tableBasic table.basic3 tr.lastrow td.col3,
+div.tableBasic table.basic3 tr.lastrow td.col3c,
+div.tableBasic table.basic3 tr.lastrow td.col3r {
+	background: #e2ddbd url(/g/chrome/corner_table_basic3_br.gif) bottom right no-repeat;
+	}
+	
+div.tableBasic table.basic4 th.col4,
+div.tableBasic table.basic4 th.col4c,
+div.tableBasic table.basic4 th.col4r {
+	background: #d9d5b5 url(/g/chrome/corner_table_basic4_tr.png) top right no-repeat;
+	}
+	
+div.tableBasic table.basic4 tr.lastrow td.col4,
+div.tableBasic table.basic4 tr.lastrow td.col4c,
+div.tableBasic table.basic4 tr.lastrow td.col4r {
+	background: #d9d5b5 url(/g/chrome/corner_table_basic4_br.png) bottom right no-repeat;
+	}
+	
+div.tableBasic table.basic5 th.col5,
+div.tableBasic table.basic5 th.col5c,
+div.tableBasic table.basic5 th.col5r {
+	background: #c6c2a6 url(/g/chrome/corner_table_basic5_tr.png) top right no-repeat;
+	}
+	
+div.tableBasic table.basic5 tr.lastrow td.col5,
+div.tableBasic table.basic5 tr.lastrow td.col5c,
+div.tableBasic table.basic5 tr.lastrow td.col5r {
+	background: #c6c2a6 url(/g/chrome/corner_table_basic5_br.png) bottom right no-repeat;
+	}
+	
+/* left-align and background colors */
+	
+div.tableBasic table th.col2,
+div.tableBasic table td.col2,
+div.tableBasic table th.col2c,
+div.tableBasic table td.col2c,
+div.tableBasic table th.col2r,
+div.tableBasic table td.col2r {
+	background-color: #ede8c8;
+	}
+	
+div.tableBasic table th.col3,
+div.tableBasic table td.col3,
+div.tableBasic table th.col3c,
+div.tableBasic table td.col3c,
+div.tableBasic table th.col3r,
+div.tableBasic table td.col3r {
+	background-color: #e2ddbd;
+	}
+	
+div.tableBasic table th.col4,
+div.tableBasic table td.col4,
+div.tableBasic table th.col4c,
+div.tableBasic table td.col4c,
+div.tableBasic table th.col4r,
+div.tableBasic table td.col4r {
+	background-color: #d9d5b5;
+	}
+	
+div.tableBasic table th.col5,
+div.tableBasic table td.col5,
+div.tableBasic table th.col5c,
+div.tableBasic table td.col5c,
+div.tableBasic table th.col5r,
+div.tableBasic table td.col5r {
+	background-color: #c6c2a6;
+	}
+	
+/* center-align */
+	
+div.tableBasic table th.col2c,
+div.tableBasic table td.col2c,
+div.tableBasic table th.col3c,
+div.tableBasic table td.col3c,
+div.tableBasic table th.col4c,
+div.tableBasic table td.col4c,
+div.tableBasic table th.col5c,
+div.tableBasic table td.col5c {
+	text-align: center;
+	}
+	
+/* right-align */
+	
+div.tableBasic table th.col2r,
+div.tableBasic table td.col2r,
+div.tableBasic table th.col3r,
+div.tableBasic table td.col3r,
+div.tableBasic table th.col4r,
+div.tableBasic table td.col4r,
+div.tableBasic table th.col5r,
+div.tableBasic table td.col5r {
+	text-align: right;
+	}
+
+/* special lastrow for /software/rhel/comparison */
+
+div.tableBasic table tr.lastrowSpecial td.col5f {
+	background: #c6c2a6 url(/g/chrome/corner_table_basic5_bl.png) bottom left no-repeat;
+	}
+	
+div.tableBasic table.basic5 td.col5f {
+	background-color: #c6c2a6;
+	}
+	
+table.errata-timeline {
+	width: 550px;
+	border: 1px solid #333;
+	margin-bottom: 20px;
+	border-collapse: collapse;
+	}
+	
+table.errata-timeline td.full,
+table.errata-timeline td.deploy {
+	border-right: 1px solid #333;
+	}
+	
+table.errata-timeline td.full {
+	background-color: #eee;
+	width: 160px;
+	}
+	
+table.errata-timeline td.deploy {
+	background-color: #ccc;
+	width: 35px;
+	}
+	
+table.errata-timeline td.maintain {
+	background-color: #999;
+	border-left: 1px solid #333;
+	width: 350;
+	}
+	
+table.errata-timeline th {
+	border-top: 2px solid #000;
+	border-right: 1px solid #333;
+	text-align: right;
+	}
+
+/* rhn-like tables for direct renewals */
+
+table+h3 { padding-top: 35px; }
+
+h2.submgtTab {
+	margin-top: 15px;
+	font-size: smaller;
+	background: #ddd url(/g/chrome/table_corner_tr.gif) top right no-repeat;
+	padding-bottom: 0px;
+	padding-top: 3px;
+	margin-bottom: 0px;
+    }
+                            
+h2.submgtTab span    {
+	background: #ddd url(/g/chrome/table_corner_tl.gif) top left no-repeat;
+	font-size: small;
+	padding-left: 7px;
+	padding-top: 3px;
+	margin: 0px;
+	padding-bottom: 0px;
+	padding-right: 0px;
+    }
+ 
+p.submgtTabText       {
+	background-color: #ddd;
+	font-size: x-small;
+	margin: 0px;
+	padding: 3px 0px 9px 9px;
+	border: 0px;
+    }
+
+table.contracts {
+	font-size: 10px;
+	background: #f2f2f2;
+	padding: 0px;
+	width: 100%; 
+	border: 0;
+	margin: 0;
+/*	border-top: 1px solid #999; */
+}
+
+/* Holly Hack Targets IE Win only \*/
+    * html table.contracts {background-image: none;}
+    /* End Holly Hack */
+
+tr.workAround {
+	margin: 0;
+	padding: 0;
+	font-size: 0em;
+	height: 1px;
+	}
+	
+tr.workAround td {
+	margin: 0;
+	padding: 0;
+	border-top: 1px solid #999;
+	}
+
+table.contracts tr.contractRowHeader {
+	font-weight: bold;
+	font-style: normal;
+	font-size: inherit;
+	background-color: #f2f2f2;
+	border-top: 1px solid #999;
+	border-bottom-width: 0;
+	padding-top: 110px;
+	}
+
+
+/*table.contracts tr.contractName {
+	background-color: #b4b19a;
+	font-weight: bold;
+	}*/
+
+table.contracts td.contractNo {
+	width: 275px;
+	font-weight: bold;
+	font-size: small;
+	color: #C00;
+	}
+
+table.contracts tr.contractEvenRow	{
+	background-color: #e2ddbd;
+	}
+
+table.contracts td.contractSubFirst	{
+	padding-left: 15px;
+	}
+
+table.contracts td.contractSubLast    {
+/*	text-align: right;
+	padding: 15px 0;*/	}
+
+table.contracts td.contractSubLast a	{
+	vertical-align: top;
+	}
+
+/*table.contracts tr.contractRenew	{
+	background-color: #b4b19a;
+	border-top: 2px solid #c6c2a6;
+	}*/
+
+table.contracts tr.contractRenew td	{
+	text-align: right;
+	padding-right: 7px;
+	}
+
+table.contracts tr.contractRenewNo        {
+        background-color: #b4b19a;
+        border-top: 2px solid #c6c2a6;
+        }
+
+table.contracts-pagination {
+	font-size: smaller;
+}
+
+.contracts-checkbox {
+	text-align: center;
+	border-left: 1px solid #b4b19a;
+}
+
+.contracts-checkbox-header {
+	text-align: center;
+}
+
+.contracts th a {
+	display: inline;
+	}
+
+.contracts a:hover {
+	text-decoration: underline;
+}
+
+/* contracts row classes */
+.contracts-row-even td{
+	background-color: #F1EBDC;
+}
+.contracts-row-odd td {
+        background-color: #ffffff;
+}
+.contracts-row-summary {
+	text-align: right;
+	font-weight: bold;
+	border: 1px solid #ccc;
+	background-color: #eee;
+}
+.contracts-row-even td, .contracts-row-odd td, .contracts-row-summary td {
+	padding: 4px 8px;
+}
+
+.contracts-horiz-separator hr {
+	border: 0;
+	border-bottom: 1px solid #ccc;
+	padding: 0px;
+}
+
+
+/* default class def for row color toggling */
+.contracts-row-even-selected {
+        background-color: #dde5ff;
+}
+.contracts-row-odd-selected {
+        background-color: #dde5ff;
+}
+
+.contracts-row-odd-selected td, .list-row-even-selected td {
+	border-bottom: 1px solid #ccc;
+	padding: 4px 8px;
+}
+
+/* store tables */
+
+
+table.store	{
+	width:100%;
+	margin: 0;
+	padding: 0;
+	border-collapse: collapse;
+	border-top: 1px solid #B5B5B5;
+	}
+	
+tr.storeRowHeader td {
+	background: #DDD;
+	font-weight:bold;
+	padding: 5px 0px 3px 0px;
+	margin: 0;
+	}
+	
+td.cartPrice { text-align: right; }
+	
+table.store td, table.checkout, #storeTotal td, .checkout { font-size: 11px; padding: 4px 0; }
+
+
+table.store tr.storeRowAddTo	{
+	border-bottom: 2px solid #b4b19a;
+	}
+
+table.store td.storeBold	{
+	font-weight: bold;
+	}
+
+tr.storeRowAddTo td	{
+	padding: 10px 0px 10px 5px;
+        margin: 0;
+        }
+
+table.store td.lastRowTotal {
+	text-align: right;
+	padding-right: 5px;
+	}
+	
+table.checkout	{
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	border-collapse: collapse;
+	font-size: 12px;
+	}
+	
+.checkoutInfo {
+	margin-left: 30px;
+	font-size: 12px; 
+	}
+	
+#storeTotal {
+	width: 100%; 
+	}
+	
+#storeTotal td {
+	border-top: 10px solid #EEE;
+	border-bottom: 2px solid #ccc;
+	padding: 10px 0;
+	font-size: 12px; 
+	}
+	
+#storeAgreement {
+	width: 100%;
+	border-top: 1px solid #CCC;
+	border-bottom: 1px solid #CCC;
+	padding: 1px 0;
+	margin-bottom: 10px;
+	margin-top: 15px; 
+	}
+	
+#storeAgreement td {
+	font-size: larger;
+	padding: 5px 25px 7px;
+	background: #EEE;
+	vertical-align: middle; 
+	}
+	
+#storeButtons {
+	width: 100%;
+	margin: 20px 0 0 0;
+	padding: 0;
+	border-collapse: collapse; }
+	
+#storeButtons td, .store td { 
+	margin: 0; 
+	padding: 0; 
+	}
+
+table.checkout .asterisk {
+	font-size: 12px;	
+	color: #c00;
+	font-weight: bold;
+	}
+
+table.checkout tr.checkoutRowHeader td {
+	font-size: 14px;
+	font-weight: bold;
+	padding-bottom: 7px;
+	}
+
+table.checkout tr.checkoutRowHeader td.alignRight {
+	text-align: right;
+	}
+
+td.checkoutError {
+	color: #c00;
+	font-weight: bold;
+	padding-top: 7px;
+	padding-bottom: 5px;
+	}
+
+table.checkout tr.contractRowHeader    {
+        font-style: italic;
+        font-size: smaller;
+        border-bottom: 2px solid #c6c2a6;
+        }
+table.checkout tr.contractLastRow	{
+	border-top: 2px solid #c6c2a6;
+	}
+table.checkout td.alignRight {
+	text-align: right;
+}
+/* BEGIN new "rhel5" styles */
+div.tableBasic_v2 {}
+div.tableBasic_v2 table {width: 100%; font-size: 11px;}
+div.tableBasic_v2 table th {font-weight: bold;}
+div.tableBasic_v2 table th, 
+div.tableBasic_v2 table td {
+	vertical-align: middle;
+	margin: auto;
+	padding: 7px 10px;
+}
+div.tableBasic_v2 table th.bline, 
+div.tableBasic_v2 table td.bline {
+	border-left: 1px solid #C6C2A6;
+}
+th.tdheader, 
+td.tdheader {
+	font-size: 12px;
+	margin: 10px;
+}
+
+div.tableBasic_v2 table th.color0, 
+div.tableBasic_v2 table td.color0 {background-color: none;}		/* clear */
+div.tableBasic_v2 table th.color1, 
+div.tableBasic_v2 table td.color1 {background-color: #ffffff;} /* white */
+div.tableBasic_v2 table th.color2, 
+div.tableBasic_v2 table td.color2 {background-color: #EDF5F8;} /* no, this is the lightest blue */
+div.tableBasic_v2 table th.color3, 
+div.tableBasic_v2 table td.color3 {background-color: #E5F0F5;} /* lightest blue */
+div.tableBasic_v2 table th.color4, 
+div.tableBasic_v2 table td.color4 {background-color: #E0EDF3;} /* lighter blue */
+div.tableBasic_v2 table th.color5, 
+div.tableBasic_v2 table td.color5 {background-color: #DAEAF1;} /* light blue */
+div.tableBasic_v2 table th.color6, 
+div.tableBasic_v2 table td.color6 {background-color: #D0E3ED;} /* med-light blue */
+div.tableBasic_v2 table th.color7, 
+div.tableBasic_v2 table td.color7 {background-color: #C0DAE7;} /* med blue */
+div.tableBasic_v2 table th.color8, 
+div.tableBasic_v2 table td.color8 {background-color: #B4D4E2;} /* med-dark blue */
+div.tableBasic_v2 table th.color9, 
+div.tableBasic_v2 table td.color9 {background-color: #BB000D; color: #ffffff;} /* red */
+
+div.tableBasic_v2 table th.grey1, 
+div.tableBasic_v2 table td.grey1 {background-color: #E5E5E5;} /* light grey */
+div.tableBasic_v2 table th.grey2, 
+div.tableBasic_v2 table td.grey2 {background-color: #DADADA;} /* grey */
+div.tableBasic_v2 table th.grey3, 
+div.tableBasic_v2 table td.grey3 {background-color: #cccccc;} /* med-grey */
+div.tableBasic_v2 table th.grey4, 
+div.tableBasic_v2 table td.grey4 {background-color: #BCBCBC;} /* dark grey */
+
+div.tableBasic_v2 table th.rowDivider {
+	background-color: #ffffff;
+	border-bottom: 1px solid #cccccc;
+	font-size: 1.2em;
+	background-image: url("/g/chrome/table_grey_bg2.png");
+	background-repeat: repeat-y;
+	background-position: top right;
+}
+
+/* END new "rhel5" styles */

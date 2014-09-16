@@ -1,0 +1,13 @@
+/* for custom Eloqua client-side validation */
+
+#rhErrorMessage {
+	color: #CC0000;
+	font-weight: bold;
+	margin: 5px;
+	font-size: 12px;
+}
+
+.invalidFieldLabel, .invalidFieldLabel * {
+	color: #CC0000 !important;
+	font-weight: bold;
+}
