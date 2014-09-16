@@ -1,0 +1,109 @@
+	
+        
+
+#truthBottom {
+	clear:both;
+	background: url(/g/landing/truthhappens_bottom.png) bottom left no-repeat;
+	height: 27px;
+	padding: 0px;
+	margin: 0px 0px 0px 0px;
+	width: 716px;
+	}
+
+#truthBottom:after {  content: ".";    display: block;    height: 0;    overflow: hidden;    clear: both;    visibility: hidden;}
+
+#truthWrap {
+	background: black url('/g/landing/truthhappens_background.png') top left no-repeat;
+    width: 716px;
+	margin: 0px;
+	padding: 0px;
+	}
+
+    /* Holly Hack Targets IE Win only \*/
+    * html #truthWrap {width: 716px;}
+    * html #truthWrap {overflow-x: hidden;}
+    * html #truthWrap {overflow-y: auto;}
+    * html #truthWrap {height: 1%;}
+    /* End Holly Hack */
+	
+#truthContent {
+	padding-top: 120px;
+	padding-left: 35px;
+	padding-right: 25px;
+	height: auto;
+	}
+
+
+    /* Holly Hack Targets IE Win only \*/
+    * html #truthContent {height: 1%;}
+    /* End Holly Hack */
+
+#truthContent:after {  content: ".";    display: block;    height: 0;    overflow: hidden;    clear: both;    visibility: hidden;}
+
+#truthContent p {
+	color: white;
+	font-size: 10pt;
+	font-family: "Lucida Grande", "Luxi Sans", "Bitstream Vera Sans", "Trebuchet MS", helvetica, verdana, arial, sans-serif;
+
+	}
+
+#truthContent a {
+	color: #99CCFF;
+	}
+
+#truthContent h1 {
+	text-transform: uppercase;
+	color: #FFFFFF;
+}
+        
+#truthContent h2 {
+	text-transform: uppercase;
+	color: #ffffff;
+	margin: .8em 0 .5em 0;
+}
+        
+        
+#truthContent h3 {
+	text-transform: none;
+    color: #6699CC;
+	text-decoration: none;
+}
+
+#truthContent a.headline {
+	text-transform: none;
+	color: #6699CC;
+	text-decoration: none;
+}
+
+#introWrapper {
+        float: left;
+	width: 490px;
+	}
+
+   /* Holly Hack Targets IE Win only \*/
+    * html #introWrapper {height: 1%;}
+    /* End Holly Hack */
+    
+#introWrapper h2 {
+	margin-top: 2em;
+}
+
+
+#videoWrapper {
+    float: left;
+    padding-left: 25px;
+	width: 140px;
+	}
+	
+#videoWrapper div.videoSidebar {
+	margin-bottom: 1.5em;
+	}
+
+
+
+#videoWrapper a {
+	text-decoration: none;
+	font-size: 8pt;
+	font-weight: 700;
+	}
+

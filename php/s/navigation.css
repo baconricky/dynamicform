@@ -1,0 +1,1418 @@
+/************************************************************** UTILITY LINKS */
+	
+/* depracated.......................
+#utilityLinks {
+	float: left;
+	width: 243px;
+	margin-left: 135px;
+	}
+	
+#utilityLinks ul {
+	padding: 0;
+	margin: 0;
+	border: 0;
+	text-align: center;
+	list-style-type: none;
+	}
+	
+#utilityLinks ul li {
+	display: block;
+	float: left;
+	text-align: center;
+	padding: 0;
+	margin: 0;
+	}
+	
+#utilityLinks ul li a {
+	display: block;
+	}
+	
+#utilityLinks ul li a span {
+	display: none;
+	}
+	
+#utilityLinks ul li a#seventh {
+	width: 82px;
+	height: 30px;
+	background-image: url(/g/chrome/link_utility_support.gif);
+	background-repeat: no-repeat;
+	background-position: 0 5px;
+	}
+body#mainseven #utilityLinks a#seventh {
+	background-image: url(/g/chrome/link_utility_support-on.png);
+	background-repeat: no-repeat;
+	background-position: 0 5px;
+	}
+	
+#utilityLinks ul li a#eighth {
+	width: 82px;
+	height: 30px;
+	background-image: url(/g/chrome/link_utility_support.gif);
+	background-repeat: no-repeat;
+	background-position: 0 5px;
+	}
+body#maineight #utilityLinks a#eighth {
+	background-image: url(/g/chrome/link_utility_support-on.png);
+	background-repeat: no-repeat;
+	background-position: 0 5px;
+	}
+	
+#none #utilityLinks ul li a#eighth {
+	margin-left: -100000000px;
+	display: none;
+}
+	
+#utilityLinks ul li a#ninth {
+	width: 91px;
+	height: 30px;
+	background-image: url(/g/chrome/link_utility_download.gif);
+	background-repeat: no-repeat;
+	background-position: 0 5px;
+	}
+body#mainnine #utilityLinks a#ninth {
+	background-image: url(/g/chrome/link_utility_download-on.png);
+	background-repeat: no-repeat;
+	background-position: 0 5px;
+	}
+*/
+	
+img#banner {
+	margin-bottom: 7px;
+	}
+	
+/* added on June 16, 2008 for survey link that appears beneath secnav */
+
+div#improveRedHat {
+		padding-bottom: 20px;
+		}
+
+div#improveRedHat p {
+        padding: 2px 0 4px 0;
+        }
+        
+div#improveRedHat a {
+        color: #c00;
+        font-weight: bold;
+        }
+	
+/************************************************************** MAIN NAVIGATION */
+	
+#mainNavOuter {
+	width: 100%;
+	background-image: url(/g/chrome/corner_mainnav_bottom.png);
+	background-position: bottom right;
+	background-repeat: no-repeat;
+	background-color: #c00;
+	}
+	
+#mainNav {
+	width: 100%;
+	font-weight: bold;
+	font-family: "Luxi Sans", verdana, helvetica, arial, sans-serif;
+	}
+    
+    
+#mainNavInner {
+	width: 100%;
+	height: 22px;
+	background-image: url(/g/chrome/corner_mainnav_top.png);
+	background-position: top right;
+	background-repeat: no-repeat;
+	}
+	
+#mainNav ul {
+	padding: 0;
+	margin: 0 5px;
+	list-style-type: none;
+	background-image: url(/g/chrome/corner_mainnav_tl.png);
+	background-position: top left;
+	background-repeat: no-repeat;
+	}
+	
+#mainNav ul li {
+	display: block;
+	float: left;
+	padding: 0;
+	margin: 0;
+	}
+	
+body#mainone #mainNav li#mainFirst,
+body#maintwo #mainNav li#mainSecond,
+body#mainthree #mainNav li#mainThird,
+body#mainfour #mainNav li#mainFourth,
+body#mainfive #mainNav li#mainFifth,
+body#mainsix #mainNav li#mainSixth,
+body#mainseven #mainNav li#mainSeventh,
+body#mainend #mainNav li#mainLast {
+	background-color: #e6e6e6;
+	}
+	
+body#mainone #mainNav li#mainFirst a,
+body#maintwo #mainNav li#mainSecond a,
+body#mainthree #mainNav li#mainThird a,
+body#mainfour #mainNav li#mainFourth a,
+body#mainfive #mainNav li#mainFifth a,
+body#mainsix #mainNav li#mainSixth a,
+body#mainseven #mainNav li#mainSeventh a,
+body#mainend #mainNav li#mainLast a {
+	color: #000;
+	}
+	
+#mainNav ul li a#mainFirstLink {
+	background-position: top left;
+	background-repeat: no-repeat;
+	padding-left: 10px;
+	}
+	
+body#mainone #mainNav li a#mainFirstLink {
+	}
+	
+#mainNav ul li#mainFirst {
+	background-position: bottom left;
+	background-repeat: no-repeat;
+	}
+	
+body#mainone #mainNav li#mainFirst {
+	}
+	
+#mainNav ul li a#mainLastLink {
+	background-position: top right;
+	background-repeat: no-repeat;
+	}
+	
+body#mainend #mainNav li a#mainLastLink {
+	}
+	
+#mainNav ul li#mainLast {
+	background-position: bottom right;
+	background-repeat: no-repeat;
+	}
+	
+body#mainend #mainNav li#mainLast {
+	}
+	
+#mainNav ul li a {
+	display: block;
+	float: left;
+	text-decoration: none;
+	color: #fff;
+	padding: 4px 10px 3px 10px;
+	font-size: x-small;
+	height: 15px;
+	}
+	
+#worldwide {
+	float: right;
+	margin: 0 15px 0 0;
+	padding: 0;
+	}
+	
+    /* Holly Hack Targets IE Win only \*/
+    * html #worldwide {margin: 0 7px 0 0;} /* have no clue WHY this works */
+    /* End Holly Hack */
+	
+#worldwide ul {
+	margin: 0; 
+	padding: 0;
+	}
+	
+#worldwide ul>a {
+	width: auto;
+	}
+	
+#worldwide ul li {
+	position: relative; 
+	list-style: none; 
+	margin: 0; 
+	background-color: #c00;
+	z-index: 50;
+	}
+	
+#worldwide ul li a {
+	display: block; 
+  	text-decoration: none;
+  	padding: 5px 0;
+  	}
+  	
+#worldwide ul li a.wwLevelOne {
+	width: 76px;
+	height: 22px;
+	background: url(/g/chrome/link_worldwide.png) 50% 50% no-repeat;
+	padding: 0;
+  	}
+  	
+#worldwide ul li a.wwLevelOne span {
+	display: none;
+  	}
+	
+#worldwide ul li:hover ul {
+	display: block;
+	}
+	
+#worldwide ul ul {
+	position: absolute; 
+	top: 22px;
+	left: -19px;
+	display: none;
+	width: 110px;
+	background: url(/g/chrome/corner_wwDrop_top.gif) top left no-repeat;
+	padding-top: 10px;
+	}
+	
+#worldwide ul ul li a {
+	width: 90px;
+	padding: 5px 15px 5px 5px;
+	font-weight: normal;
+	text-align: right;
+	height: auto; /* recovers from height of "ul li a" above */
+	background-color: #999;
+	}
+	
+#worldwide ul ul li.wwLast {
+	background: url(/g/chrome/corner_wwDrop_bottom.gif) bottom right no-repeat;
+	padding-bottom: 10px;
+	}
+	
+/*
+#worldwide a {
+	display: block;
+	width: 76px;
+	height: 15px;
+	background-image: url(/g/chrome/link_worldwide.png);
+	background-repeat: no-repeat;
+	}
+	
+#worldwide a span {
+	display: none;
+	}
+*/
+	
+/************************************************************** SECONDARY NAVIGATION */
+	
+#secNavOuter {
+	width: 100%;
+	background-image: url(/g/chrome/corner_secnav_bottom.png);
+	background-position: bottom right;
+	background-repeat: no-repeat;
+	background-color: #e6e6e6;
+	}
+	
+#secNav {
+	width: 100%;
+	font-weight: normal;
+	font-family: "Luxi Sans", verdana, helvetica, arial, sans-serif;	
+	font-size: x-small;
+	}
+	
+#secNavOuter:after {
+    content: "."; 
+    display: block; 
+    height: 1px;
+    margin-top: -1px;
+    overflow: hidden;
+    clear: both; 
+    visibility: hidden;
+    }
+
+    /* Holly Hack Targets IE Win only \*/
+    * html .secNavOuter {height: 1%;}
+    /* End Holly Hack */
+    
+#secNavInner {
+	width: 100%;
+	height: 7px;
+	background-image: url(/g/chrome/corner_secnav_top.png);
+	background-position: top right;
+	background-repeat: no-repeat;
+	}
+	
+#secNav ul {
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+	background-image: url(/g/chrome/corner_secnav_tl.gif);
+	background-position: top left;
+	background-repeat: no-repeat;
+	}
+	
+#secNav ul li {
+	display: block;
+	float: left;
+	padding: 0;
+	margin: 0;
+	}
+	
+#secNav ul li a {
+	display: block;
+	float: left;
+	text-decoration: none;
+	color: #888;
+	padding: 5px 10px;
+	font-size: 10px;
+	}
+/* hide rule from ie5 mac \*/
+#secNav ul li a {
+	float: none;
+	}
+	
+ul#secone li#secFirst a,
+ul#sectwo li#secSecond a,
+ul#secthree li#secThird a,
+ul#secfour li#secFourth a,
+ul#secfive li#secFifth a,
+ul#secsix li#secSixth a,
+ul#secseven li#secSeventh a,
+ul#seceight li#secEighth a,
+ul#secend li#secLast a {
+	color: #000;
+	}
+	
+#secNav ul li a#secFirstLink {
+	background-position: top left;
+	background-repeat: no-repeat;
+	padding-left: 15px;
+	}
+	
+#secNav ul#secone li a#secFirstLink {
+	}
+	
+#secNav ul li#secFirst {
+	background-position: bottom left;
+	background-repeat: no-repeat;
+	}
+	
+#secNav ul#secone li#secFirst {
+	}
+	
+#secNav ul li a#secLastLink {
+	background-position: top right;
+	background-repeat: no-repeat;
+	padding-right: 15px;
+	}
+	
+
+#secNav ul#secend li a#secLastLink {
+	}
+	
+#secNav ul li#secLast {
+	background-position: bottom right;
+	background-repeat: no-repeat;
+	}
+	
+
+#secNav ul#secend li#secLast {
+	}
+	
+#mainNav ul li a:hover, #worldwide ul ul li a:hover, #secNav ul li a:hover {
+	color: #000;
+	}
+    
+/************************************************************** SIDE NAVIGATION */
+	
+#sidenav {
+	width: 132px;
+	background-color: #999;
+	background-image: url(/g/chrome/corner_sidenav_top.gif);
+	background-position: top right;
+	background-repeat: no-repeat;
+	font-family: "Luxi Sans", verdana, arial, sans-serif;	
+	font-size: x-small;
+	font-weight: bold;
+	}
+	
+#sidenav ul {
+	background-image: url(/g/chrome/corner_sidenav_bottom.gif);
+	background-position: bottom left;
+	background-repeat: no-repeat;
+	list-style: none;
+	padding: 10px 0 10px 0;
+	margin: 0;
+	}
+	
+#sidenav ul ul {
+	background: none;
+	background-color: #ddd;
+	margin: 0;
+	padding: 0;
+	}
+	
+#sidenav ul li {
+	border-bottom: 1px solid #a7a7a7;
+	margin: 0;
+	}
+	
+#sidenav ul li:last-child {
+	border-bottom: 1px solid #999;
+	}
+	
+#sidenav ul li.navon {
+	background: #6c6c6c;
+	}
+	
+#sidenav ul li.navon span {
+	display: none;
+	}
+	
+#sidenav ul li a {
+	display: block;
+	color: white;
+	text-decoration: none;
+	padding: 3px 5px 3px 15px;
+	margin: 0;
+	}
+	
+#sidenav ul ul li a.navon {
+	background: #ebebeb;
+	color: #363636;
+	}
+	
+#sidenav ul ul li a {
+	color: #666;}
+	
+#sidenav ul ul li:last-child {
+	border-bottom: none;
+	}
+	
+#sidenav ul ul li a {
+	padding-left: 30px;
+	}
+	
+#sidenav ul li a:hover {
+	color: #333;
+	}
+	
+/**************************************************************Quote Bubbles */
+#quotebubble {
+	width: 240px;
+	background-color: #999;
+	background-image: url(/g/chrome/240top.png);
+	background-position: top right;
+	background-repeat: no-repeat;
+	font-family: "Luxi Sans", verdana, arial, sans-serif;	
+	font-size: x-small;
+	font-weight: bold;
+	font-color: white;
+	}
+	
+#quotebubble ul {
+	background-image: url(/g/chrome/240bottom.png);
+	background-position: bottom left;
+	background-repeat: no-repeat;
+	list-style: none;
+	padding: 10px 0 10px 0;
+	margin: 0;
+	}	
+
+#quotebubble ul ul {
+	background: none;
+	background-color: #ddd;
+	margin: 0;
+	padding: 0;
+	}
+	
+#quotebubble ul li {
+	border-bottom: 1px solid #a7a7a7;
+	margin: 0;
+	}
+	
+#quotebubble ul li:last-child {
+	border-bottom: 1px solid #999;
+	}
+	
+#quotebubble ul li.navon {
+	background: #6c6c6c;
+	}
+	
+#quotebubble ul li.navon span {
+	display: none;
+	}
+	
+#quotebubble ul li a {
+	display: block;
+	color: white;
+	text-decoration: none;
+	padding: 3px 5px 3px 15px;
+	margin: 0;
+	}
+	
+#quotebubble ul ul li a.navon {
+	background: #ebebeb;
+	color: #363636;
+	}
+	
+#quotebubble ul ul li a {
+	color: #666;}
+	
+#quotebubble ul ul li:last-child {
+	border-bottom: none;
+	}
+	
+#quotebubble ul ul li a {
+	padding-left: 30px;
+	}
+	
+#quotebubble ul li a:hover {
+	color: #333;
+	}
+
+
+/************************************************************** RELATED LINKS */
+
+#moreinfo {
+	width: 132px;
+	background: #f5f5f5;
+	background-image: url(/g/chrome/corner_moreinfo_top.png);
+	background-repeat: no-repeat;
+	background-position: top right;
+	margin-top: 10px;
+	}
+	
+#moreinfo ul {
+	padding: 5px 5px 10px 10px;
+	list-style: none;
+	margin: 0;
+	background-image: url(/g/chrome/corner_moreinfo_bottom.png);
+	background-repeat: no-repeat;
+	background-position: bottom left;
+	}
+	
+#moreinfo ul li {	
+	font-size: x-small;
+	background-image: url(/g/chrome/bullet_grayarrow.png);
+	background-repeat: no-repeat;
+	background-position: 0 3px;
+	padding-left: 6px;
+	margin: .33em 0;
+	}
+	
+#moreinfo ul li.navon {
+	font-weight: bold;
+}
+
+#moreinfo ul li a {
+	color: #666;
+	text-decoration: none;
+	}
+	
+#moreinfo ul li a:hover {
+	color: #333;
+	}
+
+#moreinfo h4 {
+	font-size: small;
+	color: #666;
+	margin: 0;
+	padding: 10px 0 0 15px;
+	}
+	
+#moreinfo hr {
+	border: 0; 
+	background-color:#000; 
+	height: 1px;
+	}
+#navCol {
+	float: left;
+	width: 132px;
+	}
+	
+	/* Holly Hack Targets IE Win only \*/
+    * html #navCol {position: static;}
+    /* End Holly Hack */
+    
+    
+    
+/* BEGIN new "rhel5" styles */
+/************************************************************** SIDE NAVIGATION V2 */
+#navCol_v2 {
+	float: left;
+	width: 150px;
+	}
+	
+	/* Holly Hack Targets IE Win only \*/
+    * html #navCol {position: static;}
+    /* End Holly Hack */
+    
+#sidenav_v2 {
+	width: 150px;
+	font-family: "Luxi Sans", verdana, arial, sans-serif;	
+	font-size: 11px;
+	margin-top: 30px;
+	}
+#sidenav_v2 h4{
+	display: block;
+	width: 137px;
+	height: 22px;
+	background-image: url(/g/chrome/nav/sidenav_learn.png);
+	background-position: top left;
+	background-repeat: no-repeat;
+	margin: 0 0 0 13px;
+}
+.page_jboss #sidenav_v2 h4 {
+	background-image: url(/g/chrome/nav/sidenav_learn_jboss.png);
+}
+#sidenav_v2 h4 span{
+	display: none;
+}
+#sidenav_v2 ul {
+	list-style: none;
+	text-indent: 0;
+	padding: 0;
+	margin: 0;
+}
+#sidenav_v2 ul li {
+	margin: 0 5px 0 15px;
+}
+#sidenav_v2 ul li a {
+	display: block;
+	color: #CCCCCC;
+	text-decoration: none;
+	padding: 3px 0;
+	/*height: 15px;*/
+}
+#sidenav_v2 ul li a:hover {
+	color: #ffffff;
+}
+#sidenav_v2 ul li.navon {
+	color: #ffffff;
+}
+#sidenav_v2 ul li.navon a , 
+a.urhere {
+	color: #ffffff;
+}
+#sidenav_v2 ul li.navon a:hover , 
+a.urhere:hover {
+	background-image: none;
+	border: none;
+	text-decoration: none;
+	padding: 3px 0;
+}
+#sidenav_v2 ul li.navon span {
+	display: none;
+}
+/** sidenav_v2b is black on white **/
+#navCol_v2b {
+	float: left;
+	width: 150px;
+	}
+	
+	/* Holly Hack Targets IE Win only \*/
+    * html #navCol {position: static;}
+    /* End Holly Hack */
+
+
+#navCol_v2b h4.learn_v2b {
+	margin: 0 14px 0 15px;
+	padding: 0 0 3px 0;
+	border-bottom: 1px solid #333;
+	font-size: 12px;
+	font-weight: bold;
+	text-transform: uppercase;
+	color: #333;
+}
+    
+#sidenav_v2b {
+	width: 135px;
+	font-family: "Luxi Sans", verdana, arial, sans-serif;	
+	font-size: 11px;
+/*	margin-top: 30px;*/
+/*	border-right: 1px solid #333;*/
+/*	border-top: 1px solid #333;*/
+	}
+#sidenav_v2b h4{
+	display: block;
+}
+#sidenav_v2b h4 span{
+	display: none;
+}
+#sidenav_v2b ul {
+	list-style: none;
+	text-indent: 0;
+	padding: 0;
+	margin: 0;
+}
+#sidenav_v2b ul li {
+	margin: 0 5px 0 15px;
+}
+#sidenav_v2b ul li a {
+	display: block;
+	color: #333;
+	text-decoration: none;
+	padding: 3px 0;
+	/*height: 15px;*/
+}
+#sidenav_v2b ul li a:hover {
+	color: #999;
+}
+#sidenav_v2b ul li.navon {
+	color: #999;
+}
+#sidenav_v2b ul li.navon a , #sidenav_v2b ul li.navon a.urhere {
+	color: #999;
+}
+#sidenav_v2b ul li.navon ul li a {
+	color: #999;
+}
+#sidenav_v2b ul li.navon ul li a.navon {
+	color: #999;
+}
+#sidenav_v2b ul li.navon a:hover , 
+a.urhere:hover {
+	background-image: none;
+	border: none;
+	text-decoration: none;
+	padding: 3px 0;
+}
+#sidenav_v2b ul li.navon span {
+	display: none;
+}
+
+#moreinfo_v2b {
+	width: 135px;
+	margin: 15px 0 0 0;
+	font-family: "Luxi Sans", verdana, arial, sans-serif;	
+	font-size: 11px;
+	}
+#moreinfo_v2b h4 {
+	margin: 0 0 0 15px;
+	padding: 0 0 3px 0;
+	border-bottom: 1px solid #333;
+	font-size: 12px;
+	font-weight: bold;
+	text-transform: uppercase;
+/*	text-align: right;*/
+	color: #333;
+}
+#moreinfo_v2b ul {
+	list-style: none;
+	padding: 5px 0 10px 0;
+	margin: 0;
+	text-indent: 0;
+	}
+#moreinfo_v2b ul li {
+	margin: 0;
+/*	text-align: right;*/
+	}
+#moreinfo_v2b ul li a {
+	display: block;
+	color: #333;
+	text-decoration: none;
+	padding: 3px 5px 3px 15px;
+	margin: 0;
+	}
+#moreinfo_v2b ul li a:hover {
+	color: #999;
+	}
+#moreinfo_v2b ul li.navon {
+	background: #6c6c6c;
+	}
+#moreinfo_v2b ul li.navon span {
+	display: none;
+	}
+
+/** end sidenav_v2b **/
+	
+ul.tabs_v2 {
+	list-style: none;
+	height: 28px;
+	display: block;
+	padding: 0;
+	margin: 0;
+	font-weight: bold;
+	font-size: 13px;
+}
+ul.tabs_v2 li {
+	display: block;
+	float: left;
+	margin: 0;
+	padding: 3px 0 0 0;
+	background-image: url(/g/chrome/nav/tab_inactive.png);
+	background-position: bottom left;
+	background-repeat: no-repeat;
+	width: 104px;
+	height: 25px;
+	text-align: center;
+	line-height: 23px;
+}
+
+ul.tabs_v3 li {
+	display: block;
+	float: left;
+	margin: 0;
+	padding: 3px 0 0 0;
+	background-image: url(/g/chrome/nav/tab_inactive.png);
+	background-position: bottom left;
+	background-repeat: no-repeat;
+	width: 150px;
+	height: 25px;
+	text-align: center;
+	line-height: 23px;
+}
+
+.page_jboss ul.tabs_v2 li {
+	background-image: url(/g/chrome/nav/jboss_tab_inactive.png);
+}
+
+.page_training ul.tabs_v2 li {
+      background-image: url(/g/chrome/nav/training_tab_inactive.png);
+}
+
+ul.tabs_v2 li a {
+	color: #ffffff;
+	text-decoration: none;
+	
+}
+
+.page_training ul.tabs_v2 li a {
+      color: #666;
+}
+
+ul.tabs_v2 li a:hover {
+	text-decoration: underline;
+	}
+ul.tabs_v2 li.tab_v2_active {
+	color: #000000;
+	background-image: url(/g/chrome/nav/tab_active.png);
+	background-position: bottom left;
+	background-repeat: no-repeat;
+}
+
+.page_jboss ul.tabs_v2 li.tab_v2_active {
+	background-image: url(/g/chrome/nav/jboss_tab_active.png);
+}
+
+.page_training ul.tabs_v2 li.tab_v2_active {
+      background-image: url(/g/chrome/nav/training_tab_active.png);
+}
+
+ul.tabs_v2 li.tab_v2_active a{
+	color: #000000;
+	text-decoration: none;
+	line-height: 25px;
+}
+
+ul.tabs_v3 li.tab_v3_active a{
+	color: #000000;
+	text-decoration: none;
+	line-height: 25px;
+	background-image: url(/g/chrome/nav/tab_active.png);
+	background-position: bottom left;
+	background-repeat: no-repeat;
+}
+
+/* the following four styles apply to Resource Center pages in rhel, jboss */
+#rhel_overview ul.tabs_v2 li.tab_v2_active1, 
+#rhel_server ul.tabs_v2 li.tab_v2_active2, 
+#rhel_desktop ul.tabs_v2 li.tab_v2_active3 {
+	color: #000000;
+	background-image: url(/g/chrome/nav/tab_active.png);
+	background-position: bottom left;
+	background-repeat: no-repeat;
+}
+#rhel_overview ul.tabs_v2 li.tab_v2_active1 a, 
+#rhel_server ul.tabs_v2 li.tab_v2_active2 a, 
+#rhel_desktop ul.tabs_v2 li.tab_v2_active3 a {
+	color: #000000;
+	text-decoration: none;
+	line-height: 25px;
+}
+
+#jboss_overview ul.tabs_v2 li.tab_v2_active1, 
+#jboss_platforms ul.tabs_v2 li.tab_v2_active2, 
+#jboss_frameworks ul.tabs_v2 li.tab_v2_active3 {
+	color: #000000;
+	background-image: url(/g/chrome/nav/jboss_tab_active.png);
+	background-position: bottom left;
+	background-repeat: no-repeat;
+}
+#jboss_overview ul.tabs_v2 li.tab_v2_active1 a, 
+#jboss_platforms ul.tabs_v2 li.tab_v2_active2 a, 
+#jboss_frameworks ul.tabs_v2 li.tab_v2_active3 a {
+	color: #000000;
+	text-decoration: none;
+	line-height: 25px;
+}
+
+
+
+ul.tabs_v2 li.tab_v2_active a:hover {
+	text-decoration: underline;
+	}
+	
+#moreinfo_v2 {
+	width: 132px;
+	margin: 20px 0 0 0;
+	font-family: "Luxi Sans", verdana, arial, sans-serif;	
+	font-size: 11px;
+	}
+#moreinfo_v2 h4 {
+	margin: 0 5px 0 0;
+	padding: 0 0 3px 15px;
+	border-bottom: 1px solid #ffffff;
+	font-size: 12px;
+	font-weight: bold;
+	text-transform: uppercase;
+	text-align: right;
+	color: #ffffff;
+}
+#moreinfo_v2 ul {
+	list-style: none;
+	padding: 5px 0 10px 0;
+	margin: 0;
+	text-indent: 0;
+	}
+#moreinfo_v2 ul li {
+	margin: 0;
+	text-align: right;
+	}
+#moreinfo_v2 ul li a {
+	display: block;
+	color: #bbbbbb;
+	text-decoration: none;
+	padding: 3px 5px 3px 15px;
+	margin: 0;
+	}
+#moreinfo_v2 ul li a:hover {
+	color: #ffffff;
+	}
+#moreinfo_v2 ul li.navon {
+	background: #6c6c6c;
+	}
+#moreinfo_v2 ul li.navon span {
+	display: none;
+	}
+/* END new "rhel5" styles */
+
+
+
+/* BEGIN new "rhel5" primary and secondary navigation */
+/************************************************************** TOP NAVIGATION V2 */
+
+#utility {
+	font-size: x-small;
+	padding: 0;
+}
+
+#utility a {
+	text-decoration: none;
+}
+
+#utilityLinks {
+	float: left;
+	width: 70%;
+	padding: 4px 0;
+	border-bottom: 1px solid #ccc;
+}
+
+#utilityLinks p#geo {
+	margin: 0;
+	float: left;
+	width: 125px;
+	/*background: yellow;*/
+}
+
+#utilityLinks p#linx {
+	margin: 0;
+	float: right;
+	/*width: 345px;
+	background: green;*/
+	text-align: right;
+	padding-right: 12px;
+}
+
+#utilityAccount {
+	float: right;
+	text-align: center;
+	background: #eee;
+	width: 30%;
+	background-image: url(/g/chrome/nav/utilBkgdRight.png);
+	background-position: bottom right;
+	background-repeat: no-repeat;
+}
+
+#utilityAccount p {
+	margin: 0;
+	background-image: url(/g/chrome/nav/utilBkgdLeft.png);
+	background-position: bottom left;
+	background-repeat: no-repeat;
+	display: block;
+	padding: 6px 0 8px 0;
+}
+
+span.navPipe {
+	color: #b00000;
+	padding: 0 6px;
+}
+
+a#utilityCart {
+	background-image: url(/g/chrome/nav/cart.gif);
+	background-position: top left;
+	background-repeat: no-repeat;
+	padding-left: 26px;
+	padding-bottom: 4px;
+	padding-top: 3px;
+}
+
+#header {
+	width: 100%;
+	margin: 10px 0 5px 0;
+	clear: both;
+	}
+	
+#header form {
+	width: 50%;
+	margin: 5px 0 0 0;
+	float: right;
+	text-align: right;
+	}
+	
+#header input {
+	background: #eee;
+	}
+	
+#rhLogo {
+	float: left;
+	margin-left: 15px;
+	}
+
+div#navWrap {
+	clear: both;
+	width: 100%;
+	font-family: "Lucida Grande", "Luxi Sans", "Trebuchet MS", helvetica, arial, sans-serif;
+	background-image: url(/g/chrome/nav/navPrimeRight3.png);
+	background-position: top right;
+	background-repeat: no-repeat;
+}
+div#navWrap div#primeNavWrap {
+	width: 100%;
+	background-image: url(/g/chrome/nav/navPrimeLeft3.png);
+	background-position: top left;
+	background-repeat: no-repeat;
+	float: left;
+}
+
+/* begin superfish ************************************ begin superfish */
+ul.primeNav-sf {
+	width: 100%;
+	font-size: 80%;
+	line-height: 1em;
+	font-weight: bold;
+	/*border-bottom: 1px solid #8f0000;*/
+	background: url(/g/chrome/nav/navPrimeBtmBrd.png) repeat-x bottom;
+	float: left;
+}
+ul.primeNav-sf, ul.primeNav-sf * {
+	list-style-type: none;
+	list-style-position: outside;
+	padding: 0;
+	margin: 0;
+}
+ul.primeNav-sf li {
+	float: left;
+	padding: 0;
+	margin: 0;
+	position: relative; 							/*  for superfish  */
+	z-index: 99;									/*  for IE6 - keeps drop downs above content [aaron] */
+}
+ul.primeNav-sf li a {
+	padding: 9px 15px 9px 15px;
+	text-decoration: none;
+	color: #000;
+	display: block;
+	position: relative; 							/*  added for superfish  */
+	/*float: left;*/ 								/*  removed for superfish  */
+}
+
+ul.primeNav-sf li a:visited {
+	color: #000;									/*  for IE6 - reinforcing override of visited link color [aaron] */
+}
+
+/* essential to superfish */
+ul.primeNav-sf ul {
+	position: absolute;
+	top: -999em;									/* hide main dropdowns */
+	width: 16em;									/* width of all dropdowns */
+	line-height: 1.25em;							/* allow for spacing on two line links */
+}
+
+ul.primeNav-sf li li {
+	width: 100%;
+}
+
+ul.primeNav-sf li:hover ul,
+ul.primeNav-sf li.sfHover ul {
+	left: 0;
+	top: 2.7em;										/* main dropdowns start at bottom of red line */
+	z-index: 99;									/* dropdowns appear above everything else */
+}
+
+ul.primeNav-sf li:hover li ul,
+ul.primeNav-sf li.sfHover li ul {
+	top: -999em;									/* hide fly-out dropdowns */
+}
+
+ul.primeNav-sf li li:hover ul,
+ul.primeNav-sf li li.sfHover ul {
+	left: 16em;										/* for fly-outs; same as width of dropdowns */
+	top: 0;
+}
+
+ul.primeNav-sf li.opposite li:hover ul,
+ul.primeNav-sf li.opposite li.sfHover ul {
+	left: -16em;									/* last two dropdowns appear to the left */
+	top: 0;
+}
+
+ul.primeNav-sf li li:hover li ul,
+ul.primeNav-sf li li.sfHover li ul {
+	top: -999em;
+}
+
+ul.primeNav-sf li li li:hover ul,
+ul.primeNav-sf li li li.sfHover ul {
+	left: 16em;
+	top: 0;
+}
+
+/* skin for superfish */
+ul.primeNav-sf ul li a {
+	border-right: 1px solid #fff;
+	border-bottom: 1px solid #fff;
+	padding: 6px 15px 6px 15px;				/* dropdown links slighty shorter than primary nav */
+}
+
+ul.primeNav-sf ul li {
+	background: #eee;								/* main dropdowns background */
+}
+
+ul.primeNav-sf ul li li {
+	background: #ccc;								/* fly-out dropdowns background */
+}
+
+ul.primeNav-sf li li:hover, 
+ul.primeNav-sf li li.sfHover,
+ul.primeNav-sf li li a:focus, 
+ul.primeNav-sf li li a:hover, 
+ul.primeNav-sf li li a:active {
+	background: #999;
+}
+
+ul.primeNav-sf li:hover, 
+ul.primeNav-sf li.sfHover {
+	background-image: url(/g/chrome/nav/navPrimeTabRight.png);
+	background-position: right top;
+	background-repeat: no-repeat;
+}
+
+ul.primeNav-sf li a:hover, 
+ul.primeNav-sf li a.sfHover {
+	background-image: url(/g/chrome/nav/navPrimeTabLeft.png);
+	background-position: top left;
+	background-repeat: no-repeat;
+	color: #fff;
+}
+
+ul.primeNav-sf ul ul {
+	border-top: none;
+}
+
+ul.primeNav-sf li li a:hover,
+ul.primeNav-sf li li a.sfHover {
+	background-image: none;
+}
+
+ul.primeNav-sf a.homeLink {
+	font-style: italic;
+	background-color: #ccc;							/* "all" links */
+}
+
+ul.primeNav-sf a.homeLink:after {
+	content: "\2026"								/* ellipses only show in presentation */
+}
+
+/*** arrows for superfish **/
+ul.primeNav-sf ul a.sf-with-ul {
+	padding-right: 	2.25em;
+	min-width:		1px; /* trigger IE7 hasLayout so spans position accurately */
+}
+
+ul.primeNav-sf .sf-sub-indicator {
+	display: none;
+}
+
+.sf-sub-indicator {
+	position:		absolute;
+	display:		block;
+	right:			.75em;
+	top:			1.05em; /* IE6 only */
+	width:			10px;
+	height:			10px;
+	text-indent: 	-999em;
+	overflow:		hidden;
+	background:		url('/g/chrome/nav/arrows-ffffff.png') no-repeat -10px -100px; /* 8-bit indexed alpha png. IE6 gets solid image only */
+}
+a > .sf-sub-indicator {  /* give all except IE6 the correct values */
+	top:			.8em;
+	background-position: 0 -100px; /* use translucent arrow for modern browsers*/
+}
+/* apply hovers to modern browsers */
+a:focus > .sf-sub-indicator,
+a:hover > .sf-sub-indicator,
+a:active > .sf-sub-indicator,
+li:hover > a > .sf-sub-indicator,
+li.sfHover > a > .sf-sub-indicator {
+	background-position: -10px -100px; /* arrow hovers for modern browsers*/
+}
+
+/* point right for anchors in subs */
+ul.primeNav-sf ul .sf-sub-indicator { display: inline; background-position:  -10px 0; }
+ul.primeNav-sf ul a > .sf-sub-indicator { background-position:  0 0; }
+/* apply hovers to modern browsers */
+ul.primeNav-sf ul a:focus > .sf-sub-indicator,
+ul.primeNav-sf ul a:hover > .sf-sub-indicator,
+ul.primeNav-sf ul a:active > .sf-sub-indicator,
+ul.primeNav-sf ul li:hover > a > .sf-sub-indicator,
+ul.primeNav-sf ul li.sfHover > a > .sf-sub-indicator {
+	background-position: -10px 0; /* arrow hovers for modern browsers*/
+}
+
+/* shadows for superfish */
+.sf-shadow ul {
+	background:	url('/g/chrome/nav/shadow.png') no-repeat bottom right;
+	padding: 0 10px 12px 0;
+	-moz-border-radius-bottomleft: 17px;
+	-moz-border-radius-topright: 17px;
+	-webkit-border-top-right-radius: 17px;
+	-webkit-border-bottom-left-radius: 17px;
+}
+.sf-shadow ul.sf-shadow-off {
+	background: transparent;
+}
+
+/* end superfish ************************************ end superfish */
+
+ul#secondNav {
+	width: 100%;
+	background-color: #ab0000;
+	border-bottom: 1px solid #8f0000;
+	background-image: url(/g/chrome/nav/navSecondBkgd.png);
+	background-position: top left;
+	background-repeat: repeat-x;
+	padding: 0px;
+	margin: 0px;
+	list-style-type: none;
+	float: left;
+}
+    /* Holly Hack Targets IE Win only \*/
+    * html ul#secondNav  {float: none;}
+    /* End Holly Hack */
+    
+ul#secondNav li {
+	float: left;
+	padding: 0 0 0 5px;
+	margin: 0;
+}
+ul#secondNav li a {
+	padding: 4px 10px 5px 10px;
+	text-decoration: none;
+	color: #fff;
+	font-size: 85%;
+	display: block;
+	float: left;
+}
+
+ul#secondNav li:first-child a {
+	margin-left: -5px;
+	padding-left: 15px;
+}
+
+/***** highlighting *****/
+
+#mainone ul.primeNav-sf li#mainFirst,
+#mainthree ul.primeNav-sf li#mainThird,
+#maintwo ul.primeNav-sf li#mainSecond,
+#mainfour ul.primeNav-sf li#mainFourth,
+#mainfive ul.primeNav-sf li#mainFifth,
+#mainsix ul.primeNav-sf li#mainSixth,
+#mainseven ul.primeNav-sf li#mainSeventh, 
+#maineight ul.primeNav-sf li#mainEighth {
+	background-image: url(/g/chrome/nav/navPrimeTabRight.png);
+	background-position: top right;
+	background-repeat: no-repeat;
+}
+#mainone ul.primeNav-sf li#mainFirst > a,
+#mainthree ul.primeNav-sf li#mainThird > a,
+#maintwo ul.primeNav-sf li#mainSecond > a,
+#mainfour ul.primeNav-sf li#mainFourth > a,
+#mainfive ul.primeNav-sf li#mainFifth > a,
+#mainsix ul.primeNav-sf li#mainSixth > a,
+#mainseven ul.primeNav-sf li#mainSeventh > a, 
+#maineight ul.primeNav-sf li#mainEighth > a {
+	background-image: url(/g/chrome/nav/navPrimeTabLeft.png);
+	background-position: top left;
+	background-repeat: no-repeat;
+	color: #fff;
+	/*padding-bottom: 5px;*/
+}
+
+/* Holly Hack Targets IE6 Win only \*/ 
+* html #mainone ul.primeNav-sf li#mainFirst a,
+* html #mainthree ul.primeNav-sf li#mainThird a,
+* html #maintwo ul.primeNav-sf li#mainSecond a,
+* html #mainfour ul.primeNav-sf li#mainFourth a,
+* html #mainfive ul.primeNav-sf li#mainFifth a,
+* html #mainsix ul.primeNav-sf li#mainSixth a,
+* html #mainseven ul.primeNav-sf li#mainSeventh a, 
+* html #maineight ul.primeNav-sf li#mainEighth a {
+	background-image: url(/g/chrome/nav/navPrimeTabLeft.png);
+	background-position: top left;
+	background-repeat: no-repeat;
+	color: #fff;
+}
+* html #mainone ul.primeNav-sf li#mainFirst li a,
+* html #mainthree ul.primeNav-sf li#mainThird li a,
+* html #maintwo ul.primeNav-sf li#mainSecond li a,
+* html #mainfour ul.primeNav-sf li#mainFourth li a,
+* html #mainfive ul.primeNav-sf li#mainFifth li a,
+* html #mainsix ul.primeNav-sf li#mainSixth li a,
+* html #mainseven ul.primeNav-sf li#mainSeventh li a, 
+* html #maineight ul.primeNav-sf li#mainEighth li a {
+	background-image: none;
+	color: #000;
+}
+/* End Holly Hack */ /* added for ie6 superfish!! [aaron] */
+
+    /* Holly Hack Targets IE Win only \*/
+	* html #mainone ul.primeNav-sf li#mainFirst a {background-image: url(/g/chrome/nav/navPrimeTabLeft.gif); background-position: top left; background-repeat: no-repeat;}
+    /* End Holly Hack */
+	
+#mainone ul.primeNav-sf li#mainFirst ul li a {background-image: none;}
+
+ul.secone li#secFirst a,
+ul.sectwo li#secSecond a, 
+ul.secthree li#secThird a, 
+ul.secfour li#secFourth a, 
+ul.secfive li#secFifth a, 
+ul.secsix li#secSixth a, 
+ul.secseven li#secSeventh a, 
+ul.seceight li#secEighth a {
+	background: #ad0000;
+}
+
+/***** hacks!! *****/
+
+#utility:after,
+#header:after,
+#navWrap:after {
+    content: "."; 
+    display: block; 
+    height: 0px;
+    overflow: hidden;
+    clear: both; 
+    visibility: hidden;
+    }
+
+    /* Holly Hack Targets IE Win only \*/
+    * html #utility,
+    * html #header,
+    * html #navWrap  {height: 1%;}
+    /* End Holly Hack */

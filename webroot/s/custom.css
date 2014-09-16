@@ -1,0 +1,2964 @@
+/************************************************************** HOME PAGE */
+
+#contentWrapHome {
+	margin-top: 10px;
+	padding: 0;
+	}
+	
+#contentWrapHome:after {
+	content: "."; 
+	display: block; 
+	height: 0; 
+	clear: both; 
+	visibility: hidden;
+    }
+
+	#contentWrapHome { display: inline-block; } 
+    /* Holly Hack Targets IE Win only \*/
+	#contentWrapHome {display: block;}    
+    /* End Holly Hack */
+  
+	
+#contentHome {
+	width: 100%;
+	margin-top: 7px;
+	}
+	
+#contentHome {
+	width: 100%;
+	margin-top: 7px;
+	}
+
+#contentHomeMain ul.linkage li {
+	list-style-image: none;
+	font-size: 11px;
+	}
+
+#contentHome:after {
+    content: "."; 
+    display: block; 
+    height: 1px;
+    margin-top: -1px;
+    overflow: hidden;
+    clear: both; 
+    visibility: hidden;
+    }
+
+    /* Holly Hack Targets IE Win only \*/
+    * html #promoHome {height: 1%;}
+    /* End Holly Hack */
+ 	
+#promoHome {
+	/*margin-bottom: 8px;*/
+	margin-bottom: 15px;
+	}
+	
+#promoHome .img2a {
+	display: block;
+	float: right;
+	}
+	
+#promoHome .img2b {
+	display: block;
+	float: left;
+	}
+
+#promoHome .img3a {
+	display: block;
+	float: right;
+	}
+	
+#promoHome .img3b {
+	display: block;
+	margin-bottom: 5px;
+	}
+	
+#promoHome .img3c {
+	display: block;
+	}
+	
+#promoHome:after {
+    content: "."; 
+    display: block; 
+    height: 1px;
+    margin-top: -1px;
+    overflow: hidden;
+    clear: both; 
+    visibility: hidden;
+    }
+
+    /* Holly Hack Targets IE Win only \*/
+    * html #promoHome {height: 1%;}
+    /* End Holly Hack */
+    
+#homeNews {
+	text-align: center;
+	font-size: x-small;
+	padding: 7px 0 12px 0;
+	}
+	
+#homeNews a {
+	text-decoration: none;
+	}
+
+/* the following style exists only when contentHomeMainBox is a graphic */
+#subPromoHome p { margin: 0; padding: 0; }
+
+#subPromoHome a {
+	width: 360px;
+	height: 87px;
+	float: left;
+	margin-bottom: 15px;
+	text-indent: -5000px;
+	}
+	
+#subPromoHome:after {
+    content: "."; 
+    display: block; 
+    height: 0;
+    clear: both; 
+    visibility: hidden;
+    }
+
+    /* Holly Hack Targets IE Win only \*/
+    * html #subPromoHome:after {height: 1%;}
+    /* End Holly Hack */
+/* end */
+    
+#contentHomeMain {
+	width: 360px;
+	float: left;
+	font-size: smaller;
+	}
+	
+#contentHomeMain a {
+	text-decoration: none;
+	}
+    
+.contentHomeMainBox {
+ 	background: url(/g/chrome/corner_homelinebox_top.png) top right no-repeat;
+ 	padding-top: 7px;
+	}
+	
+.contentHomeMainBoxInner {
+ 	background: url(/g/chrome/corner_homelinebox_bottom.png) bottom left no-repeat;
+ 	}
+ 	
+.contentHomeMainBoxBody {
+ 	padding: 7px 14px;
+ 	border-left: 1px solid #b4b4b4;
+ 	border-right: 1px solid #b4b4b4;
+ 	}
+ 	
+.contentHomeMainBox, .rcontentHomeMainBox {
+ 	width: 100%;
+ 	margin-bottom: 15px;
+	}
+	
+.contentHomeMainBoxInner, .rcontentHomeMainBoxInner {
+ 	padding-bottom: 0;
+ 	}
+ 	
+.rcontentHomeMainBoxBody {
+ 	padding: 0 15px;
+ 	}
+ 	
+.contentHomeMainBoxBody p,
+.contentHomeMainBoxBody ul,
+.rcontentHomeMainBoxBody p,
+.rcontentHomeMainBoxBody ul {
+ 	margin: 0;
+ 	padding: 0;
+ 	}
+	
+ul#homeServicesList {
+	width: 150px;
+	float: left;
+	padding: 7px 0;
+	margin: 0;
+	list-style-type: none;
+	}
+	
+/* new for jBoss (used to be OSA box) */	
+div#homeServices {
+	width: 150px;
+	float: left;
+	padding: 0;
+	margin: 0;
+	}
+	
+h3#rhel_head a {
+	display: block;
+	background: url(/g/rhel_home.png) 0 0 no-repeat;
+	width: 145px;
+	height: 21px;
+	margin-bottom: .7em;
+	}
+	
+h3#rhel_head a span {
+	display: none;
+	}
+	
+h3#jboss_head a {
+	display: block;
+	background: url(/g/jboss_home.png) 0 0 no-repeat;
+	width: 99px;
+	height: 39px;
+	margin-bottom: .7em;
+	}
+	
+h3#jboss_head a span {
+	display: none;
+	}
+/* end new for JBoss */
+	
+ul#homeServicesList li {
+	margin: 3px 0 13px 0;
+	}
+	
+ul#homeServicesList li a {
+	display: block;
+	}
+	
+ul#homeServicesList li#rhel a {
+	background: url(/g/chrome/listitem_rhelhomepage.png) 0 0 no-repeat;
+	width: 141px;
+	height: 25px;
+	}
+	
+ul#homeServicesList li#rhel a span {
+	display: none;
+	}
+	
+ul#homeServicesList li#rhn a {
+	background: url(/g/chrome/listitem_rhnhomepage.png) 0 0 no-repeat;
+	width: 90px;
+	height: 25px;
+	}
+	
+ul#homeServicesList li#rhn a span {
+	display: none;
+	}
+	
+ul#homeServicesList li#rhas a {
+	background: url(/g/chrome/listitem_rhashomepage.png) 0 0 no-repeat;
+	width: 155px;
+	height: 25px;
+	}
+	
+ul#homeServicesList li#rhas a span {
+	display: none;
+	}
+	
+ul#homeServicesList li#rhgfs a {
+	background: url(/g/chrome/listitem_rhgfshomepage.png) 0 0 no-repeat;
+	width: 155px;
+	height: 25px;
+	}
+	
+ul#homeServicesList li#rhgfs a span {
+	display: none;
+	}
+	
+ul#homeServicesList li#rhgcs a {
+	background: url(/g/chrome/listitem_rhgcs.png) 0 0 no-repeat;
+	width: 132px;
+	height: 25px;
+	}
+	
+ul#homeServicesList li#rhgcs a span {
+	display: none;
+	}
+	
+#contentHomeSolutions {
+	margin-left: 168px;
+	}
+
+ul.bigArrowList {
+	list-style: none;
+	padding-left: 0;
+	margin-left: 0;
+	}
+	
+ul.bigArrowList li {
+	background-image: url(/g/chrome/bullet_bluearrow_dot.png);
+	background-repeat: no-repeat;
+	background-position: 0px 3px;
+	padding: 0px 0px 2px 18px;
+	}
+	
+.contentHomeNewsCol ul.bigArrowList {
+	margin-top: 1.5em;
+	}
+	
+#contentHomeMain ul.bigArrowList li, .contentHomeNewsCol ul.bigArrowList li {
+	background-image: url(/g/chrome/bullet_bluearrow_dot.png);
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	padding: 1px 0 1px 18px;
+	}
+	
+ul.bigArrowList li a {
+	text-decoration: none;
+	font-weight: bold;
+	}
+	
+	
+	
+	
+	
+ul.linkage2 {
+	margin: 1pt;
+	padding: 0px;
+	margin-left: 24px;
+}
+ul.linkage2 li{
+	padding-left: 0px;
+	margin-left: 20px;
+	margin: .4em 0;
+}
+ul.linkage2 li.special {
+	margin-left: 15px;
+}
+ul.linkage2 a {
+	text-decoration: none;
+	font-size: 110%;
+	font-weight: bold;
+	color: #0066cc;
+}
+ul.linkage2 a:visited {
+	color: #6699cc;
+	}
+	
+ul.productlist a:visited {
+	color: #6699cc;
+	}
+
+ul.productlist a {
+	text-decoration: none;
+	font-size: 110%;
+	font-weight: bold;
+	color: #0066cc;
+}
+ul.productlist li.special {
+	margin-left: 30px;
+}
+	
+#headosaHomepg {
+	background-image: url(/g/chrome/head_osahomepage.png);
+	background-position: 0 0;
+	background-repeat: no-repeat;
+	padding-bottom: 0;
+	height: 12px;
+	}
+	
+#headrated1Homepg {
+	background-image: url(/g/chrome/head_whyredhat.png);
+	background-position: 50% 0;
+	background-repeat: no-repeat;
+	padding-bottom: 0;
+	margin-bottom: .25em;
+	height: 13px;
+	}
+	
+#headsubsHomepg {
+	background-image: url(/g/chrome/head_subshomepage.png);
+	background-position: 0 0;
+	background-repeat: no-repeat;
+	padding-bottom: 0;
+	height: 15px;
+	}
+	
+h1#headosaHomepg span {
+	display: none;
+	}
+	
+h1#headrated1Homepg span {
+	display: none;
+	}
+	
+h2#headsubsHomepg span {
+	display: none;
+	}
+	
+#contentHomeMain h2 {
+	font-size: 1em;
+	padding-top: .3em;
+	}
+	
+#contentHomeNews {
+	float: left;
+	width: 360px;
+	}
+	
+.contentHomeNewsCol {
+	width: 165px;
+	padding: 0;
+	margin-left: 15px;
+	float: left;
+	font-size: smaller;
+	display: inline;
+	}
+	
+.contentHomeNewsCol ul.linkage2 {
+	padding-top: 7px;
+	}
+	
+.contentHomeNews2Col {
+	float: left;
+	margin-left: 15px;
+	display: inline;
+	}
+	
+    /* Holly Hack Targets IE Win only \*/
+    /* html .contentHomeNews2Col {margin-left: -15px;} */
+    /* End Holly Hack */
+	
+#contentHomeNews h2 {
+	font-size: 10px;
+	padding-bottom: 0;
+	margin-bottom: 0;
+	}
+	
+.contentHomeNewsCol p {
+	margin-bottom: 1.5em;
+	line-height: 1.6em;
+	}
+	
+.contentHomeNewsCol a {
+	text-decoration: none;
+	}
+	
+/************************************************************** RH ENTERPRISE LINUX PAGES */
+
+.successByline{
+	font-size: small;
+	color: #999;
+	}
+
+.successQuote {
+	color: #999;
+	font-size: small;
+    font-weight: bold;
+	}
+
+/* 2 col even lists  */
+ul.doubleList {
+	padding-left: 75px;
+	}
+ul.doubleListTwo {
+	padding-right: 50px;	
+	}
+
+/* img align and padding for success stories /solutions/info/casestudies/ */
+
+.ssCol1 {
+	float: left;
+	margin: 0 15px 0 0;
+	}
+.ssCol2 {
+	float: left;
+	margin: 0 30px 0 0;
+	}
+.ssCol3 {
+	}
+.ssCol3:after {
+    content: "."; 
+    display: block; 
+    height: 0;
+    overflow: hidden;
+    clear: both; 
+    visibility: hidden;
+    }
+
+    /* Holly Hack Targets IE Win only \*/
+    * html .ssCol3 {height: 1%;}
+    /* End Holly Hack */
+
+
+img.storyPic {
+	float: left;
+	text-align: left;
+	padding-right: 15px;
+	padding-bottom: 30px;
+	}
+
+.storyTitleBlock {
+	margin-bottom: 10px;
+	overflow: auto;
+	}
+
+	
+
+/************************************************************** STORE PAGES */
+
+
+/*-- Store Index Page --*/
+
+#productMain {
+	margin-left: 15px;
+	}
+
+.productCatagory {
+	border-bottom: 1px solid #ccc;
+	text-align: right;
+	margin-bottom: 7px;
+	padding-top: 2px;
+	}
+	
+.productCatagory:after {
+    content: "."; 
+    display: block;
+    height: 0;
+    overflow: hidden;
+    clear: both; 
+    visibility: hidden;
+	}
+
+    /* Holly Hack Targets IE Win only \*/
+    * html .productCatagory {height: 1%;}
+    /* End Holly Hack */
+	
+.productCatagory h2 {
+	float:left;
+	}
+	  
+.productRow {
+	text-align: right;
+	padding-bottom: 10px;
+	padding-right: 15px;
+	}
+	
+.productRow strong, .productRow h3 { 
+	float: left;  
+	}
+	
+#steps {
+	margin:0 0 5px 0; padding: 0;
+	}
+	
+#steps ol {
+	font-size: x-small;
+	color: #999;
+	text-align:right;
+	margin:0; padding:0;
+	}
+	
+#steps li {
+	display: inline;
+	padding-left: 6px;
+	}
+	
+#steps ol li a:link, #steps ol li a:visited, #steps ol li a:active {
+	color: #999;
+	font-size: inherit; 
+	text-decoration: none;
+	}
+	
+#steps ol li a:hover {
+	font-size: inherit;
+	color: #666;
+	}
+	
+#steps span {
+	color: #C00;
+	font-weight: bold;
+	}
+	
+/* Store heading */
+	
+h1#storeTitle {
+	background-image: url(/g/chrome/title_store_home.png);
+	background-repeat: no-repeat;
+	height: 30px;
+	margin: 0;
+	padding: 0;
+	width: 200px;
+	float: left;
+	}
+	
+h1#storeTitle span {
+	display: none;
+	}
+	
+#storeFront {
+	margin: 0 15px 15px 15px; 
+	}
+
+#storeContent {
+	margin-bottom: 10px;
+	}
+
+#storeHead {
+	margin: 0;
+	padding-bottom: 3px;
+	border-bottom: 1px solid #ccc;
+	margin-bottom: 5px;
+	}
+	
+#storeCart {
+	text-align: right;
+	}
+	
+#storeCart img {
+	padding-top: 5px;
+	}
+
+.editStore {
+	font-size: 12px;
+	font-weight: normal;
+	}
+
+.cccLine { 
+	border-bottom: 1px solid #ccc;
+	width: 690px;
+	margin: 1px 0; padding:0;
+	}
+	
+.storeBlock {
+	padding: 12px 0 3px 33px; font-size: 11px;
+	border-bottom: 1px solid #CCC;
+	}
+	
+/**** New Window ****/
+	
+#open_window {
+	background-image: none;
+	margin: 15px 0 0 15px;
+	text-align: left;
+	width: 550px;  }
+	
+#open_window_header {
+	background: url(/g/chrome/logo_rh_home.png) left top no-repeat;
+	text-align: right;
+	padding-top: 10px;
+	height: 30px;
+	font: 10px Verdana, Arial, Helvetica, sans-serif;
+	color: #999999; }
+
+input.buyRed {
+	border: 1px solid #000;
+	background: #b70000;
+	padding: 0 12px; 
+	color: #FFF; 
+	}
+	
+a.inputButton, a.inputButton:hover, a.inputButton:visited, a.inputButton:active {
+	color:#333;
+	font-size:small;
+	padding: 1px 8px;
+	border: 1px solid #999;
+	text-decoration:none;
+	background-color:#f7f2d0;
+	}
+	
+.buyBlue a {
+	color:#00A7E4;
+	font-weight:bold;
+	font-size:small;
+	padding: 1px 3px;
+	border: 1px solid #00A7E4;
+	text-decoration:none;
+	background-color:#fff;
+	}
+	
+.buyBlue a:hover {
+	color:#fff;
+	background-color:#00A7E4;
+	}
+	
+.buyGreen a {
+	color:#a2bd1c;
+	font-weight:bold;
+	font-size:small;
+	padding: 0 2px;
+	border: 1px solid #a2bd1c;
+	text-decoration:none;
+	background-color:#fff;
+	}
+	
+.buyGreen a:hover {
+	color:#fff;
+	background-color:#a2bd1c;
+	}
+	
+.buyOrange a {
+	color:#faa614;
+	font-weight:bold;
+	font-size:small;
+	padding: 0 2px;
+	border: 1px solid #faa614;
+	text-decoration:none;
+	background-color:#fff;
+	}	
+	
+.buyOrange a:hover {
+	color:#fff;
+	background-color:#faa614;
+	}
+	
+.buyRed a {
+	color:#b70000;
+	font-weight:bold;
+	font-size:small;
+	padding: 0 2px;
+	border: 1px solid #b70000;
+	text-decoration:none;
+	background-color:#fff;
+	}
+	
+.buyRed a:hover {
+	color:#fff;
+	background-color:#b70000;
+	}
+
+.popUp	{
+	text-align: center;
+	margin: 5px 15px;
+	background-color:#fff;
+	padding: 10px;
+	width:350px;
+	}
+	
+.popUp2	{
+	text-align: center;
+	margin: 5px 15px;
+	background-color:#fff;
+	padding: 10px;
+	width:400px;
+	}
+	
+/************************************************************** SERVICE PAGES */
+
+/* AIM box styles for /services/aim.html and subpages */
+
+table.aim {
+	margin: 15px 0;
+	}
+	
+table.aim th {
+	text-align:center;
+	font-size: small;
+	}
+	
+/************************************************************** SOLUTIONS PAGES */	
+	
+div#imgOSA {
+	width: 550px;
+ 	}
+ 	
+.wrapOSA {
+	text-align: center;
+	vertical-align: top;
+	margin: 0 15px 15px 15px;
+	}
+	
+.wrapOSA img {
+	vertical-align: top;
+	}
+	
+.wrapOSA img.osaCenter {
+	margin: 0 30px;
+	}
+	
+
+/* SOLUTIONS PARTNER SPOTLIGHTS */
+
+#menuList li
+{
+display: inline;
+list-style-type: none;
+}
+
+#menuContainer
+{
+margin-bottom: 15px;
+width: 565px;
+}
+
+#menuContainer ul
+{
+list-style-type: none;
+text-align: right;
+padding: 0;
+position: relative;
+}
+
+#menuContainer li
+{
+display: inline;
+text-align: center;
+margin: 0 0 0 2px;
+}
+
+#menuContainer li a
+{
+padding: 0 2px;
+color: #666;
+background-color: #fff;
+border: 1px solid #ccc;
+text-decoration: none;
+text-transform: uppercase;
+font-size: x-small;
+}
+
+#menuContainer li a:hover
+{
+color: #000;
+border: 1px solid #666;
+border-top: 2px solid #666;
+border-bottom: 2px solid #666;
+}
+
+#menuContainer li a#current
+{
+color: #000;
+border: 1px solid #666;
+border-top: 2px solid #666;
+border-bottom: 2px solid #666;
+}
+
+.logoWrap {
+	margin-bottom: 30px;
+	width: 565px;
+	}
+	
+div.visit {
+	text-align: right;
+	margin-bottom: 0;
+	margin-top: -15px;
+	font-size: x-small;
+	text-decoration: none;
+ 	}
+ 	
+/* FOR NA SKU LIST */
+
+#sku td {
+	color:#000;
+	font-weight:normal;
+	font-size:small;
+	}
+	
+#sku td.main {
+	color:#666;
+	font-size:x-small;
+	font-weight: bold;
+	white-space:nowrap;
+	}
+	
+#sku th.cat {
+	font-size: large;
+	font-weight: bold;
+	color: #fff;
+	background-color:#900;
+	height:30px;
+	}
+	
+#sku td.sub1 {
+	color:#fff;
+	background-color:#999;
+	font-weight:bold;
+	font-size:medium;
+	height:25px;
+	}
+	
+#sku td.subcat1 {
+	color:#fff;
+	background-color:#999;
+	font-weight:bold;
+	font-size:small;
+	}
+	
+#sku td.sub2 {
+	color:#fff;
+	background-color:#333;
+	font-weight:bold;
+	font-size:medium;
+	height:25px;
+	}
+	
+#sku td.subcat2 {
+	color:#fff;
+	background-color:#333;
+	font-weight:bold;
+	font-size:small;
+	}
+	
+/* Choice landing page */
+
+h1#headchoice {
+	background-image: url(/g/choice_logo.png);
+	background-position: 0 0;
+	background-repeat: no-repeat;
+	height: 55px;
+	}
+
+	
+h1#headchoice span {
+	display: none;
+	}
+
+
+div#choice {
+	clear: both;
+	width: 720px;
+	margin: 25px 0;
+	background: #fff url(/g/chrome/choice_back.gif) top center repeat-y;
+	border-bottom: 1px solid white;
+	}
+	
+div#choice:after {
+    content: "."; 
+    display: block;
+    height: 0;
+    overflow: hidden;
+    clear: both; 
+    visibility: hidden;
+    }
+
+    /* Holly Hack Targets IE Win only \*/
+    * html #choice {height: 1%;}
+    /* End Holly Hack */
+	
+div#choice h2 {
+	text-align: right;
+	font-size: x-small;
+	color: #999;
+	margin: 0 0 1.5em 0;
+	}
+	
+div#choice p {
+	margin-top: 0;
+	line-height: 1.3em;
+	}
+	
+div#choice h3 {
+	margin-bottom: .25em;
+	font-size: x-small;
+	}
+	
+div#choice ul.plain {
+	margin: 0 0 1em 0;
+	padding-left: 10px;
+	list-style: none;
+	}
+	
+div#choice ul.plain li {
+	padding: 0.30em 0;
+	}
+
+div.choiceCol {
+	width: 160px;
+	float: left;
+	padding: 0 10px;
+	font-size: x-small;
+	}
+	
+
+/* styles for direct renewals / contract tables */
+
+h2.contractsTab {
+        margin-top: 15px;
+        font-size: smaller;
+        background: #b4b19a url(http://rhn.redhat.com/img/table_corner_tr.gif) top right no-repeat;
+        padding-bottom: 0px;
+        padding-top: 3px;
+	margin-bottom: 0px;
+        }
+                                                                                                                                                                                        
+h2.contractsTab span    {
+        background: #b4b19a url(http://rhn.redhat.com/img/table_corner_tl.gif) top left no-repeat;
+        font-size: small;
+        color: #fff;
+        padding-left: 7px;
+        padding-top: 3px;
+	margin: 0px;
+	padding-bottom: 0px;
+	padding-right: 0px;
+        }
+                                                                                                                                                                                        
+p.contractsTabText       {
+        background-color: #b4b19a;
+        font-size: xx-small;
+        margin: 0px;
+        padding: 3px 0px 9px 9px;
+	border: 0px;
+        }
+
+.hedSummary {
+	color: #666;
+	font-weight: bolder;
+	padding-left: 15px;
+	line-height: 24px;
+	}
+
+/* styles for things in /promo/ */
+
+#greyCurveWrap {
+        background: #DEDEDE;
+        margin: 30px 0 0 0;
+        width: 720px;
+        height: auto;
+        }
+
+#greyCurveTop {
+        background: url(/g/landing/ibm_roadshow_top.gif) top left no-repeat;
+        height: 20px
+        width: 720px;
+        }
+
+#greyCurveBottom  {
+        background: url(/g/landing/ibm_roadshow_bottom.gif) bottom left no-repeat;
+	width: 720px;
+	height: 20px;
+        }
+
+#whiteLogoBox  {
+	margin: 30px 0px 0px 0px;
+	padding: 25px 0px 25px 0px;
+	background: #fff;
+	width: 100%;
+	text-align: center;
+	}
+
+#greyCurveWrap h1	{
+	color: #c00;
+	font-size: xx-large;
+	text-align: center;
+	margin: 10px 5px 0px 5px;
+	padding: 0px;
+	}
+
+#greyCurveWrap h2	{
+	color: #c00;
+	font-size: large;
+	margin: 0px 50px 5px 75px;
+	padding: 0px;
+	}
+
+#greyCurveWrap h3	{
+	color: #c00;
+	font-size: large;
+	margin: 15px 50px 5px 75px;
+	padding: 0px;
+	text-transform: uppercase;
+	}
+
+#greyCurveWrap p.text	{
+	margin: 0px 50px 5px 75px;
+	}
+
+#greyCurveWrap ul	{
+	margin: 10px 65px 10px 75px;
+	padding: 0;
+	}
+
+#greyCurveWrap ul li {
+	font-size: smaller;	
+	margin: 0px 0px 5px 45px;
+	padding: 0;
+	}
+
+#greyCurveWrap p.floatLeft  {
+	font-weight: bold;
+	float: left;
+	margin: 0px 50px 5px 75px;
+	}
+
+#greyCurveWrap p.floatRight {
+	margin: 5px 50px 5px 350px;
+	font-weight: bold;
+	}
+
+.agendaLeft	{
+	padding-right: 50px;
+	margin: 5px 0px 5px 75px;
+	}
+
+.agendaRight  {
+	font-size: smaller;
+	vertical-align: middle;
+	}
+
+#greyCurveWrap:after {
+    content: ".";
+    display: block;
+    height: 0;
+    overflow: hidden;
+    clear: both;
+    visibility: hidden;
+    }
+                                                                                                                                                                                         
+    /* Holly Hack Targets IE Win only \*/
+    * html greyCurve#Wrap {height: 1%;}
+    /* End Holly Hack */
+	
+	
+/* Videos */
+
+#videoWrap a {
+	color: #cc0000;
+	text-decoration: none;
+	}
+
+.videoHeadInner {
+	padding: 60px 15px 15px 15px; 
+	color: #ffffff;
+	}
+	
+.videoHeadInner img {
+	float: left; 
+	padding: 0 15px 0 0;
+	}
+
+img.videoImg	{
+	float: left;
+	display: block;
+	margin: 0 15px 0 0;
+	}
+
+ul.videoMore {
+	list-style: none;
+	padding-left: 0;
+	margin: 0 0 30px 0;
+	}
+	
+ul.videoMore li{
+	background-image: url(/g/chrome/bullet_arrow_red.png);
+	background-repeat: no-repeat;
+	background-position: 0 .4em;
+	padding-left: 10px;
+	margin: .8em 0;
+	}
+
+ul.videoMore li a {
+	font-weight: bold;
+	}
+	
+ul.videoMore li a.view {
+	font-weight: normal;
+	font-size: smaller;
+	}
+
+div.creativecommons {
+	float: left; 
+	padding-right: 5px;
+	margin-bottom: 1em;
+	}
+
+span.creativecommons {
+	font-size: x-small;
+	}
+    
+ /* newsletter styles */
+ 
+ .NLcontentIndent15 h2 {
+ 	font-size: large; 
+ 	color: #c00;
+ 	}
+ 	
+ .NLcontentIndent15 h3 {
+ 	font-size: large;
+ 	}
+ 	
+ .NLcontentIndent15 h4 {
+ 	font-size: medium; 
+ 	color: #666;
+ 	}
+ 
+ .NLcontentIndent15 h4.NLDate {
+ 	font-size: small;
+ 	color: #c00;
+ 	}
+ 
+ #NLGrey {
+ 	width: 720px; 
+ 	margin: 20px auto 20px auto; 
+ 	background: #dedede url(/g/landing/ibm_roadshow_top.gif) top left no-repeat;
+ 	}
+ 	
+ #NLGreyLCol {
+ 	float: left; 
+ 	width: 515px; 
+ 	margin: 15px; 
+ 	background: white url(/g/chrome/corner_subnews_bottom.gif) bottom right no-repeat; 
+ 	padding-bottom: 20px;
+ 	}
+ 	
+ #NLGreyRCol {
+ 	margin-left: 545px; 
+ 	padding: 85px 15px 0 0;
+ 	}
+ 	
+ #NLGreyBottom {
+ 	width: 720px; height: 20px; 
+ 	background: url(/g/landing/ibm_roadshow_bottom.gif) bottom right no-repeat; 
+ 	clear: both;
+ 	}
+ 	
+ .NLcontentIndent15 {
+ 	margin: 0 15px;
+ 	}
+ 	
+ /* newsletter titles */
+ 
+ h1#SubNews {
+ 	width: 515px; 
+ 	height: 59px; 
+ 	background: url(/g/subnew_header.png) 0 0 no-repeat;
+ 	}
+ 	
+ h1#SubNews span {
+ 	display: none;
+ 	}
+ 	
+/* Summit05 promo */
+
+#homeSummit {
+ 	font-size: 11px;
+ 	color: #666;
+	}
+	
+#homeSummit p, #homeSummit h2, #homeSummit h3 {
+	margin: 0;
+	padding: 0;
+	margin-bottom: 3px;
+	}
+	
+#homeSummit a {
+	text-decoration: none;
+	}
+
+#homeSummitHeader h2 {
+	background: url(/g/promos/summit05/head_homeSummit.png) top left no-repeat;
+	width: 157px;
+	height: 10px;
+	text-indent: -10000px;
+	}
+	
+#homeSummitHeader img {
+	float: right; 
+	margin-left: 30px;
+	}
+	
+#homeSummitPhotos {
+	position: relative;
+	width: 317px;
+	height: 120px;
+	margin: 30px 0 35px -14px;
+	z-index: 1;
+	}
+	
+.homeSummitSpeak1, .homeSummitSpeak2, .homeSummitSpeak3, .homeSummitSpeak4, .homeSummitSpeak5, .homeSummitSpeak6, .homeSummitSpeak7, .homeSummitSpeak8 {
+	display: block;
+	float: left;
+	margin-right: 5px;
+	margin-bottom: 5px;
+	text-indent: -10000px;
+	text-decoration: none;
+	width: 48px;
+	height: 48px;
+	}
+	
+.homeSummitSpeak1 {
+	background: url(/g/promos/summit05/szulik_off.jpg) top left no-repeat;
+	}
+	
+.homeSummitSpeak2 {
+	background: url(/g/promos/summit05/tiemann_off.jpg) top left no-repeat;
+	}
+	
+.homeSummitSpeak3 {
+	background: url(/g/promos/summit05/buckman_off.jpg) top left no-repeat;
+	}
+	
+.homeSummitSpeak4 {
+	background: url(/g/promos/summit05/wheaton_off.jpg) top left no-repeat;
+	}
+	
+.homeSummitSpeak5 {
+	background: url(/g/promos/summit05/mau_off.jpg) top left no-repeat;
+	}
+	
+.homeSummitSpeak6 {
+	background: url(/g/promos/summit05/fink_off.jpg) top left no-repeat;
+	}
+	
+.homeSummitSpeak7 {
+	background: url(/g/promos/summit05/wirt_off.jpg) top left no-repeat;
+	}
+	
+.homeSummitSpeak8 {
+	background: url(/g/promos/summit05/berger_off.jpg) top left no-repeat;
+	}
+	
+.homeSummitSpeak {
+	position: absolute;
+	top: 53px;
+	left: 159px;
+	width: 180px;
+	height: 70px;
+	z-index: 100;
+	}
+	
+.homeSummitSpeak p {
+	line-height: 1.2em;
+	}
+	
+#homeSummitPhotos a span {
+	display: none;
+	}
+	
+#homeSummitPhotos a:hover span {
+	display: block;
+	position: absolute;
+	top: 53px;
+	left: 159px;
+	height: 75px;
+	width: 180px;
+	text-indent: 0;
+	z-index: 200;
+	background: white;
+	color: black;
+	}
+	
+.homeSummitSpeak1:hover {
+	background: url(/g/promos/summit05/szulik_on.jpg) top left no-repeat;
+	}
+	
+.homeSummitSpeak2:hover {
+	background: url(/g/promos/summit05/tiemann_on.jpg) top left no-repeat;
+	}
+	
+.homeSummitSpeak3:hover {
+	background: url(/g/promos/summit05/buckman_on.jpg) top left no-repeat;
+	}
+	
+.homeSummitSpeak4:hover {
+	background: url(/g/promos/summit05/wheaton_on.jpg) top left no-repeat;
+	}
+	
+.homeSummitSpeak5:hover {
+	background: url(/g/promos/summit05/mau_on.jpg) top left no-repeat;
+	}
+	
+.homeSummitSpeak6:hover {
+	background: url(/g/promos/summit05/fink_on.jpg) top left no-repeat;
+	}
+	
+.homeSummitSpeak7:hover {
+	background: url(/g/promos/summit05/wirt_on.jpg) top left no-repeat;
+	}
+	
+.homeSummitSpeak8:hover {
+	background: url(/g/promos/summit05/berger_on.jpg) top left no-repeat;
+	}
+	
+#homeSummitFooter p {
+	text-align: right;
+	font-size: 10px;
+	}
+	
+#homeSummitFooter a {
+	color: #900;
+	font-weight: bold;
+	}
+	
+#summitLive {
+	width: 360px;
+	float: left;
+ 	margin-bottom: 15px;
+	height: 262px;
+	}
+	
+#summitLive h2,#summitLive p {
+	text-indent: -10000px;
+		}
+		
+		
+/* EASY PROMO /promo/easy/ */
+
+#easyWrap {
+	background: url(/g/landing/easy_bg_circles.png) top center no-repeat;
+	width: 695px;
+	min-height: 665px;
+	}
+	
+#easyWrap2 {
+	background: url(/g/landing/easy_bg_circles2.png) top center no-repeat;
+	width: 695px;
+	min-height: 665px;
+	}
+	
+#easyLogo {
+	width: 680px;
+	margin-left: 15px;
+	}
+	
+#easyLogo img {
+	margin-right: 30px;
+	}
+	
+#easyLeft {
+	float: left;
+	width: 335px;
+	margin-left: 15px;
+	}
+	
+#easyRight {
+	float: right;
+	width: 315px;
+	margin-left: 30px;
+	}
+	
+.easyStory {
+	padding-top: 15px;
+	}
+		
+		
+ /* HP ADVOCATE PROMO */
+ 
+ #hpAgenda {
+	margin: 5px 0px 5px 75px;
+	}
+ 
+ #hpAgenda p {
+ 	font-size:smaller;
+ 	margin: 5px 0px 5px 15px;
+	}
+	
+#hpRegister {
+	float: right;
+	width: 350px;
+	}
+
+ 
+
+/* Virtualization */
+
+#virtIntro p {
+    color: black;
+	font-size: 13px;
+	font-weight: 700;
+	}
+
+#virtWrap {
+    background: url('/g/chrome/virt_bg.png') repeat-y left;
+	width: 730px;
+	margin-left: -15px;
+}
+
+#virtWrap:after {
+    content: ".";
+    display: block;
+    height: 0;
+    overflow: hidden;
+    clear: both;
+    visibility: hidden;
+    }
+    
+    /* Holly Hack Targets IE Win only \*/
+    * html virtWrap {height: 1%;}
+    /* End Holly Hack */
+
+
+#virtWrap p {
+    color: black;
+	font-size: 12px;
+	}
+
+
+#virtWrap ul {
+     font-size: 11px;
+     padding-left: 3px;
+     margin-top: -8px;
+}
+
+#virtWrap li {
+     padding-left: 7px;
+     margin-left: -9px;
+}
+	
+#virtWrap a {
+    text-decoration: none;
+	}	
+
+#coltops {
+	background: url('/g/chrome/virt_tops.png') no-repeat top;
+	margin: 0;
+	margin-left: 0px;
+	padding: 0;
+	height: 62px;
+	}
+
+#colbots {
+    background: url('/g/chrome/virt_bottom.png') no-repeat top;
+    margin-left: 0px;
+    margin: 0px;
+    padding: 0;
+    height: 26px;
+	}
+
+#colvirtgrey1 {
+	float: left;
+	padding-left: 30px;
+	padding-right: 15px;
+	width: 149px;
+	}
+
+#colvirtwhite1 {
+	float: left;
+	padding-left: 15px;
+	padding-right: 15px;
+	width: 167px;
+	}
+	
+#colvirtgrey2 {
+	float: left;
+	padding-left: 15px;
+	padding-right: 15px;
+	width: 158px;
+	}
+
+#colvirtwhite2 {
+	float: left;
+	width: 125px;
+	padding-left: 15px;
+	padding-right: 0px;
+	}
+
+/* End Virtualization */
+
+/* begin styles for Support Definition Tooltips */
+a.toolLink {
+	color: #0066cc;
+	text-decoration:underline;
+	}
+
+.tooltip {
+	position: absolute;
+	width: 240px;
+	background-color: rgb(255, 255, 234);
+	border: 1px solid black;
+	padding: 2px;
+	font-size: 12px;
+	margin: 1em;
+}
+
+.tooltip h3 {
+	height: auto;
+	padding: 2px;
+	margin-top: 0px;
+	margin-left: 0px;
+	background-color: #c00;
+	color: white;
+	font-size: 14px;
+	font-weight: bold;
+	margin: 0;
+}
+
+.tooltip p {
+	float: right;
+	margin-top: 2px;
+	}
+
+.tooltip p a {
+	/* Here for example only. Styles the Close link */
+	color: #fff;
+	font-weight: bold;
+}
+/* end styles for Support Definition Tooltips */
+
+/* hiding silly analytic Javascript */
+
+#oTags {
+display: none;
+visibility: hidden;
+height: 0;
+width: 0;
+}
+
+/* end hiding */
+
+/* RHMagazine widget */
+
+#magWidgetBottom2 {
+        background: url(/g/magazine/RHMWidgetBottom.png) bottom left no-repeat;
+        height: 38px;
+        width: 132px;
+        }
+
+#magWidget2 {
+        background: #cc2127 url('/g/magazine/RHMWidgetTop.png') top left no-repeat;
+    width: 132px;
+        margin: 0px;
+        padding: 0px 0px -1px 0px;
+        }
+
+    /* Holly Hack Targets IE Win only \*/
+    * html #magWidget2 {width: 132px;}
+    * html #magWidget2 {overflow-x: hidden;}
+    * html #magWidget2 {overflow-y: auto;}
+    * html #magWidget2 {height: 1%;}
+    /* End Holly Hack */
+
+#magWidgetContent2 {
+        padding-top: 35px;
+        padding-left: 5px;
+        padding-right: 5px;
+        height: auto;
+        }
+
+
+    /* Holly Hack Targets IE Win only \*/
+    * html #magWidgetContent {height: 1%;}
+    /* End Holly Hack */
+
+#magWidgetContent:after {
+   display: block;
+   height: 0;
+   overflow: hidden;
+    clear: both;
+    visibility: hidden;
+}
+
+
+#magWidgetContent2 a {
+        color: white;
+        text-decoration: none;
+        font-size: x-small;
+        }
+
+#magWidgetContent2 ul {
+        list-style: none;
+        padding-left: 0px;
+        margin-left: 2px;
+        }
+
+
+#magWidgetContent2 ul li{
+        padding-left: 0px;
+        margin: .4em 0;
+        line-height: .9em;
+        }
+
+/* promo jump pages */
+
+h1#jump_head1 {
+	margin: 15px 0;
+	width: 720px;
+	height: 90px;
+	text-indent: -5000px;
+	border-style: none;
+	}
+h1#jump_head1 a {
+	display: block;
+	width: 720px;
+	height: 90px;
+	text-decoration: none;
+	}
+h2.jump_head2 {
+	color:#666; 
+	text-align:center; 
+	margin-bottom:1em; 
+	font-size:130%;
+	}
+.jump_jboss h1#jump_head1 {
+	background: url(/g/jboss_header-value.png);
+	}
+ul.jump_action {
+	margin-top: 2em;
+	padding: 0;
+	list-style-type: none;
+	text-align: center;
+	}
+ul.jump_action a {
+	font-size: 85%;
+	margin: 0 auto;
+	width: 15em;
+	display: block;
+	padding: .35em 1em;
+	background: #0066cc;
+	color: #fff;
+	text-decoration: none;
+	}
+	
+ul.jump_action a:hover {
+	color: #06c;
+	background: none;
+	}
+	
+div.quote {
+	margin-bottom: 3em;
+	}
+	
+div.quote img {
+	float: left;
+	margin: 0 10px 0 0;
+	}
+	
+div.quote .quoter {
+	height: 70px;
+	font-weight: bold;
+	clear: both;
+	}
+	
+div.quote .quoter span {
+	color: #999;
+	}
+	
+div.quote .quotes {
+	font-style: italic; 
+	background: #eee; 
+	padding: .5em;
+	}
+
+/** magazine staff page **/
+ div.staffLeft {
+/*	margin-bottom: 15px;*/
+ 	}
+
+	
+div.staffLeft img {
+ 	float: left;
+ 	margin: 0 30px 10px 0;
+ 	}
+ 
+div.staffLeft img.margin15	{
+	margin-right: 15px;
+	}
+	
+ .HRBox2 {
+	padding-bottom: 10px;
+/*	margin-bottom: 10px;*/
+	}
+
+div.articleList	{
+	border: 2px solid #eee;
+	padding: 1em;
+	}
+
+div.articleList>p {
+	font-size: smaller;
+	}
+
+div.articleList>h3 {
+	font-size: small;
+	font-weight: bold;
+	}	
+
+ /*********************************** Command Center sub-nav */  	 
+  	 
+ div.grayBoxWide { 	 
+         width: 573px; 	 
+         background-color: #ccc; 	 
+         background-image: url(/g/chrome/corner_headgraywide_top.png); 	 
+         background-position: top left; 	 
+         background-repeat: no-repeat; 	 
+         font-size: small; 	 
+         margin-bottom: 30px; 	 
+         } 	 
+          	 
+ div.grayBoxInnerWide { 	 
+         background-image: url(/g/chrome/corner_headgraywide_bottom.png); 	 
+         background-position: bottom right; 	 
+         background-repeat: no-repeat; 	 
+         } 	 
+          	 
+ div.grayBoxBody { 	 
+         padding: 5px 14px; 	 
+         color: rgb(180, 180, 180); 	 
+         } 	 
+   	 
+ div.grayBoxBody span { 	 
+         color: white; 	 
+         }
+
+ .clearBoxHead {
+ 	width: 279px;
+ 	background: url(/g/chrome/corner_halflinebox_bottom.png) bottom left no-repeat;
+ 	padding-bottom: 7px;
+ 	margin-bottom: 15px;
+ 	}
+ 	
+ .clearBoxHeadBody {
+ 	padding: 5px 14px;
+ 	border-left: 1px solid #b4b4b4;
+ 	border-right: 1px solid #b4b4b4;
+ 	}
+ 	
+.clearBoxHead h3 {
+	font-size: 10px;
+	color: white;
+	background: #b4b4b4;
+	padding: 4px 10px;
+	margin: 0;
+	}
+
+.clearBoxHead h3.noPromo {
+	background-image: url(/g/chrome/corner_grayTopBox_top.png);
+	background-position: top left;
+	background-repeat: no-repeat;
+	padding-top: 5px;
+	padding-bottom: 5px;	
+	}	
+
+/************************************************************** REAL TECHNOLOGY */
+#realtech_base {
+	position: relative; /* so everything else can be absolute */
+	left: -7px;
+	margin-top: 15px;
+	height: 665px;
+	width: 734px;
+	}
+
+.realtech_bg {
+	width: 720px;
+	background: url('/g/realtech/realtech_bg.png') top left repeat-y;
+}
+
+.realtech_header {
+	position: relative;
+	top: 32px;
+	left: 45px;
+	background: url('/g/realtech/realtech_header.gif') no-repeat;
+	height: 44px;
+}
+
+.realtech_wrap {
+	margin-left: 45px;
+	margin-top: 78px;
+	}
+
+.realtech_header h1 {
+	display: none;
+	}
+
+.realtech_vidcol {
+	float: left;
+	background: blue;
+/*	width: 406px;
+	height: 316px;
+	margin-top: 78px;
+	margin-left: 45px;*/
+}
+
+.realtech_linkcol {
+	float: right;
+	width: 200px;
+/*	margin-top: 78px;*/
+	margin-right: 30px;
+	text-align: left;
+}
+
+.realtech_popupbg {
+	width: 625px;
+	height: 470px;
+	background: url('/g/realtech/realtech_popupbg.png') top left no-repeat;
+}
+
+.realtech_popupvid {
+	float: left;
+	background: black;
+	width: 325px;
+	height: 256px;
+	margin-top: 78px;
+	margin-left: 45px;
+}
+
+.realtech_popupcol {
+	float: right;
+	width: 200px;
+	height: 392px;
+	margin-top: 78px;
+	margin-right: 30px;
+	text-align: left;
+}
+
+.sendtoafriend {
+	margin-top: 20px;
+}
+
+.sendtoafriend h2 {
+	font-size: small;
+	font-weight: normal;
+/*	text-align: right;*/
+	margin-bottom: 5px;
+}
+
+.sendtoafriend p {
+	display: none;
+}
+
+.sendtoafriend input {
+	background: none;
+}
+
+.realtech_morelessons {
+	margin: 0;
+	background: url('/g/realtech/morelessons.gif') top left no-repeat;
+	width: 102px;
+	height: 9px;
+}
+.realtech_morelessons h3 {
+	margin-left: -100000px;
+}
+
+
+.realtech_morelist {
+	list-style-type: none;
+	padding: 0;
+/*	padding-left: 35px;*/
+	margin: 0;
+	padding-bottom: 5px;
+}
+
+.realtech_morelist li {
+	line-height: 13px;
+	padding-left: 31px;
+	padding-bottom: 10px;
+	background-repeat: no-repeat;
+	background-position: 0px 2px;
+	}
+
+.realtech_morelist li span {
+	display: none;
+	}
+
+.realtech_morelist li.one {
+	background-image: url('/g/realtech/01.gif');
+	}
+	
+.realtech_morelist li.two {
+	background-image: url('/g/realtech/02.gif');
+	}
+
+.realtech_morelist li.three {
+	background-image: url('/g/realtech/03.gif');
+	}
+
+.realtech_morelist li.four {
+	background-image: url('/g/realtech/04.gif');
+	}
+	
+.realtech_morelist li.five {
+	background-image: url('/g/realtech/05.gif');
+	}
+	
+.realtech_morelist li.six {
+	background-image: url('/g/realtech/06.gif');
+	}
+	
+.realtech_morelist li.seven {
+	background-image: url('/g/realtech/07.gif');
+	}
+	
+.realtech_morelist li.eight {
+	background-image: url('/g/realtech/08.gif');
+	}
+	
+.realtech_morelist li.nine {
+	background-image: url('/g/realtech/09.gif');
+	}
+	
+.realtech_morelist li.ten {
+	background-image: url('/g/realtech/10.gif');
+	}
+	
+.realtech_morelist li.eleven {
+	background-image: url('/g/realtech/11.gif');
+	}
+	
+.realtech_morelist li.twelve {
+	background-image: url('/g/realtech/12.gif');
+	}
+	
+.realtech_morelist li.thirteen {
+	background-image: url('/g/realtech/13.gif');
+	}
+	
+.realtech_morelist li.fourteen {
+	background-image: url('/g/realtech/14.gif');
+	}
+
+.realtech_morelist li.fifteen {
+	background-image: url('/g/realtech/15.gif');
+	}
+
+.realtech_morelist li.sixteen {
+	background-image: url('/g/realtech/16.gif');
+	}
+
+.realtech_morelist li.seventeen {
+	background-image:  url('/g/realtech/17.gif');
+	}
+
+.realtech_morelist li.eighteen {
+	background-image:  url('/g/realtech/18.gif');
+	}
+
+.realtech_morelist li.nineteen {
+	background-image:  url('/g/realtech/19.gif');
+	}
+.realtech_morelist li.twenty {
+	background-image:  url('/g/realtech/20.gif');
+	}
+	
+.realtech_morelist li.twenty-one {
+	background-image:  url('/g/realtech/21.gif');
+	}
+
+.realtech_morelist li.twenty-two {
+	background-image:  url('/g/realtech/22.gif');
+	}
+
+.realtech_morelist li.twenty-three {
+	background-image:  url('/g/realtech/23.gif');
+	}
+	
+.realtech_morelist li.twenty-four {
+	background-image:  url('/g/realtech/24.gif');
+	}
+	
+.realtech_morelist li.twenty-five {
+	background-image:  url('/g/realtech/25.gif');
+	}
+	
+.realtech_morelist li.twenty-six {
+	background-image:  url('/g/realtech/26.png');
+	}	
+
+/* some lovely styles for the RHEL5 Thank You promo */
+/* headers */
+h1#thankyouListening {
+	width: 256px;
+	height: 39px;
+	background: url(/g/thankyou_head_listening.gif) no-repeat;
+	text-indent: -5000px;
+}
+h1#thankyouArchitecture {
+	width: 343px;
+	height: 15px;
+	background: url(/g/thankyou_head_architecture.gif) no-repeat;
+	text-indent: -5000px;
+}
+h1#thankyouService {
+	width: 245px;
+	height: 39px;
+	background: url(/g/thankyou_head_service.gif) no-repeat;
+	text-indent: -5000px;
+}
+h1#thankyouApplications {
+	width: 219px;
+	height: 39px;
+	background: url(/g/thankyou_head_applications.gif) no-repeat;
+	text-indent: -5000px;
+}
+
+#thankyouWrap {
+	background: #bb0000 url(/g/thankyou_bk.png) repeat-y; 
+	margin: 10px 0; 
+	color: #fff;
+}
+#thankyouWrap p {
+	line-height: 140%;
+	font-size: 100%;
+	margin-left: 11px;
+	padding-top: 0;
+	margin-top: 0;
+}
+#thankyouWrap p+ul {
+	margin-top: -10px;
+	margin-bottom: 2em;
+}
+#thankyouWrap a {
+	text-decoration: none;
+	color: #fff;
+	border-bottom: 1px dotted #fff;
+}
+#thankyouWrap a.more {
+	font-weight: bold;
+	color: #400004;
+	padding: 0 8px 0 0;
+	background: url(/g/thankyou_arrow.png) no-repeat right 60%;
+	border: none;
+}
+#thankyouHeader {
+	background: #cc0000 url(/g/thankyou_bk_t.png) no-repeat top;
+}
+#thankyouFooter {
+	clear: both;
+	padding-bottom: 10px;
+	background: #cc0000 url(/g/thankyou_bk_b.png) no-repeat bottom;
+}
+#thankyouFooter p+ul {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+#thankyouLeftCol {
+	width: 60%; 
+	float: left;
+}
+#thankyouLeftCol div {
+	padding: 30px 25px 10px 25px;
+}
+#thankyouHeader div, #thankyouFooter div{
+	margin: 0 25px;
+}
+#thankyouFooter p {
+	padding: 5px 0 0 0;
+	margin: 0;
+	font-size: 80%;
+}
+#thankyouHeader ul, #thankyouFooter ul {
+	margin: 0; 
+	padding: 0; 
+	width: 100%; 
+	list-style: none; 
+	/*float: left;*/
+}
+#thankyouHeader ul {
+	padding: 20px 0 0 0;
+}
+#thankyouHeader ul li, #thankyouFooter ul li {
+	float: left;
+	margin: 0;
+	padding: 0 20px 0 0;
+	font-size: 115%;
+}
+#thankyouFooter ul li {
+	font-size: 100%;
+}
+#thankyouHeader ul li {
+	float: left;
+}
+#thankyouHeader ul li a, #thankyouFooter ul li a {
+	float: left;
+	display: block;
+	margin: 0;
+	padding: 0 0 5px 12px;
+	text-decoration: none;
+	font-weight: bold;
+	background: url(/g/thankyou_arrow.png) no-repeat 0 35%;
+	color: #400004;
+	border: none;
+}
+#thankyouRightCol {
+	margin-top: 30px;
+	width: 40%; 
+	float: right;	
+}
+#thankyouVidArea {
+	width: 260px;
+	background: url(/g/thankyou_goggleDude.gif) no-repeat 85% 0;
+	padding: 44px 0 0 0;
+}
+#thankyouRightCol p {
+	padding-top: 1.5em;
+	margin-top: 1.5em;
+}
+#thankyouLeftCol ul, #thankyouRightCol ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+#thankyouLeftCol ul {
+	margin-left: 2em;
+}
+#thankyouLeftCol ul li, #thankyouRightCol ul li {
+	background-image: url(/g/thankyou_arrow.png);
+	background-repeat: no-repeat;
+	background-position: 0 .4em;
+	padding-left: 10px;
+	margin: 0 0 1.3em 0;
+}
+#thankyouLeftCol ul li {
+	margin-bottom: .5em;
+}
+#thankyouRightCol a {
+	color: #fff;
+	background: none;
+	padding: 0;
+	font-size: 130%;
+	font-weight: normal;
+	border: none;
+	/*text-shadow: .2em .2em 3px #333;*/
+}
+a#videoDude {
+	float: right;
+	margin-right: 25px;
+	width: 90px;
+	height: 76px;
+	background: url(/g/thankyou_videoDude.gif) no-repeat;
+	text-indent: -5000px;
+}
+
+/* hilite states */
+#thankyouHeader ul li a#urhere {
+	color: #fff;
+	background: url(/g/thankyou_arrow_down.png) no-repeat 0 45%;
+}
+#thankyouHeader div:after, #thankyouFooter div:after {
+    content: "."; 
+    display: block; 
+    height: 0px;
+    overflow: hidden;
+    clear: both; 
+    visibility: hidden;
+    }
+
+    /* Holly Hack Targets IE Win only \*/
+    * html #thankyouHeader ul,
+    * html #thankyouFooter div {height: 1%;}
+    /* End Holly Hack */
+/* end some lovely styles for the RHEL5 Thank You promo */
+
+/* some wicked rad styles for the RHX Now Open promo */
+/* headers */
+h1#rhxPromoTitle {
+	width: 161px;
+	height: 62px;
+	background: url(/g/rhxPromo_logotype.gif) no-repeat;
+	text-indent: -5000px;
+}
+
+#rhxPromoWrap {
+	background: #bb0000 url(/g/rhxPromo_bk.jpg) no-repeat; 
+	margin: 10px 0; 
+	height: 600px;
+	color: #fff;
+}
+#rhxPromoWrap p {
+	line-height: 108%;
+	font-size: 100%;
+	margin-left: 11px;
+	padding-top: 0;
+	margin-top: 0;
+}
+#rhxPromoWrap p+ul {
+	margin-top: -10px;
+	margin-bottom: 2em;
+}
+#rhxPromoWrap a {
+	text-decoration: none;
+	color: #fff;
+	border-bottom: 1px dotted #fff;
+}
+#rhxPromoWrap a.more {
+	font-weight: bold;
+	color: #400004;
+	padding: 0 8px 0 0;
+	background: url(/g/rhxPromo_arrow.png) no-repeat right 60%;
+	border: none;
+}
+
+#rhxPromoHeader {
+	background: #cc0000 url(/g/rhxPromo_bk_t.png) no-repeat top;
+}
+
+#rhxPromoLeftCol {
+	width: 392px; 
+	float: left;
+}
+#rhxPromoLeftCol div {
+	padding: 30px 25px 10px 25px;
+}
+#rhxPromoHeader div, #rhxPromoFooter div{
+	margin: 0 25px;
+}
+#rhxPromoHeader ul, #rhxPromoFooter ul {
+	margin: 0; 
+	padding: 0; 
+	width: 100%; 
+	list-style: none; 
+	/*float: left;*/
+}
+#rhxPromoHeader ul {
+	padding: 20px 0 0 0;
+}
+#rhxPromoHeader ul li, #rhxPromoFooter ul li {
+	float: left;
+	margin: 0;
+	padding: 0 20px 0 0;
+	font-size: 115%;
+}
+#rhxPromoHeader ul li {
+	float: left;
+}
+#rhxPromoHeader ul li a, #rhxPromoFooter ul li a {
+	float: left;
+	display: block;
+	margin: 0;
+	padding: 0 0 5px 12px;
+	text-decoration: none;
+	font-weight: bold;
+	background: url(/g/rhxPromo_arrow.png) no-repeat 0 35%;
+	color: #400004;
+	border: none;
+}
+#rhxPromoRightCol {
+	margin-top: 0px;
+	width: 328px;
+	float: right;	
+}
+#rhxPromoVidArea {
+	width: 260px;
+	background: url(/g/rhxPromo_goggleDude.gif) no-repeat 85% 0;
+	padding: 44px 0 0 0;
+}
+.rhxPromoLinks {
+	width: 280px;
+	padding-left: 0px;
+	padding-top: 33%;
+	margin-top: 1.5em;
+}
+
+    /* Holly Hack Targets IE Win only \*/
+    * html .rhxPromoLinks {padding-top: 20%;}
+    /* End Holly Hack */
+
+.rhxPromoLinks ul{
+	list-style-type: none;
+	vertical-align: bottom;
+/*	padding: 0;*/
+	margin-top: 0;
+}
+
+#rhxPromoLeftCol ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+#rhxPromoLeftCol ul {
+	margin-left: 2em;
+}
+.rhxPromoLinks ul li {
+	background-image: url(/g/rhxPromo_arrow.gif);
+	background-repeat: no-repeat;
+	background-position: 0 .5em;
+	padding-left: 10px;
+	margin: 0 0 1.3em 0;
+}
+#rhxPromoLeftCol ul li {
+	background-image: url(/g/thankyou_arrow.png);
+	background-repeat: no-repeat;
+	background-position: 0 .5em;
+	padding-left: 10px;
+	margin: 0 0 1.3em 0;
+}
+#rhxPromoLeftCol ul li {
+	margin-bottom: .5em;
+}
+#rhxPromoRightCol a {
+	color: #fff;
+	background: none;
+	padding: 0;
+	font-size: 130%;
+	font-weight: normal;
+	border: none;
+	/*text-shadow: .2em .2em 3px #333;*/
+}
+
+.rhxPromo_logos dl {
+	color: black;
+}
+
+.rhxPromo_logos dt {
+	float: left;
+	width: 100px;
+	margin: 0;
+	padding: 0;
+	padding-right: 15px;
+}
+
+.rhxPromo_logos dt img {
+	float: right;
+}
+
+.rhxPromo_logos dd {
+	width: 200px;
+	margin-bottom: 8px;
+	margin-left: 115px;
+	padding: 0;
+	color: black;
+}
+
+#rhxPromoHeader div:after, #rhxPromoFooter div:after {
+    content: "."; 
+    display: block; 
+    height: 0px;
+    overflow: hidden;
+    clear: both; 
+    visibility: hidden;
+    }
+
+    /* Holly Hack Targets IE Win only \*/
+    * html #rhxPromoHeader ul,
+    * html #rhxPromoFooter div {height: 1%;}
+    /* End Holly Hack */
+/* end some wicked rad styles for the RHX Now Open promo */
+
+.execTitle {
+	margin-top: 0;
+}
+
+.telco_isv {
+	width: 101px;
+	height: 15px;
+	background: url(/g/telco_framework_isv.png) top left no-repeat;
+}
+.telco_infrastructure {
+	width: 255px;
+	height: 12px;
+	background: url(/g/telco_framework_infrastructure.png) top left no-repeat;
+}
+.telco_hardware {
+	width: 220px;
+	height: 12px;
+	background: url(/g/telco_framework_hardware.png) top left no-repeat;
+}
+.telco_partners {
+	width: 197px;
+	height: 12px;
+	background: url(/g/telco_framework_partners.png) top left no-repeat;
+}
+.telco_isv span, .telco_infrastructure span, .telco_hardware span, .telco_partners span {
+	display: none;
+}
+
+.value_japan {	
+	height: 120px;
+	background: url(/g/headers/valueshows_japan_720.jpg) top left no-repeat;
+}
+.value_japan_list {
+	margin-left: 295px;
+	padding-top: 50px;
+}
+.value_japan_list ul {
+	list-style-type: none;
+	padding-top: .4em;
+}
+.value_japan_list ul li {
+	line-height: 90%;
+}
+.value_japan_list ul a {
+	text-decoration: none;
+	font-size: 9pt;
+}
+
+iframe.feed {
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+	border: none;
+	height: 214px;
+}
+
+* html iframe.feed {height: 225px;} /* Holly Hack Targets IE Win only \*/
+    
+div.feed_feature {
+	margin: 15px 0;
+}
+div.feed_feature h2,
+div.feed_feature h3,
+div.feed_feature h4,{
+	margin-bottom: 10px;
+}
+
+.feed_list ul li.linkage {
+	text-decoration: none;
+	font-size: 20pt;
+}
+
+/* main support page styles */
+#login01, #login02, #login03 {
+	padding: 8px 0;
+	display: none;
+	}
+
+h3#loginTitle {
+	width: 75px;
+	float:left;
+	padding: 0;
+	margin: 5px 0 0;
+	text-align:center; }
+
+#supportLogins ul li { margin: 0; padding: 2px 0; list-style-type:none; background: url('/g/chrome/radio-off.gif') 2px 2px no-repeat; }
+#supportLogins ul li.selected { background-image:url('/g/chrome/radio-on.gif'); }
+#supportLogins ul li a {color: #333; text-decoration:none; padding: 0 0 0 25px; display: block; cursor: pointer;}
+#supportLogins ul { margin: 0; padding: 0; margin-left: 5px; }
+	
+#supportLogins label {
+	color:#444444;
+	display:block;
+	font-weight:bold;
+	margin:8px 0;
+	font-size: 90%;
+	font-family: helvetica,verdana,arial,sans-serif; /* label widths are consistent across browsers */
+	}
+	
+#supportLogins input.field {
+	clear:none;
+	float:left;
+	margin-bottom:0;
+	margin-left:135px;
+	margin-top:-2em;
+	width:120px;
+	background-color: #fff;
+	padding: 1px; }
+
+#supportLogins input.loginButton {	margin-top: 2px;margin-left:135px; }
+#tcontent1, #tcontent2, #tcontent3, #tcontent4 { padding: 5px 0; }
+#tcontent1 h3, #tcontent2 h3, #tcontent3 h3, #tcontent4 h3 { padding-top: 12px;  }
+.tabs .whiteBox {	background:transparent url(/g/chrome/whiteBox_topleft_tall.png) no-repeat scroll left top; }
+/* end main support page styles */
+
+
+span.buttonBlue {
+	font-size: medium; /* pads correctly */
+	height: 25px;
+	padding-bottom: 8px;
+	margin-right: 2px;
+	position: relative;
+	background: url('/g/chrome/button-left-cap.png') top left no-repeat !important; }
+	
+span.buttonBlue span.buttonLink {
+	height: 25px;
+	padding-bottom: 8px;
+	background: url('/g/chrome/button-right-cap.png') top right no-repeat !important; }
+	
+span.buttonBlue span.buttonPad { 
+	margin: 0 15px; 
+	padding-bottom: 8px;
+	background: url('/g/chrome/button-bg.png') top left repeat-x !important; }
+	
+span.buttonBlue span.buttonPad a {
+	font-size: 13px; /* now set size */
+	font-weight: bold;
+	text-align: center;
+	padding: 0;
+	text-decoration: none;
+	color: #fff; }
+
+/******************************* Company page styles ******/
+
+/* .showhide {float:left; margin:5px;} */
+#peopleProfile h3 {background-color:#CCCCCC; margin-bottom:15px; min-height:20px; padding:5px;}
+#peopleProfile h2 {margin-bottom: 15px;}
+#peopleProfile .twoColumn {margin-bottom: 20px;}
+#peopleProfile .twoColumn .thirdColumn {border-right:1px solid #999; text-align:center;}
+#peopleProfile .twoColumn .thirdColumn p {text-align:center;}
+#peopleProfile .twoColumn .halfColumnTwo {padding-left:15px; width:336px;}
+
+/******************************* New styles for homepage products area (with RHEV) */
+
+.homeProdLinks { 
+	border-bottom: 1px solid #ccc; 
+	padding: 1em 0; 
+	float: left; 
+	font-weight: bold;
+	display: inline;
+}
+.homeProdLinks p {
+	width: 165px; 
+	margin: 0; 
+	padding-left: 15px; 
+	font-size: 90%; 
+	float: left;
+}
+.homeProdLinks ul {
+	width: 125px; 
+	margin: 0 0 0 25px; 
+	padding-left: 15px; 
+	font-size: smaller; 
+	float: left;
+}
+.homeProdLinks ul li {
+	margin: 0;
+}
+.homeProdLinks a {
+	text-decoration: none;
+}
+
+/***************************End new styles for homepage products area (with RHEV) */
+	
+.feedUnit {
+		display: block;
+	}
+
+.feedUnit p {margin-left: 15px;}
+.feedUnit a.zifty {margin: 0 0 15px 15px;}
+
+h4.ookie {
+	width: 99%;
+	font-size: small;
+	background-position: 0 .3em;
+	background-repeat:no-repeat;
+	background-image: url(/g/chrome/arrow_collapsed_fff.png);
+	margin: 4pt 0 4pt 0pt;
+	padding-left: 12px;
+	line-height: 1.2em;
+	text-decoration: none;
+	font-weight: normal;
+
+}
+.loading { background: url(/g/chrome/throbber_dickie.gif) top right no-repeat; }
+.showhide .on {
+	background-image: url(/g/chrome/arrow_expanded_fff.png);
+}
+
+.commfollow .imgLeft {margin-top: 30px;}
+.commfollow .imgLeft .h3 {margin-left: 45px;}
+.commfollow .osfa {margin-top: 30px; padding-top: 15px; border-top: 1px solid #666;}
+.commlead {margin-left: 16px;}
+.commlead h2 {padding-top: 25px;}
+
+.clearBox2 {border: 1px solid #999; padding: 15px; -moz-border-radius: 6px; -webkit-border-radius: 6px; margin-bottom: 15px;}
+.grayBox2 {background: #ccc; padding: 15px; -moz-border-radius: 6px; -webkit-border-radius: 6px; margin-bottom: 15px;}
+
+.usecase h1#sectionHead1 {padding: 0;}
+.usecase h1#sectionHead1 span {font-size: 70%; color: #999;}
+.usecase #widgetCol {background: url(/g/chrome/blue-gradient.png) top left repeat-x; -moz-border-radius: 6px; padding: 15px;}
+.usecase #widgetCol h4 {border-bottom: 1px solid #333; margin-bottom: 15px;}
+.usecase .ucvidp {height: 2em;}
+.usecase ul.linkage {padding-left: 30px;}
+.usecase ul.linkage li.dnld {list-style-image: url(/g/chrome/bullet_download.png);}
+
+.rhelonrhev .intro {width: 690px; padding: 0 0 15px 15px;}
+.rhelonrhev .halfColumnFull {width: 426px; margin-right: 15px;}
+.rhelonrhev .halfColumnFullTwo {width: 279px;}
+.rhelonrhev .even {width: 411px; padding: 15px 0 0 15px;}
+.rhelonrhev .odd p {margin: 10px 0 0 0; padding: 0;}
+.rhelonrhev .odd img {float: left; margin: 10px 15px 0 0;}
+.rhelonrhev .odd {width: 411px; padding: 15px 0 0 15px;}
+.rhelonrhev .even p {margin: 0; padding: 0; margin-top: 10px;}
+.rhelonrhev .even img {float: left; margin: 10px 15px 0 0;}
+.rhelonrhev .grayBox2 {background: #333; color: #fff;}
+.rhelonrhev .grayBox2 h3.title {font-size: medium; font-weight: normal;}
+.rhelonrhev .whitepapers {margin: 0 0 0 5px;}
+.rhelonrhev .whitepapers li {padding-bottom: 15px;}
+.rhelonrhev .whitepapers ul li {padding: 0;}
+.rhelonrhev .whitepapers li p {margin-top: 5px; margin-bottom: 5px;}
+.rhelonrhev .whitepapers li a {text-decoration: none; color: inherit;}
+.rhelonrhev .whitepapers ul li {padding-top: 0;}
+.rhelonrhev .whitepapers ul li a {color: #0066cc;}
+
+.webinarseries .infoblock {width: 543px; background: #eee; padding: 15px; margin: 0 auto;}
+.webinarseries .button {background: #ccc url(/g/chrome/button-ccc-left.png) center left no-repeat;}
+.webinarseries .button span{background: #ccc url(/g/chrome/button-ccc-right.png) center right no-repeat;}
+.webinarseries h4 {font-size: medium; font-weight: normal;}
+.webinarseries p.first {margin-top: .25em;}
+.webinarseries .clean {margin-bottom: 30px;}
+.webinarseries .grayBox2 {width: 102px; padding: 15px; margin-right: 15px;}
+.webinarseries .grayBox2 a {font-weight: bold; text-decoration: none;}
+
+.webapp h1 {margin-bottom: 0;}
+.webapp ul#copySwitcher {border-right: 1px solid #333;}
+.webapp ul#copySwitcher li {padding: 0; margin: 0 0 2px 0; list-style-type: none;}
+.webapp ul#copySwitcher li a {text-decoration: none;}
+.webapp ul#copySwitcher li.hilited a {color: #333; font-weight: bold; text-decoration: none;}
+.webapp ul#copySwitcher li.loading {background: url(/g/chrome/throbber_dickie.gif) top right no-repeat;}
+
+table.roadtour {font-size: small;}
+table.roadtour td.time {text-align: right;}
+table.roadtouragenda {font-size: small; width: 100%; border-collapse: collapse;}
+table.roadtouragenda thead tr {border-bottom: 2px solid #999;}
+table.roadtouragenda tr {border-bottom: 1px solid #ccc;}
+table.roadtouragenda td.date {width: 20%; font-size: 1.1em;}
+table.roadtouragenda td.loc {width: 60%;}
+table.roadtouragenda td.loc span {font-size: 1.1em;}
+table.roadtouragenda td.reg {width: 20%; color: #999;}
+.roadtourwrap h3 {border-bottom: 1px solid #999;}
+.roadtourwrap h4 {font-size: small;}
+
+
+/******************************* Styles for Advanced Search option under www.redhat.com/search */
+
+#searchWrapper {border: 1px solid #cccccc; padding: 20px; overflow:hidden; width:677px;}
+
+#advancedSearch ul {margin:0; padding:0;}
+#advancedSearch li {list-style-type: none; padding: 2px; clear: both;}
+#advancedSearch label {width: 150px;}
+#advancedSearch input {width: 250px; background-color: #eeeeee; border: 1px solid #999999;}
+#advancedSearch select {width: 180px;}
+#advancedSearch select.short {width: 60px;}
+#advancedSearch select.long {width: 116px;}
+#advancedSearch input.long {width: 113px;}
+
+#searchWords {float: left; margin-right: 20px;}
+#searchWords label {width: 150px;}
+#searchWords textarea {width: 250px; height: 30px}
+
+#searchWhere {float: left;}
+#where {width: 200px; margin:0;padding:0;}
+#where input {width: 20px;}
+#where ul {margin:0;}
+
+#searchSpecify {float: right; width:185px;}
+#searchSpecify label {width: 110px; float: left;}
+
+#advancedSearch.buttonWrap {text-align:left;}
+#advancedSearch.button {display: inline;}
+
+/***************************End Styles for Advanced Search option under www.redhat.com/search */
+
+/******************************* Lotus on Red Hat microsite styles */
+.lotus .intro {width: 690px; padding: 0 0 15px 15px;}
+.lotus .halfColumnFull {width: 426px; margin-right: 14px;}
+.lotus .halfColumnFullTwo {width: 279px;}
+.lotus .grayBox2 {background: #fff url(/g/lotus/gradient_gray.jpg) top left repeat-x; color: #900;}
+.lotus .red-box {background: #c00 url(/g/lotus/gradient_red.jpg) top left repeat-x; color: #fff;}
+.lotus .blue-box {background: #0093d9 url(/g/lotus/gradient_blue.jpg) top left repeat-x; color: #fff;}
+.lotus .green-box {background: #afbf28 url(/g/lotus/gradient_green.jpg) top left repeat-x; color: #fff;}
+.lotus .red-box a, .lotus .blue-box a, .lotus green-box a {color: #fff;}
+.lotus .red-box a img, .lotus .blue-box a img, .lotus green-box a img {border: 2px solid #fff; margin-left: -2px;}
+.lotus .red-box ul li, .lotus .blue-box ul li, .lotus .green-box ul li {list-style-image: url(/g/chrome/bullet_arrowwhite.png);}
+.lotus .red-box ul li.download, .lotus .blue-box ul li.download, .lotus .green-box ul li.download {list-style-image: url(/g/chrome/bullet_arrowdown_white.png);}
+.lotus .grayBox2 h3.title {font-size: medium; font-weight: normal;}
+.lotus .whitepapers {margin: 0 0 0 5px; background: url(/g/lotus/gradient_gray.jpg) top left repeat-x; color: #900;}
+.lotus .whitepapers ul {margin: 0; padding: 0; list-style-type: none;}
+.lotus .whitepapers ul li {margin: 5px 0 0 0; padding: 0; list-style-type: none;}
+.lotus .whitepapers a {background: url(/g/chrome/bullet_arrowdown_red.png) left center no-repeat; text-decoration: none; color: #900; padding-left: 20px;}
+
+.lotus .evalButton {background: url(/g/lotus/button_download.png) top left no-repeat; display: block; width: 238px; height: 45px; text-indent: -99999px; margin: 15px 0 0 5px;}
+.lotus .salesButton {background: url(/g/lotus/button_buy.png) top left no-repeat; display: block; width: 238px; height: 45px; text-indent: -99999px; margin-left: 5px;}
+
+.lotus .nav {margin: 15px 0 30px 0; padding: 0; -moz-border-radius: 6px; -webkit-border-radius: 6px; border-radius: 6px; background: #c00;}
+.lotus .nav ul {margin: 0; padding: 0; width: 720px;}
+.lotus .nav ul li {list-style-type: none; float: left; width: 33%; margin: 0; padding: 0; text-align: center;}
+.lotus .nav ul li a {color: #fff; display: block; padding: 10px 10px 12px 10px; text-decoration: none; font-weight: bold;}
+.lotus .nav ul li a:hover {color: #300;}
+.lotus .nav ul li.overview {background: #c00; -moz-border-radius: 6px; -webkit-border-radius: 6px; border-radius: 6px;}
+.lotus .nav ul li.server {width: 34%;}
+    /* Holly Hack Targets IE Win only \*/
+    * html .lotus .nav ul li.server {width: 33%;}
+    /* End Holly Hack */
+    
+
+.lotus .overview ul li.overview, .lotus .server ul li.server, .lotus .desktop ul li.desktop, .lotus .tco ul li.tco {background: #900; -moz-border-radius: 6px; -webkit-border-radius: 6px; border-radius: 6px;}
+.lotus .overview h1 {width: 720px; height: 250px; background: #eee url(/g/lotus/lotus-header_main.png) top left no-repeat;}
+.lotus .server h1.header, .lotus .desktop h1.header {width: 720px; height: 100px; background: #eee url(/g/lotus/lotus-header_small.png) top left no-repeat;}
+.lotus .overview h1 span, .lotus .server h1 span, .lotus .desktop h1 span {display: none;}
+
+.lotus .foot {float: left; width: 690px; background: #f2f2f2 url(/g/lotus/gradient_gray.jpg) top left repeat-x; color: #900;}
+.lotus .foot div {float: left; width: 345px;}
+.lotus .foot div h3 {font-size: medium; font-weight: normal;}
+.lotus .foot div.ibm h3 {background: url(/g/lotus/ibm_footer.png) top left no-repeat; height: 38px; width: 208px; text-indent: -99999px;}
+.lotus .foot div.ibm ul {margin: 0 15px 0 95px;}
+.lotus .foot div.redhat h3 {background: url(/g/lotus/redhat_footer.png) top left no-repeat; height: 38px; width: 208px; text-indent: -99999px;}
+.lotus .foot div.redhat ul {margin: 0 0 0 59px;}
+.lotus .foot div.ibm ul ul {margin-left: 12px;}
+.lotus .foot div.redhat ul ul {margin-left: 12px;}
+.lotus .foot div a {color: #900; text-decoration: none;}
+.lotus .foot div a:hover {text-decoration: underline;}
+#jqTabcontent{
+	border:1px solid #666;
+	margin:0;
+	position:relative;
+	z-index:1;
+	padding:25px 15px;
+}
+
+/* new jQuery tabber styles */
+
+#jqTabs{
+	position:relative;
+}
+#jqTabs .corner_topleft {
+	top:22px;
+	left:0;
+}
+#jqTabs .corner_topright {
+	top:22px;
+	right:0;
+}
+#jqTabs .corner_bottomleft {
+	left:0;
+	bottom:0;
+}
+#jqTabs .corner_bottomright {
+	right:0;
+	bottom:0;
+}
+#jqTabber {
+	margin: 10px 0 0 0;
+	padding: 0 15px;
+	height:24px;
+	position:relative;
+	font-size: 95%;
+	z-index:2;
+}
+#jqTabber ul {
+	margin:0;
+}
+#jqTabber li {
+	list-style:none;
+	float:left;
+	margin:0 1px;
+	height:24px;
+	line-height:20px;
+	border: 1px solid #666;
+	border-bottom: none;
+	background-color: #666;
+	-moz-border-radius-topleft: 3px; -moz-border-radius-topright: 3px; -webkit-border-top-left-radius: 3px; -webkit-border-top-right-radius: 3px;
+}
+#jqTabber li.selected {
+	background-color: #fff;
+}
+#jqTabber li a {
+	display:block;
+	color:#FFF;
+	padding:1px 10px 1px;
+	text-decoration:none;
+}
+#jqTabber li a:focus {
+	outline: none;
+}
+#jqTabber li a.selected {
+	color:#787878;
+	}
+#jqTabber li.sales {
+	float: right;
+	border: none;
+	background-color: #900;
+	height: 20px;
+	-moz-border-radius-bottomleft: 3px; -moz-border-radius-bottomright: 3px; -webkit-border-bottom-left-radius: 3px; -webkit-border-bottom-right-radius: 3px;
+}
+#jqTabber li.sales a {
+	font-size: 90%;
+	color: #fff;
+	padding: 0 10px;
+}
+#jqTabber li a:hover {
+	color:#ccc;
+}
+
+#jqTabcontent strong {
+	color: #000;
+}
+#jqTabcontent h2 {
+	font-size: 1.45em;
+	margin-bottom: .5em;
+}
+#jqTabcontent h3 {
+	font-size: 1.15em;
+}
+#jqTabcontent h2 + h3, #jqTabcontent h3 + h4 {
+	margin-top: 1em;
+}
+#jqTabcontent ul, #jqTabcontent ol {
+	margin-left: 2em;
+	margin-bottom: 2em;
+}
+#jqTabcontent p.intro, #jqTabcontent ul.intro {
+	font-size: 1.25em; line-height: 1.25em; color: #666;
+}
+#jqTabcontent ul.intro li {
+	margin-bottom: 1em;
+}
+
+#jqTabcontent, .tabBox, #footerBox { -moz-border-radius: 6px; -webkit-border-radius: 6px; }
+
+/* old tabber styles */
+
+#tabs{
+	position:relative
+}
+#tabs .corner_topleft, #tabs .corner_blue_topleft {
+	top:22px;
+	left:0;
+}
+#tabs .corner_topright, #tabs .corner_blue_topright {
+	top:22px;
+	right:0;
+}
+#tabs .corner_bottomleft, #tabs .corner_blue_bottomleft {
+	left:0;
+	bottom:0;
+}
+#tabs .corner_bottomright, #tabs .corner_blue_bottomright {
+	right:0;
+	bottom:0;
+}
+#tabber {
+	width:99%;
+	height:22px;
+	position:relative;
+	font-size: 95%;
+	z-index:2;
+}
+#tabber ul {
+	margin:0;
+}
+#tabber li {
+	list-style:none;
+	float:left;
+	margin:0 1px;
+	height:22px;
+	line-height:20px;
+	background: #787878 url('/g/chrome/graytab-left.png') no-repeat
+}
+#tabber li.selected {
+	background:url('/g/chrome/graytab-left-on.png') no-repeat #FFF;
+	height:23px
+}
+#tabber ul#tabber_blue li.selected {
+	background:url('/g/chrome/bluetabs_lefttab.png') no-repeat #FFF;
+	height:23px;
+}
+#tabber li a {
+	display:block;
+	color:#FFF;
+	padding:1px 10px 1px;
+	text-decoration:none;
+	background: transparent url('/g/chrome/graytab-right.png') no-repeat top right
+}
+#tabber li a:hover {
+	color:#000
+}
+#tabber li a.selected {
+	color:#787878;
+	background:url('/g/chrome/graytab-right-on.png') no-repeat top right
+	}
+#tabber ul#tabber_blue li a.selected {
+	color:#444;
+	background:url('/g/chrome/bluetabs_righttab.png') no-repeat top right
+	}
+#tabcontent{
+	border:1px solid #B4B4B4;
+	margin:0;
+	position:relative;
+	z-index:1;
+	padding:15px;
+}
+#tabColWrap {
+	margin: 1.5em 0;
+}
+#tabColLeft {
+	width: 360px; float: left;
+}
+#tabColLeft ol li {
+	margin-bottom: 1.5em;
+}
+#tabColRight {
+	width: 300px; float: right; padding-top: 15px;
+}
+.tabBox {
+	margin-bottom: 1.5em; background: url(/g/chrome/blue-gradient.png) repeat-x;
+}
+.tabBox h3 {
+	background-color: #666; color: #fff; padding: 3px 10px 5px 15px;
+}
+.tabBox p {
+	margin-bottom: 0;
+}
+.tabBox div {
+	padding: 0 10px 25px 15px;
+}
+.tabBox h4 {
+	font-size: 1.1em; margin-top: 1em;
+}
+
+.tabBox h3 {
+	-moz-border-radius-topleft: 3px; -moz-border-radius-topright: 3px; -webkit-border-top-left-radius: 3px; -webkit-border-top-right-radius: 3px;
+}

@@ -1,0 +1,189 @@
+/**
+ ***************************** For RHEL 6 section */
+ 
+div.content_area_v2  {
+background-color:#FFFFFF;
+background-image:url("/g/rhel/rhel_content_bg.png");
+background-position:right top;
+background-repeat:repeat-y;
+height:100%;
+margin:0;
+min-height:750px;
+padding:25px 15px 15px;
+}
+
+.outer-share + .rightNavFloat {
+clear:right;
+left:10px;
+margin:30px 10px 15px;
+top:0;
+}
+
+div.page_rhel {
+background: url("/g/rhel/rhel6/RHEL6_bkgd_v6.jpg") no-repeat left top #534e86;
+height:100%;
+position:relative;
+top:-5px;
+}
+
+h1.title_rhel  {
+background-image:url("/g/rhel/rhel6/RHEL_logo.png");
+background-position:left top;
+background-repeat:no-repeat;
+display:block;
+left:15px;
+margin-bottom:30px;
+position:relative;
+text-indent:-5000px;
+top:15px;}
+
+.content_area_v2 h1 {
+	font-size:170%;
+	margin-bottom:0.15em;}
+	
+.breadTrail {
+	position:relative;
+	top:-15px;}
+
+.hilite {
+	background-color: #ffe9b6;
+	color: #000;
+	text-align: center;
+	padding: 3px;
+	margin: 0 0 10px 0;}
+	
+#sidenav_v2 ul li a {
+		color:#CCCCCC;
+		display:block;
+		font-size:93%;
+		text-decoration:none;}
+
+.logoAddon {
+	float: right;
+	margin: 10px 0 15px 20px;}
+	
+div.rightNavFloat ul {
+	font-size:90%;
+	list-style:none outside none;
+	margin:0;
+	padding:0;}
+	
+.alignRight {text-align: right;}
+
+ul.tabs_rhel6 {
+        list-style: none;
+        height: 28px;
+        display: block;
+        padding: 0;
+        margin: 0;
+        font-weight: bold;
+        font-size: 13px;}
+
+ul.tabs_rhel6 li {
+        display: block;
+        float: left;
+        margin: 0 2px 0 0;
+        padding: 3px 0 0 0;
+				background-color: #8c8aaa;
+				-moz-border-radius-topleft: 5px;
+				-moz-border-radius-topright: 5px;
+				-webkit-border-top-right-radius: 5px;
+				-webkit-border-top-left-radius: 5px;
+				border-top-right-radius: 5px;
+				border-top-left-radius: 5px;
+        width: 104px;
+        height: 25px;
+        text-align: center;
+        line-height: 23px;}
+
+ul.tabs_rhel6 li a {
+        color: #ffffff;
+        text-decoration: none;}
+
+ul.tabs_rhel6 li a:hover {
+        text-decoration: underline;}
+        
+ul.tabs_rhel6 li.lit-up {
+        color: #000000;
+        background-color: #fff; }
+
+ul.tabs_rhel6 li.lit-up a{
+        color: #000000;
+        text-decoration: none;
+        line-height: 23px;}
+
+
+#resourceLinks {
+	border-left:1px solid #AAAAAA;
+	float:right;
+	font-size: 80%;
+	margin:0 0 10px 10px;
+	padding:5px 0 0 10px;
+	width:205px;}
+	
+#resourceLinks ul {
+	margin: 5px;}
+	
+.jumpBack+h1 {
+	margin-top: .25em;}
+	
+#hideaway > p {
+	margin-top: 0;}
+	
+	
+/* New rhel6 table styles */
+div.tableBasic_v6 {}
+div.tableBasic_v6 table {width: 100%; font-size: 11px;}
+div.tableBasic_v6 table th {font-weight: bold;}
+div.tableBasic_v6 table th, 
+div.tableBasic_v6 table td {
+	vertical-align: middle;
+	margin: auto;
+	padding: 7px 10px;}
+	
+div.tableBasic_v6 table th.bline, 
+div.tableBasic_v6 table td.bline {
+	border-left: 1px solid #C6C2A6;}
+	
+th.tdheader, 
+td.tdheader {
+	font-size: 12px;
+	margin: 10px;}
+
+div.tableBasic_v6 table th.color0, 
+div.tableBasic_v6 table td.color0 {background-color: none;}		
+div.tableBasic_v6 table th.color1, 
+div.tableBasic_v6 table td.color1 {background-color: #ffffff;} 
+div.tableBasic_v6 table th.color2, 
+div.tableBasic_v6 table td.color2 {background-color: #efeef5;} 
+div.tableBasic_v6 table th.color3, 
+div.tableBasic_v6 table td.color3 {background-color: #E6E6F0;} 
+div.tableBasic_v6 table th.color4, 
+div.tableBasic_v6 table td.color4 {background-color: #E3E2EE;} 
+div.tableBasic_v6 table th.color5, 
+div.tableBasic_v6 table td.color5 {background-color: #DEDDEB;} 
+div.tableBasic_v6 table th.color6, 
+div.tableBasic_v6 table td.color6 {background-color: #d0cee3;} 
+div.tableBasic_v6 table th.color7, 
+div.tableBasic_v6 table td.color7 {background-color: #c6c3dc;} 
+div.tableBasic_v6 table th.color8, 
+div.tableBasic_v6 table td.color8 {background-color: #bbb9d6;} 
+div.tableBasic_v6 table th.color9, 
+div.tableBasic_v6 table td.color9 {background-color: #BB000D; color: #ffffff;} 
+
+div.tableBasic_v6 table th.grey1, 
+div.tableBasic_v6 table td.grey1 {background-color: #E5E5E5;} 
+div.tableBasic_v6 table th.grey2, 
+div.tableBasic_v6 table td.grey2 {background-color: #DADADA;} 
+div.tableBasic_v6 table th.grey3, 
+div.tableBasic_v6 table td.grey3 {background-color: #cccccc;} 
+div.tableBasic_v6 table th.grey4, 
+div.tableBasic_v6 table td.grey4 {background-color: #BCBCBC;} 
+
+div.tableBasic_v6 table th.rowDivider {
+	background-color: #ffffff;
+	border-bottom: 1px solid #cccccc;
+	font-size: 1.2em;
+	background-image: url("/g/chrome/table_grey_bg2.png");
+	background-repeat: repeat-y;
+	background-position: top right;}

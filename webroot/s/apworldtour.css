@@ -1,0 +1,223 @@
+/***********************
+
+redhat.com - WORLD TOUR ASIA PACIFIC 2004
+(also used for EMEA WORLD TOUR)
+ 
+created: 09/24/04 by lisa
+
+modified last: 
+
+***********************/
+
+/****** Main Styles *****/
+
+#apTop {
+	background-image:url(/g/wtap_bg_top.png);
+	height: 14px;
+	width: 720px;
+	}
+
+#apBottom {
+	background-image:url(/g/wtap_bg_bottom.png);
+	height: 14px;
+	width: 720px;
+	}
+	
+#apWrap {
+	background-color: #E3DCC0;
+	margin-top:30px;
+	}
+	
+#apInnerWrap {
+	background-color: #E3DCC0;
+	padding: 0 15px;
+	height: auto;
+	}
+	
+#apWrap:after {
+    content: "."; 
+    display: block;
+    height: 0;
+    overflow: hidden;
+    clear: both; 
+    visibility: hidden;
+    }
+
+    /* Holly Hack Targets IE Win only \*/
+    * html #apWrap {height: 1%;}
+    /* End Holly Hack */
+
+#apColLeft {
+	float: left;
+	width: 224px;
+	}
+	
+	/* Holly Hack Targets IE Win only \*/
+    * html #apColLeft {position: static;}
+    /* End Holly Hack */
+	
+#apcontentColRight {
+	margin-left: 239px;
+	}
+	
+	/* Holly Hack Targets IE Win only \*/
+    * html #apcontentColRight {margin-left: 236px;}
+    /* End Holly Hack */
+	
+.apcontent2Col:after {
+    content: "."; 
+    display: block; 
+    height: 1px;
+    margin-top: -1px;
+    overflow: hidden;
+    clear: both; 
+    visibility: hidden;
+    }
+
+    /* Holly Hack Targets IE Win only \*/
+    * html .apcontent2Col {height: 1%;}
+    /* End Holly Hack */
+	
+.apColMid {
+	float: left;
+	width: 328px;
+	}
+	
+	/* Holly Hack Targets IE Win only \*/
+    * html .apColMid {position: static;}
+    /* End Holly Hack */
+	
+.apColRight  {
+	margin-left: 339px;
+	width: 108px;
+	}
+	
+	/* Holly Hack Targets IE Win only \*/
+    * html .apColRight{margin-left: 336px;}
+    /* End Holly Hack */
+
+#apLang {
+	float: left;
+	text-align:left;
+	margin:0 15px;
+	padding:0;
+}
+#apLang:after {
+    content: "."; 
+    display: block; 
+    height: 1px;
+    margin-top: -1px;
+    overflow: hidden;
+    clear: left; 
+    visibility: hidden;
+    }
+    /* Holly Hack Targets IE Win only \*/
+    * html #apLang {height: 1%;}
+    /* End Holly Hack */
+
+select {
+	background-color: #E3DCC0;
+	color: #333333;
+	margin:0;
+	padding:0;
+}
+
+	
+
+/******* HEADLINE AND TEXT STYLES *******/
+
+h1.apHead {
+	margin: 0 0 30px 0;
+	background-color: #E3DCC0;
+	background-image:url(/g/wtap_2004_header.gif);
+	height: 281px;
+	width: 720px;
+	}
+	
+h1.apHead span {
+	display: none;
+	}
+	
+h1.emeaHead {
+	margin: 0 0 30px 0;
+	background-color: #E3DCC0;
+	background-image:url(/g/wtemea_2004_header.gif);
+	height: 276px;
+	width: 720px;
+	}
+	
+h1.emeaHead span {
+	display: none;
+	}
+	
+h2.apLeft {
+	color: #b70000;
+	font-weight: bold;
+	text-align: right;
+	}
+	
+h3.apLeft {
+	color: #b70000;
+	font-weight: bold;
+	text-align: right;
+	}
+	
+h2.apMid {
+	color: #b70000;
+	font-weight: bold;
+	margin-bottom: 5px;
+	}
+	
+h2.apRight {
+	color: #b70000;
+	font-weight: bold;
+	}
+	
+h2.apRight2 {
+	margin-top: 15px;
+	color: #b70000;
+	font-weight: bold;
+	}
+
+p.apFirst {
+	margin-top: 0;
+	padding-top: 0;
+	}
+	
+p.apReg {
+	text-align: right;
+	margin-bottom: 5px;
+	margin-top: 0;
+	padding: 0;
+	}
+	
+p.apRegFirst {
+	text-align: right;
+	margin-bottom: 5px;
+	margin-top: 5px;
+	padding: 0;
+	}
+	
+.apSponsor {
+	margin-top: 15px;
+	}
+	
+a.apReg, a:link.apReg, a:visited.apReg {
+	color: #333;
+	text-decoration: none;
+	}
+a:active.apReg, a:focus.apReg, a:hover.apReg {
+	color: #333;
+	text-decoration: underline overline;
+	}
+
+a.apArch, a:link.apArch, a:visited.apArch {
+	color: #333;
+	font-weight: bold;
+	text-decoration: none;
+	}
+a:active.apArch, a:focus.apArch, a:hover.apArch {
+	color: #333;
+	font-weight: bold;
+	text-decoration: underline overline;
+	}

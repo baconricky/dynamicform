@@ -1,0 +1,24 @@
+body {
+	margin: 0;
+	padding: 0;
+	text-align: left;
+	background: #fff;
+	font-family: "Lucida Grande", "Luxi Sans", "Bitstream Vera Sans", "Trebuchet MS", helvetica, verdana, arial, sans-serif;
+	font-size: small;
+	color: #333;
+	height: 100%;
+}
+
+ul.linkage {margin: 0; padding: 0 0 15px 30px;}
+
+ul.linkage li{
+	font-size: 93%;
+	line-height: : 1em;
+	margin: .2em .3em .5em auto;
+	list-style-image: url(/g/chrome/bullet_arrowblue.png);
+}
+ul.linkage a {text-decoration: none;}
+ul.linkage a:hover {text-decoration: underline;}
+
+a:link { color: #0066cc; }
+a:visited { color: #6699cc; }

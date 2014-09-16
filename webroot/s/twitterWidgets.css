@@ -1,0 +1,39 @@
+.twitter {
+	padding-top: 90px;
+	width: 300px;
+	background: url(/g/twitter-example.png) #006 top left no-repeat;
+	margin-bottom: 5px;
+}
+
+#juitterContainer ul {
+	margin: 15px 10px 5px 10px;
+	padding: 0;
+}
+
+#juitterContainer ul li {
+	background-color: #fff;
+	font-size: smaller;
+	padding: 5px;
+	min-height: 45px;
+	clear: left;
+}
+
+/*#juitterContainer img {
+	width: 100px;
+}*/
+
+.juitterAvatar {
+	width: 30px;
+	height: 30px;
+	float: left;
+	margin-right: 15px;
+}
+
+a.JRM {
+	color: orange;
+	font-style: italic;
+}
+
+img.aSwitch {
+	margin: 0 130px 0 130px;
+}

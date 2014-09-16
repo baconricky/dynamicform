@@ -1,0 +1,11 @@
+/* red hat magazine stylesheet - Issue 15, Jan 2006 - color theme */
+
+#nameplate, #promos {
+	background-color: #791860;
+	}
+	
+#nameplate h2 {
+	color: #fff;
+	font-weight: bold;
+	}
+

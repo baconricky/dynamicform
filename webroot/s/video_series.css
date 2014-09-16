@@ -1,0 +1,358 @@
+#darkWrapper #footer a:link { color: #7a7a7a !important; }
+
+#darkWrapper {
+/*	background-color: #000;*/
+	padding-bottom: 10px; }
+	
+#darkWrapper #contentWrap {
+	margin-top: 10px; }
+
+#darkWrapper #footer {
+	background-color: transparent;
+	min-height: inherit;
+	padding: 0;
+	margin: 10px 30px; }
+	
+#darkWrapper p#footer a {
+	color: #666; }
+
+#darkWrapper #navCol {
+	margin-top: 15px; }	
+
+#showcaseShell {
+/*	background: transparent url('/g/chrome/grey_dot_vert.png') 74% top repeat-y;*/
+	margin: 15px 0 20px 147px;
+/*	color: #fff;
+	overflow: hidden;
+	width: 100%; for ie and opera, but blows out for mac*/ }
+	
+#showcaseNav {
+	padding: 0 0 18px 0;
+	margin: 0;
+	background-color: #fff; }
+	
+#showcaseNav ul {
+	background: #fff url('/g/chrome/grey_dot_horiz.png') bottom left repeat-x;
+	margin: 0;
+	padding: 0 0 4px;
+	overflow: hidden; }
+
+#showcaseNav h1, #showcaseNav p {
+	background: #fff url('/g/chrome/grey_dot_horiz.png') bottom left repeat-x;
+	margin: 0;
+	padding: 0 0 5px;
+	overflow: hidden; }
+	
+#showcaseNav ul li {
+	padding: 2px 8px 2px;
+	margin: 4px 0;
+	float: left;
+	list-style-image: none;
+	text-transform: uppercase;
+	display: inline;
+	border-right: 1px solid #7f7f7f; }
+	
+#showcaseNav ul li a {
+/*	color: #fff;*/
+	text-decoration: none;
+	font-size: 84%;
+	letter-spacing: -.25px; }
+	
+#showcaseNav ul li.on a { color: #c00;}
+
+#showcaseDescription {
+	width: 152px;
+/*	width: 215px;*/
+	float: right;
+/*	text-align: right;*/
+	padding: 0; }
+	
+#showcaseDescription h2 {
+	padding-bottom: 15px; }
+
+#showcaseDescription p {
+	color: #666; }
+
+#showcaseDescription p.byline {
+	font-size: smaller;
+	color: #c00; }
+
+#showcaseDescription p.byline span {
+	display: block; }
+
+#showcaseViewerWrap {
+	width: 400px; }
+	
+#showcaseViewerWrap .sill {
+	padding: 0;
+	height:22px;
+	margin:12px 0; }
+	
+#showcaseViewerWrap .sill span {
+	font-size:smaller;
+	float:right;
+	padding-top: 3px; }
+	
+#showcaseViewerWrap h2 {
+	padding: 0;
+	margin-bottom:0;
+	color: #FCC917;
+	font-weight: normal;
+	width: 315px;
+	float:left; }
+
+.test-a-rosa {
+    width: 573px;
+    z-index: 1;
+    position: relative;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    height:127px !important;
+    overflow: hidden !important; }
+
+.test-a-rosa li {
+	float: left;
+	padding-right: 10px;
+	list-style-type: none;
+}
+
+.test-a-rosa li a div {
+	bottom:0;
+	margin:2px 6px 4px;
+	position:absolute;
+	width:86px; }
+
+#showcaseRunway {
+/*	background: transparent url('/g/chrome/grey_dot_horiz.png') top left repeat-x; */
+	width: 400px;
+	margin-top: 15px; 
+	padding-top: 5px; }
+	
+#showcaseRunway ul	{
+	margin: 0;
+	padding: 0;
+	height:127px !important;
+	overflow: hidden !important; }
+	
+#showcaseRunway ul a:link, #showcaseRunway ul a:visited {
+	border: 1px solid #7f7f7f;
+	display: block;	
+	height: 120px;
+	width: 98px;
+	font-size: 10px;
+	color: #333;
+	text-decoration: none;
+	line-height: 12px; }	
+
+#showcaseRunway ul a:link .time, #showcaseRunway ul a:visited .time {
+	color: #fff; }
+	
+#showcaseRunway ul a:hover {
+	border: 1px solid #c00;
+	cursor: pointer; }
+
+#showcaseRunway ul li.active a {	
+	border: 1px solid #c00;
+	cursor: default; }
+	
+#showcaseRunway ul li.active div {	
+	filter:alpha(opacity=35);-moz-opacity:.35; }
+	
+#showcaseRunway ul li span.time {
+	bottom: 6px;
+	position:absolute;
+	right: 6px; }
+	
+#showcaseRunway span.over {
+	display: none; }
+	
+#showcaseRunway li img {
+	padding: 5px 0 0 0; }
+
+#col4 { 
+	background: transparent url('/g/chrome/grey_dot_horiz.png') top left repeat-x; 
+	margin: 15px 0 20px 147px;
+	padding: 12px 0 0 0;
+	overflow: hidden; }
+
+#col4 h3 {
+	display: block;
+	font-style: oblique;
+/*	color: #fff;*/
+	padding: 6px 0 4px;
+	margin: 0; }
+ 
+.col4SectionsWrap {
+	border-top: 2px solid #666;
+	background: transparent url('/g/chrome/grey_dot_horiz.png') 0 95% repeat-x;
+	padding-bottom: 15px; }
+	
+.col4Sections {
+	float: left;
+	background: transparent url('/g/chrome/grey_dot_vert.png') top right repeat-y;
+	width: 23%;
+	padding: 0;
+	margin: 15px 10px 15px 0;
+/*	color: #fff;*/
+	overflow: hidden;
+	min-height: 130px; }
+
+.col4Sections h4 {
+	margin: 0 5px 6px 0;
+	padding: 0; }
+	
+.col4Sections ul {
+	margin: 5px 0 5px 2px;
+	padding: 0;
+	font-size: smaller;
+	min-height: 110px; }
+	
+.col4Sections ul li {
+	float: none;
+	list-style-type: none;
+	margin: 2px 0;
+	padding: 0;
+	background-image: none;
+	width:auto; }
+	
+.col4Sections a, .col4Sections a:visited, #showcaseViewerWrap a {
+	text-decoration: none; }
+
+
+/** Core styles
+ * This <div> element is wrapped by jCarousel around the list
+ * and has the classname "jcarousel-container".
+ */
+.jcarousel-container {
+    position: relative; }
+
+.jcarousel-clip {
+    z-index: 2;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    position: relative; }
+
+.jcarousel-list {
+    z-index: 1;
+    position: relative;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    height:127px !important;
+    overflow: hidden !important; }
+
+.jcarousel-list li,
+.jcarousel-item {
+    float: left;
+    list-style: none;
+    /* We set the width/height explicitly. No width/height causes infinite loops. */
+    width: 100px;
+    height: 120px; }
+
+/**
+ * The buttons are added dynamically by jCarousel before
+ * the <ul> list (inside the <div> described above) and
+ * have the classnames "jcarousel-next" and "jcarousel-prev".
+ */
+.jcarousel-next {
+    z-index: 3;
+    display: none; }
+
+.jcarousel-prev {
+    z-index: 3;
+    display: none; }
+/* end Core styles */
+
+
+/** 
+ * Custom skin styles
+ */
+
+.jcarousel-skin-stories .jcarousel-container ul { }
+
+.jcarousel-skin-stories .jcarousel-container-horizontal {
+    width: 400px;
+    height:127px; }
+
+.jcarousel-skin-stories .jcarousel-clip-horizontal {
+    width:  321px;
+    height: 127px; }
+
+.jcarousel-skin-stories ul li.jcarousel-item {
+    width: 100px;
+    height: 120px; }
+
+.jcarousel-skin-stories ul li.jcarousel-item-horizontal {
+    margin: 5px 10px 2px 0; }
+    
+.jcarousel-skin-stories ul li.jcarousel-item-horizontal a div {
+	bottom:0;
+	margin:2px 6px 4px;
+	position:absolute;
+	width:86px; }
+	
+.jcarousel-skin-stories ul li.active span.over {
+	visibility: hidden;
+	left:20px;
+	letter-spacing:2px;
+	font-size: larger;
+	top:58px;
+	z-index: 9999;
+	color: #c00;
+	display: block;
+	margin-left:18px;
+	margin-top:54px; } 
+	
+/* orginal version with a playing graphic overlay
+.jcarousel-skin-stories ul li.active span.over {
+	background: transparent url('/g/playing.gif') 0 0 no-repeat;
+	left:20px;
+	top: 57px;
+	width:62px;
+	position: absolute;
+	z-index: 9999;
+	text-indent: -1000px; }*/
+
+.jcarousel-skin-stories .jcarousel-item-placeholder {
+    background: #fff;
+    color: #333; }
+
+/*
+ *  Horizontal Buttons Dark Background
+ */
+.jcarousel-skin-stories .jcarousel-next-horizontal, .jcarousel-skin-stories .jcarousel-prev-horizontal {
+    position: absolute;
+    border: 1px solid #333;
+    width: 16px;
+    height: 16px;
+    cursor: pointer; }
+
+.jcarousel-skin-stories .jcarousel-next-horizontal {
+    background: transparent url('/g/chrome/carousel-arrow-rt.png') 55% 50% no-repeat;
+    bottom: 0;
+    right: 5px; }
+
+.jcarousel-skin-stories .jcarousel-prev-horizontal {
+    background: transparent url('/g/chrome/carousel-arrow-lt.png') 45% 50% no-repeat;
+    bottom: 0;
+    right: 28px; }
+ 
+.jcarousel-skin-stories .jcarousel-next-horizontal:hover, .jcarousel-skin-stories .jcarousel-prev-horizontal:hover {
+    background-color: #555; }
+
+.jcarousel-skin-stories .jcarousel-next-disabled-horizontal,
+.jcarousel-skin-stories .jcarousel-next-disabled-horizontal:hover,
+.jcarousel-skin-stories .jcarousel-next-disabled-horizontal:active,
+.jcarousel-skin-stories .jcarousel-prev-disabled-horizontal,
+.jcarousel-skin-stories .jcarousel-prev-disabled-horizontal:hover,
+.jcarousel-skin-stories .jcarousel-prev-disabled-horizontal:active {
+    cursor: default;
+    border: 1px solid #999;
+    background-color: transparent;
+    background-image: none;
+    bottom: 0; }
+

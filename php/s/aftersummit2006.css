@@ -1,0 +1,148 @@
+/* *****************************************************************************
+
+Red Hat Summit 2006 stylesheet
+created by rob
+recreated on Apr 13, 2006
+
+Notes: this stylesheet represents rampant abuse of absolute positioning.
+       nothing to be done however considering the graphic text layers were
+       screened.
+       proceed with caution.
+
+***************************************************************************** */
+
+body {
+	font-size: small;
+	}
+
+#base {
+	position: relative; /* so everything else can be absolute */
+	margin-top: 15px;
+	height: 600px;
+	}
+
+.main { background: url(/g/summit/2006/main_layers.jpg); }
+
+p#news a, p#blogs a, p#presentations a, p#videos a {
+	display: block;
+	text-indent: -5000px;
+	}
+
+div#highlights {
+	position: absolute;
+	margin: 0;
+	padding: 0;
+	top: 0px;
+	left: 0px;
+	width: 277px;
+	height: 125px;
+	background: url(/g/summit/2006/after/highlights.jpg);
+	}
+
+div#highlights p {
+	display: block;
+	text-indent: -5000px;
+	}
+
+p#news a {
+	position: absolute;
+	margin: 0;
+	padding: 0;
+	top: 125px;
+	left: 0px;
+	width: 277px;
+	height: 143px;
+	background: url(/g/summit/2006/after/news.jpg);
+	}
+
+p#news a:hover {
+	margin: 0;
+	padding: 0;
+	background: url(/g/summit/2006/after/news_on.jpg);
+	}
+
+p#blogs a {
+	position: absolute;
+	margin: 0;
+	padding: 0;
+	top: 268px;
+	left: 0px;
+	width: 277px;
+	height: 146px;
+	background: url(/g/summit/2006/after/blogs.jpg);
+	}
+
+p#blogs a:hover {
+	margin: 0;
+	padding: 0;
+	background: url(/g/summit/2006/after/blogs_on.jpg);
+	}
+
+p#presentations a {
+	position: absolute;
+	margin: 0;
+	padding: 0;
+	top: 414px;
+	left: 0px;
+	width: 277px;
+	height: 186px;
+	background: url(/g/summit/2006/after/presentations.jpg);
+	}
+
+p#presentations a:hover	{
+	margin: 0;
+	padding: 0;
+	background: url(/g/summit/2006/after/presentations_on.jpg);
+	}
+
+p#videos a {
+	position: absolute;
+	margin: 0;
+	padding: 0;
+	top: 125px;
+	left: 277px;
+	width: 282px;
+	height: 95px;
+	background: url(/g/summit/2006/after/videos.jpg) no-repeat;
+	}
+
+p#videos a:hover {
+	margin: 0;
+	padding: 0;
+	background: url(/g/summit/2006/after/videos_on.jpg);
+	}
+
+#mjs {
+	position:absolute;
+	margin: 0;
+	padding: 0;
+	top: 220px;
+	left: 277px;
+	width: 282px;
+	height: 104px;
+	background: url(/g/summit/2006/after/mjs_video.jpg) no-repeat;
+	}
+
+#mjs p, #mjs a {
+	margin: 0; 
+	text-align: right;
+	color: white;
+	}
+
+#cdoc {
+	position: absolute;
+	margin: 0;
+	padding: 0;
+	top: 374px;
+	left: 277px;
+	width:282px;
+	height: 138px;
+	background: url(/g/summit/2006/after/cdoc_video.jpg) no-repeat;
+	}
+
+#cdoc p, #cdoc a {
+	margin: 0;
+	text-align: right;
+	color: white;
+	}
+

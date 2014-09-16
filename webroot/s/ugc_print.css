@@ -1,0 +1,36 @@
+body {
+	color: #000000;
+	font-family: "Lucida Grande", "Luxi Sans", "Bitstream Vera Sans", "Trebuchet MS", helvetica, verdana, arial, sans-serif;
+	font-size: normal;
+}
+
+#utility-links,
+#header,
+#nav,
+#sidenav {display: none;}
+
+/* footer styles */
+#footer {
+	font-size: .7em;
+	color: #999999;
+	margin-top: 10px;
+	padding: 5px;
+	clear: both;
+	background: url(/partner_center/g/chrome/content/tile-slash.png) repeat-x;
+}
+#footer p {
+	padding: 0;
+	margin: 5px 0 0 0;
+}
+#footer ul {
+	list-style: none;
+	padding: 0;
+	margin: 5px 0 0 0;
+}
+#footer ul li {
+	display: inline;
+	padding-right: 15px;
+}
+#footer a {
+	display: inline;
+}

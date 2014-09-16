@@ -1,0 +1,149 @@
+#contentRight {
+  padding-top: 24px;
+  height: auto;
+  margin-bottom: 36px;
+}
+
+.halfColLeft {
+  margin-top: 8px;
+}
+
+.clearBoxBody {
+  padding-top: 14px;
+  font-size: small;
+}
+
+div.formrow {
+  height: auto;
+  text-align: right;
+  width: 100%;
+}
+
+div.formrow:after {
+  clear: both;
+}
+
+div.formrow span.formfield {
+  float: right;
+  width: 100px;
+  text-align: right;
+  padding-right: auto;
+  margin-bottom: 6px;
+}
+
+div.formrow span.label {
+  width: 45%;
+  height: 2em;
+  font-weight: bold;
+  padding: 0px;
+}
+
+div.formrow span.input {
+  height: 2em;
+  width: 45%;
+  padding: 0px;
+}
+
+#loginContentWrap1Col {
+    float:left;
+    width:250px;
+    padding-top:20px;
+}
+
+.twothirdColRight, #loginContentWrap1Col h2, #loginContentWrap1Col h1 {
+    display: none;
+}
+
+div#login-banner {
+    text-align: center;
+    padding-top: 11px;
+}
+
+div#login-banner img {
+    border: 0;
+}
+
+span.palenote {
+    font-size: x-small;
+    text-align: right;
+}
+
+.redNote {
+   color: rgb(183,0,0);
+}
+
+#inNote {
+    float: left;
+    margin-right: 5px;
+}
+
+#contentWrap1Col {
+    margin-left: 16px;
+}
+
+#contentWrap1Col h1.accentLightFull {
+	display: block;
+    margin-top: 12px;
+    margin-bottom: 0.5em;
+    font-size: 20px;
+}
+	
+.contentIndent {
+	margin: 0 0 15px 15px;
+}
+
+/* banner */
+
+#banner {
+	-moz-border-radius: 	12px; 
+	padding: 		.8em; 
+	clear: 			both; 
+	background-color: 	#f6f4ef; 
+	text-align: 		left; 
+	vertical-align: 	middle; 
+	width: 			650px; 
+	margin: 		1em 18% 2em 18%; 
+/*
+	margin-left: 		auto; 
+	margin-right: 		auto;
+*/
+}
+
+#banner .linkage {
+	padding-bottom: 	0px; 
+	margin-bottom: 		0px; 
+	padding-left: 		0px; 
+	margin-left: 		10%;
+}
+
+#banner p {
+	text-align: 		center; 
+	margin: 		0px; 
+	padding: 		0px; 
+	height: 		3em;
+}
+
+#banner-center-cell p {
+	margin: 		0px 4% 0px 4%;
+}
+
+#banner-left-cell {
+	width: 			33%; 
+	float: 			left; 
+	border-right: 		1px solid #bbb; 
+	padding-right: 		.3em;
+}
+
+#banner-right-cell {
+	width: 			37%; 
+	border-left: 		1px solid #bbb; 
+	float: 			right; 
+	padding-left: 		.3em;
+}
+
+#banner-center-cell {
+	width: 			26%; 
+	float: 			right; 
+	padding-right: 		.5em; 
+	padding-left: 		.5em;
+}

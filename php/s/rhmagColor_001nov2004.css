@@ -1,0 +1,9 @@
+/* red hat magazine stylesheet - Issue 1, Nov 2004 - color theme */
+
+#nameplate, #promos {
+	background-color: #9B9280;
+	}
+	
+#nameplate h2 {
+	color: #900;
+	}

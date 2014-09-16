@@ -1,0 +1,93 @@
+body {
+	font-size: medium;
+	}
+
+#colLeft {
+	width: 415px;
+	}
+	
+#colRight {	
+	float: right;
+	margin-left: 15px;
+	}
+
+h1 {
+	background: url(/g/newsletter/head_newsletter.png) no-repeat top;
+	width: 720px;
+	height: 64px;
+	}
+	
+h1.renew {
+	background: url(/g/RENEW_Presentation_wide.png) no-repeat top;
+	width: 720px;
+	height: 82px;
+	}
+	
+h1 span {
+	display: none;
+	}
+	
+h2 {
+	font-size: small;
+	font-weight: bold;
+	color: #b70000;
+	text-transform: uppercase;
+	}
+
+.dateLine {
+	font-size: small;
+	font-weight: bold;
+	color:#b70000;
+	text-align: right;
+	padding: 0 0 15px 0;
+	}
+	
+.salutation {
+	font-weight:bold;
+	margin: 0;
+	padding: 0;
+	}
+	
+.shadeBox {
+	background: #CCC6AC url(/g/newsletter/corner_gray_top.png) no-repeat top;
+	width: 256px;
+	height: auto;
+	}
+
+.shadeInner {
+	padding:15px 15px 0 15px;
+	}
+	
+.shadeBottom {
+	background: #CCC6AC url(/g/newsletter/corner_gray_bottom.png) no-repeat bottom;
+	width: 256px;
+	height: auto;
+	}
+	
+ul.blackDots {
+	list-style: none;
+	padding-left: 0;
+	margin-left: 0;
+	}
+	
+ul.blackDots li {
+	background-image: url(/g/newsletter/bullet_blackarrow_dot.png);
+	background-repeat: no-repeat;
+	background-position: 0 3px;
+	padding: 1px 0 1px 30px;
+	line-height: 16px;
+	}
+	
+ul.blackDots li a,
+ul.blackDots li a:link,
+ul.blackDots li a:visited {
+	color: #333;
+	text-decoration: none;
+	font-weight: bold;
+	}
+	
+ul.blackDots li a:active, 
+ul.blackDots li a:focus, 
+ul.blackDots li a:hover {
+	text-decoration: underline;
+	}

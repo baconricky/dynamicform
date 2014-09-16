@@ -1,0 +1,311 @@
+/***********************
+
+redhat.com - World Tour 2004 
+created: 03/06/04 by bascha
+
+modified last: 
+
+***********************/
+
+/****** Main Styles *****/
+
+body {
+                margin: 15px 20px 30px 20px;
+                padding: 0px;
+                font-family : helvetica, arial, sans-serif;
+	        font-size : 10pt;
+	        background : #cc0000 url("/g/blog_worldtour/wtour_blog_bg.gif") no-repeat fixed;
+                }
+p, td, li {
+                font-family : helvetica, arial, sans-serif;
+        	font-size : 10pt;
+                }
+#hed    {
+                margin: 0px -15px 0px 0px;
+                z-index: 1;
+                }
+#content {
+                margin-top: 10px;
+                z-index: 2;
+                width: 730px;
+                }
+#lcol {
+                float: left;
+                padding-right: 13px;
+                width: 160px;
+    }
+#links {
+                padding: 0px;
+                width: 160px;
+                float: left;
+                }
+#blog {
+                float: right;
+                width: 540px;
+                z-index: 2;
+                }
+#blogbody {
+                background: #FFFFFF;
+                float: left;
+                width: 540px;
+                border-left: 7px solid #c00;
+                border-bottom: 7px solid #c00;
+                z-index: 2;
+                }
+#blogcontent    {
+                background: #FFFFFF;
+                padding: 5px;
+                z-index: 2;
+                font-size: 8pt;
+                  }
+#rcol   {
+                background: #c00;
+                width: 180px;
+                float: right;
+                padding-left: 20px;
+        }
+#rcolbody  {
+                background: #c00;
+           }
+.goldbox        {
+                background: #c90;
+                padding: 5px 10px 10px 10px;
+                text-align: center;
+                color: #FFF;
+                }
+.goldtitle      {
+                text-transform: uppercase;
+                font-size: 8pt;
+                font-weight: bold;
+                padding-bottom: 10px;
+                margin-left: -10px;
+                }
+.sponsors       {
+                padding: 10px;color: #FFF;
+                }
+.sponsors p     {
+                font-size: 8pt;
+                }
+.calendar {
+                width: 170px;
+                color:#666;
+                background: blue;
+                font-size:x-small;
+                font-weight:normal;
+                }
+.calendarhead {
+                color:#666600;
+                font-size: 8pt;
+                font-weight:normal;
+                padding:2px;
+                letter-spacing: .1em;
+                }
+.sidetitle {
+                color: #FFFFFF;
+                font-size: 10pt;
+                font-weight: bold;
+                margin-top: 0px;
+                letter-spacing: .1em;
+                }
+.sidetitlenav {
+		margin-bottom: 15px;
+                }
+.sidetitle a:link,
+.sidetitle a:visited,
+.sidetitle a:active  {
+                color: #FFF;
+                text-decoration: none;
+                        }
+.sidetitle a:hover  {
+                color: #FFF;
+                font-weight: bold;
+                text-decoration: underline overline;
+                }
+
+.side {
+                color:#FFF;
+                font-size: 8pt;
+                font-weight: normal;
+                margin-bottom: 15px;
+                padding-left: 5px;
+                }
+.side a:link,
+.side a:visited,
+.side a:active  {
+                color: #FFF;
+                text-decoration: none;
+                        }
+.side a:hover  {
+                color: #FFF;
+                font-weight: bold;
+                text-decoration: underline overline;
+                }
+.powered {      color: #eee;
+                font-size: 8pt;
+                margin-top:50px;
+                letter-spacing: .1em;
+                }
+.powered a:link,
+.powered a:visited,
+.powered a:active  {
+                color: #FFF;
+                text-decoration: none;
+                      }
+.powered a:hover  {
+                color: #FFF;
+                font-weight: bold;
+                text-decoration: underline;
+                        }
+.topmenu {	font-weight: normal;
+		}
+.topmenu a:link,
+.topmenu a:visited,
+.topmenu a:active  {	color: #900;
+			font-weight: bold;
+			text-decoration: none;
+			}
+.topmenu a:hover {	text-decoration: underline overline;
+			}
+ul.whitearrow,
+ul.whitearrow a:link,
+ul.whitearrow a:visited,
+ul.whitearrow a:active  {
+                color: #FFF;
+                font-size: 8pt;
+                list-style-image:  url(http://www.redhat.com/g/blog_worldtour/wtour_arrow_whiteonred.gif);
+                list-style-type: circle;
+                padding-left: 25px;
+                margin-left: 0px;
+                }
+li.whitearrow   {
+                font-size: 8pt;
+                }
+.blogdescription        {
+                font-size: 8pt;
+                padding-bottom: 10px;
+                }
+.blogdate       {
+                font-size: 8pt;
+                font-style: italic;
+                font-weight: normal;
+                }
+.blogtitle      {
+                font-size: 10pt;
+                color: #c00;
+                font-weight: bold;
+                }
+.blogposted,
+.blogposted a:link,
+.blogposted a:visited,
+.blogposted a:active    {
+                color: #999;
+                text-decoration: none;
+                }
+.blogposted a:hover     {
+                text-decoration: underline;
+                font-weight: bold;
+                        }
+.urhere {
+                color: #fff;
+                font-weight: bold;
+                }
+h1.dateline {
+                color:#c00;
+                font-size: 10pt;
+                font-weight: bold;
+                padding: 5px 5px 5px 5px;
+                border: medium dotted #c90;
+                text-align: center;
+                margin: 5px 5px 20px 5px;
+                }
+.par {
+                font-size: medium;
+                margin: 5px 5px 10px 5px;
+				}
+
+.par2 {
+                font-size: medium;
+                margin: 5px 5px 10px 25px;
+		}
+.bizleft {	float: left;
+		width: 200px;
+		}
+.bizright {	float: right;
+		width: 300px;
+		padding-right: 10px;
+		margin-top: -10px;
+		margin-bottom: 20px;
+		}
+.reg {
+                color: #c00;
+                font-size: medium;
+                font-weight: bold;
+                margin-left: 25px;
+                margin-bottom: 5px;
+                }
+a:link.reg, a:visited.reg, a:active.reg  {
+                color: #c00;
+                font-size: medium;
+                font-weight: bold;
+                text-decoration: none;
+                }
+a:hover.reg  {
+                color: #c00;
+                font-size: medium;
+                font-weight: bold;
+                text-decoration: underline overline;
+                }
+
+.redLink {
+                color: #c00;
+                font-size: medium;
+                font-weight: bold;
+                margin-left: 5px;
+                margin-bottom: 5px;
+                }
+a:link.redLink, a:visited.redLink, a:active.redLink  {
+                color: #c00;
+                font-size: medium;
+                font-weight: bold;
+                text-decoration: none;
+                }
+a:hover.redLink  {
+                color: #c00;
+                font-size: medium;
+                font-weight: bold;
+                text-decoration: underline overline;
+                }
+#sched {
+                padding: 5px 5px 5px 5px;
+                background-color: #fff;
+                float: left;
+                margin-bottom: 15px;
+                }
+h2.sched {
+                color: #fff;
+                background-color: #c90;
+                font-size:10pt;
+                padding: 2px 2px 2px 2px;
+                }
+.redNorm	{
+				color:#c00;
+				font-weight:normal;
+				}
+.agenda {
+                font-size: medium;
+                margin-bottom:15px;
+                }
+.story1	{
+		float: left;
+		padding-left: 50px; 
+	}
+.full1 {
+	font-size:8pt; 
+	padding-left:4px; 
+	font-weight:normal;
+	}
+.full2 {
+	font-style:italic; 
+	font-size:8pt; 
+	padding-left:10px;
+	}

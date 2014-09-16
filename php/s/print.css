@@ -1,0 +1,256 @@
+/* This is to hide the Flash headlines from the browser... regular browser text headlines will now print as normal */
+
+.sIFR-flash, object, embed {
+	display: none !important;
+	height: 0;
+	width: 0;
+	position: absolute;
+	overflow: hidden;
+}
+
+span.sIFR-alternate {
+	visibility: visible !important;
+	display: block !important;
+	position: static !important;
+	left: auto !important;
+	top: auto !important;
+}
+
+/* global styles */
+
+body {
+	background: white;
+	font-family: Georgia, Palatino, serif !important;
+	font-size: 11pt !important;
+	line-height: 125%;
+	}
+
+img {
+	border: none;
+	}
+
+a {
+	text-decoration: underline;
+	color: #000;
+	}
+
+.hide, #utilityLinks, #search, #mainNavOuter, #secNavOuter, #navCol, #promos,
+#utility, #header form, #navWrap, #footer a, .outer-share, .rightNavFloat,
+.tabs_rhel6, .tabs_v2, #navCol_v2, .title_rhel, .title_management, .title_jboss, .title_rhev, .title_mrg {
+	display: none;
+	}
+	
+h1 {
+	line-height: 110%;}
+	
+p#footer {
+	font-size: 9pt !important;
+	line-height: 100% !important;
+	padding-top: .5em;
+	border-top: 1px solid #999;
+	clear:both !important;
+	}
+	
+/* Red Hat Magazine styles */
+
+p#issueDate {
+	margin: 0 !important;
+	font-size: 12pt !important;
+	font-weight: bold;
+	}
+
+#promos {
+	display: none;
+	}
+
+img#rhmagLogo {
+	padding-top: 0 !important;
+	border-top: 4px solid #999;
+	border-bottom: 4px solid #999;
+	}
+	
+table.basic4 {
+	width: 6.5in;
+	border: 1px solid #999 !important;
+	background-color: white !important;
+	}
+	
+table.basic4 th, table.basic4 td {
+	border: 1px solid #999 !important;
+	}
+
+#nameplate h2, #nameplate ul {
+	display: none;
+	}
+	
+#rhmagCenter {
+	float: none !important;
+	width: 100% !important;
+	clear: both;
+	font-style: Georgia, Palatino, serif !important;
+	font-size: 11pt !important;
+	}
+	
+#rhmagCenter .article, #rhmagCenter .department {
+	width: 100% !important;
+	}	
+	
+#rhmagCenter h2, #rhmagRight h2 {
+	font-size: 12pt !important;
+	font-weight: bold !important;
+	}
+	
+#rhmagRight h2 {
+	color: black !important;
+	margin-bottom: 0 !important;
+	}
+	
+#rhmagRight p {
+	margin-top: 0;
+	}
+	
+#rhmagRight	{
+	float: none !important;
+	width: 100% !important;
+	margin-left: 0 !important;
+	clear: both;
+	}
+	
+#rhmagRight p {
+	font-style: Georgia, Palatino, serif !important;
+	font-size: 11pt !important;
+	}
+	
+#rhmagRight img	{
+	display: none;
+	}
+	
+#rhmagCenter .article h1 {
+	font-size: 18pt;
+	line-height: 1.5em;
+	font-variant: small-caps;
+	}
+	
+#rhmagCenter .department h1 {
+	text-indent: 0 !important;
+	height: 1em !important;
+	font-size: 18pt;
+	line-height: 1.5em;
+	font-variant: small-caps;
+	}
+	
+#rhmagCenter .home h3, #rhmagRight h2 {
+	font-size: 14pt !important;
+	font-weight: normal !important;
+	line-height: 1.5em;
+	font-variant: small-caps;
+	margin-bottom: 0;
+	}
+	
+#rhmagCenter h4.byline {
+	margin-top: .5em
+	}
+	
+pre {
+	width: 95% !important;
+	background: #eee !important;
+	font-size: 9pt !important;
+	border: 1px solid #ccc;
+	}
+	
+ul#articleMenu a {
+	font-weight: bold;
+	}
+	
+.adnote, .adwarning, .adtip, .adcaution, .adimportant {
+	background-image: none !important;
+	border: 1px solid #ccc !important;
+	padding: .5cm !important;
+	}
+	
+.adnote dt, .adwarning dt, .adtip dt, .adcaution dt, .adimportant dt {
+	float: none !important; 
+	margin: 0 !important; 
+	color: #000 !important;
+	font-weight: bold;
+	}
+	
+.adnote dd, .adwarning dd, .adtip dd, .adcaution dd, .adimportant dd {
+	border: none !important;
+	}
+	
+blockquote {
+	border-top-color: #ccc !important; 
+	border-bottom-color: #ccc !important;
+	}
+	
+/* Print URLs ... see Eric Meyer, alistapart.com:articles:goingtoprint */
+
+.article a:link:after,
+.department a:link:after {
+   	content: " (" attr(href) ")";
+   	font-size: 90%;
+  	}
+  	
+ ul#articleMenu a:link:after {
+ 	content: "";
+	}
+
+/* store pages */
+
+
+.productCatagory a {
+	display: none;
+	}
+
+#productMain h3 a {
+	text-decoration: none;
+	}
+
+#productMain .contentIndent {
+	margin-left: 15px;
+	}
+
+.productRow strong, .productRow h3 {  
+	margin: 0;
+	padding: 0;
+	}
+	
+.productRow {
+	padding-bottom: 10px;
+	padding-right: 15px;
+	clear: both;
+	border-bottom: 0 !important;
+	}
+	
+#contentStoreColLeft h2 {
+	display: block;
+	clear: both; }
+
+.storeDetail p {
+	clear: both; }
+
+#steps {
+	display: none;
+	}
+
+#storeCol {
+	display: none; }
+	
+div.productTableRow {
+	border-bottom: 0; }
+	
+.storeDetail {
+	clear:both; }
+	
+.tcontent1, .tcontent2, tcontent3 {
+	clear:both; }
+	
+th.storeCatalogProductCell {
+	text-align:left;}
+	
+.storeSupportOptions {
+	display: none; }
+
+
+

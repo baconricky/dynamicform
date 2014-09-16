@@ -1,0 +1,84 @@
+/* MicroCart */
+
+.store-MicoCartHeaderLabel
+{
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.store-MicoCartWidget
+{
+	background: white;
+	width: 250px;
+}
+
+.store-MicroCartIcon
+{
+	background: url("/wapps/store/images/microCart/cart.png") top left no-repeat;
+	width: 16px;
+	height: 17px;
+}
+
+.store-PopupCartLeftTopCorner, .store-PopupCartTopBorder, PopupCartRightTopCorner,
+	.store-PopupCartLeftBorder, .store-PopupCartMainPanel, .store-PopupCartRightBorder,
+	.store-PopupCartLeftBottomCorner, .store-PopupCartBottomBorder, .store-PopupCartRightBottomCorner
+{
+	margin: 0;
+	padding: 0;
+}
+
+.store-PopupCartLeftTopCorner
+{
+	width: 28px;
+	height: 58px;
+	background: url("/wapps/store/images/microCart/leftTopCorner.gif") top left no-repeat;
+}
+
+.store-PopupCartTopBorder
+{
+	height: 58px;
+	background: url("/wapps/store/images/microCart/topBorder.gif") top left repeat-x;
+}
+
+.store-PopupCartRightTopCorner
+{
+	width: 36px;
+	height: 58px;
+	background: url("/wapps/store/images/microCart/rightTopCorner.gif") top left no-repeat;
+}
+
+.store-PopupCartLeftBorder
+{
+	width: 28px;
+	background: url("/wapps/store/images/microCart/leftBorder.gif") top left repeat-y;
+}
+
+.store-PopupCartMainPanel
+{
+}
+
+.store-PopupCartRightBorder
+{
+	width: 36px;
+	background: url("/wapps/store/images/microCart/rightBorder.gif") top left repeat-y;
+}
+
+.store-PopupCartLeftBottomCorner
+{
+	width: 28px;
+	height: 34px;
+	background: url("/wapps/store/images/microCart/leftBottomCorner.gif") top left no-repeat;
+}
+
+.store-PopupCartBottomBorder
+{
+	height: 34px;
+	background: url("/wapps/store/images/microCart/bottomBorder.gif") top left repeat-x;
+}
+
+.store-PopupCartRightBottomCorner
+{
+	width: 36px;
+	height: 34px;
+	background: url("/wapps/store/images/microCart/rightBottomCorner.gif") top left no-repeat;
+}

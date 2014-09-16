@@ -1,0 +1,10 @@
+/* 
+support.css
+this file is only to be used for the popup windows in /support/service/sla/defs_* 
+*/
+
+body {
+	background-image: none;
+	text-align: left;
+	width: 390px;
+	}

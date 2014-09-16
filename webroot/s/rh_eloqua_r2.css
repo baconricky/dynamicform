@@ -1,0 +1,56 @@
+body {
+	text-align: center;
+}
+
+#pageTable {
+	width: auto !important;
+	height: auto !important;
+}
+
+#ProgressMessage {
+	display: none !important;
+}
+
+body, label, .elqLabel, .elqField, .note {
+	font-size: 11px;
+	font-family: "Helvetica","Arial",sans-serif;
+	margin: 0;
+}
+
+p.note {
+	font-weight: bold;
+	margin: 3px;
+}
+
+form {
+	margin: 0 !important;
+}
+
+.elqLabel {
+	width: auto !important;
+	margin-left: 0 !important;
+}
+
+.LayoutTableRowStart .elqLabel {
+	width: 300px !important;
+	min-width: 300px !important;
+	margin: 0 20px !important;
+}
+
+.elqLayout td {
+	width: auto !important;
+	padding-bottom: 0.5em;
+}
+
+.helperText {
+	color: #666 !important;
+}
+
+#mask {
+	height: 100%;
+	width: 100%;
+	background-color: white;
+	position: absolute;
+	top: 0;
+	left: 0;
+}

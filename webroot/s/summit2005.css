@@ -1,0 +1,1024 @@
+/***********************
+
+redhat.com - RED HAT SUMMIT 2005
+ 
+created: 02FEB05 by lisa
+
+modified last: 22APR05 by bascha	
+
+***********************/
+
+/****** Main Styles *****/
+
+#sum05Top {
+	background: url(/g/landing/summit2005_top.gif);
+	height: 12px;
+	width: 720px;
+	}
+
+#sum05Bottom {
+	background: url(/g/landing/summit2005_bottom.gif);
+	height: 12px;
+	width: 720px;
+	}
+	
+#sum05Wrap {
+	background: #e3dcc0;
+	margin: 30px 0 0 0;
+	width: 720px;
+	height: auto;
+	}
+	
+#sum05Wrap:after {
+    content: "."; 
+    display: block;
+    height: 0;
+    overflow: hidden;
+    clear: both; 
+    visibility: hidden;
+    }
+
+    /* Holly Hack Targets IE Win only \*/
+    * html sum05#Wrap {height: 1%;}
+    /* End Holly Hack */
+
+	
+#InnerTop {
+	background: url(/g/landing/summit2005_inner_top.gif) no-repeat;
+	margin: 0 auto;
+	height: 12px;
+	width: 660px;
+	}
+	
+#sum05Inner {
+	margin: 0 auto;
+	width: 660px;
+	height: auto;
+	}
+	
+#sum05InnerBox {
+	margin: 0 auto;
+	background: #fff;
+	width: 660px;
+	height: auto;
+	}
+
+#sum05InnerBox .colA {
+	float: left;
+	margin: 0 10px;
+	padding: 25px 0 0 0;
+	width: 165px;
+	}
+	
+#sum05InnerBox .colB {
+	float: left;
+	margin-right: 10px;
+	width: 140px;
+	}
+	
+#sum05InnerBox .colC {
+	float: left;
+	margin-right: 10px;
+	width: 140px;
+	}
+	
+#sum05InnerBox .colD {
+	float: right;
+	width: 140px;
+	}
+	
+#sum05InnerBox:after {
+    content: "."; 
+    display: block; 
+    height: 1px;
+    margin-top: -1px;
+    overflow: hidden;
+    clear: both; 
+    visibility: hidden;
+    }
+
+    /* Holly Hack Targets IE Win only \*/
+    * html #sum05InnerBox {height: 1%;}
+    /* End Holly Hack */
+
+#InnerBottom {
+	background: url(/g/landing/summit2005_inner_bottom.gif) no-repeat;
+	margin: 0 auto;
+	height: 12px;
+	width: 660px;
+	}	
+	
+#subInnerTop {
+	background: url(/g/landing/summit2005_subinner_top.gif) no-repeat;
+	margin: 0 auto;
+	height: 13px;
+	width: 490px;
+	}
+	
+#subInner {
+	margin: 0 auto;
+	background: #fff;
+	width: 490px;
+	height: auto;
+	}
+	
+#subInnerBox {
+	margin: 0 auto;
+	width: 440px;
+	height: inherit;
+	padding: 0 10px;
+	}
+	
+#subInnerBox:after {
+    content: "."; 
+    display: block; 
+    height: 1px;
+    margin-top: -1px;
+    overflow: hidden;
+    clear: both; 
+    visibility: hidden;
+    }
+
+    /* Holly Hack Targets IE Win only \*/
+    * html #subInnerBox {height: 1%;}
+    /* End Holly Hack */
+
+#subInnerBottom {
+	background: url(/g/landing/summit2005_subinner_bottom.gif) no-repeat;
+	margin: 0 auto;
+	height: 13px;
+	width: 490px;
+	}	
+
+/******* HEADLINE AND TEXT STYLES *******/
+
+div.Main {
+	padding: 0;
+	margin: 15px auto;
+	text-align: center;
+	background: url(/g/landing/summit2005_main.gif) no-repeat;
+	height: 221px;
+	width: 229px;
+	}
+	
+div.Head span {
+	display: none;
+	}
+	
+#sum05Wrap h1 {
+	color: #a8a38f;
+	font-size: 12pt;
+	font-weight: bold;
+	text-transform: uppercase;
+	}
+	
+#sum05Wrap div.menu {
+	margin-bottom: 5px;
+	}
+	
+#sum05Wrap a.menu {
+	color: #4c8bae;
+	font-size: 8pt;
+	font-weight: bold;
+	text-decoration: none;
+	line-height: 1em;
+	}
+
+.sum05amd {
+	text-align: right;
+	vertical-align: top;
+	margin: 15px 15px 0 0;
+	}
+	
+.sum05dell {
+	float: right;
+	text-align: right;
+	vertical-align: top;
+	margin: 15px 0 0 15px;
+	}
+	
+.sum05hp {
+	float: right;
+	text-align: right;
+	vertical-align: top;
+	margin: 15px 0 0 15px;
+	}
+	
+.sum05ibm {
+	float: right;
+	text-align: right;
+	vertical-align: top;
+	margin: 15px 15px 0 15px;
+	}
+	
+.sum05intel {
+	float: right;
+	text-align: right;
+	vertical-align: top;
+	margin: 15px 30px 0 0;
+	}
+	
+.sum05sponsors {
+	float: right;
+	text-align: right;
+	vertical-align: bottom;
+	margin: 35px 45px 0 0;
+	}
+
+.sum05sponsors:after {
+    content: "."; 
+    display: block; 
+    height: 1px;
+    margin-top: -1px;
+    overflow: hidden;
+    clear: both; 
+    visibility: hidden;
+    }
+
+    /* Holly Hack Targets IE Win only \*/
+    * html .sponsors {height: 1%;}
+    /* End Holly Hack */
+	
+.sum05sponsors a {
+ 	float: right;
+	text-align: right;
+	color: #4c8bae;
+	font-size: 8pt;
+	font-weight: bold;
+	text-decoration: none;
+	}
+
+a.sum05Reg {
+	font-size: 10pt;
+	font-weight: bold;
+	color: #f50003;
+	text-decoration: none;
+	}	
+	
+
+p.sum05Intro {
+	font-size: 10pt;
+	color: #000;
+	line-height: 1.25em;
+	margin: 30px;
+	}	
+	
+#Sum05Bot p.sum05Media {	
+	font-size: 8pt;
+	color: #666;
+	text-align: center;
+	width: 250px;
+	float: left;
+	margin-top: 15px;
+	white-space: nowrap;
+	}
+	
+p.sum05Media a {
+	font-size: 8pt;
+	}
+	
+/************************ SUB PAGE STYLES *************************/
+
+/****** Main Styles *****/
+	
+#sum05contentWrap {
+    background-color: #e3dcc0;
+	margin: 25px 0 10px 0;
+	padding: 0 0px;
+	width: 720px;
+	height: auto;
+	}
+	
+#sum05contentWrap:after {
+    content: "."; 
+    display: block;
+    height: 0;
+    overflow: hidden;
+    clear: both; 
+    visibility: hidden;
+    }
+
+    /* Holly Hack Targets IE Win only \*/
+    * html #sum05contentWrap {height: 1%;}
+    /* End Holly Hack */
+	
+#sum05navCol {
+	float: left;
+	width: 155px;
+	margin-left: 30px;
+	}
+	
+	/* Holly Hack Targets IE Win only \*/
+    * html #sum05navCol {position: static;}
+    /* End Holly Hack */
+	
+#sum05contentColRight {
+	margin-left: 200px;
+	}
+	
+	/* Holly Hack Targets IE Win only \*/
+    * html #sum05contentColRight {margin-left: 197px;}
+    /* End Holly Hack */
+	
+#subInnerTop {
+	background: url(/g/landing/summit2005_subinner_top.gif) no-repeat;
+	vertical-align: top;
+	height: 13px;
+	width: 490px;
+	}
+	
+#subInnerBox {
+	background: #ffffff;
+	vertical-align: top;
+	width: 460px;
+	height: inherit;
+	padding: 0 15px;
+	}
+	
+#subInnerBox:after {
+    content: "."; 
+    display: block; 
+    height: 1px;
+    margin-top: -1px;
+    overflow: hidden;
+    clear: both; 
+    visibility: hidden;
+    }
+
+    /* Holly Hack Targets IE Win only \*/
+    * html #subInnerBox {height: 1%;}
+    /* End Holly Hack */
+
+#subInnerBottom {
+	background: url(/g/landing/summit2005_subinner_bottom.gif) no-repeat;
+	vertical-align: top;
+	margin-right: 15px;
+	height: 13px;
+	width: 490px;
+	}	
+	
+
+/******* HEADLINE AND TEXT STYLES *******/
+
+img.sum05subMain {
+	padding: 0;
+	margin: 0 auto 15px auto;
+	text-align: center;
+	}
+	
+h1.sum05body {
+	color: #555;
+	font-size: 14pt;
+	font-weight: bold;
+	}
+	
+h2.sum05body {
+	color: #555;
+	font-size: 11pt;
+	font-weight: bold;
+	}
+
+h1.sum05menu {
+	color: #a8a38f;
+	font-size: 12pt;
+	font-weight: bold;
+	text-transform: uppercase;
+	}
+
+h1.sum05menuSec {
+	color: #a8a38f;
+	font-size: 12pt;
+	font-weight: bold;
+	margin-top: 15px;
+	text-transform: uppercase;
+	}
+	
+h2.sum05menu {
+	color: #a8a38f;
+	font-size: 10pt;
+	font-weight: bold;
+	}
+	
+h2.sum05menuSec {
+	color: #a8a38f;
+	font-size: 10pt;
+	font-weight: bold;
+	margin-top: 15px;
+	}
+	
+div.sum05menu {
+	margin-bottom: 5px;
+	}
+	
+a.sum05menu {
+	color: #4c8bae;
+	font-size: 8pt;
+	font-weight: bold;
+	text-decoration: none;
+	margin-bottom: 5px;
+	}
+	
+ul.sum05menu {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	margin-bottom: 20px;
+	}
+	
+ul.sum05menu li {
+	color: #4c8bae;
+	font-size: 10pt;
+	font-weight: bold;
+	}
+	
+ul.sum05menu li a {
+	color: #4c8bae;
+	text-decoration: none;
+	}
+
+ul.redArrowList {
+	list-style: none;
+	padding-left: 0;
+	margin-left: 0;
+	margin-bottom: 30px;
+	}
+	
+ul.redArrowList li {
+	background: url(/g/landing/summit2005_bullet_reddot_arrow.gif) no-repeat;
+	background-position: 0 3px;
+	padding: 1px 0 1px 20px;
+	}
+	
+ul.redArrowList li a {
+	color: #f50003;
+	font-size: 10pt;
+	text-decoration: none;
+	font-weight: bold;
+	text-transform: uppercase;
+	}
+
+.sum05caption {
+	color: #666666;
+	font-size: 8pt;
+	font-style: italic;
+	}
+	 
+blockquote {
+	float: right; 
+	width: 190px; 
+	margin: 0 0 0 2em; 
+	padding: 1.6em 10px 1.6em 10px;
+	border-top: 4px solid #e2ddbd; 
+	border-bottom: 4px solid #e2ddbd;
+	}
+	
+blockquote p {
+	font-family: Georgia, serif;
+	font-weight: bold; 
+	font-size: larger; 
+	margin: 0; 
+	padding: 0; 
+	}
+	
+blockquote cite {
+	padding: 0;
+	margin: 0;
+	color: #ffb340; 
+	font-style: italic;
+	}
+	
+dt {
+	color: #a8a38f;
+	}
+
+/* new schedule layout */
+
+#summitWrap  {	width: 720px;
+	        margin: 0 auto 10px auto;
+	        padding: 0;
+       	 	text-align: left;
+        	background: #fff;
+        	}
+
+#summitWrap h1	{
+	color: #666;
+	}
+
+#summitInnerWrap {
+        width: 700px;
+        margin: 0 5px 0 15px;
+        padding: 8px 0;
+        }
+
+#topNavOne	{
+	background: url('/g/landing/summit2005_bg_header1.jpg') no-repeat;	
+	width: 100%;
+	height: 120px;
+	position: relative;
+	margin: 15px 0 20px 0;
+	}
+
+#topNavTwo	{
+	background: url('/g/landing/summit2005_bg_header2.jpg') no-repeat;
+        width: 100%;
+        height: 120px;
+	position: relative;
+	margin: 15px 0 20px 0;
+        }
+
+ul.topNavSummit  {
+	list-style: none;
+	padding: 3px 0 0 0;
+	margin: -3px 0 0 0;
+	text-align: center;
+	}
+
+ul.topNavSummit li	{
+	display: inline;
+	padding: 0px 10px;
+	margin: 0;
+	border: 0;
+	}
+
+ul.topNavSummit li a, ul.topNavSummit li a:visited	{
+	color: #000;
+	font-size: 10px;
+	text-decoration: none;
+	font-weight: bold;
+	}
+
+ul.topNavSummit li a:hover {
+	color: #F90;
+	}
+
+ul.topNavSummit li a.onThisPage, ul.topNavSummit li a:visited.onThisPage {
+	color: #F06E00;
+	text-transform: uppercase;
+	font-weight: bold;
+	}
+
+ul.subNavSummit {
+	list-style: none;
+    padding: 0;
+	margin: 0;
+    text-align: center;
+    }
+
+ul.subNavSummit li	{
+	display: inline;
+        padding: 0px 10px;
+        margin: 0;
+        }
+
+ul.subNavSummit li a, ul.subNavSummit li a:visited    {
+        color: #FFF;
+        font-size: 10px;
+        text-decoration: none;
+	font-weight: bold;
+        }
+                                                                                                                                                                                    
+ul.subNavSummit li a:hover {
+        color: #000;
+        }
+                                                                                                                                                                                    
+ul.subNavSummit li a.onThisPage, ul.subNavSummit li a:visited.onThisPage {
+        color: #000;
+	text-transform: uppercase;
+	font-weight: bold;
+        }
+
+#invisibleLink {
+        position: absolute;
+        top: 70px;
+        left: 600px;
+        width: 145px;
+        }
+                                                                                                                                                                                       
+#invisibleLink p.register {
+	position: absolute;
+	text-indent: -10000px;
+        }
+
+#invisibleLink a.register {
+	display: block;
+	text-indent: -10000px;
+	text-decoration: none;
+	width: 145px;
+	height: 70px;
+	}
+
+
+	
+/* boxes */
+
+dl.dayBox	{
+	margin: 0 15px 30px 0;
+	border: 1px solid #999;
+	padding-bottom: 1em;
+	}
+	
+dl.dayBox dt.title	{
+	font-size: medium;
+	margin: 0 25em 0.75em 1em;
+	padding: 0.20em 0em 0.20em 1em;
+	color: #fff; 
+	background-color: #666;
+	text-align: left;
+	}
+
+dl.dayBox dd	{
+	margin: 0;
+	padding: 0;
+	font-weight: bold;
+        font-size: small;
+        color: #666;
+	text-align: center;
+	clear: both;
+	}
+
+dl.dayBox dd:after	{
+	content: "."; 
+	display: block;
+    	height: 1;			/* Mozilla background image bug Pt1 */
+    	margin-top: -1px	/* Mozilla background image bug Pt2 */
+    	overflow: hidden;
+    	clear: both; 
+    	visibility: hidden;
+    	}
+
+    /* Holly Hack Targets IE Win only \*/
+    * html dl.dayBox dd {height: 1%;}
+    /* End Holly Hack */
+
+dl.dayBox dd a {
+	font-size: small;
+	font-weight: bold;
+	color: #900;
+	text-decoration: none;
+	}
+
+dl.dayBox dd a:hover	{
+	text-decoration: underline;
+	}
+
+dl.dayBox dd a.box	{
+	border: 1px dotted #666;
+	padding: 2px 3px;
+	background-color: #900;
+	color: #fff;
+	font-weight: bold;
+	}
+
+dl.dayBox dd a.box:hover	{
+	background-color: #c00;
+	color: #fff;
+	text-decoration: none;
+	}
+
+div.dateLeft	{
+	margin: 0;
+	padding: 0;
+	float: left;
+	width: 150px;
+	height: auto;
+	text-align: right;
+	font-size: x-small;
+	font-weight: bold;
+	}
+
+div.eventRight	{
+	float: right;
+	margin: 0;
+	padding: 0;
+	width: 500px;
+	height: auto;
+	text-align: left;
+	font-weight: normal;
+	font-size: small;
+	color: #000;
+	}
+
+.eventSmall	{
+	font-size: x-small;
+	font-style: italic;
+	font-family: cursive;
+	}
+
+div.trackBox	{
+	border: 1px solid #666;
+	padding: 7px;
+	margin: 1.5em 0 2em 0;
+	}
+div.trackBox h2.boxTitle	{
+	margin: 0 20em 1em 0;
+	padding: 0 1em 0 0;
+	background-color: #fff;
+	color: #900;
+	text-transform: uppercase;
+	border: 0;
+	}
+
+p.trackBoxBlurb	{
+	font-style: italic;
+	}
+
+div.trackTables	{
+	padding: 0;
+	margin: 0;
+	}
+
+div.trackTables table	{
+	border-collapse: collapse;
+	border-top: 1px solid #333;
+	border-bottom: 1px solid #333;
+	margin-bottom: 2em;
+	}
+tr.ltBlue {
+	background-color: #bcd;
+	}
+
+tr.ltGrey {
+	background-color: #ddd;
+	}
+
+td.trackTitle {
+	text-align: center;
+	font-size: medium;
+	font-weight: bold;
+	text-transform: uppercase;
+	}
+
+.sum05SponsorWrap {
+	text-align: center;
+	}
+	
+.sum05SponsorWrap p {
+	padding: 10px 0;
+	}
+	
+p.sum05SpMedia {
+	padding: 0;
+	margin: 30px 0 0 0;
+	font-size: 8pt;
+	}
+	
+#Sum05Bot p.sum05Media #Sum05Bot2 {	
+	font-size: 8pt;
+	color: #666;
+	text-align: center;
+	width: 250px;
+	float: left;
+	margin-top: 15px;
+	white-space: nowrap;
+	}
+	
+p.sum05Media a {
+	font-size: 8pt;
+	}
+
+p.time	{
+	color: #666;
+	font-style: italic;
+	font-size: smaller;
+	margin-top: 0;
+	}
+	
+/* styles for new homepage with picture background */
+
+#Sum05TopH p, #Sum05Mid p, #Sum05Bot p, #Sum05Bot2 p {
+	font-size: 12px;
+	}
+	
+#Sum05TopH a, #Sum05Mid a, #Sum05Bot a, #Sum05Bot2 a {
+	text-decoration: none;
+	}
+
+#Sum05TopH {
+	background: url(/g/landing/Sum05BricksTop.jpg);
+	margin-top: 15px;
+	height: 307px;
+	position: relative;
+	}
+	
+#Sum05Nav {
+	font-size: x-small;
+	font-weight: bold;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	}
+	
+#Sum05Nav ul {
+	margin: 0 auto;
+	padding: 0;
+	}
+	
+#Sum05Nav li {
+	list-style: none;
+	display: inline;
+	}
+	
+#Sum05Nav a {
+	padding: 0 15px 5px 15px;
+	text-decoration: none;
+	color: black;
+	}
+
+#Sum05Nav a:hover {
+        color: #F90;
+        }
+                                                                                                                                                                                       
+#Sum05Nav a.onThisPage {
+        color: #F06E00;
+        text-transform: uppercase;
+        font-weight: bold;
+        }
+
+	
+#Sum05TopH h1 {
+	position: absolute;
+	top: 15px;
+	left: 15px;
+	width: 180px;
+	height: 210px;
+  	text-indent: -10000px;
+	}
+	
+#Sum05TopH h2 {
+	text-indent: -10000px;
+	height: 16px;
+	padding: 0
+	margin: 0;
+	}
+	
+#Sum05TopH p {
+	position: absolute;
+	top: 60px;
+	left: 210px;
+	}
+	
+a#Sum05VideoLink {
+	display: block;
+	width: 495px;
+	height: 210px;
+	text-indent: -10000px;
+	}
+	
+#Sum05Mid {
+	background: url(/g/landing/Sum05BricksMid.jpg);
+	height: 287px;
+	position: relative;
+	}
+	
+#Sum05ColL {
+	position: absolute;
+	top: 0;
+	left: 39px;
+	width: 429px;
+	height: 287px;
+	background: white;
+	padding: 0 15px 0;
+	}
+	
+#Sum05ColL h2 {
+	background: url(/g/landing/Sum05HighlightsHead.gif) no-repeat;
+	height: 39px;
+	text-indent: -10000px;
+	}
+	
+#Sum05ColLContent {
+	height: 261px;
+	overflow: auto;
+	}
+	
+#Sum05ColLContent h3 {
+	padding-bottom: 0;
+	}
+	
+#Sum05ColLContent ul {
+	margin-top: 0;
+	}
+	
+#Sum05ColR {
+	position: absolute;
+	top: 0;
+	left: 506px;
+	width: 174px;
+	}
+	
+#Sum05DLBox {
+	background: url(/g/landing/Sum05DLbottom.gif) bottom right no-repeat;
+	padding-bottom: 12px;
+	}
+	
+#Sum05DLBox h2 {
+	background: #fff url(/g/landing/Sum05DLHead.gif) 11px 0 no-repeat;
+	height: 12px;
+	text-indent: -10000px;
+	}
+	
+#Sum05DLBox p {
+	background: #fff;
+	margin: 0;
+	padding: 5px 11px 0 11px;
+	}
+	
+#Sum05Reg {
+	background: url(/g/landing/Sum05Reg.gif) top left no-repeat;
+	width: 174px;
+	height: 81px;
+	margin-top: 12px;
+	}
+	
+p#Sum05RegInfo {
+	}
+	
+p#Sum05RegLink a{
+	display: block;
+	width: 174px;
+	height: 81px;
+	text-indent: -10000px;
+	}
+	
+#Sum05SidePill {
+	background: url(/g/landing/Sum05DLbottom.gif) bottom right no-repeat;
+	padding: 12px 0;
+	}
+	
+#Sum05SidePillInner {
+	background: url(/g/landing/Sum05DLtop.gif) top left no-repeat;
+	padding-top: 12px;
+	}
+	
+#Sum05SidePill p {
+	background: #fff;
+	padding: 0 11px;
+	margin: 0;
+	}
+	
+#Sum05SidePill h3 {
+	background: #fff;
+	padding: 0 11px 5px 11px;
+	margin: 0;
+	}
+	
+#Sum05SidePill .thumbs {
+	background: #fff;
+	padding: 0 11px 5px 11px;
+	margin: 0;
+	}
+
+#Sum05SidePill .thumbs img {
+ 	float: left;
+ 	margin: 0 14px 15px 0;
+ 	}
+	
+    /* Holly Hack Targets IE Win only \*/
+    * html div.thumbs {clear: both;}
+    /* End Holly Hack */
+    
+   #Sum05SidePill .thumbs img.last {
+ 	float: left;
+ 	margin: 0 0 15px 0;
+ 	}
+	
+#Sum05Bot {
+	width: 720px;
+	background: url(/g/landing/Sum05BricksBot.jpg) top left no-repeat;
+	padding-top: 38px;
+	overflow: auto;
+	}
+
+#Sum05Bot2 {
+	width: 720px;
+	padding-top: 5px;
+        overflow: auto;
+        }
+
+	
+img.Sum05BotLogo, img.Sum05Bot2 {
+	float: left;
+	margin: 15px 20px 0 0;
+	}
+
+ /**** following styles define the an IMAGE ON THE LEFT W/TEXT ON THE RIGHT */
+ 	
+ div.imgLeft {
+ 	padding-top: 5px;
+ 	margin-bottom: 15px;
+ 	overflow: auto;
+ 	}
+	
+div.imgLeft img {
+ 	float: left;
+ 	margin: 0 20px 10px 0;
+ 	}
+ 
+div.imgLeft img.margin15	{
+	margin-right: 15px;
+	}
+	
+	
+    /* Holly Hack Targets IE Win only \*/
+    * html div.imgLeft {clear: both;}
+    /* End Holly Hack */
