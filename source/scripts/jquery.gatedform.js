@@ -529,7 +529,7 @@
                 location.hostname = window.location.host;
             }
             var host = location.hostname;
-            var isSandbox = (host.search('localhost') > -1 || host.search('redhat.dev') > -1 || host.search('qa.engage.redhat.com') > -1 || host.search('.usersys.redhat.com') > -1 || host.search('.devlab.redhat.com') > -1 || host.search('.rhcloud.com') > -1);
+            var isSandbox = (host.search('localhost') > -1 || host.search('redhat.dev') > -1 || host.search('qa.engage.redhat.com') > -1 || host.search('dynamicform-itmarketing.itos.redhat.com') > -1 || host.search('.devlab.redhat.com') > -1 || host.search('.rhcloud.com') > -1);
             if (isSandbox) {
                 //Starting with SANDBOX settings
                 // window.js18nConfig = {
@@ -607,7 +607,11 @@
             dynamicForm.options.urls = {
                 elqLookups: [
                     'https://s' + dynamicForm.options.elqSiteId + '.t.eloqua.com/visitor/v200/svrGP',
-                    'https://httpbin.org/status/503'
+                    'https://elqproxy-theharris.rhcloud.com/elqLookup.php'
+                    // to test for 503 errors:
+                    // 'http://httpbin.org/status/503'
+                    // other http codes:
+                    // https://developer.mozilla.org/en-US/docs/Web/HTTP/Response_codes
                 ]
             };
 
@@ -743,7 +747,6 @@
                 name: "C_Fax"
             };
             dynamicForm.options.form.fields["company"] = {
-
                 standard: true,
                 type: "text",
                 cls: "form-control",
@@ -752,8 +755,8 @@
                 id: "C_Company",
                 name: "C_Company"
             };
-            dynamicForm.options.form.fields["department"] = {
 
+            dynamicForm.options.form.fields["department"] = {
                 standard: true,
                 type: "select",
                 cls: "form-control",
@@ -885,6 +888,198 @@
                 name: "C_Number_of_Employees1",
                 options: [dynamicForm.options.DefaultValue, '1 – 99', '100 – 999']
             };
+            dynamicForm.options.form.fields["language preference"] = {
+                standard: true,
+                type: "select",
+                cls: "form-control",
+                display: false,
+                label: "Language preference",
+                id: "C_Language_Preference1",
+                name: "C_Language_Preference1",
+                options: [dynamicForm.options.DefaultValue, "English (en)",
+                    "Spanish (es)",
+                    "French (fr)",
+                    "Italian (it)",
+                    "Portuguese (pt)",
+                    "Japanese (ja)",
+                    "Chinese (zh)",
+                    "Korean (ko)"
+                ]
+            };
+            dynamicForm.options.form.fields["areas of interest"] = {
+                standard: true,
+                type: "multiple",
+                cls: "form-control",
+                display: false,
+                label: "Areas of interest",
+                id: "C_Areas_of_Interest1",
+                name: "C_Areas_of_Interest1",
+                options: [dynamicForm.options.DefaultValue, "Linux Platforms (Linux Platforms)",
+                    "Red Hat JBoss Middleware (Red Hat JBoss Middleware)",
+                    "Virtualization (Virtualization)",
+                    "Cloud Computing (Cloud Computing)",
+                    "Storage (Storage)",
+                    "Training (Training)",
+                    "Certification (Certification)",
+                    "Consulting (Consulting)"
+                ]
+            };
+            dynamicForm.options.form.fields["cities nearby"] = {
+                standard: true,
+                type: "select",
+                cls: "form-control",
+                display: false,
+                label: "Cities nearby",
+                id: "C_Cities_Near_By",
+                name: "C_Cities_Near_By",
+                options: [dynamicForm.options.DefaultValue,
+                    "Accra",
+                    "Addis Ababa",
+                    "Adelaide",
+                    "Algiers",
+                    "Almaty",
+                    "Amman",
+                    "Amsterdam",
+                    "Anadyr",
+                    "Anchorage",
+                    "Ankara",
+                    "Antananarivo",
+                    "Asuncion",
+                    "Athens",
+                    "Atlanta",
+                    "Auckland",
+                    "Baghdad",
+                    "Bangalore",
+                    "Bangkok",
+                    "Barcelona",
+                    "Beijing",
+                    "Beirut",
+                    "Belgrade",
+                    "Berlin",
+                    "Bogota",
+                    "Boston",
+                    "Brasilia",
+                    "Brisbane",
+                    "Brussels",
+                    "Bucharest",
+                    "Budapest",
+                    "Buenos Aires",
+                    "Cairo",
+                    "Calgary",
+                    "Canberra",
+                    "Cape Town",
+                    "Caracas",
+                    "Casablanca",
+                    "Chicago",
+                    "Columbus",
+                    "Copenhagen",
+                    "Dallas",
+                    "Dar es Salaam",
+                    "Darwin",
+                    "Denver",
+                    "Detroit",
+                    "Dhaka",
+                    "Doha",
+                    "Dubai",
+                    "Dublin",
+                    "Edmonton",
+                    "Frankfurt",
+                    "Guatemala",
+                    "Halifax",
+                    "Hanoi",
+                    "Harare",
+                    "Havana",
+                    "Helsinki",
+                    "Hong Kong",
+                    "Honolulu",
+                    "Houston",
+                    "Indianapolis",
+                    "Islamabad",
+                    "Istanbul",
+                    "Jakarta",
+                    "Jerusalem",
+                    "Johannesburg",
+                    "Kabul",
+                    "Karachi",
+                    "Kathmandu",
+                    "Khartoum",
+                    "Kingston",
+                    "Kinshasa",
+                    "Kiritimati",
+                    "Kolkata",
+                    "Kuala Lumpur",
+                    "Kuwait City",
+                    "Kyiv",
+                    "La Paz",
+                    "Lagos",
+                    "Lahore",
+                    "Las Vegas",
+                    "Lima",
+                    "Lisbon",
+                    "London",
+                    "Los Angeles",
+                    "Madrid",
+                    "Managua",
+                    "Manila",
+                    "Melbourne",
+                    "Mexico City",
+                    "Miami",
+                    "Minneapolis",
+                    "Minsk",
+                    "Montevideo",
+                    "Montreal",
+                    "Moscow",
+                    "Mumbai",
+                    "Nairobi",
+                    "Nassau",
+                    "New Delhi",
+                    "New Orleans",
+                    "New York",
+                    "Oslo",
+                    "Ottawa",
+                    "Paris",
+                    "Perth",
+                    "Philadelphia",
+                    "Phoenix",
+                    "Prague",
+                    "Reykjavik",
+                    "Rio de Janeiro",
+                    "Riyadh",
+                    "Rome",
+                    "Salt Lake City",
+                    "San Francisco",
+                    "San Juan",
+                    "San Salvador",
+                    "Santiago",
+                    "Santo Domingo",
+                    "S&atilde;o Paulo",
+                    "Seattle",
+                    "Seoul",
+                    "Shanghai",
+                    "Singapore",
+                    "Sofia",
+                    "St. John's",
+                    "Stockholm",
+                    "Suva",
+                    "Sydney",
+                    "Taipei",
+                    "Tallinn",
+                    "Tashkent",
+                    "Tegucigalpa",
+                    "Tehran",
+                    "Tokyo",
+                    "Toronto",
+                    "Vancouver",
+                    "Vienna",
+                    "Warsaw",
+                    "Washington DC",
+                    "Winnipeg",
+                    "Yangon",
+                    "Zagreb",
+                    "Z&uuml;rich"
+                ]
+            };
+
             dynamicForm.options.form.fields["additional information"] = {
                 type: "text",
                 display: false,
@@ -1549,6 +1744,9 @@
                 try {
                     for (key in dynamicForm.options.form.fields) {
                         field = dynamicForm.options.form.fields[key];
+
+                        console.log("field: ", field);
+
                         html = dynamicForm.UI.Template.Form._GenerateElement(field);
                         formHTML = formHTML + html;
                         if (field.standard && field.display) {

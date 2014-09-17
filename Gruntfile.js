@@ -194,22 +194,7 @@ module.exports = function(grunt) {
         clean: {
             dynamicform: ["<%= paths.dist.dynamicform %>"]
         },
-        watch: {
-            dynamicform: {
-                files: {
-                    expand: true,
-                    cwd: "<%= paths.src.dynamicform %>",
-                    src: ["**.js", "**.html"]
-                },
-                tasks: ["notify:watch", "dynamicform"]
-            }
-        },
         notify: {
-            watch: {
-                options: {
-                    message: "Watching for changes in DynamicForm <%= pkg.version %>"
-                }
-            },
             start: {
                 options: {
                     message: "Building v<%= pkg.version %>..."
@@ -235,19 +220,6 @@ module.exports = function(grunt) {
                     message: "DynamicForm <%= pkg.version %> build complete"
                 }
             }
-        },
-        compress: {
-            dynamicform: {
-                options: {
-                    archive: "zip/dynamicform/forms-<%= pkg.version %>_<%= grunt.template.today('dd-mm-yyyy') %>_<%= grunt.template.today('HHMMss') %>.zip"
-                },
-                files: [{
-                    expand: true,
-                    cwd: "<%= paths.dist.dynamicform %>",
-                    src: ["**"],
-                    dest: ""
-                }]
-            }
         }
     });
     // Available tasks.
@@ -257,8 +229,8 @@ module.exports = function(grunt) {
         "clean",
         "copy", "concat", "preprocess",
         "jshint",
-        "copy:plugins", "uglify", "compress:dynamicform",
-        "notify:done", "watch:dynamicform"
+        "copy:plugins", "uglify",
+        "notify:done"
     ]);
     grunt.registerTask("example", ["notify:example", "copy:example", "preprocess:example"]);
     grunt.registerTask("plugins", ["notify:plugins", "copy:plugins", "preprocess:plugins", "concat"]);
