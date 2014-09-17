@@ -1708,24 +1708,23 @@
                         source = '<div class="form-group"><label class="required col-sm-2 control-label" for="{{name}}">{{{label}}}</label><div class="controls col-sm-10"><textarea {{attr}} data-weight="{{weight}}" class="form-control required {{cls}}" name="{{name}}" id="{{id}}">{{{value}}}</textarea></div></div>';
                         break;
                     case "tel":
-                        //falls through
+                        /* falls through */
                     case "number":
-                        //falls through
+                        /* falls through */
                     case "text":
-                        //falls through
+                        /* falls through */
                     case "email":
                         source = '<div class="form-group"><label class="required col-sm-2 control-label" for="{{name}}">{{{label}}}</label><div class="controls col-sm-10"><input {{attr}} data-weight="{{weight}}" class="form-control required {{cls}}" type="{{type}}" name="{{name}}" id="{{id}}" value="{{{value}}}"></div></div>';
                         break;
                     case "multiple":
                         context.size = context.size || 3;
                         context.attr = context.attr + ' multiple="multiple" size="' + context.size + '"';
-                        source = '<div class="form-group"><label class="required col-sm-2 control-label" for="{{name}}">{{{label}}}</label><div class="controls col-sm-10"><select {{attr}} data-weight="{{weight}}" class="form-control required {{cls}}" name="{{name}}" id="{{id}}">{{#option_list options}}<option value="{{{val}}}">{{{label}}}</option>{{/option_list}}</select></div></div>';
-                        break;
+                        /* falls through */
                     case "select":
                         source = '<div class="form-group"><label class="required col-sm-2 control-label" for="{{name}}">{{{label}}}</label><div class="controls col-sm-10"><select {{attr}} data-weight="{{weight}}" class="form-control required {{cls}}" name="{{name}}" id="{{id}}">{{#option_list options}}<option value="{{{val}}}">{{{label}}}</option>{{/option_list}}</select></div></div>';
                         break;
                     case "button":
-                        // falls through
+                        /* falls through */
                     case "submit":
                         source = '<div class="form-group"><div class="col-sm-10 col-sm-offset-2"><button {{attr}} data-type="{{type}}" name="{{name}}" id="{{id}}" class="{{cls}}">{{{value}}}</button></div></div>';
                         break;
@@ -1744,8 +1743,6 @@
                 try {
                     for (key in dynamicForm.options.form.fields) {
                         field = dynamicForm.options.form.fields[key];
-
-                        console.log("field: ", field);
 
                         html = dynamicForm.UI.Template.Form._GenerateElement(field);
                         formHTML = formHTML + html;
@@ -1865,7 +1862,7 @@
             GetHTML: function() {
                 Handlebars.registerHelper('option_list', function(items, options) {
                     var out = "",
-                        i, _items = items;
+                        i, l, _items = items;
 
                     for (i = 0, l = items.length; i < l; i++) {
                         if (typeof items[i] === 'string') {
@@ -2693,7 +2690,7 @@
                         }
                     }
                 } catch (e) {
-                    console.error("[dynamicform logging]: ", e);
+                    //console.error("[dynamicform logging]: ", e);
                 } finally {
                     deferred.resolve();
                 }
