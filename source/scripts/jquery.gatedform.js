@@ -3411,7 +3411,7 @@
                 }
                 $.when(dynamicForm.Translate(document.getElementById(dynamicForm.options.elqFormContainerId))).then(function() {
                     dynamicForm.UI.Loading.Hide();
-                    if (dynamicForm.options.view === dynamicForm.constants.VIEW.DOWNLOAD) {
+                    if (dynamicForm.options.view === dynamicForm.constants.VIEW.DOWNLOAD || dynamicForm.options.view === dynamicForm.constants.VIEW.SEND_MSG) {
                         dynamicForm.Omniture.SetOption("pageName", "rh | " + channel + " | " + dynamicForm.constants.OMNITURE.FIRST_MINOR_SECTION + " | " + dynamicForm.Util.GetOfferId() + " | thank you");
                         dynamicForm.Omniture.SetOption("interface", "");
                         dynamicForm.Omniture.SetOption("eVar30", dynamicForm.options.offer_id);
@@ -3436,7 +3436,7 @@
             });
 
             $.when(deferred).then(function() {
-                if (dynamicForm.options.view === dynamicForm.constants.VIEW.DOWNLOAD) {
+                if (dynamicForm.options.view === dynamicForm.constants.VIEW.DOWNLOAD || dynamicForm.options.view === dynamicForm.constants.VIEW.SEND_MSG) {
                     dynamicForm.Omniture.Trigger();
                 }
 
