@@ -94,14 +94,12 @@
                         panelBody.append(navTabs);
                         panelBody.append(tabContent);
                         panels.append(panelBody);
-                        //var formContainer = dynamicForm.options.elqFormContainerId || "GatedFormContainer";
                         if ($("#DynamicFormDebugPanels").length > 0) {
                             $("#DynamicFormDebugPanels").replaceWith(panels);
                         } else {
                             $('body').append(panels);
                         }
                         dynamicForm.Util.Testing.Update();
-                        //$('#DynamicFormDebugPanels a[data-toggle="tab"]').removeClass('bg-primary');
                     });
                 }
             },
@@ -424,7 +422,7 @@
         },
         fields: {
             visitor: ['V_Browser_Type', 'V_CityFromIP', 'V_CountryFromIP', 'V_ProvinceFromIP', 'V_ZipCodeFromIP', 'V_MostRecentReferrer', 'V_MostRecentSearchEngine', 'V_MostRecentSearchQuery'],
-            contact: ['C_Title', 'C_Address1', 'C_Address2', 'C_Address3', 'C_City', 'C_State_Prov', 'C_Zip_Postal', 'C_Country', 'C_Industry1', 'C_Annual_Revenue1', 'C_Number_of_Employees1', 'C_Salutation', 'C_FirstName', 'C_LastName', 'C_EmailAddress', 'C_BusPhone', 'C_Company', 'C_Department1', 'C_Job_Role11'],
+            contact: ['C_Title', 'C_Address1', 'C_Address2', 'C_Address3', 'C_City', 'C_State_Prov', 'C_Zip_Postal', 'C_Country', 'C_Industry1', 'C_Annual_Revenue1', 'C_Number_of_Employees1', 'C_Salutation', 'C_FirstName', 'C_LastName', 'C_EmailAddress', 'C_BusPhone', 'C_Company', 'C_Department1', 'C_Job_Role11', 'C_Language_Preference1', 'C_Areas_of_Interest1', 'C_Cities_nearby1'],
             Tactic: ['Apps_Tactics_T_Type1', 'Apps_Tactics_T_Campaign_ID_181', 'Apps_Tactics_T_Record_Type1', 'Apps_Tactics_T_Campaign_Name1'],
             Offer: ['Apps_Offers_O_Access_Rule1', 'Apps_Offers_O_Campaign_ID_181', 'Apps_Offers_O_Campaign_Name1', 'Apps_Offers_O_Target_Persona1', 'Apps_Offers_O_Buying_Stage1', 'Apps_Offers_O_Solution_Code1', 'Apps_Offers_O_Type1', 'Apps_Offers_O_Asset_URL1', 'Apps_Offers_O_Language1', 'Apps_Offers_O_Record_Type1', 'isOnWaitingList']
         },
@@ -472,7 +470,10 @@
                     addredd2: "C_Address2",
                     address3: "C_Address3",
                     salutation: "C_Salutation",
-                    language: "C_Language_Preference1"
+                    language: "C_Language_Preference1",
+                    languagePref: 'C_Language_Preference1',
+                    areasOfInterest: 'C_Areas_of_Interest1',
+                    CitiesNearby: 'C_Cities_nearby1'
                 }
             },
             tactic: {
@@ -520,7 +521,6 @@
         };
         var _production = {
             QA_Version: "1.15.7 + jQuery " + $.fn.jquery,
-            //TODO: check qa.engage
             elqSiteId: "1795"
         };
         try {
@@ -532,33 +532,14 @@
             var isSandbox = (host.search('localhost') > -1 || host.search('redhat.dev') > -1 || host.search('qa.engage.redhat.com') > -1 || host.search('dynamicform-itmarketing.itos.redhat.com') > -1 || host.search('.devlab.redhat.com') > -1 || host.search('.rhcloud.com') > -1);
             if (isSandbox) {
                 //Starting with SANDBOX settings
-                // window.js18nConfig = {
-                //   bundlePath: dynamicForm.Util.GetUrlPrefix() + "/j/js18n-bundles"
-                // };
                 dynamicForm.options = $.extend({}, dynamicForm.options, _sandbox);
             } else {
-                // window.js18nConfig = {
-                //   bundlePath: "//www.redhat.com/j/js18n-bundles"
-                // };
                 //Starting with PRODUCTION settings
                 dynamicForm.options = $.extend({}, dynamicForm.options, _production);
             }
-            //dynamicForm.options.form.fields.elqSiteId.value = dynamicForm.options.elqSiteId;
             // TODO: update configure options with query string parameters
             // query string should be able to override the above settings
-            // var config_opt,
-            //     pLen = params.length,
-            //     i;
-            // for (i = 0; i > pLen; i++) {
-            //     config_opt = params[i];
-            //     dynamicForm.options[config_opt.toLowerCase()] = params.param(config_opt);
-            // }
             //clone params object
-            for (var key in params) {
-                if (params.hasOwnProperty(key)) { //filter prototype
-                    dynamicForm.options[key.toLowerCase()] = params[key];
-                }
-            }
 
             if (dynamicForm.Util.HasValue(dynamicForm.options.IMATESTRECORD) && !dynamicForm.Util.HasValue(dynamicForm.options.QA_Imatestrecord)) {
                 dynamicForm.options.QA_Imatestrecord = dynamicForm.options.IMATESTRECORD;
@@ -614,6 +595,13 @@
                     // https://developer.mozilla.org/en-US/docs/Web/HTTP/Response_codes
                 ]
             };
+
+            for (var key in dynamicForm.options) {
+                if (dynamicForm.options.hasOwnProperty(key)) { //filter prototype
+                    dynamicForm.options[key.toLowerCase()] = dynamicForm.options[key];
+                }
+            }
+
 
         } catch (e) {
             //console.error("[dynamicform logging]: ", e);
@@ -926,12 +914,12 @@
             };
             dynamicForm.options.form.fields["cities nearby"] = {
                 standard: true,
-                type: "select",
+                type: "multiple",
                 cls: "form-control",
                 display: false,
                 label: "Cities nearby",
-                id: "C_Cities_Near_By",
-                name: "C_Cities_Near_By",
+                id: "C_Cities_nearby1",
+                name: "C_Cities_nearby1",
                 options: [dynamicForm.options.DefaultValue,
                     "Accra",
                     "Addis Ababa",
@@ -1942,7 +1930,6 @@
                     )
                 };
 
-
                 var headerTmpl = Handlebars.compile('<section class="form-header"><div class="form-group">{{#if ShowLogo}}<div class="col-sm-2"><img alt="Logo.alt" title="{{{Logo.title}}}" src="{{Logo.src}}" height="{{Logo.height}}" width="{{Logo.width}}" class="{{Logo.class}}"></div>{{#if Title}}<div class="col-sm-10"><h1>{{{Title}}}</h1></div>{{/if}}{{else}}{{#if Title}}<div class="col-sm-12"><h2>{{{Title}}}</h2></div>{{/if}}{{/if}}</div></section>');
                 var contentTmpl = Handlebars.compile('<section class="form-content"><div class="col-sm-12">{{{Message}}}</div>{{#if ShowCallToAction}}<div class="col-sm-offet-2 col-sm-10">{{{CallToAction}}}</div>{{/if}}</section>');
                 var footerTmpl = Handlebars.compile('<section class="form-footer"><div class="col-sm-12 text-muted" id="verificationId">Verification ID: {{VerificationId}}</div></section>');
@@ -1954,8 +1941,6 @@
                     SocialLinks = "";
 
                 try {
-
-
                     //reset formHTML, just in case...
                     if ((typeof dynamicForm.options.Related !== "undefined" && dynamicForm.options.Related.length > 0)) {
                         RelatedLinks = "<section class=\"form-group related-links\">";
@@ -2039,7 +2024,6 @@
         elq_guid: dynamicForm.constants.UNAVAILABLE
     },
     dynamicForm.Lookup = {
-        data: {},
         All: function() {
             var options = dynamicForm.options,
                 all = new $.Deferred(),
@@ -2114,24 +2098,28 @@
             if (!dynamicForm.Util.HasValue(email) || (typeof dynamicForm.data.GetElqVisitor === 'undefined' && typeof dynamicForm.data.GetElqContact === 'function')) {
                 deferred.resolve();
             } else {
-                var ContactLookupParam = ''.concat('<', dynamicForm.options.lookup.contact.query, '>', email, '</', dynamicForm.options.lookup.contact.query, '>'),
+                var values = [],
+                    ContactLookupParam = ''.concat('<', dynamicForm.options.lookup.contact.query, '>', email, '</', dynamicForm.options.lookup.contact.query, '>'),
                     lookup = dynamicForm.elqTracker.GetData({
                         lookup: dynamicForm.options.lookup.contact.key,
                         lookup_param: ContactLookupParam,
                         lookup_func: "GetElqContact"
                     });
                 lookup.done(function() {
-                    var fields = dynamicForm.options.fields.contact;
-                    var fieldval = '';
-                    var i = 0;
-
-
+                    var fields = dynamicForm.options.fields.contact,
+                        fieldval = '',
+                        i = 0;
 
                     if (typeof dynamicForm.data.GetElqContact === 'function') {
                         for (i = 0; i < fields.length; i++) {
                             if (dynamicForm.data.GetElqContact(fields[i]) !== '' && dynamicForm.data.GetElqContact(fields[i]) !== dynamicForm.constants.UNAVAILABLE) {
                                 if ($("#" + fields[i]).attr('type') !== "hidden") {
-                                    $("#" + fields[i]).val(dynamicForm.data.GetElqContact(fields[i]));
+                                    if ($("#" + fields[i]).is('select')) {
+                                        values = dynamicForm.data.GetElqContact(fields[i]).split("::");
+                                        $("#" + fields[i]).val(values);
+                                    } else {
+                                        $("#" + fields[i]).val(dynamicForm.data.GetElqContact(fields[i]));
+                                    }
                                 }
                             }
                             if (i == fields.length - 1) {
@@ -2621,10 +2609,6 @@
 
             $.when(validation_ready, trigger_omniture_def).then(function() {
                 deferred.resolve();
-                // $('#A_SubmissionID').val(dynamicForm.Util.GetSubmissionId());
-                // $("#rh_omni_itc").val(dynamicForm.Util.GetCookieValue('rh_omni_itc'));
-                // $("#rh_omni_tc").val(dynamicForm.Util.GetCookieValue('rh_omni_tc'));
-                // $("#rh_pid").val(dynamicForm.Util.GetCookieValue('rh_pid'));
             });
             return deferred;
         },
@@ -2665,7 +2649,6 @@
                 dynamicForm.data.prepop['A_OfferID'] = dynamicForm.Util.GetOfferId();
                 dynamicForm.data.prepop['A_UX_Language'] = dynamicForm.Util.GetLanguageCode();
                 // clear phone number per security concerns
-                //dynamicForm.data.prepop['C_BusPhone'] = "";
                 dynamicForm.data.prepop['A_ReferringPageURL'] = dynamicForm.Util.GetReferringPageUrl();
                 dynamicForm.data.prepop['A_Timestamp'] = dynamicForm.Util.GetTimestamp();
                 var verificationId = dynamicForm.Util.GetVerificationId();
@@ -2754,8 +2737,6 @@
                     ready_to_submit.resolve();
                 }
                 $.when(ready_to_submit).then(function() {
-                    // $("#"+dynamicForm.options.elqFormName).off("submit");
-                    // $("#"+dynamicForm.options.elqFormName).on("submit", function() {
                     $.receiveMessage(function(e) {
                         // Get the height from the passed data.";
                         var params = $.url("file.html?" + e.data).param();
@@ -2892,7 +2873,6 @@
                     break;
             }
             var i, select_options = ["<option value=\"\">" + dynamicForm.options.DefaultValue + "</option>"];
-            //job_role_field.append(please_select);
             for (i = 0; i < options.length; i++) {
                 select_options.push("<option value=\"" + options[i] + "\">" + options[i] + "</option>");
             }
@@ -3237,9 +3217,7 @@
             query_string_data["verificationId"] = options.verificationId;
         }
         if (dynamicForm.Util.HasValue(options.offer_id)) {
-            //if (typeof options.pid !== "undefined" && options.pid !== dynamicForm.constants.UNAVAILABLE) {
             query_string_data["p"] = encodeURIComponent(document.location.href.split("?")[0]);
-            //}
         }
         var host = options.parent_url || "".concat(dynamicForm.Util.GetUrlPrefix(), "/forms/"),
             url = host + "?" + $.param(query_string_data);
@@ -3348,7 +3326,6 @@
             }
             var src, openInNewWindow = false;
             if (!dynamicForm.Util.HasValue(parent_url)) {
-                //openInNewWindow = true;
                 src = dynamicForm.Util.GetRedirectUrl({
                     parent_url: "".concat(dynamicForm.Util.GetUrlPrefix(), "/forms/"),
                     offer_id: dynamicForm.Util.GetOfferId(),
@@ -3612,13 +3589,6 @@
                         //console.error(e);
                     }
                 }
-                // var elqImg = new Image(1,1);
-                // $(elqImg).load(function () {
-                //     if(typeof settings.success == "function"){
-                //             settings.success();
-                //     }
-                // });
-                // elqImg.src = elqSrc;
             },
             GetElqGuid: function(callback) {
                 var deferred = new $.Deferred();
