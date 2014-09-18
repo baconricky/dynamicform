@@ -587,11 +587,18 @@
             //switch to "proxy" to use the lookup proxy first.
             dynamicForm.options.urls = {
                 elqLookups: [
+                    // normal eloqua lookup url
                     'https://s' + dynamicForm.options.elqSiteId + '.t.eloqua.com/visitor/v200/svrGP',
+                    // proxy (for Safari and 3rd party cookies issue
                     'https://elqproxy-theharris.rhcloud.com/elqLookup.php'
-                    // to test for 503 errors:
+                    // replace the above url with this:
+                    // 'https://elqproxy-itmarketing.itos.redhat.com/elqLookup.php'
+                    // once openshift has fixed the cert issue on mobile and safari
+                    // please email nick@theharris.info when this is done so I'll know when I can remove it
+
+                    // to test for 503 errors replace the elqproxy link with:
                     // 'http://httpbin.org/status/503'
-                    // other http codes:
+                    // to test for other error codes, try:
                     // https://developer.mozilla.org/en-US/docs/Web/HTTP/Response_codes
                 ]
             };
