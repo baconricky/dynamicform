@@ -224,7 +224,7 @@ module.exports = function(grunt) {
     });
     // Available tasks.
     grunt.registerTask("cssmin", ["cssmin"]);
-    grunt.registerTask("default", ["example", "dynamicform"]);
+    grunt.registerTask("default", ["dynamicform", "example"]);
     grunt.registerTask("dynamicform", ["notify:start",
         "clean",
         "copy", "concat", "preprocess",

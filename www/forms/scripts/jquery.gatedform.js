@@ -874,7 +874,7 @@
                 label: "Number of employees",
                 id: "C_Number_of_Employees1",
                 name: "C_Number_of_Employees1",
-                options: [dynamicForm.options.DefaultValue, '1 – 99', '100 – 999']
+                options: [dynamicForm.options.DefaultValue, '1 – 99', '100 – 999', '1000+']
             };
             dynamicForm.options.form.fields["language preference"] = {
                 standard: true,
@@ -884,14 +884,14 @@
                 label: "Language preference",
                 id: "C_Language_Preference1",
                 name: "C_Language_Preference1",
-                options: [dynamicForm.options.DefaultValue, "English (en)",
-                    "Spanish (es)",
-                    "French (fr)",
-                    "Italian (it)",
-                    "Portuguese (pt)",
-                    "Japanese (ja)",
-                    "Chinese (zh)",
-                    "Korean (ko)"
+                options: [dynamicForm.options.DefaultValue, "English",
+                    "Spanish",
+                    "French",
+                    "Italian",
+                    "Portuguese",
+                    "Japanese",
+                    "Chinese",
+                    "Korean"
                 ]
             };
             dynamicForm.options.form.fields["areas of interest"] = {
@@ -902,14 +902,14 @@
                 label: "Areas of interest",
                 id: "C_Areas_of_Interest1",
                 name: "C_Areas_of_Interest1",
-                options: [dynamicForm.options.DefaultValue, "Linux Platforms (Linux Platforms)",
-                    "Red Hat JBoss Middleware (Red Hat JBoss Middleware)",
-                    "Virtualization (Virtualization)",
-                    "Cloud Computing (Cloud Computing)",
-                    "Storage (Storage)",
-                    "Training (Training)",
-                    "Certification (Certification)",
-                    "Consulting (Consulting)"
+                options: [dynamicForm.options.DefaultValue, "Linux Platforms",
+                    "Red Hat JBoss Middleware",
+                    "Virtualization",
+                    "Cloud Computing",
+                    "Storage",
+                    "Training",
+                    "Certification",
+                    "Consulting"
                 ]
             };
             dynamicForm.options.form.fields["cities nearby"] = {
@@ -1617,11 +1617,10 @@
                         }
                         break;
                     case dynamicForm.constants.VIEW.BAD_OFFER:
-                        $("#A_UX_Status").val("Bad Offer");
+                        $("#A_UX_Status").val("Bad Offer: " + dynamicForm.options.offer_id);
                         deferred = dynamicForm.form.Start();
                         break;
                     case dynamicForm.constants.VIEW.FORM:
-                        //$("#A_UX_Status").val("Bad Offer");
                         deferred = dynamicForm.form.Start();
                         break;
                 }
@@ -3330,7 +3329,7 @@
                     parent_url: "".concat(dynamicForm.Util.GetUrlPrefix(), "/forms/"),
                     offer_id: dynamicForm.Util.GetOfferId(),
                     pid: dynamicForm.Util.GetCookieValue('rh_pid'),
-                    sc_cid: dynamicForm.Util.GetCookieValue('rh_pid'),
+                    sc_cid: dynamicForm.Util.GetCookieValue('rh_omni_tc'),
                     verificationId: dynamicForm.Util.GetVerificationId(),
                     view: dynamicForm.constants.VIEW.DOWNLOAD
                 });
@@ -3339,7 +3338,7 @@
                     parent_url: parent_url,
                     offer_id: dynamicForm.Util.GetOfferId(),
                     pid: dynamicForm.Util.GetCookieValue('rh_pid'),
-                    sc_cid: dynamicForm.Util.GetCookieValue('rh_pid'),
+                    sc_cid: dynamicForm.Util.GetCookieValue('rh_omni_tc'),
                     verificationId: dynamicForm.Util.GetVerificationId(),
                     view: dynamicForm.constants.VIEW.SEND_MSG
                 });
