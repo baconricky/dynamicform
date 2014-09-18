@@ -585,8 +585,8 @@
             }
 
             //switch to "proxy" to use the lookup proxy first.
-            dynamicForm.options.urls = {
-                elqLookups: [
+            if (typeof dynamicForm.options.elqLookupUrls === "undefined") {
+                dynamicForm.options.elqLookupUrls = [
                     // normal eloqua lookup url
                     'https://s' + dynamicForm.options.elqSiteId + '.t.eloqua.com/visitor/v200/svrGP',
                     // proxy (for Safari and 3rd party cookies issue
@@ -601,7 +601,7 @@
                     // to test for other error codes, try:
                     // https://developer.mozilla.org/en-US/docs/Web/HTTP/Response_codes
                 ]
-            };
+            }
 
             for (var key in dynamicForm.options) {
                 if (dynamicForm.options.hasOwnProperty(key)) { //filter prototype
@@ -1528,7 +1528,7 @@
                 dynamicForm.elqTracker = new $.elq(dynamicForm.options.elqSiteId);
                 $.fn.elqTrack(dynamicForm.options.elqSiteId);
                 dynamicForm.elqTracker.pageTrack({
-                    url: dynamicForm.options.urls.elqLookups[0]
+                    url: dynamicForm.options.elqLookupUrls[0]
                 });
                 deferred.resolve();
             });
@@ -3424,7 +3424,6 @@
                 }
                 $.when(dynamicForm.Translate(document.getElementById(dynamicForm.options.elqFormContainerId))).then(function() {
                     dynamicForm.UI.Loading.Hide();
-                    console.log("dynamicForm.options.view: ", dynamicForm.options.view);
                     if (dynamicForm.options.view === dynamicForm.constants.VIEW.DOWNLOAD || dynamicForm.options.view === dynamicForm.constants.VIEW.SEND_MSG) {
                         dynamicForm.Omniture.SetOption("pageName", "rh | " + channel + " | " + dynamicForm.constants.OMNITURE.FIRST_MINOR_SECTION + " | " + dynamicForm.Util.GetOfferId() + " | thank you");
                         dynamicForm.Omniture.SetOption("interface", "");
@@ -3537,7 +3536,7 @@
         if (typeof siteid === "undefined") {
             return false;
         }
-        var url = dynamicForm.options.urls.elqLookups[0],
+        var url = dynamicForm.options.elqLookupUrls[0],
             ref2 = document.referrer !== "" ? document.referrer : "elqNone";
         this.each(function() {
             var ref = this.href;
@@ -3559,8 +3558,8 @@
     // NOTE - elq jQuery function usage: var elqTracker = new jQuery.elq(xxx); elqTracker.(pageTrack);
     $.elq = function(id) {
         var settings,
-            url = dynamicForm.options.urls.elqLookups[0],
-            proxy = dynamicForm.options.urls.elqLookups[1],
+            url = dynamicForm.options.elqLookupUrls[0],
+            proxy = dynamicForm.options.elqLookupUrls[1],
             site_id = id;
         return {
             pageTrack: function(options) {
