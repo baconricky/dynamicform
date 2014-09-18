@@ -2743,6 +2743,7 @@
                         var offer_id = $.url("file.html?" + e.data).param("offer_id");
                         var postLoadAction = $.url("file.html?" + e.data).param("do");
                         var modal = $.url("file.html?" + e.data).param("modal");
+
                         if (dynamicForm.Util.HasValue(modal)) {
                             dynamicForm.options.no_css = false;
                             if (modal === "resize") {
@@ -2782,6 +2783,12 @@
             if (dynamicForm.Util.HasValue(config.UpdatedOfferId)) {
                 dynamicForm.data.UpdatedOfferId = config.UpdatedOfferId;
             }
+
+            //since the form has been submitted, this should now become the "download" view
+            if (dynamicForm.options.view === dynamicForm.constants.VIEW.FORM) {
+                dynamicForm.options.view = dynamicForm.constants.VIEW.DOWNLOAD;
+            }
+
             dynamicForm.SubmissionResponse.Start();
         },
         UpdateJobRoleList: function() {
@@ -3410,6 +3417,7 @@
                 }
                 $.when(dynamicForm.Translate(document.getElementById(dynamicForm.options.elqFormContainerId))).then(function() {
                     dynamicForm.UI.Loading.Hide();
+                    console.log("dynamicForm.options.view: ", dynamicForm.options.view);
                     if (dynamicForm.options.view === dynamicForm.constants.VIEW.DOWNLOAD || dynamicForm.options.view === dynamicForm.constants.VIEW.SEND_MSG) {
                         dynamicForm.Omniture.SetOption("pageName", "rh | " + channel + " | " + dynamicForm.constants.OMNITURE.FIRST_MINOR_SECTION + " | " + dynamicForm.Util.GetOfferId() + " | thank you");
                         dynamicForm.Omniture.SetOption("interface", "");
